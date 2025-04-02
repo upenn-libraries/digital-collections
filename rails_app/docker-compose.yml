@@ -1,3 +1,5 @@
+name: digitial_collections
+
 services:
   postgres:
     image: postgres:17.4
