@@ -1,4 +1,4 @@
-name: digitial_collections
+name: digital_collections
 
 services:
   postgres:
