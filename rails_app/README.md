@@ -12,8 +12,7 @@ Your development machine will need the following:
 #### Ruby
 
 I suggest installing Ruby via [`rbenv`](https://github.com/rbenv/rbenv), [`asdf`](https://asdf-vm.com/), or [`mise`](https://mise.jdx.dev/). There is
-plenty of guidance available on the open web about installing and using these tools. The `.ruby-version` and
-`.tool-versions` files in this repo explicitly define the version of Ruby to be installed.
+plenty of guidance available on the open web about installing and using these tools. The `.ruby-version` file in this repo explicitly define the version of Ruby to be installed.
 
 #### Docker Compose
 
@@ -45,7 +44,7 @@ rake tools:clean
 
 #### Install dependencies
 
-Ensure your local Ruby version matches the version in `.ruby-version` or `.tool-versions`:
+Ensure your local Ruby version matches the version in `.ruby-version`:
 ```bash
 ruby --version
 ```
