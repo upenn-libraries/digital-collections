@@ -1,24 +1,22 @@
-# README
+# Penn Libraries Digital Collections
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Font-end app for discovery of Penn Libraries Digital Collections content.
 
-Things you may want to cover:
+## Rubocop
 
-* Ruby version
+This application uses Rubocop to enforce Ruby and Rails style guidelines. We centralize our UPenn specific configuration in
+[upennlib-rubocop](https://gitlab.library.upenn.edu/dld/upennlib-rubocop).
 
-* System dependencies
 
-* Configuration
+To check style and formatting run:
+```ruby
+bundle exec rubocop
+```
 
-* Database creation
+If there are rubocop offenses that you are not able to fix please do not edit the rubocop configuration instead regenerate the `rubocop_todo.yml` using the following command:
 
-* Database initialization
+```bash
+rubocop --auto-gen-config  --auto-gen-only-exclude --exclude-limit 10000
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To change our default Rubocop config please open an MR in the `upennlib-rubocop` project.
