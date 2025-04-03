@@ -2,3 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "@samvera/clover-iiif"
+import { defineCustomElements } from "@penn-libraries/web"
+
+defineCustomElements();
+
