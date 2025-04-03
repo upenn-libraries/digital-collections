@@ -1,7 +1,11 @@
+# Penn Libraries Digital Collections
+
+Font-end app for discovery of Penn Libraries Digital Collections content.
+
 1. [Local Development Environment](#local-development-environment)
-   1. [Requirements](#requirements)
-   2. [Starting Services](#starting-app-services)
-   4. [Developing](#developing)
+    1. [Requirements](#requirements)
+    2. [Starting Services](#starting-app-services)
+    4. [Developing](#developing)
 
 ## Local Development Environment
 
@@ -16,18 +20,18 @@ plenty of guidance available on the open web about installing and using these to
 
 #### Docker Compose
 
-[Docker compose](https://docs.docker.com/compose/install/) is required to run the application services. For 🌈 linux 
+[Docker compose](https://docs.docker.com/compose/install/) is required to run the application services. For 🌈 linux
 users 🌈 this is free and straightforward. [Install docker engine](https://docs.docker.com/engine/install/) and then
 [add the compose plugin](https://docs.docker.com/compose/install/linux/#install-the-plugin-manually).
 
-For Mac users, the easiest and recommended way to get Docker Compose is to 
-[install Docker Desktop](https://docs.docker.com/desktop/install/mac-install/). While this is enough to get the 
-application running, you should request membership to the Penn Libraries Docker Team license 
+For Mac users, the easiest and recommended way to get Docker Compose is to
+[install Docker Desktop](https://docs.docker.com/desktop/install/mac-install/). While this is enough to get the
+application running, you should request membership to the Penn Libraries Docker Team license
 from [the IT Helpdesk](https://ithelp.library.upenn.edu/support/home) for full functionality.
 
 ### Starting App Services
 
-Helpful Rake tasks have been created to wrap up the initialization process for the development environment. 
+Helpful Rake tasks have been created to wrap up the initialization process for the development environment.
 
 ```
 # start the app docker services and run database migrations
@@ -67,5 +71,24 @@ For MacOS users the `pg` gem may fail to install with an error concerning the `l
 ```bash
 bundle exec rails server
 ```
- 
+
 View the app at `localhost:3000`
+
+## Rubocop
+
+This application uses Rubocop to enforce Ruby and Rails style guidelines. We centralize our UPenn specific configuration in
+[upennlib-rubocop](https://gitlab.library.upenn.edu/dld/upennlib-rubocop).
+
+
+To check style and formatting run:
+```ruby
+bundle exec rubocop
+```
+
+If there are rubocop offenses that you are not able to fix please do not edit the rubocop configuration instead regenerate the `rubocop_todo.yml` using the following command:
+
+```bash
+rubocop --auto-gen-config  --auto-gen-only-exclude --exclude-limit 10000
+```
+
+To change our default Rubocop config please open an MR in the `upennlib-rubocop` project.
