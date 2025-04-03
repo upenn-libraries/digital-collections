@@ -6,6 +6,8 @@ Font-end app for discovery of Penn Libraries Digital Collections content.
     1. [Requirements](#requirements)
     2. [Starting Services](#starting-app-services)
     4. [Developing](#developing)
+2. [Contributing](#contributing)
+   1. [Running the Test Suite](#running-the-test-suite)
 
 ## Local Development Environment
 
@@ -73,6 +75,22 @@ bundle exec rails server
 ```
 
 View the app at `localhost:3000`
+
+## Contributing
+
+In order to contribute productively while fostering the project values, familiarize yourself with the established
+[Gitlab Collaboration Workflow](https://upennlibrary.atlassian.net/wiki/spaces/DLD/pages/498073672/GitLab+Collaboration+Workflow)
+as well as the [Ruby on Rails Development Guidelines](https://upennlibrary.atlassian.net/wiki/spaces/DLD/pages/495616001/Ruby-on-Rails+Development+Guidelines).
+
+### Running the Test Suite
+
+When adding new features, be sure to consider the need for test coverage.
+
+Run the full application test suite with:
+
+```bash
+bundle exec rspec
+```
 
 ## Rubocop
 
