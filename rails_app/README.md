@@ -4,10 +4,11 @@ Font-end app for discovery of Penn Libraries Digital Collections content.
 
 1. [Local Development Environment](#local-development-environment)
     1. [Requirements](#requirements)
-    2. [Starting Services](#starting-app-services)
+    2. [Starting App Services](#starting-app-services)
     4. [Developing](#developing)
 2. [Contributing](#contributing)
-   1. [Running the Test Suite](#running-the-test-suite)
+    1. [Running the RSpec Test Suite](#running-the-rspec-test-suite)
+    2. [Code Analysis with Rubocop](#code-analysis-with-rubocop)
 
 ## Local Development Environment
 
@@ -82,7 +83,7 @@ In order to contribute productively while fostering the project values, familiar
 [Gitlab Collaboration Workflow](https://upennlibrary.atlassian.net/wiki/spaces/DLD/pages/498073672/GitLab+Collaboration+Workflow)
 as well as the [Ruby on Rails Development Guidelines](https://upennlibrary.atlassian.net/wiki/spaces/DLD/pages/495616001/Ruby-on-Rails+Development+Guidelines).
 
-### Running the Test Suite
+### Running the RSpec Test Suite
 
 When adding new features, be sure to consider the need for test coverage.
 
@@ -92,7 +93,7 @@ Run the full application test suite with:
 bundle exec rspec
 ```
 
-## Rubocop
+### Code Analysis with Rubocop
 
 This application uses Rubocop to enforce Ruby and Rails style guidelines. We centralize our UPenn specific configuration in
 [upennlib-rubocop](https://gitlab.library.upenn.edu/dld/upennlib-rubocop).
