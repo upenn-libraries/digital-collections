@@ -104,7 +104,9 @@ Check for style violations:
 bundle exec rubocop
 ```
 
-If you can't resolve offenses, regenerate `rubocop_todo.yml`:
+If you can't resolve offenses, *please* refrain from updating the Rubocop configuration in this project. 
+
+Instead, regenerate `rubocop_todo.yml`:
 
 ```bash
 rubocop --auto-gen-config --auto-gen-only-exclude --exclude-limit 10000
