@@ -82,6 +82,17 @@ Access the app at `http://localhost:3000`.
 
 ---
 
+## Configuration/Settings
+Application-wide configuration is centralized in `config/settings` and `config/settings.yml`. Access to configuration is provided via the `Settings` object instantiated by the [config](https://github.com/rubyconfig/config) gem. For example, to retrieve a value defined in the `settings.yml` file as `my_yaml_key:`, run:
+
+```ruby
+Settings.my_yaml_key
+```
+
+Environment specific configuration values should be placed in the appropriate file in the `config/settings` directory. For configuration that is the same for all environments it should be placed in `config/settings.yml`.
+
+All configuration values, including secrets, should be accessed via the `Settings` object. Secret values should be defined in the settings files and their values set via secure means, such as the Rails encrypted credentials file or via Docker Secrets.
+
 ## Contributing
 
 Before contributing, review the [GitLab Collaboration Workflow](https://upennlibrary.atlassian.net/wiki/spaces/DLD/pages/498073672/GitLab+Collaboration+Workflow) and [Rails Development Guidelines](https://upennlibrary.atlassian.net/wiki/spaces/DLD/pages/495616001/Ruby-on-Rails+Development+Guidelines).
