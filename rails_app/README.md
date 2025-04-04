@@ -1,94 +1,115 @@
 # Penn Libraries Digital Collections
 
-Font-end app for discovery of Penn Libraries Digital Collections content.
+Frontend application for discovering content in Penn Libraries Digital Collections.
 
-1. [Local Development Environment](#local-development-environment)
-    1. [Requirements](#requirements)
-    2. [Starting Services](#starting-app-services)
-    4. [Developing](#developing)
+## Table of Contents
+
+1. [Local Development Environment](#local-development-environment)  
+   - [Requirements](#requirements)  
+   - [Starting App Services](#starting-app-services)  
+   - [Developing](#developing)  
+2. [Contributing](#contributing)  
+   - [Running Tests](#running-tests)  
+   - [Code Analysis with Rubocop](#code-analysis-with-rubocop)  
+
+---
 
 ## Local Development Environment
 
 ### Requirements
 
-Your development machine will need the following:
+Your development machine needs the following:
 
 #### Ruby
 
-I suggest installing Ruby via [`rbenv`](https://github.com/rbenv/rbenv), [`asdf`](https://asdf-vm.com/), or [`mise`](https://mise.jdx.dev/). There is
-plenty of guidance available on the open web about installing and using these tools. The `.ruby-version` file in this repo explicitly define the version of Ruby to be installed.
+Use [`rbenv`](https://github.com/rbenv/rbenv), [`asdf`](https://asdf-vm.com/), or [`mise`](https://mise.jdx.dev/) to manage Ruby versions. The required version is specified in `.ruby-version`.
 
 #### Docker Compose
 
-[Docker compose](https://docs.docker.com/compose/install/) is required to run the application services. For 🌈 linux
-users 🌈 this is free and straightforward. [Install docker engine](https://docs.docker.com/engine/install/) and then
-[add the compose plugin](https://docs.docker.com/compose/install/linux/#install-the-plugin-manually).
+[Docker Compose](https://docs.docker.com/compose/install/) is required to run application services.
 
-For Mac users, the easiest and recommended way to get Docker Compose is to
-[install Docker Desktop](https://docs.docker.com/desktop/install/mac-install/). While this is enough to get the
-application running, you should request membership to the Penn Libraries Docker Team license
-from [the IT Helpdesk](https://ithelp.library.upenn.edu/support/home) for full functionality.
+- **Linux users**: Install [Docker Engine](https://docs.docker.com/engine/install/) and then the [Compose plugin](https://docs.docker.com/compose/install/linux/#install-the-plugin-manually).  
+- **Mac users**: Install [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) for an easy setup. To access full functionality, request membership in the Penn Libraries Docker Team via [the IT Helpdesk](https://ithelp.library.upenn.edu/support/home).  
 
 ### Starting App Services
 
-Helpful Rake tasks have been created to wrap up the initialization process for the development environment.
+Use these Rake tasks to manage app services:
 
-```
-# start the app docker services and run database migrations
+```bash
+# Start app services and run database migrations
 rake tools:start
 
-# stop docker services
+# Stop services
 rake tools:stop
 
-# remove docker containers
+# Remove containers
 rake tools:clean
 ```
 
 ### Developing
 
-#### Install dependencies
+#### Install Dependencies
 
-Ensure your local Ruby version matches the version in `.ruby-version`:
+Ensure your Ruby version matches `.ruby-version`:
+
 ```bash
 ruby --version
 ```
-If it does:
+
+Then install dependencies:
+
 ```bash
 bundle install
 ```
-If it doesn't, this will get you started on debugging:
+
+If there's a version mismatch, debug with:
+
 ```bash
 which ruby
 ```
 
-##### Postgres
-For MacOS users the `pg` gem may fail to install with an error concerning the `libpq` library.
+##### PostgreSQL Issues on macOS
 
-[Refer to this gist](https://gist.github.com/tomholford/f38b85e2f06b3ddb9b4593e841c77c9e) to address this issue.
+If the `pg` gem fails due to `libpq` issues, follow [this guide](https://gist.github.com/tomholford/f38b85e2f06b3ddb9b4593e841c77c9e).
 
-#### Start the development server
+#### Start the Development Server
 
 ```bash
 bundle exec rails server
 ```
 
-View the app at `localhost:3000`
+Access the app at `http://localhost:3000`.
 
-## Rubocop
+---
 
-This application uses Rubocop to enforce Ruby and Rails style guidelines. We centralize our UPenn specific configuration in
-[upennlib-rubocop](https://gitlab.library.upenn.edu/dld/upennlib-rubocop).
+## Contributing
 
+Before contributing, review the [GitLab Collaboration Workflow](https://upennlibrary.atlassian.net/wiki/spaces/DLD/pages/498073672/GitLab+Collaboration+Workflow) and [Rails Development Guidelines](https://upennlibrary.atlassian.net/wiki/spaces/DLD/pages/495616001/Ruby-on-Rails+Development+Guidelines).
 
-To check style and formatting run:
-```ruby
+### Running Tests
+
+Ensure test coverage when adding features. Run the test suite with:
+
+```bash
+bundle exec rspec
+```
+
+### Code Analysis with Rubocop
+
+This project follows UPenn-specific style guidelines in [upennlib-rubocop](https://gitlab.library.upenn.edu/dld/upennlib-rubocop).
+
+Check for style violations:
+
+```bash
 bundle exec rubocop
 ```
 
-If there are rubocop offenses that you are not able to fix please do not edit the rubocop configuration instead regenerate the `rubocop_todo.yml` using the following command:
+If you can't resolve offenses, *please* refrain from updating the Rubocop configuration in this project. 
+
+Instead, regenerate `rubocop_todo.yml`:
 
 ```bash
-rubocop --auto-gen-config  --auto-gen-only-exclude --exclude-limit 10000
+rubocop --auto-gen-config --auto-gen-only-exclude --exclude-limit 10000
 ```
 
-To change our default Rubocop config please open an MR in the `upennlib-rubocop` project.
+To update default Rubocop rules, open an MR in the `upennlib-rubocop` project.
