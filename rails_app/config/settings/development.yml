@@ -1,0 +1,1 @@
+solr_url: <%= ENV.fetch('SOLR_URL', 'http://dcoll:dcoll@127.0.0.1:8983/solr/digital-collections-development') %>

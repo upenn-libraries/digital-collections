@@ -15,12 +15,14 @@ services:
       - "8983:8983"
     volumes:
       - solrcloud_data:/var/solr
+      - ./solr/conf:/opt/solr/configsets/dcoll
     entrypoint:
       - docker-entrypoint.sh
       - solr
       - start
       - -c
       - -f
+      - "-Dsolr.modules=analysis-extras"
 
 volumes:
   db_data:
