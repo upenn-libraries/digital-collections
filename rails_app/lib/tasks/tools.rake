@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 namespace :tools do
-  # TODO: add solr tools, spin up solr collection, update desc with solr
   desc 'Initialize project, including database'
   task start: :environment do
     system('docker compose up -d')
@@ -14,10 +13,15 @@ namespace :tools do
       system('docker compose exec solrcloud solr zk upconfig -d /opt/solr/configsets/dcoll -n digital_collections')
     end
     %w[digital-collections-development digital-collections-test].each do |collection|
-      unless SolrTools.collection_exists? collection
-        puts "Creating #{collection} collection..."
-        SolrTools.create_collection collection, 'digital_collections'
-      end
+      next if SolrTools.collection_exists? collection
+
+      puts "Creating #{collection} collection..."
+      SolrTools.create_collection collection, 'digital_collections'
+      next unless collection == 'digital-collections-development'
+
+      sample_records_path = Rails.root.join 'solr/data/dcoll-solr-samples.jsonl'
+      puts "Populating development collection with sample records from #{sample_records_path}..."
+      SolrTools.load_data collection, sample_records_path
     end
     puts 'Creating databases...'
     ActiveRecord::Tasks::DatabaseTasks.create_current
