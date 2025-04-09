@@ -6,6 +6,7 @@ ruby '3.4.2'
 
 gem 'bootsnap', require: false
 gem 'config'
+gem 'faraday'
 gem 'importmap-rails'
 gem 'pg', '~> 1.1'
 gem 'propshaft'

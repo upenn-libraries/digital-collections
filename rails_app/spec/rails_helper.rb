@@ -36,6 +36,18 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+  # Allow specs to be flagged as using Solr, meaning the Solr index will be cleared before (if needed)
+  # and after examples. See: https://rspec.info/features/3-13/rspec-core/hooks/around-hooks/
+  # Usage:
+  # context 'my context', :solr do; end; uses hook for all examples in context
+  # describe '#my_method', :solr do; end; uses hook for all examples in describe
+  # it 'my spec', :solr do; end; uses hook for this example
+  config.around(:example, :solr) do |example|
+    SolrTools.clear_collection unless SolrTools.collection_empty? # just in case
+    example.run # run the actual example
+    SolrTools.clear_collection # clean up
+  end
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
