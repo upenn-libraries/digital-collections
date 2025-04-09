@@ -12,8 +12,6 @@ services:
     environment:
       PORT: 3333
       CONNECTION_TIMEOUT: 600000
-      # KEEP_ALIVE: 'true' - this is deprecated with browserless 2
-      # FUNCTION_ENABLE_INCOGNITO_MODE: 'true' - this is deprecated with browserless 2
   postgres:
     image: postgres:17.4
     environment:
