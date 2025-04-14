@@ -107,8 +107,10 @@ class CatalogController < ApplicationController
     # facet bar
     #
     # set :index_range to true if you want the facet pagination view to have facet prefix-based navigation
-    #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically across a large set of results)
-    # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
+    #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically
+    #  across a large set of results)
+    # :index_range can be an array or range of prefixes that will be used to create the navigation
+    # (note: It is case sensitive when searching values)
 
     config.add_facet_field 'format', label: 'Format'
     config.add_facet_field 'pub_date_ssim', label: 'Publication Year', single: true
@@ -122,9 +124,9 @@ class CatalogController < ApplicationController
                                                   collapsing: true
 
     config.add_facet_field 'example_query_facet_field', label: 'Publish Date', query: {
-      years_5: { label: 'within 5 Years', fq: "pub_date_ssim:[#{Time.zone.now.year - 5} TO *]" },
-      years_10: { label: 'within 10 Years', fq: "pub_date_ssim:[#{Time.zone.now.year - 10} TO *]" },
-      years_25: { label: 'within 25 Years', fq: "pub_date_ssim:[#{Time.zone.now.year - 25} TO *]" }
+      years5: { label: 'within 5 Years', fq: "pub_date_ssim:[#{Time.zone.now.year - 5} TO *]" },
+      years10: { label: 'within 10 Years', fq: "pub_date_ssim:[#{Time.zone.now.year - 10} TO *]" },
+      years25: { label: 'within 25 Years', fq: "pub_date_ssim:[#{Time.zone.now.year - 25} TO *]" }
     }
 
     # Have BL send all facet field names to Solr, which has been the default

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe SearchBuilder do
@@ -5,7 +7,12 @@ describe SearchBuilder do
 
   let(:user_params) { {} }
   let(:blacklight_config) { Blacklight::Configuration.new }
-  let(:scope) { double blacklight_config: blacklight_config }
+  let(:scope) { instance_double blacklight_config: blacklight_config }
+
+  # empty spec to satisfy rubocop - this should stay so we have a template
+  # for search builder specs
+
+  it 'adds custom data'
 
   # describe "my custom step" do
   #   subject(:query_parameters) do
