@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   mount Blacklight::Engine => '/'
-  root to: "catalog#index"
+  root to: 'catalog#index'
   concern :searchable, Blacklight::Routes::Searchable.new
 
   resource :catalog, only: [], as: 'catalog', path: '/catalog', controller: 'catalog' do
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     concerns :exportable
   end
 
-  resources :bookmarks, only: [:index, :update, :create, :destroy] do
+  resources :bookmarks, only: %i[index update create destroy] do
     concerns :exportable
 
     collection do
