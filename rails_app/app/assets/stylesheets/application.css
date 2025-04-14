@@ -8,6 +8,3 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
-
-/* Penn Libraries design system styles */
-@import "https://cdn.jsdelivr.net/npm/@penn-libraries/web@latest/dist/web/web.css";
