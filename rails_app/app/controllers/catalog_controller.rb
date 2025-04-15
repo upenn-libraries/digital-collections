@@ -127,7 +127,7 @@ class CatalogController < ApplicationController
     config.add_index_field :subject_ssim, label: I18n.t('fields.results.subject'), link_to_facet: true
     config.add_index_field :collection_ssim, label: I18n.t('fields.results.collection'), link_to_facet: true
 
-    # Description
+    # "Show"/work page fields
     config.add_show_field :description_ssim, label: I18n.t('fields.work.description')
     config.add_show_field :creator_with_role_ssim, label: I18n.t('fields.work.creator'), link_to_facet: true
     # Place of publication
