@@ -95,6 +95,9 @@ GEM
     benchmark (0.4.0)
     bigdecimal (3.1.9)
     bindex (0.8.1)
+    blacklight_range_limit (9.0.0)
+      blacklight (>= 7.25.2, < 9)
+      view_component (>= 2.54, < 4)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
     builder (3.3.0)
@@ -403,6 +406,7 @@ PLATFORMS
 
 DEPENDENCIES
   blacklight!
+  blacklight_range_limit
   bootsnap
   capybara
   config
