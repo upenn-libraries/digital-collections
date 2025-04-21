@@ -120,7 +120,7 @@ class CatalogController < ApplicationController
     config.add_facet_field :subject_ssim, label: I18n.t('fields.facets.subject')
     config.add_facet_field :collection_ssim, label: I18n.t('fields.facets.collection')
     config.add_facet_field :creator_with_role_ssim, label: I18n.t('fields.facets.creator')
-    config.add_facet_field :year_ssim, label: I18n.t('fields.facets.year'), range: true
+    config.add_facet_field :year_itim, label: I18n.t('fields.facets.year'), range: true
 
     # "Index"/results page fields
     config.add_index_field :description_ssim, label: I18n.t('fields.results.description')
