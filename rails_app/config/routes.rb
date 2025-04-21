@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'sidekiq/pro/web'
-
 Rails.application.routes.draw do
   mount Blacklight::Engine => '/'
   root to: 'catalog#index'
