@@ -90,10 +90,6 @@ Access the app at `http://localhost:3000`.
 
 ---
 
-#### Sidekiq Pro Web UI
-
-The development environment for this app exposes the Sidekiq Web UI at [http://localhost:3000/sidekiq](http://localhost:3000/sidekiq).
-
 ## Configuration/Settings
 Application-wide configuration is centralized in `config/settings` and `config/settings.yml`. Access to configuration is provided via the `Settings` object instantiated by the [config](https://github.com/rubyconfig/config) gem. For example, to retrieve a value defined in the `settings.yml` file as `my_yaml_key:`, run:
 
