@@ -156,6 +156,9 @@ GEM
       websocket-driver (~> 0.7)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    honeybadger (5.27.1)
+      logger
+      ostruct
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.1.0)
@@ -431,6 +434,7 @@ DEPENDENCIES
   devise-guests (~> 0.8)
   factory_bot_rails
   faraday
+  honeybadger
   importmap-rails
   pg (~> 1.1)
   propshaft
