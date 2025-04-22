@@ -1,6 +1,2 @@
 honeybadger:
   api_key: <%= DockerSecrets.lookup(:honeybadger_api_key) %>
-redis:
-  url: ''
-  username: ''
-  password: ''
