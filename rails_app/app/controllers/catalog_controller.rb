@@ -45,7 +45,8 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = 'title_ssim'
     # config.index.display_type_field = 'format'
-    # config.index.thumbnail_field = 'thumbnail_path_ss'
+    config.index.thumbnail_field = 'thumbnail_asset_id_ssi'
+    config.index.thumbnail_method = :thumbnail
 
     # The presenter is the view-model class for the page
     # config.index.document_presenter_class = MyApp::IndexPresenter
