@@ -48,6 +48,13 @@ class CatalogController < ApplicationController
     config.index.thumbnail_field = 'thumbnail_asset_id_ssi'
     config.index.thumbnail_method = :thumbnail
 
+    config.view.gallery(document_component: Blacklight::Gallery::DocumentComponent,
+                        icon: Blacklight::Gallery::Icons::GalleryComponent)
+    config.view.masonry(document_component: Blacklight::Gallery::DocumentComponent,
+                        icon: Blacklight::Gallery::Icons::MasonryComponent)
+    config.view.slideshow(document_component: Blacklight::Gallery::SlideshowComponent,
+                          icon: Blacklight::Gallery::Icons::SlideshowComponent)
+
     # The presenter is the view-model class for the page
     # config.index.document_presenter_class = MyApp::IndexPresenter
 
