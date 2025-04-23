@@ -24,6 +24,12 @@ Your development machine needs the following:
 
 Use [`rbenv`](https://github.com/rbenv/rbenv), [`asdf`](https://asdf-vm.com/), or [`mise`](https://mise.jdx.dev/) to manage Ruby versions. The required version is specified in `.ruby-version`.
 
+To be able to install all the required gems, your `bundler` must have valid credentials to the `sidekiq-pro` gem repository. [Configure](https://bundler.io/man/bundle-config.1.html) your user-level bundler config (`~/.bundle/config`) or repository-level config (`./.bundle/config`) with the environment variable expected by Bundler:
+
+```
+BUNDLE_GEMS__CONTRIBSYS__COM=username:password
+```
+
 #### Docker Compose
 
 [Docker Compose](https://docs.docker.com/compose/install/) is required to run application services.
@@ -61,6 +67,8 @@ Then install dependencies:
 ```bash
 bundle install
 ```
+
+If you get an error when installing the `sidekiq-pro` gem, [ensure you have bundler configured](#ruby) with the proper credentials.
 
 If there's a version mismatch, debug with:
 

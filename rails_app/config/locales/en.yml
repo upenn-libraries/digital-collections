@@ -6,6 +6,7 @@ en:
       subject: 'Subject'
       collection: 'Collection'
       creator: 'Creator'
+      year: 'Year'
     results:
       description: 'Description'
       form: 'Form'
