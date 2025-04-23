@@ -49,7 +49,8 @@ class CatalogController < ApplicationController
     config.index.thumbnail_method = :thumbnail
 
     config.view.gallery(document_component: Blacklight::Gallery::DocumentComponent,
-                        icon: Blacklight::Gallery::Icons::GalleryComponent)
+                        icon: Blacklight::Gallery::Icons::GalleryComponent,
+                        metadata_component: Catalog::Gallery::DocumentMetadataComponent)
     config.view.masonry(document_component: Blacklight::Gallery::DocumentComponent,
                         icon: Blacklight::Gallery::Icons::MasonryComponent)
     config.view.slideshow(document_component: Blacklight::Gallery::SlideshowComponent,
@@ -66,7 +67,7 @@ class CatalogController < ApplicationController
     # config.index.document_actions.delete(:bookmark)
 
     config.add_results_document_tool(:bookmark, component: Blacklight::Document::BookmarkComponent,
-                                                if: :render_bookmarks_control?)
+                                                if: false)
 
     config.add_results_collection_tool(:sort_widget)
     config.add_results_collection_tool(:per_page_widget)
