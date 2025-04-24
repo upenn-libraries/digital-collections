@@ -2,14 +2,19 @@
 
 # Blacklight user
 class User < ApplicationRecord
-  # Connects this user object to Blacklights Bookmarks.
-  include Blacklight::User
-
-  # Blacklight::User uses a method on your User class to get a user-displayable
-  # label (e.g. login or identifier) for the account. Blacklight uses `email' by default.
-  # self.string_display_key = :email
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  DISPLAY_KEY = :email
+
+  # Originally included by Blacklight::User, which we removed (no bookmarks, search history)
+  def string_display_key
+    send(DISPLAY_KEY)
+  end
+
+  def to_s
+    string_display_key
+  end
 end
