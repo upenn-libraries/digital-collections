@@ -10,10 +10,12 @@ class User < ApplicationRecord
   DISPLAY_KEY = :email
 
   # Originally included by Blacklight::User, which we removed (no bookmarks, search history)
+  # @return [String]
   def string_display_key
     send(DISPLAY_KEY)
   end
 
+  # @return [String]
   def to_s
     string_display_key
   end
