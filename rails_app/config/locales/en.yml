@@ -27,3 +27,9 @@ en:
       uri: 'URI'
       rights: 'Rights'
       identifier: 'Identifier'
+  footer:
+    digital_collections:
+      heading: 'Digital Collections'
+      about: 'About'
+      collections: 'Collections'
+      works: 'Works'
