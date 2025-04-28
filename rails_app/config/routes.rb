@@ -1,21 +1,22 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   mount Blacklight::Engine => '/'
-  root to: 'catalog#index'
-  concern :searchable, Blacklight::Routes::Searchable.new
 
-  resource :catalog, only: [], as: 'catalog', path: '/catalog', controller: 'catalog' do
+  concern :searchable, Blacklight::Routes::Searchable.new
+  concern :exportable, Blacklight::Routes::Exportable.new
+  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
+
+  root to: 'catalog#index'
+
+  devise_for :users
+
+  resource :catalog, only: [], as: 'catalog', path: '/items', controller: 'catalog' do
     concerns :searchable
     concerns :range_searchable
   end
 
-  devise_for :users
-
-  concern :exportable, Blacklight::Routes::Exportable.new
-
-  resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
+  resources :solr_documents, only: [:show], path: '/items', controller: 'catalog' do
     concerns :exportable
   end
 
