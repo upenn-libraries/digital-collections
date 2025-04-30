@@ -55,7 +55,8 @@ class CatalogController < ApplicationController
     # config.index.document_component = MyApp::SearchResultComponent
     # config.index.constraints_component = MyApp::ConstraintsComponent
     # config.index.search_bar_component = MyApp::SearchBarComponent
-    # config.index.search_header_component = MyApp::SearchHeaderComponent
+    config.header_component = DC::HeaderComponent
+    config.index.search_bar_component = DC::SearchBarComponent
     # config.index.document_actions.delete(:bookmark)
 
     config.add_results_collection_tool(:sort_widget)
@@ -156,32 +157,32 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
 
-    config.add_search_field 'all_fields', label: 'All Fields'
+    # config.add_search_field 'all_fields', label: 'All Fields'
 
     # Now we see how to over-ride Solr request handler defaults, in this
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
 
-    config.add_search_field('title') do |field|
-      field.solr_parameters = {
-        qf: 'title_tesim',
-        pf: 'title_tesim'
-      }
-    end
-
-    config.add_search_field('creator') do |field|
-      field.solr_parameters = {
-        qf: 'creator_tesim',
-        pf: 'creator_tesim'
-      }
-    end
-
-    config.add_search_field('subject') do |field|
-      field.solr_parameters = {
-        qf: 'subject_tesim',
-        pf: 'subject_tesim'
-      }
-    end
+    # config.add_search_field('title') do |field|
+    #   field.solr_parameters = {
+    #     qf: 'title_tesim',
+    #     pf: 'title_tesim'
+    #   }
+    # end
+    #
+    # config.add_search_field('creator') do |field|
+    #   field.solr_parameters = {
+    #     qf: 'creator_tesim',
+    #     pf: 'creator_tesim'
+    #   }
+    # end
+    #
+    # config.add_search_field('subject') do |field|
+    #   field.solr_parameters = {
+    #     qf: 'subject_tesim',
+    #     pf: 'subject_tesim'
+    #   }
+    # end
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the Solr field to sort by and

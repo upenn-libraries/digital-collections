@@ -27,6 +27,11 @@ en:
       uri: 'URI'
       rights: 'Rights'
       identifier: 'Identifier'
+  header:
+    login: 'Log in'
+    service_name: 'Digital Collections'
+    sign_out: 'Sign out'
+    account: 'My Account'
   footer:
     digital_collections:
       heading: 'Digital Collections'

@@ -9,3 +9,7 @@
  * Consider organizing styles into separate files for maintainability.
  */
 @import url(blacklight.css);
+
+.viewport-margins {
+	width: 100%;
+}

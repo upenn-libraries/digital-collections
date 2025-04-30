@@ -24,8 +24,7 @@
   <%= render blacklight_config.skip_link_component.new do %>
     <%= content_for(:skip_links) %>
   <% end %>
-
-  <%= render blacklight_config.header_component.new(blacklight_config: blacklight_config) %>
+  <%= render partial: 'shared/header_navbar' %>
 
   <main id="main-container" class="<%= container_classes %>" aria-label="<%= t('blacklight.main.aria.main_container') %>">
     <%= content_for(:container_header) %>
