@@ -7,8 +7,6 @@ module DC
   class HeaderComponent < Blacklight::Component
     attr_reader :blacklight_config, :user
 
-    delegate :container_classes, to: :helpers
-
     renders_one :search_bar, lambda { |component: DC::SearchNavbarComponent|
       component.new(blacklight_config: blacklight_config)
     }
