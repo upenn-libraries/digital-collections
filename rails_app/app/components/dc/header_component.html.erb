@@ -11,8 +11,11 @@
     <p hero="sub-heading"><a href="/">Arnold and Deanne Kaplan Collection</a> of Early American Judaica</p>
   <% end %>
 
-  <!-- this is where links go -->
-  <a href="/"></a>
+  <% if user %>
+    <%= link_to t('header.sign_out'), destroy_user_session_path %>
+  <% else %>
+    <%= link_to t('header.login'), new_user_session_path %>
+  <% end %>
 </pennlibs-header>
 
 <% if !render_hero? %>

@@ -24,8 +24,10 @@ module DC
       set_slot(:search_bar, nil) unless search_bar
     end
 
+    # Determines if the hero component should be rendered.
+    # @return [Boolean]
     def render_hero?
-      return false if params[:q].present?
+      return false if params.key? :q
 
       true
     end
