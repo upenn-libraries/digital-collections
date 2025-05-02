@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   end
 
   resources :solr_documents, only: [:show], path: '/items', controller: 'catalog' do
-    concerns :exportable
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
