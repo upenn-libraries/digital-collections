@@ -16,9 +16,7 @@ Rails.application.routes.draw do
     concerns :range_searchable
   end
 
-  resources :solr_documents, only: [:show], path: '/items', controller: 'catalog' do
-    concerns :exportable
-  end
+  resources :solr_documents, only: [:show], path: '/items', controller: 'catalog'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
