@@ -4,8 +4,8 @@
 
 module DC
   # Override Header Component
-  class HeaderComponent < Blacklight::Component
-    attr_accessor :blacklight_config, :user
+  class HeaderHeroComponent < Blacklight::Component
+    attr_accessor :blacklight_config, :user, :image_url, :heading, :subheading
 
     renders_one :search_bar, lambda { |component: DC::SearchNavbarComponent|
       component.new(blacklight_config: blacklight_config)
@@ -15,13 +15,14 @@ module DC
       UserToolsComponent.new(user: user)
     }
 
-    renders_one :hero
-
     # @param blacklight_config [Blacklight::Configuration]
     # @param user [User]
-    def initialize(blacklight_config:, user:)
+    def initialize(blacklight_config:, user:, image_url:, heading:, subheading:)
       @blacklight_config = blacklight_config
       @user = user
+      @image_url = image_url
+      @heading = heading
+      @subheading = subheading
     end
 
     def before_render

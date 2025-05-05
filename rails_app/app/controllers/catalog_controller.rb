@@ -205,4 +205,10 @@ class CatalogController < ApplicationController
     # default 'mySuggester', uncomment and provide it below
     # config.autocomplete_suggester = 'mySuggester'
   end
+
+  # default non-blacklight home page
+  def home; end
+
+  # about the digital collections
+  def about; end
 end

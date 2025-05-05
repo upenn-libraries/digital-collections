@@ -1,23 +1,6 @@
 <pennlibs-header service-name="<%= t('header.service_name') %>">
-  <% if render_hero? %>
-    <picture hero="art-direction">
-      <source srcset="https://upenn-library-digital-collections.netlify.app/img/collection-10.jpg" media="(min-width: 600px)">
-      <img src="https://upenn-library-digital-collections.netlify.app/img/collection-9.jpg" alt="">
-    </picture>
-
-    <%= search_bar %>
-
-    <h1 hero="heading">Boys wearing sailor suits, playing music to a dancing turtle</h1>
-    <p hero="sub-heading"><a href="/">Arnold and Deanne Kaplan Collection</a> of Early American Judaica</p>
-  <% end %>
-
-  <% if user %>
-    <%= link_to t('header.sign_out'), destroy_user_session_path %>
-  <% else %>
-    <%= link_to t('header.login'), new_user_session_path %>
-  <% end %>
+  <%= user_tools %>
 </pennlibs-header>
 
-<% if !render_hero? %>
-  <%= search_bar %>
-<% end %>
+<%= search_bar %>
+

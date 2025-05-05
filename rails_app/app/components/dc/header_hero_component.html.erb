@@ -1,0 +1,17 @@
+<pennlibs-hero>
+  <picture hero="art-direction">
+    <source srcset="https://upenn-library-digital-collections.netlify.app/img/collection-10.jpg" media="(min-width: 600px)">
+    <img src="<%= image_url %>" alt="">
+  </picture>
+  <div slot="start">
+
+    <pennlibs-header service-name="<%= t('header.service_name') %>" theme="dark">
+
+      <%= user_tools %>
+    </pennlibs-header>
+    <%= search_bar %>
+
+  </div>
+  <h1 hero="heading"><%= heading %></h1>
+  <p hero="sub-heading"><%= subheading %></p>
+</pennlibs-hero>
