@@ -3,9 +3,13 @@
     blacklight_config: blacklight_config,
     user: current_user,
     image_url: "https://upenn-library-digital-collections.netlify.app/img/collection-9.jpg",
-    heading: "Boys wearing sailor suits, playing music to a dancing turtle",
-    subheading: "Arnold and Deanne Kaplan Collection of Early American Judaica"
-  ) %>
+    # heading: "Boys wearing sailor suits, playing music to a dancing turtle",
+    # subheading: "Arnold and Deanne Kaplan Collection of Early American Judaica"
+  ) do |component| %>
+    <% component.with_heading do %>
+      <%= content_tag(:h1, "Boys wearing sailor suits, playing music to a dancing turtle", hero: "heading") %>
+    <% end %>
+  <% end %>
 <% end %>
 
 <section class="home-section">
