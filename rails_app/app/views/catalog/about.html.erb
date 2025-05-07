@@ -1,15 +1,61 @@
 <% content_for :header do %>
-  <%= render DC::HeaderHeroComponent.new(
+  <%= render DC::HeroComponent.new(
     blacklight_config: blacklight_config,
     user: current_user,
-    image_url: "https://upenn-library-digital-collections.netlify.app/img/collection-9.jpg",
-    heading: "Boys wearing sailor suits, playing music to a dancing turtle",
-    subheading: "Arnold and Deanne Kaplan Collection of Early American Judaica"
-  ) %>
+  ) do |component| %>
+    <% component.with_picture do %>
+      <%= tag.picture hero: 'art-direction' do %>
+        <%= tag.source srcset:
+                     "https://upenn-library-digital-collections.netlify.app/img/sceti-2.avif",
+                   media: "(min-width: 600px)" %>
+        <%= tag.img src:
+                  "https://upenn-library-digital-collections.netlify.app/img/sceti-2.avif",
+                alt: "" %>
+      <% end %>
+    <% end %>
+    <% component.with_heading do %>
+      <%= tag.h1 "About Digital Collections", hero: "heading" %>
+    <% end %>
+  <% end %>
 <% end %>
 
-<!-- Homepage content (non-Blacklight) -->
-<div class="about-content">
-  <h2>About Page</h2>
-  <!-- Custom non-Blacklight content here -->
-</div>
+<section class="about-section">
+  <div class="viewport-margins">
+    <h2 class="h2">
+      Purpose
+    </h2>
+    <p>This website exists to make available thousands of digitized original
+      materials, from historical documents to photos, manuscripts, and more.
+      Our goal is to preserve these works and share them with you—whether
+      you're researching a topic or just browsing, we hope you find something
+      that sparks your curiosity.</p>
+    <p>At the center of these digitized materials is the
+      <a href="https://www.library.upenn.edu/sceti">Schoenberg Center for Electronic Text & Image (SCETI)</a>. SCETI is dedicated to digitizing rare and fragile materials, making it
+      possible to offer these original materials online.</p>
+    <h2 class="h2">
+      Copyright
+    </h2>
+    <p>Collections are as accessible as possible, while respecting copyright
+      laws. If you have questions about using materials, the Copyright Advisor
+      is available to answer any questions and can help you navigate
+      permissions and usage rights.</p>
+    <h2 class="h2">
+      Platform
+    </h2>
+    <p>
+      We use a customized
+      <a href="https://rubyonrails.org/">Ruby on Rails</a>
+      application. The application relies on
+      <a href="https://ceph.io/en/">Ceph</a>
+      for asset storage, chosen for its high availability, high replication,
+      performance, and fault tolerance. Git and git-annex are used to track
+      changes to objects over time.
+    </p>
+    <p>
+      Data complies with
+      <a href="https://iiif.io/">International Image Interoperability Framework (IIIF)</a>
+      standards, ensuring high-quality images, interoperability with other
+      image viewers, and the ability to download digital materials.
+    </p>
+  </div>
+</section>
