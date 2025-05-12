@@ -14,7 +14,7 @@
       <% end %>
     <% end %>
     <% component.with_heading do %>
-      <%= tag.h1 "About Digital Collections", hero: "heading" %>
+      <%= tag.h1 t("home.about.hero_heading"), hero: "heading" %>
     <% end %>
   <% end %>
 <% end %>
@@ -22,40 +22,32 @@
 <section class="section">
   <div class="viewport-margins">
     <h2 class="h2">
-      Purpose
-    </h2>
-    <p>This website exists to make available thousands of digitized original
-      materials, from historical documents to photos, manuscripts, and more.
-      Our goal is to preserve these works and share them with you—whether
-      you're researching a topic or just browsing, we hope you find something
-      that sparks your curiosity.</p>
-    <p>At the center of these digitized materials is the
-      <a href="https://www.library.upenn.edu/sceti">Schoenberg Center for Electronic Text & Image (SCETI)</a>. SCETI is dedicated to digitizing rare and fragile materials, making it
-      possible to offer these original materials online.</p>
-    <h2 class="h2">
-      Copyright
-    </h2>
-    <p>Collections are as accessible as possible, while respecting copyright
-      laws. If you have questions about using materials, the Copyright Advisor
-      is available to answer any questions and can help you navigate
-      permissions and usage rights.</p>
-    <h2 class="h2">
-      Platform
+      <%= t("home.about.purpose.heading") %>
     </h2>
     <p>
-      We use a customized
-      <a href="https://rubyonrails.org/">Ruby on Rails</a>
-      application. The application relies on
-      <a href="https://ceph.io/en/">Ceph</a>
-      for asset storage, chosen for its high availability, high replication,
-      performance, and fault tolerance. Git and git-annex are used to track
-      changes to objects over time.
+      <%= t("home.about.purpose.description") %>
     </p>
     <p>
-      Data complies with
-      <a href="https://iiif.io/">International Image Interoperability Framework (IIIF)</a>
-      standards, ensuring high-quality images, interoperability with other
-      image viewers, and the ability to download digital materials.
+      <%= t("home.about.purpose.sceti", url: t("urls.about.sceti")).html_safe %>
+    </p>
+    <h2 class="h2">
+      <%= t("home.about.copyright.heading") %>
+    </h2>
+    <p>
+      <%= t("home.about.copyright.description") %>
+    </p>
+    <h2 class="h2">
+      <%= t("home.about.platform.heading") %>
+    </h2>
+    <p>
+      <%= t(
+        "home.about.platform.description",
+        rails_url: t("urls.about.rails"),
+        ceph_url: t("urls.about.ceph"),
+      ).html_safe %>
+    </p>
+    <p>
+      <%= t("home.about.platform.data", url: t("urls.about.iiif")).html_safe %>
     </p>
   </div>
 </section>

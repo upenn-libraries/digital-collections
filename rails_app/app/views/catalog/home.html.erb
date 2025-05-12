@@ -14,23 +14,22 @@
       <% end %>
     <% end %>
     <% component.with_heading do %>
-      <%= tag.h1 "Boys wearing sailor suits, playing music to a dancing turtle",
-             hero: "heading" %>
+      <%= tag.h1 t("home.hero_heading"), hero: "heading" %>
     <% end %>
     <% component.with_subheading do %>
-      <%= tag.p link_to("Arnold and Deanne Kaplan Collection", root_path) +
-              " of Early American Judaica",
-            hero: "sub-heading" %>
+      <%= tag.p link_to(t("home.hero_subheading"), root_path), hero: "sub-heading" %>
     <% end %>
   <% end %>
 <% end %>
 
 <section class="section">
   <div class="viewport-margins">
-    <h2 class="h2">Find primary sources for your research</h2>
-    <p>Explore digitized original materials for your research and teaching.
-      You'll find posters, manuscripts, photographs, letters, trading cards,
-      maps, and more from the collections.</p>
-    <%= link_to 'Learn more about digital collections', about_path %>
+    <h2 class="h2">
+      <%= t("home.explore.heading") %>
+    </h2>
+    <p>
+      <%= t("home.explore.description") %>
+    </p>
+    <%= link_to t("home.explore.learn_more"), about_path %>
   </div>
 </section>
