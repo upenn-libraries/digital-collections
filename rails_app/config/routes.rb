@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  mount Blacklight::Engine => '/'
-
   concern :searchable, Blacklight::Routes::Searchable.new
   concern :exportable, Blacklight::Routes::Exportable.new
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
