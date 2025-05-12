@@ -18,17 +18,17 @@
 	width: 100%;
 }
 
-.header-search-link {
-	color: var(--color-fg-on-emphasis);
-	text-shadow: 1px 1px 2px var(--color-fg-default);
-}
-
-.home-section {
+.section {
 	padding: 4rem 0;
 }
 
-.home-section:nth-child(2) {
+.section:nth-child(2) {
 	background: #eeeff4
+}
+
+pennlibs-hero .header-search__link {
+	color: var(--color-fg-on-emphasis);
+	text-shadow: 1px 1px 2px var(--color-fg-default);
 }
 
 /* Start of link styles */
