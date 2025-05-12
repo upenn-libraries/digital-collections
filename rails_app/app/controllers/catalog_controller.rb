@@ -159,31 +159,6 @@ class CatalogController < ApplicationController
 
     config.add_search_field 'all_fields', label: 'All Fields'
 
-    # Now we see how to over-ride Solr request handler defaults, in this
-    # case for a BL "search field", which is really a dismax aggregate
-    # of Solr search fields.
-
-    # config.add_search_field('title') do |field|
-    #   field.solr_parameters = {
-    #     qf: 'title_tesim',
-    #     pf: 'title_tesim'
-    #   }
-    # end
-    #
-    # config.add_search_field('creator') do |field|
-    #   field.solr_parameters = {
-    #     qf: 'creator_tesim',
-    #     pf: 'creator_tesim'
-    #   }
-    # end
-    #
-    # config.add_search_field('subject') do |field|
-    #   field.solr_parameters = {
-    #     qf: 'subject_tesim',
-    #     pf: 'subject_tesim'
-    #   }
-    # end
-
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the Solr field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
