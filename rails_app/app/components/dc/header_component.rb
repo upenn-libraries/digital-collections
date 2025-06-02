@@ -19,7 +19,7 @@ module DC
 
     # @param blacklight_config [Blacklight::Configuration]
     # @param user [User]
-    def initialize(blacklight_config:, user:, theme: 'light')
+    def initialize(blacklight_config:, user:, theme: :light)
       @blacklight_config = blacklight_config
       @user = user
       @theme = theme

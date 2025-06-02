@@ -7,7 +7,7 @@ module DC
     attr_accessor :blacklight_config, :user
 
     renders_one :header, lambda {
-      HeaderComponent.new(blacklight_config: blacklight_config, user: user, theme: 'dark')
+      HeaderComponent.new(blacklight_config: blacklight_config, user: user, theme: :dark)
     }
     renders_one :picture
     renders_one :heading
