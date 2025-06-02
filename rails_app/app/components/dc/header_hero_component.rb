@@ -3,7 +3,7 @@
 module DC
   # Custom hero component that renders a header, a picture, and a heading.
   # Used by the base Blacklight layout to render the hero on static pages.
-  class HeroComponent < Blacklight::Component
+  class HeaderHeroComponent < Blacklight::Component
     attr_accessor :blacklight_config, :user
 
     renders_one :header, lambda {

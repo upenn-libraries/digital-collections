@@ -4,7 +4,7 @@ module DC
   # This is a custom header component that render a search bar and user tools.
   # It's used in two places:
   # 1. We set the header to this component in the catalog controller to render on all Blacklight pages.
-  # 2. We tell the base Blacklight layout to render the HeroComponent on static pages,
+  # 2. We tell the base Blacklight layout to render the HeaderHeroComponent on static pages,
   #    which has a slot for this component.
   class HeaderComponent < Blacklight::Component
     attr_accessor :blacklight_config, :user, :theme
