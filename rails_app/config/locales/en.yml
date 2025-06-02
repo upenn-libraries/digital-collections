@@ -44,17 +44,17 @@ en:
       heading: 'Find primary sources for your research'
       description: "Explore digitized original materials for your research and teaching. You'll find posters, manuscripts, photographs, letters, trading cards, maps, and more from the collections."
       learn_more: 'Learn more about digital collections'
-    about:
-      hero_heading: 'About Digital Collections'
-      purpose:
-        heading: 'Purpose'
-        description: 'This website exists to make available thousands of digitized original materials, from historical documents to photos, manuscripts, and more. Our goal is to preserve these works and share them with you—whether you''re researching a topic or just browsing, we hope you find something that sparks your curiosity.'
-        sceti: 'At the center of these digitized materials is the <a href="%{url}">Schoenberg Center for Electronic Text & Image (SCETI)</a>. SCETI is dedicated to digitizing rare and fragile materials, making it possible to offer these original materials online.'
-      copyright:
-        heading: 'Copyright'
-        description: 'Collections are as accessible as possible, while respecting copyright laws. If you have questions about using materials, the Copyright Advisor is available to answer any questions and can help you navigate permissions and usage rights.'
-      platform:
-        heading: 'Platform'
-        description: 'We use a customized <a href="%{rails_url}">Ruby on Rails</a> application. The application relies on <a href="%{ceph_url}">Ceph</a> for asset storage, chosen for its high availability, high replication, performance, and fault tolerance. Git and git-annex are used to track changes to objects over time.'
-        data: 'Data complies with <a href="%{url}">International Image Interoperability Framework (IIIF)</a> standards, ensuring high-quality images, interoperability with other image viewers, and the ability to download digital materials.'
+  about:
+    hero_heading: 'About Digital Collections'
+    purpose:
+      heading: 'Purpose'
+      description: 'This website exists to make available thousands of digitized original materials, from historical documents to photos, manuscripts, and more. Our goal is to preserve these works and share them with you—whether you''re researching a topic or just browsing, we hope you find something that sparks your curiosity.'
+      sceti: 'At the center of these digitized materials is the <a href="%{url}">Schoenberg Center for Electronic Text & Image (SCETI)</a>. SCETI is dedicated to digitizing rare and fragile materials, making it possible to offer these original materials online.'
+    copyright:
+      heading: 'Copyright'
+      description: 'Collections are as accessible as possible, while respecting copyright laws. If you have questions about using materials, the Copyright Advisor is available to answer any questions and can help you navigate permissions and usage rights.'
+    platform:
+      heading: 'Platform'
+      description: 'We use a customized <a href="%{rails_url}">Ruby on Rails</a> application. The application relies on <a href="%{ceph_url}">Ceph</a> for asset storage, chosen for its high availability, high replication, performance, and fault tolerance. Git and git-annex are used to track changes to objects over time.'
+      data: 'Data complies with <a href="%{url}">International Image Interoperability Framework (IIIF)</a> standards, ensuring high-quality images, interoperability with other image viewers, and the ability to download digital materials.'
 

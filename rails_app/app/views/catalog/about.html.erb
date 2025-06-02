@@ -14,7 +14,7 @@
       <% end %>
     <% end %>
     <% component.with_heading do %>
-      <%= tag.h1 t("home.about.hero_heading"), hero: "heading" %>
+      <%= tag.h1 t("about.hero_heading"), hero: "heading" %>
     <% end %>
   <% end %>
 <% end %>
@@ -22,32 +22,32 @@
 <section class="section">
   <div class="viewport-margins">
     <h2 class="h2">
-      <%= t("home.about.purpose.heading") %>
+      <%= t("about.purpose.heading") %>
     </h2>
     <p>
-      <%= t("home.about.purpose.description") %>
+      <%= t("about.purpose.description") %>
     </p>
     <p>
-      <%= t("home.about.purpose.sceti", url: t("urls.about.sceti")).html_safe %>
+      <%= t("about.purpose.sceti", url: t("urls.about.sceti")).html_safe %>
     </p>
     <h2 class="h2">
-      <%= t("home.about.copyright.heading") %>
+      <%= t("about.copyright.heading") %>
     </h2>
     <p>
-      <%= t("home.about.copyright.description") %>
+      <%= t("about.copyright.description") %>
     </p>
     <h2 class="h2">
-      <%= t("home.about.platform.heading") %>
+      <%= t("about.platform.heading") %>
     </h2>
     <p>
       <%= t(
-        "home.about.platform.description",
+        "about.platform.description",
         rails_url: t("urls.about.rails"),
         ceph_url: t("urls.about.ceph"),
       ).html_safe %>
     </p>
     <p>
-      <%= t("home.about.platform.data", url: t("urls.about.iiif")).html_safe %>
+      <%= t("about.platform.data", url: t("urls.about.iiif")).html_safe %>
     </p>
   </div>
 </section>
