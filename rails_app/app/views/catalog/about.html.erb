@@ -5,12 +5,8 @@
   ) do |component| %>
     <% component.with_picture do %>
       <%= tag.picture hero: 'art-direction' do %>
-        <%= tag.source srcset:
-                     "https://upenn-library-digital-collections.netlify.app/img/sceti-2.avif",
-                   media: "(min-width: 600px)" %>
-        <%= tag.img src:
-                  "https://upenn-library-digital-collections.netlify.app/img/sceti-2.avif",
-                alt: "" %>
+        <%= tag.source srcset: image_path("sceti_about.jpg"), media: "(min-width: 600px)" %>
+        <%= tag.img src: image_path("sceti_about.jpg"), alt: "Two people working in a digital preservation lab." %>
       <% end %>
     <% end %>
     <% component.with_heading do %>
