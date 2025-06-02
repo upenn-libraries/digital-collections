@@ -25,10 +25,7 @@
       <%= t("about.purpose.heading") %>
     </h2>
     <p>
-      <%= t("about.purpose.description") %>
-    </p>
-    <p>
-      <%= t("about.purpose.sceti", url: t("urls.about.sceti")).html_safe %>
+      <%= t("about.purpose.description", sceti_url: t("urls.about.sceti")).html_safe %>
     </p>
     <h2 class="h2">
       <%= t("about.copyright.heading") %>
@@ -44,10 +41,8 @@
         "about.platform.description",
         rails_url: t("urls.about.rails"),
         ceph_url: t("urls.about.ceph"),
+        iiif_url: t("urls.about.iiif"),
       ).html_safe %>
-    </p>
-    <p>
-      <%= t("about.platform.data", url: t("urls.about.iiif")).html_safe %>
     </p>
   </div>
 </section>
