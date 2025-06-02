@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-# copied from Blacklight 9
-
 module DC
-  # Override Header Component
+  # Custom hero component that renders a header, a picture, and a heading.
+  # Used by the base Blacklight layout to render the hero on static pages.
   class HeroComponent < Blacklight::Component
     attr_accessor :blacklight_config, :user
 
