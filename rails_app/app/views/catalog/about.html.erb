@@ -6,7 +6,8 @@
     <% component.with_picture do %>
       <%= tag.picture hero: 'art-direction' do %>
         <%= tag.source srcset: image_path("sceti_about.jpg"), media: "(min-width: 600px)" %>
-        <%= tag.img src: image_path("sceti_about.jpg"), alt: "Two people working in a digital preservation lab." %>
+        <%= tag.img src: image_path("sceti_about.jpg"),
+                alt: "Two people working in a digital preservation lab." %>
       <% end %>
     <% end %>
     <% component.with_heading do %>
@@ -20,25 +21,19 @@
     <h2 class="h2">
       <%= t("about.purpose.heading") %>
     </h2>
-    <p>
-      <%= t("about.purpose.description", sceti_url: t("urls.about.sceti")).html_safe %>
-    </p>
+    <%= t("about.purpose.description_html", sceti_url: t("urls.about.sceti")) %>
     <h2 class="h2">
       <%= t("about.copyright.heading") %>
     </h2>
-    <p>
-      <%= t("about.copyright.description") %>
-    </p>
+    <%= t("about.copyright.description_html") %>
     <h2 class="h2">
       <%= t("about.platform.heading") %>
     </h2>
-    <p>
-      <%= t(
-        "about.platform.description",
-        rails_url: t("urls.about.rails"),
-        ceph_url: t("urls.about.ceph"),
-        iiif_url: t("urls.about.iiif"),
-      ).html_safe %>
-    </p>
+    <%= t(
+      "about.platform.description_html",
+      rails_url: t("urls.about.rails"),
+      ceph_url: t("urls.about.ceph"),
+      iiif_url: t("urls.about.iiif"),
+    ).html_safe %>
   </div>
 </section>
