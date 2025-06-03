@@ -46,7 +46,7 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = 'title_ssim'
     # config.index.display_type_field = 'format'
-    # config.index.thumbnail_field = 'thumbnail_path_ss'
+    config.index.thumbnail_method = :thumbnail
 
     # The presenter is the view-model class for the page
     # config.index.document_presenter_class = MyApp::IndexPresenter
@@ -74,6 +74,9 @@ class CatalogController < ApplicationController
     # config.show.document_component = MyApp::DocumentComponent
     # config.show.sidebar_component = MyApp::SidebarComponent
     # config.show.embed_component = MyApp::EmbedComponent
+
+    # Blacklight-gallery configuration
+    config.view.gallery(document_component: GalleryComponent, icon: Blacklight::Gallery::Icons::GalleryComponent)
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -112,7 +115,8 @@ class CatalogController < ApplicationController
 
     # "Index"/results page fields
     config.add_index_field :description_ssim, label: I18n.t('fields.results.description')
-    config.add_index_field :physical_format_ssim, label: I18n.t('fields.results.form'), link_to_facet: true
+    config.add_index_field :physical_format_ssim, label: I18n.t('fields.results.form'), link_to_facet: true,
+                                                  gallery: true
     config.add_index_field :creator_with_role_ssim, label: I18n.t('fields.results.creator'), link_to_facet: true
     config.add_index_field :subject_ssim, label: I18n.t('fields.results.subject'), link_to_facet: true
     config.add_index_field :collection_ssim, label: I18n.t('fields.results.collection'), link_to_facet: true
