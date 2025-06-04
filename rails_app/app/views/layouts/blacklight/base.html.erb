@@ -14,7 +14,7 @@
     <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@penn-libraries/web@#{Settings.pennlibs_web_version}/dist/web/web.css" %>
     <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" %>
     <%= stylesheet_link_tag "https://use.typekit.net/gbh8cmg.css" %>
-    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload"  %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= javascript_import_module_tag "https://cdn.jsdelivr.net/npm/@penn-libraries/web@#{Settings.pennlibs_web_version}/dist/web/web.esm.js" %>
     <%= csrf_meta_tags %>
@@ -25,7 +25,12 @@
     <%= content_for(:skip_links) %>
   <% end %>
 
-  <%= render blacklight_config.header_component.new(blacklight_config: blacklight_config) %>
+  <% if content_for?(:header) %>
+    <%= yield :header %>
+  <% else %>
+    <%# default to simple header %>
+    <%= render blacklight_config.header_component.new(blacklight_config: blacklight_config, user: current_user) %>
+  <% end %>
 
   <main id="main-container" class="<%= container_classes %>" aria-label="<%= t('blacklight.main.aria.main_container') %>">
     <%= content_for(:container_header) %>

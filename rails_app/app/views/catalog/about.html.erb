@@ -1,0 +1,39 @@
+<% content_for :header do %>
+  <%= render DC::HeaderHeroComponent.new(
+    blacklight_config: blacklight_config,
+    user: current_user,
+  ) do |component| %>
+    <% component.with_picture do %>
+      <%= tag.picture hero: 'art-direction' do %>
+        <%= tag.source srcset: image_path("sceti_about.jpg"), media: "(min-width: 600px)" %>
+        <%= tag.img src: image_path("sceti_about.jpg"),
+                alt: "Two people working in a digital preservation lab." %>
+      <% end %>
+    <% end %>
+    <% component.with_heading do %>
+      <%= tag.h1 t("about.hero_heading"), hero: "heading" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<section class="section">
+  <div class="viewport-margins">
+    <h2 class="h2">
+      <%= t("about.purpose.heading") %>
+    </h2>
+    <%= t("about.purpose.description_html", sceti_url: t("urls.about.sceti")) %>
+    <h2 class="h2">
+      <%= t("about.copyright.heading") %>
+    </h2>
+    <%= t("about.copyright.description_html") %>
+    <h2 class="h2">
+      <%= t("about.platform.heading") %>
+    </h2>
+    <%= t(
+      "about.platform.description_html",
+      rails_url: t("urls.about.rails"),
+      ceph_url: t("urls.about.ceph"),
+      iiif_url: t("urls.about.iiif"),
+    ).html_safe %>
+  </div>
+</section>

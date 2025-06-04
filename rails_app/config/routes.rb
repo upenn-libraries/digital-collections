@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   concern :exportable, Blacklight::Routes::Exportable.new
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
 
-  root to: 'catalog#index'
+  root to: 'catalog#home'
 
   devise_for :users
 
@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   end
 
   resources :solr_documents, only: [:show], path: '/items', controller: 'catalog'
+
+  get '/home' => 'catalog#home'
+  get '/about' => 'catalog#about'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

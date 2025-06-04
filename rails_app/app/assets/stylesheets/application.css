@@ -1,11 +1,67 @@
 /*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+* This is a manifest file that'll be compiled into application.css.
+*
+* With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+* application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+* cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+* depending on specificity.
+*
+* Consider organizing styles into separate files for maintainability.
+*/
 @import url(blacklight.css);
+
+:root {
+	--heading-line-height: 1;
+}
+
+.viewport-margins {
+	width: 100%;
+}
+
+.section {
+	padding: 4rem 0;
+}
+
+.section:nth-child(2) {
+	background: #eeeff4
+}
+
+pennlibs-hero .header-search__link {
+	color: var(--color-fg-on-emphasis);
+	text-shadow: 1px 1px 2px var(--color-fg-default);
+}
+
+/* Start of link styles */
+a {
+	color: var(--color-fg-accent);
+	text-decoration: underline;
+	text-underline-offset: var(--link-text-underline-offset);
+	text-decoration-thickness: var(--link-text-decoration-thickness);
+	font-weight: 500;
+}
+
+a:hover {
+	text-decoration-thickness: var(--link-hover-text-decoration-thickness);
+}
+
+.h2 {
+	font-size: 2.5rem;
+	font-weight: 600;
+	line-height: var(--heading-line-height);
+	font-family: var(--font-serif);
+	color: var(--color-penn-blue);
+	margin-bottom: 2rem;
+	margin-top: 0;
+	position: relative;
+}
+
+.h2:after {
+	background: #EEAA64;
+	bottom: -0.75rem;
+	content: "";
+	display: block;
+	height: 4px;
+	opacity: 1;
+	position: absolute;
+	width: 3rem;
+}
