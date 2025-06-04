@@ -6,7 +6,7 @@ class GalleryComponent < Blacklight::Gallery::DocumentComponent
     # Only displaying fields that have set the gallery flag to true and customizing HTML tags used.
     unless metadata
       gallery_fields = presenter.field_presenters.select { |f| f.field_config.gallery }
-      set_slot(:metadata, nil, tag: 'div', fields: gallery_fields, field_layout: Gallery::MetadataFieldLayoutComponent)
+      set_slot(:metadata, nil, fields: gallery_fields, field_layout: Gallery::MetadataFieldLayoutComponent)
     end
 
     super
