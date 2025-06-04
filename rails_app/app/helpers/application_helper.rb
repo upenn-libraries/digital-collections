@@ -7,7 +7,7 @@ module ApplicationHelper
     return nil unless thumbnail_uuid
 
     image_tag(
-      "https://iiif-images.library.upenn.edu/iiif/2/#{thumbnail_uuid}%2Faccess/full/!300,300/0/default.jpg"
+      "https://iiif-images.library.upenn.edu/iiif/2/#{thumbnail_uuid}%2Faccess/full/300,/0/default.jpg"
     )
   end
 end
