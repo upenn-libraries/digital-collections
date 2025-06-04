@@ -1,0 +1,35 @@
+<% content_for :header do %>
+  <%= render DC::HeaderHeroComponent.new(
+    blacklight_config: blacklight_config,
+    user: current_user,
+  ) do |component| %>
+    <% component.with_picture do %>
+      <%= tag.picture hero: 'art-direction' do %>
+        <%= tag.source srcset:
+                     "https://iiif-images.library.upenn.edu/iiif/2/d3f5f564-76c9-4911-aa5a-141923718c1e%2Faccess/full/1500,/0/default.jpg",
+                   media: "(min-width: 600px)" %>
+        <%= tag.img src:
+                  "https://iiif-images.library.upenn.edu/iiif/2/d3f5f564-76c9-4911-aa5a-141923718c1e%2Faccess/full/1500,/0/default.jpg",
+                alt: "" %>
+      <% end %>
+    <% end %>
+    <% component.with_heading do %>
+      <%= tag.h1 t("home.hero_heading"), hero: "heading" %>
+    <% end %>
+    <% component.with_subheading do %>
+      <%= tag.p link_to(t("home.hero_subheading"), root_path), hero: "sub-heading" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<section class="section">
+  <div class="viewport-margins">
+    <h2 class="h2">
+      <%= t("home.explore.heading") %>
+    </h2>
+    <p>
+      <%= t("home.explore.description") %>
+    </p>
+    <%= link_to t("home.explore.learn_more"), about_path %>
+  </div>
+</section>

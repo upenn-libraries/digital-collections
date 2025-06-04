@@ -1,0 +1,7 @@
+en:
+  urls:
+    about:
+      sceti: 'https://www.library.upenn.edu/sceti'
+      rails: 'https://rubyonrails.org/'
+      ceph: 'https://ceph.io/en/'
+      iiif: 'https://iiif.io/'
