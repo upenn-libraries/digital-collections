@@ -9,6 +9,7 @@
 * Consider organizing styles into separate files for maintainability.
 */
 @import url(blacklight.css);
+@import url('blacklight_gallery/gallery.css');
 
 :root {
 	--heading-line-height: 1;
