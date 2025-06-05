@@ -5,8 +5,9 @@
   ) do |component| %>
     <% component.with_picture do %>
       <%= tag.picture hero: 'art-direction' do %>
-        <%= tag.source srcset: image_path("sceti_about.jpg"), media: "(min-width: 600px)" %>
-        <%= tag.img src: image_path("sceti_about.jpg"),
+        <%= tag.source srcset: image_path("sceti-2357w.webp"), media: "(min-width: 1440px)" %>
+        <%= tag.source srcset: image_path("sceti-1440w.webp"), media: "(min-width: 900px)" %>
+        <%= tag.img src: image_path("sceti-900w.webp"),
                 alt: "Two people working in a digital preservation lab." %>
       <% end %>
     <% end %>
