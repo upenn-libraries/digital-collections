@@ -12,12 +12,6 @@
 @import url('blacklight_gallery/gallery.css');
 
 /**
-* Digital Collections styling
-*/
-@import url('root.css');
-@import url('home.css');
-
-/**
 * Penn Libraries Design System
 *
 * These are styles that are being made to be hoisted out of the application.css into
@@ -30,6 +24,19 @@
 @import url('pl-typeset.css');
 @import url('pl-line-length.css');
 @import url('pl-font-size.css');
+
+/**
+* Bootstrap
+*/
+@import url('bootstrap-root.css');
+@import url('bootstrap-btn.css');
+@import url('bootstrap-pagination.css');
+
+/**
+* Digital Collections styling
+*/
+@import url('root.css');
+@import url('home.css');
 
 .section {
 	padding: 4rem 0;

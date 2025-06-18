@@ -6,8 +6,17 @@
   }
 }
 
+pennlibs-header {
+  display: block;
+  min-height: 87.5px;
+}
+
 pennlibs-hero,
 pennlibs-header,
 pennlibs-footer {
   --max-width: 1280px;
+}
+
+pennlibs-hero {
+  --hero-height: clamp(50vh, 32rem, 26rem);
 }
