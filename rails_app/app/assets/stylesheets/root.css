@@ -1,0 +1,13 @@
+:root {
+  --max-width: 1280px;
+
+  @media (min-width: 720px) {
+    --viewport-margins-gutter: 3rem;
+  }
+}
+
+pennlibs-hero,
+pennlibs-header,
+pennlibs-footer {
+  --max-width: 1280px;
+}

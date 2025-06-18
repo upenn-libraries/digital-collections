@@ -1,0 +1,55 @@
+:where(.pl-typeset) {
+  & :is(p, .pl-p) {
+    font-family: var(--font-family);
+  }
+
+  & :is(h1, .pl-h1, h2, .pl-h2) {
+    font-family: var(--font-serif);
+  }
+
+  & :is(h1, .pl-h1, h2, .pl-h2, h3, .pl-h3, h4, .pl-h4, h5, .pl-h5, h6, .pl-h6) {
+    font-weight: 600;
+  }
+
+  & *+:is(h2,h3,h4,h5,h6) {
+    margin-block-start: var(--pl-space-xl);
+  }
+
+  /* Common styles for h1 and h2 */
+  & :is(h1, .pl-h1, h2, .pl-h2) {
+    font-weight: 600;
+    line-height: 1.125;
+    font-family: var(--font-serif);
+    color: var(--color-penn-blue);
+    position: relative;
+
+    &::after {
+      bottom: -0.25rem;
+      content: "";
+      display: block;
+      height: 4px;
+      opacity: 1;
+      position: absolute;
+    }
+  }
+
+  & :is(h1, .pl-h1) {
+    font-size: var(--pl-font-size-5xl);
+    margin-bottom: 0.5em;
+    margin-top: 0;
+
+    &::after {
+      background: var(--color-penn-red);
+    }
+  }
+
+  & :is(h2, .pl-h2) {
+    font-size: var(--pl-font-size-3xl);
+    margin-bottom: 0.75em;
+
+    &::after {
+      background: #d6d6dc;
+      width: 2.25rem;
+    }
+  }
+}

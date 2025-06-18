@@ -17,17 +17,17 @@
   <% end %>
 <% end %>
 
-<section class="section">
+<div class="pl-font-size-lg pl-reset pl-typeset pl-line-length pl-margin-b-2xl">
   <div class="viewport-margins">
-    <h2 class="h2">
+    <h2>
       <%= t("about.purpose.heading") %>
     </h2>
     <%= t("about.purpose.description_html", sceti_url: t("urls.about.sceti")) %>
-    <h2 class="h2">
+    <h2>
       <%= t("about.copyright.heading") %>
     </h2>
     <%= t("about.copyright.description_html") %>
-    <h2 class="h2">
+    <h2>
       <%= t("about.platform.heading") %>
     </h2>
     <%= t(
@@ -37,4 +37,4 @@
       iiif_url: t("urls.about.iiif"),
     ).html_safe %>
   </div>
-</section>
+</div>

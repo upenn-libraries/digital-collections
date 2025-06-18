@@ -11,13 +11,25 @@
 @import url(blacklight.css);
 @import url('blacklight_gallery/gallery.css');
 
-:root {
-	--heading-line-height: 1;
-}
+/**
+* Digital Collections styling
+*/
+@import url('root.css');
+@import url('home.css');
 
-.viewport-margins {
-	width: 100%;
-}
+/**
+* Penn Libraries Design System
+*
+* These are styles that are being made to be hoisted out of the application.css into
+* the design system web package, but they're being worked here for now. Once
+* they're moved, we can remove this import.
+*/
+@import url('pl-root.css');
+@import url('pl-spacing.css');
+@import url('pl-reset.css');
+@import url('pl-typeset.css');
+@import url('pl-line-length.css');
+@import url('pl-font-size.css');
 
 .section {
 	padding: 4rem 0;
@@ -30,39 +42,4 @@
 pennlibs-hero .header-search__link {
 	color: var(--color-fg-on-emphasis);
 	text-shadow: 1px 1px 2px var(--color-fg-default);
-}
-
-/* Start of link styles */
-a {
-	color: var(--color-fg-accent);
-	text-decoration: underline;
-	text-underline-offset: var(--link-text-underline-offset);
-	text-decoration-thickness: var(--link-text-decoration-thickness);
-	font-weight: 500;
-}
-
-a:hover {
-	text-decoration-thickness: var(--link-hover-text-decoration-thickness);
-}
-
-.h2 {
-	font-size: 2.5rem;
-	font-weight: 600;
-	line-height: var(--heading-line-height);
-	font-family: var(--font-serif);
-	color: var(--color-penn-blue);
-	margin-bottom: 2rem;
-	margin-top: 0;
-	position: relative;
-}
-
-.h2:after {
-	background: #EEAA64;
-	bottom: -0.75rem;
-	content: "";
-	display: block;
-	height: 4px;
-	opacity: 1;
-	position: absolute;
-	width: 3rem;
 }

@@ -45,7 +45,7 @@ en:
       description: "Explore digitized original materials for your research and teaching. You'll find posters, manuscripts, photographs, letters, trading cards, maps, and more from the collections."
       learn_more: 'Learn more about digital collections'
   about:
-    hero_heading: 'About Digital Collections'
+    hero_heading: 'About digital collections'
     purpose:
       heading: 'Purpose'
       description_html: '<p>This website exists to make available thousands of digitized original materials, from historical documents to photos, manuscripts, and more. Our goal is to preserve these works and share them with you—whether you''re researching a topic or just browsing, we hope you find something that sparks your curiosity.</p><p>At the center of these digitized materials is the <a href="%{sceti_url}">Schoenberg Center for Electronic Text & Image (SCETI)</a>. SCETI is dedicated to digitizing rare and fragile materials, making it possible to offer these original materials online.</p>'
