@@ -1,3 +1,12 @@
 :root {
   --bs-border-radius: var(--pl-space-base);
 }
+
+main {
+  padding-block: 0;
+}
+
+.btn,
+.form-control {
+  transition: none;
+}

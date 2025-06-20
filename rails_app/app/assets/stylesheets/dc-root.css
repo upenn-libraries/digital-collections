@@ -20,3 +20,8 @@ pennlibs-footer {
 pennlibs-hero {
   --hero-height: clamp(50vh, 32rem, 26rem);
 }
+
+*:focus {
+  box-shadow: 0 0 0 2px var(--color-bg-accent), 0 0 0 4px var(--color-fg-default);
+  outline: none;
+}

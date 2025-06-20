@@ -1,50 +1,71 @@
 /*
-* This is a manifest file that'll be compiled into application.css.
+* CSS ORGANIZATION STRATEGY:
+* ========================
+* We organize styles using a consistent naming convention with prefixes to maintain clarity
+* and prevent conflicts when reading class names in templates.
 *
-* With Propshaft, assets are served efficiently without preprocessing steps. You can still include
-* application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
-* cascading order, meaning styles declared later in the document or manifest will override earlier ones,
-* depending on specificity.
+* The Penn Libraries Design System provides foundational styles with the "pl-" prefix. Classes
+* like pl-reset, pl-typeset, pl-spacing, pl-font-size, and pl-line-length establish base
+* typography, spacing, and layout utilities. We plan to eventually move these styles to the
+* @penn-libraries/web package but develop them here for now.
 *
-* Consider organizing styles into separate files for maintainability.
+* Bootstrap CSS framework comes from the Blacklight gem and uses no prefix. Classes like btn,
+* form-control, dropdown-menu, and navbar provide UI components for buttons, forms, and
+* navigation. We load the main Bootstrap CSS but create local overrides in the bootstrap-*.css
+* files to customize components for our needs.
+*
+* Digital Collections application styles use the "dc-" prefix. Classes like dc-root, dc-home,
+* and dc-search-bar contain custom styling specific to this application interface. We create
+* these styles to extend and customize both the design system and Bootstrap components.
+*
+* Blacklight framework styles come from the gem and provide search and discovery interface
+* components. These styles work alongside Bootstrap to create the core functionality of the
+* application.
+*
+* This naming strategy helps developers immediately understand the source and purpose of any
+* CSS class when reading HTML templates or debugging styles.
 */
+
+@import url('pl-root.css');
+
 @import url(blacklight.css);
 @import url('blacklight_gallery/gallery.css');
 
 /**
-* Penn Libraries Design System
+* Bootstrap (no prefix)
 *
-* These are styles that are being made to be hoisted out of the application.css into
-* the design system web package, but they're being worked here for now. Once
-* they're moved, we can remove this import.
-*/
-@import url('pl-root.css');
-@import url('pl-spacing.css');
-@import url('pl-reset.css');
-@import url('pl-typeset.css');
-@import url('pl-line-length.css');
-@import url('pl-font-size.css');
-
-/**
-* Bootstrap
+* Custom Bootstrap overrides and extensions for this application.
+* The main Bootstrap CSS is loaded from CDN in the layout file.
 */
 @import url('bootstrap-root.css');
 @import url('bootstrap-btn.css');
 @import url('bootstrap-pagination.css');
 
+
 /**
-* Digital Collections styling
+* Penn Libraries Design System (prefix: "pl-")
+*
+* These are styles that are being made to be hoisted out of the application.css into
+* the design system web package, but they're being worked here for now. Once
+* they're moved, we can remove this import.
 */
-@import url('root.css');
-@import url('home.css');
+@import url('pl-spacing.css');
+@import url('pl-reset.css');
+@import url('pl-typeset.css');
+@import url('pl-line-length.css');
+@import url('pl-font-size.css');
+@import url('pl-border-radius.css');
 
-.section {
-	padding: 4rem 0;
-}
+/**
+* Digital Collections Application Styles (prefix: "dc-")
+*
+* Application-specific styles for the Digital Collections interface.
+*/
+@import url('dc-root.css');
+@import url('dc-home.css');
+@import url('dc-search-bar.css');
+@import url('dc-about.css');
 
-.section:nth-child(2) {
-	background: #eeeff4
-}
 
 pennlibs-hero .header-search__link {
 	color: var(--color-fg-on-emphasis);

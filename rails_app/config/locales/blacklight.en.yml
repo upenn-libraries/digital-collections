@@ -1,3 +1,8 @@
 en:
   blacklight:
     application_name: 'Blacklight'
+    search_bar_component:
+      search:
+        placeholder: 'Search collections...'
+        label: 'Search'
+      submit: 'Search'

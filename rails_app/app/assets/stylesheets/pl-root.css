@@ -11,11 +11,15 @@
   --pl-font-size-xs: 0.75rem;
 
   /* Spacing tokens */
-  --pl-space-2xs: 2px;
-  --pl-space-xs: 4px;
-  --pl-space-sm: 8px;
-  --pl-space-base: 16px;
-  --pl-space-lg: 24px;
-  --pl-space-xl: 36px;
-  --pl-space-2xl: 72px;
+  --pl-space-2xs: 0.125rem;
+  --pl-space-xs: 0.25rem;
+  --pl-space-sm: 0.5rem;
+  --pl-space-base: 1rem;
+  --pl-space-lg: 1.5rem;
+  --pl-space-xl: 2rem;
+  --pl-space-2xl: 3rem;
+  --pl-space-3xl: 4rem;
+
+  --pl-border-radius-subtle: 0.125rem;
+  --pl-border-radius-base: 1rem;
 }
