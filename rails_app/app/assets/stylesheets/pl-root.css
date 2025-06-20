@@ -1,6 +1,5 @@
 :root {
   /* Font size tokens */
-  --pl-font-size-5xl: 3.25rem;
   --pl-font-size-4xl: 2.75rem;
   --pl-font-size-3xl: 2.25rem;
   --pl-font-size-2xl: 2rem;
@@ -22,4 +21,6 @@
 
   --pl-border-radius-subtle: 0.125rem;
   --pl-border-radius-base: 1rem;
+
+  --pl-font-family: "proxima-nova, system-ui, sans-serif";
 }

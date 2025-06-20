@@ -1,0 +1,8 @@
+body {
+  --bl-constraint-remove-hover-bg: var(--color-bg-attention-emphasis);
+  --bl-constraint-remove-hover-border-color: var(--color-bg-attention-emphasis);
+}
+
+.applied-filter .remove:hover {
+  color: var(--color-fg-on-emphasis);
+}

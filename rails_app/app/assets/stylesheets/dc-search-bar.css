@@ -1,19 +1,20 @@
 .dc-search-box {
   margin: 0 auto;
   background: var(--color-bg-default);
-  box-shadow: rgba(140, 149, 159, 0.2) 0px 3px 6px 0px;
   flex-grow: 1;
-  border-radius: 1.125rem;
+  border-radius: 1.25rem;
   padding: var(--pl-space-xs);
   box-shadow: rgba(140, 149, 159, 0.2) 0px 3px 6px 0px;
   border: solid 1px var(--color-fg-subtle);
 
   & .search-query-form {
     width: 100%;
+    border-radius: 1rem;
   }
 
   & auto-complete {
     border: none;
+    border-radius: 1rem !important;
   }
 
   & .input-group {

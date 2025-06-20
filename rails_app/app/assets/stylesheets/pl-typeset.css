@@ -34,12 +34,13 @@
   }
 
   & :is(h1, .pl-h1) {
-    font-size: var(--pl-font-size-5xl);
+    font-size: var(--pl-font-size-4xl);
     margin-bottom: 0.5em;
     margin-top: 0;
 
     &::after {
       background: var(--color-penn-red);
+      width: 2.25rem;
     }
   }
 

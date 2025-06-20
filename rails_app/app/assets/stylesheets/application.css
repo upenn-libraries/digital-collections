@@ -18,6 +18,7 @@
 * and dc-search-bar contain custom styling specific to this application interface. We create
 * these styles to extend and customize both the design system and Bootstrap components.
 *
+* We also have a custom Blacklight theme that extends the Blacklight gem's styles.
 * Blacklight framework styles come from the gem and provide search and discovery interface
 * components. These styles work alongside Bootstrap to create the core functionality of the
 * application.
@@ -26,21 +27,26 @@
 * CSS class when reading HTML templates or debugging styles.
 */
 
-@import url('pl-root.css');
-
 @import url(blacklight.css);
 @import url('blacklight_gallery/gallery.css');
 
 /**
-* Bootstrap (no prefix)
+* Bootstrap (prefix: "bs-")
 *
 * Custom Bootstrap overrides and extensions for this application.
 * The main Bootstrap CSS is loaded from CDN in the layout file.
 */
-@import url('bootstrap-root.css');
-@import url('bootstrap-btn.css');
-@import url('bootstrap-pagination.css');
+@import url('bs-root.css');
+@import url('bs-btn.css');
+@import url('bs-pagination.css');
+@import url('bs-dropdown-menu.css');
 
+/**
+* Blacklight (prefix: "bl-")
+*
+* Custom Blacklight overrides and extensions for this application.
+*/
+@import url('bl-constraint.css');
 
 /**
 * Penn Libraries Design System (prefix: "pl-")
@@ -49,6 +55,7 @@
 * the design system web package, but they're being worked here for now. Once
 * they're moved, we can remove this import.
 */
+@import url('pl-root.css');
 @import url('pl-spacing.css');
 @import url('pl-reset.css');
 @import url('pl-typeset.css');
