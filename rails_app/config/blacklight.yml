@@ -1,13 +1,13 @@
 load_defaults: 9.0.0.beta1
 development:
   adapter: solr
-  url: <%= Settings.solr_url %>
+  url: <%= Settings.solr.url %>
 test: &test
   adapter: solr
-  url: <%= Settings.solr_url %>
+  url: <%= Settings.solr.url %>
 staging:
   adapter: solr
-  url: <%= Settings.solr_url %>
+  url: <%= Settings.solr.url %>
 production:
   adapter: solr
-  url: <%= Settings.solr_url %>
+  url: <%= Settings.solr.url %>
