@@ -3,3 +3,31 @@ honeybadger:
   api_key: '12345'
 redis:
   url: <%= ENV.fetch('REDIS_URL', 'redis://127.0.0.1:6379/0') %>
+digital_repository:
+  url: https://apotheca.library.upenn.edu
+  sample_records:
+    - 362ba96f-2fab-4a35-bd42-98f6667da1d0
+    - 375a37c2-0cc4-4512-86f0-9113d9c80ca8
+    - a0f6cbbf-ecfc-4e14-8fc7-d5cc47f9749c
+    - e90ec77f-008c-43e9-b720-d73db60fe3a3
+    - 4989943e-dcff-4048-902a-70aee6d3b97f
+    - 9f489c21-0ecc-47ec-bc53-9f72080a2ca5
+    - 4aec6af0-c57e-4f0d-b1f4-7945f4bf7212
+    - f3c81151-8cd2-4664-ac39-d622dc7d7902
+    - affe4574-a142-4430-b7c8-2d6da9e2e917
+    - 51f5dcd4-d6d9-41a0-b59a-a183b56b74f5
+    - 2cb93aa7-a2e9-41ef-95de-08ae48700a84
+    - 070094ee-0f82-4b2f-b309-fb218734a91c
+    - 7c0ccd8f-0e87-41f9-9303-0ae234d5def2
+    - 0dcc59b1-a3c9-4a9b-9629-00480dfb2248
+    - 352fcf1a-6fa3-4e2c-89ad-d52fec0d02fb
+    - dc803994-827d-4d13-9a4f-c8a3a29a6013
+    - d41b93c0-9012-42b2-bb17-85f1d828a045
+    - 91495c7d-32bf-414e-ba2b-583349c532ec
+    - df51650a-cbd7-41e1-83eb-0272acef6410
+    - 4392de39-470f-4601-86ec-9abb388acd93
+    - 433b2ee5-09ee-4894-939d-ca737c07b43a
+    - a070e2d2-759d-4c03-a71a-8144176a42db
+    - 6fd9c4c4-3cb9-465b-a90f-0d69625f05df
+    - 93d2eb73-151e-44eb-9a65-a9d813a9db2d
+    - 35fb98ee-c707-419f-bad9-422f68b75647
