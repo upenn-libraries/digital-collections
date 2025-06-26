@@ -36,6 +36,8 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
+
   # Allow specs to be flagged as using Solr, meaning the Solr index will be cleared before (if needed)
   # and after examples. See: https://rspec.info/features/3-13/rspec-core/hooks/around-hooks/
   # Usage:
