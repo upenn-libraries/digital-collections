@@ -12,4 +12,9 @@ class SolrDocument
   # and Blacklight::Document::SemanticFields#to_semantic_values
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
+
+  # Returns true if preview is available
+  def preview?
+    fetch(:preview_bsi, false)
+  end
 end
