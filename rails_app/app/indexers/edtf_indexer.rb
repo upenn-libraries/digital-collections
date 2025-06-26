@@ -6,6 +6,7 @@
 class EDTFIndexer
   attr_reader :original
 
+  # @param original [String] date encoded in EDTF
   def initialize(original)
     @original = original
   end

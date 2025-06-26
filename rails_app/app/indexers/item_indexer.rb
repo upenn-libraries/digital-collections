@@ -4,7 +4,7 @@
 class ItemIndexer
   attr_reader :data
 
-  # @param
+  # @param data [Hash] item json
   def initialize(data)
     @data = data.deep_symbolize_keys
   end

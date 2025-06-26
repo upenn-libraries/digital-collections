@@ -21,6 +21,8 @@ class DigitalRepository
 
   # Return Item JSON.
   #
+  # @param id [String] item uuid
+  # @param assets [Boolean] flag to include assets
   # @return [Hash]
   def item(id, assets: false)
     connection.get("/v1/items/#{id}", { assets: assets })
