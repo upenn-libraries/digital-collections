@@ -3,7 +3,6 @@
 describe ItemIndexer do
   describe '#solr_document' do
     let(:uuid) { '62ad79cf-2264-4841-ae4e-84b58d66248e' }
-    # let(:item) { Item.new(id: uuid, published_json: json) }
 
     context 'with iiif assets' do
       subject(:indexer) { build(:item_indexer) }
