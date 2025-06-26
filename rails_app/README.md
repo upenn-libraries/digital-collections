@@ -6,9 +6,12 @@ Frontend application for discovering content in Penn Libraries Digital Collectio
 
 1. [Local Development Environment](#local-development-environment)  
    - [Requirements](#requirements)  
-   - [Starting App Services](#starting-app-services)  
-   - [Developing](#developing)  
-2. [Contributing](#contributing)  
+   - [Install Gems](#install-gems)  
+   - [Starting App Services](#starting-app-services)
+   - [Start the Development Server](#start-the-development-server)
+   - [Add Sample Records](#add-sample-records)
+2. [Configuration/Settings](#configurationsettings)
+3. [Contributing](#contributing)  
    - [Running Tests](#running-tests)  
    - [Code Analysis with Rubocop](#code-analysis-with-rubocop)  
 
@@ -35,26 +38,9 @@ BUNDLE_GEMS__CONTRIBSYS__COM=username:password
 [Docker Compose](https://docs.docker.com/compose/install/) is required to run application services.
 
 - **Linux users**: Install [Docker Engine](https://docs.docker.com/engine/install/) and then the [Compose plugin](https://docs.docker.com/compose/install/linux/#install-the-plugin-manually).  
-- **Mac users**: Install [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) for an easy setup. To access full functionality, request membership in the Penn Libraries Docker Team via [the IT Helpdesk](https://ithelp.library.upenn.edu/support/home).  
+- **Mac users**: Install [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) for an easy setup. To access full functionality, request membership in the Penn Libraries Docker Team via [the IT Helpdesk](https://ithelp.library.upenn.edu/support/home).
 
-### Starting App Services
-
-Use these Rake tasks to manage app services:
-
-```bash
-# Start app services and run database migrations
-rake tools:start
-
-# Stop services
-rake tools:stop
-
-# Remove containers
-rake tools:clean
-```
-
-### Developing
-
-#### Install Dependencies
+### Install Gems
 
 Ensure your Ruby version matches `.ruby-version`:
 
@@ -76,17 +62,39 @@ If there's a version mismatch, debug with:
 which ruby
 ```
 
-##### PostgreSQL Issues on macOS
+#### PostgreSQL Issues on macOS
 
 If the `pg` gem fails due to `libpq` issues, follow [this guide](https://gist.github.com/tomholford/f38b85e2f06b3ddb9b4593e841c77c9e).
 
-#### Start the Development Server
+### Starting App Services
+
+Use these Rake tasks to manage app services:
+
+```bash
+# Start app services and run database migrations
+bundle exec rake tools:start
+
+# Stop services
+bundle exec rake tools:stop
+
+# Remove containers
+bundle exec rake tools:clean
+```
+
+### Start the Development Server
 
 ```bash
 bundle exec rails server
 ```
 
 Access the app at `http://localhost:3000`.
+
+### Add Sample Records
+Sample records are retrieved from the Apotheca API and indexed into Solr. `rake tools:start` automatically adds sample 
+records, but if you would like to reindex records or refresh the sample records run:
+```sh
+bundle exec rake tools:add_sample_records
+```
 
 ---
 
