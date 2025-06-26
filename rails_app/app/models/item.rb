@@ -5,6 +5,8 @@
 # Each item has a representation in the database (which includes the full json payload we receive) and in Solr (which
 # indexes the data in the database for display purposes).
 class Item < ApplicationRecord
+  include Indexable
+
   REQUIRED_KEYS = %w[id ark first_published_at last_published_at descriptive_metadata assets].freeze
 
   validates :published_json, presence: true
