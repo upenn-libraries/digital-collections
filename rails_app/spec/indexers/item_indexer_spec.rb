@@ -13,8 +13,8 @@ describe ItemIndexer do
           ark_ssi: 'ark:/99999/fk4pp0qk3c',
           first_published_at_dtsi: '2023-01-03T14:27:35Z',
           last_published_at_dtsi: '2024-01-03T11:22:30Z',
-          preview_bsi: true,
-          iiif_manifest_bsi: true,
+          has_preview_bsi: true,
+          has_iiif_manifest_bsi: true,
           non_iiif_asset_listing_ss: '[]',
           name_ssim: [
             'creator, random', 'author, random', 'contributor, random', 'random, person', 'second random, person'
@@ -42,8 +42,8 @@ describe ItemIndexer do
           ark_ssi: 'ark:/99999/fk4pp0qk3c',
           first_published_at_dtsi: '2023-01-03T14:27:35Z',
           last_published_at_dtsi: '2024-01-03T11:22:30Z',
-          preview_bsi: true,
-          iiif_manifest_bsi: false
+          has_preview_bsi: true,
+          has_iiif_manifest_bsi: false
         )
       end
 

@@ -70,7 +70,7 @@ class ItemIndexer
 
   # Add derivative information.
   def add_derivative_information(document)
-    document[:preview_bsi] = data.dig(:derivatives, :preview).present?
-    document[:iiif_manifest_bsi] = data.dig(:derivatives, :iiif_manifest).present?
+    document[:has_preview_bsi] = data.dig(:derivatives, :preview).present?
+    document[:has_iiif_manifest_bsi] = data.dig(:derivatives, :iiif_manifest).present?
   end
 end

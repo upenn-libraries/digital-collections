@@ -15,6 +15,6 @@ class SolrDocument
 
   # Returns true if preview is available
   def preview?
-    fetch(:preview_bsi, false)
+    fetch(:has_preview_bsi, false)
   end
 end
