@@ -116,11 +116,11 @@ class CatalogController < ApplicationController
 
     # "Index"/results page fields
     config.add_index_field :description_tesim, label: I18n.t('fields.results.description')
-    config.add_index_field :physical_format_tesim, label: I18n.t('fields.results.form'), link_to_facet: true,
+    config.add_index_field :physical_format_ssim, label: I18n.t('fields.results.form'), link_to_facet: true,
                                                    gallery: true
-    config.add_index_field :name_with_role_tesim, label: I18n.t('fields.results.creator'), link_to_facet: true
-    config.add_index_field :subject_tesim, label: I18n.t('fields.results.subject'), link_to_facet: true
-    config.add_index_field :collection_tesim, label: I18n.t('fields.results.collection'), link_to_facet: true
+    config.add_index_field :name_with_role_tesim, label: I18n.t('fields.results.creator')
+    config.add_index_field :subject_ssim, label: I18n.t('fields.results.subject'), link_to_facet: true
+    config.add_index_field :collection_ssim, label: I18n.t('fields.results.collection'), link_to_facet: true
 
     # "Show"/work page fields
     config.add_show_field :description_tesim, label: I18n.t('fields.work.description')
@@ -128,10 +128,10 @@ class CatalogController < ApplicationController
     # Place of publication
     # Genre
     config.add_show_field :date_ssim, label: I18n.t('fields.work.date')
-    config.add_show_field :language_tesim, label: I18n.t('fields.work.language'), link_to_facet: true
-    config.add_show_field :subject_tesim, label: I18n.t('fields.work.subject'), link_to_facet: true
+    config.add_show_field :language_ssim, label: I18n.t('fields.work.language'), link_to_facet: true
+    config.add_show_field :subject_ssim, label: I18n.t('fields.work.subject'), link_to_facet: true
     # Related URL
-    config.add_show_field :collection_tesim, label: I18n.t('fields.work.collection'), link_to_facet: true
+    config.add_show_field :collection_ssim, label: I18n.t('fields.work.collection'), link_to_facet: true
     config.add_show_field :physical_location_tesim, label: I18n.t('fields.work.location')
     # URI
     config.add_show_field :rights_uri_ssim, label: I18n.t('fields.work.rights')
