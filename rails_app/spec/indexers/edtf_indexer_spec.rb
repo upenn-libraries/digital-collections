@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe EDTFIndexer do
-  let(:indexer) { EDTFIndexer.new(value) }
+  let(:indexer) { described_class.new(value) }
 
   describe '.humanize' do
     subject(:date) { indexer.humanize }
@@ -39,7 +39,6 @@ describe EDTFIndexer do
 
       it { is_expected.to contain_exactly(value) }
     end
-
 
     context 'with a known decade' do
       let(:value) { '192X' }
