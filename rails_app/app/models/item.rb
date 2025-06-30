@@ -23,7 +23,7 @@ class Item < ApplicationRecord
     errors.add(:published_json, "missing the following key(s): #{missing_keys.join(', ')}")
   end
 
-  def solr_document
-    ItemIndexer.new(published_json).solr_document
+  def to_solr
+    ItemIndexer.new(published_json).to_solr
   end
 end

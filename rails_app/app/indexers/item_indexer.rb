@@ -11,8 +11,8 @@ class ItemIndexer
 
   # Returns Solr document that can be committed to Solr
   #
-  # @return [Hash] solr_document
-  def solr_document
+  # @return [Hash]
+  def to_solr
     document = {
       id: data[:id],
       ark_ssi: data[:ark],

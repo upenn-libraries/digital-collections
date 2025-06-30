@@ -53,7 +53,7 @@ namespace :tools do
         item = Item.find_or_initialize_by(id: json['item']['id'])
         item.published_json = json['item']
         item.save!
-        item.add_solr_document!
+        item.add_to_solr!
       end
     end
   end

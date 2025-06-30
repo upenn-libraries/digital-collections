@@ -9,23 +9,22 @@ shared_examples_for 'indexable' do
   let(:solr_response) { solr.get('select', params: { q: "id:\"#{id}\"" }) }
 
   before do
-    allow(object).to receive(:solr_document).and_return(solr_document)
+    allow(object).to receive(:to_solr).and_return(solr_document)
   end
 
-  describe '#add_solr_document!' do
-    before { object.add_solr_document! }
+  describe '#add_to_solr!' do
+    before { object.add_to_solr! }
 
     it 'adds document to Solr' do
-      object.add_solr_document!
       expect(solr_response['response']['numFound']).to be 1
     end
   end
 
-  describe '#remove_solr_document!' do
-    before { object.add_solr_document! }
+  describe '#remove_from_solr!' do
+    before { object.add_to_solr! }
 
     it 'removes solr document' do
-      object.remove_solr_document!
+      object.remove_from_solr!
       expect(solr_response['response']['numFound']).to be 0
     end
   end
