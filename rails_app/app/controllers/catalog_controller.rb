@@ -117,7 +117,7 @@ class CatalogController < ApplicationController
     # "Index"/results page fields
     config.add_index_field :description_tesim, label: I18n.t('fields.results.description')
     config.add_index_field :physical_format_ssim, label: I18n.t('fields.results.form'), link_to_facet: true,
-                                                   gallery: true
+                                                  gallery: true
     config.add_index_field :name_with_role_tesim, label: I18n.t('fields.results.creator')
     config.add_index_field :subject_ssim, label: I18n.t('fields.results.subject'), link_to_facet: true
     config.add_index_field :collection_ssim, label: I18n.t('fields.results.collection'), link_to_facet: true
