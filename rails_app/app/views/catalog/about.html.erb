@@ -18,23 +18,21 @@
 <% end %>
 
 <div class="pl-font-size-lg pl-margin-b-2xl pl-line-length">
-  <div class="viewport-margins">
-    <h2>
-      <%= t("about.purpose.heading") %>
-    </h2>
-    <%= t("about.purpose.description_html", sceti_url: t("urls.about.sceti")) %>
-    <h2>
-      <%= t("about.copyright.heading") %>
-    </h2>
-    <%= t("about.copyright.description_html") %>
-    <h2>
-      <%= t("about.platform.heading") %>
-    </h2>
-    <%= t(
-      "about.platform.description_html",
-      rails_url: t("urls.about.rails"),
-      ceph_url: t("urls.about.ceph"),
-      iiif_url: t("urls.about.iiif"),
-    ).html_safe %>
-  </div>
+  <h2>
+    <%= t("about.purpose.heading") %>
+  </h2>
+  <%= t("about.purpose.description_html", sceti_url: t("urls.about.sceti")) %>
+  <h2>
+    <%= t("about.copyright.heading") %>
+  </h2>
+  <%= t("about.copyright.description_html") %>
+  <h2>
+    <%= t("about.platform.heading") %>
+  </h2>
+  <%= t(
+    "about.platform.description_html",
+    rails_url: t("urls.about.rails"),
+    ceph_url: t("urls.about.ceph"),
+    iiif_url: t("urls.about.iiif"),
+  ).html_safe %>
 </div>
