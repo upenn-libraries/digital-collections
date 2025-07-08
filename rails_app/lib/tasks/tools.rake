@@ -18,17 +18,17 @@ namespace :tools do
       puts "Creating #{collection} collection..."
       SolrTools.create_collection collection, 'digital_collections'
       next unless collection == 'digital-collections-development'
-
-      sample_records_path = Rails.root.join 'solr/data/dcoll-solr-samples.jsonl'
-      puts "Populating development collection with sample records from #{sample_records_path}..."
-      SolrTools.load_data collection, sample_records_path
     end
+
     puts 'Creating databases...'
     ActiveRecord::Tasks::DatabaseTasks.create_current
     # Migrate databases
     puts 'Migrating databases...'
     system('RAILS_ENV=development rake db:migrate')
     system('RAILS_ENV=test rake db:migrate')
+
+    puts 'Populating development collection with sample records...'
+    Rake::Task['tools:add_sample_records'].execute
   end
 
   desc 'Stop running containers'
@@ -39,5 +39,22 @@ namespace :tools do
   desc 'Removes containers and volumes'
   task clean: :environment do
     system('docker compose down --volumes')
+  end
+
+  desc 'Add sample records'
+  task add_sample_records: :environment do
+    digital_repository = DigitalRepository.new
+
+    Settings.digital_repository.sample_records.each do |id|
+      json = digital_repository.item(id, assets: true)
+
+      # Wrap in a transaction in case adding the document to Solr fails.
+      Item.transaction do
+        item = Item.find_or_initialize_by(id: json['item']['id'])
+        item.published_json = json['item']
+        item.save!
+        item.add_to_solr!
+      end
+    end
   end
 end

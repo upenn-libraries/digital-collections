@@ -44,7 +44,7 @@ class CatalogController < ApplicationController
     # config.per_page = [10,20,50,100]
 
     # solr field configuration for search results/index views
-    config.index.title_field = 'title_ssim'
+    config.index.title_field = 'title_tesim'
     # config.index.display_type_field = 'format'
     config.index.thumbnail_method = :thumbnail
 
@@ -64,7 +64,7 @@ class CatalogController < ApplicationController
     config.add_results_collection_tool(:view_type_group)
 
     # solr field configuration for document/show views
-    config.show.title_field = 'title_ssim'
+    config.show.title_field = 'title_tesim'
     # config.show.display_type_field = 'format'
     # config.show.thumbnail_field = 'thumbnail_path_ss'
     #
@@ -111,20 +111,20 @@ class CatalogController < ApplicationController
     config.add_facet_field :language_ssim, label: I18n.t('fields.facets.language')
     config.add_facet_field :subject_ssim, label: I18n.t('fields.facets.subject')
     config.add_facet_field :collection_ssim, label: I18n.t('fields.facets.collection')
-    config.add_facet_field :creator_with_role_ssim, label: I18n.t('fields.facets.creator')
-    config.add_facet_field :year_itim, label: I18n.t('fields.facets.year'), range: true
+    config.add_facet_field :name_ssim, label: I18n.t('fields.facets.creator')
+    config.add_facet_field :year_isim, label: I18n.t('fields.facets.year'), range: true
 
     # "Index"/results page fields
-    config.add_index_field :description_ssim, label: I18n.t('fields.results.description')
+    config.add_index_field :description_tesim, label: I18n.t('fields.results.description')
     config.add_index_field :physical_format_ssim, label: I18n.t('fields.results.form'), link_to_facet: true,
                                                   gallery: true
-    config.add_index_field :creator_with_role_ssim, label: I18n.t('fields.results.creator'), link_to_facet: true
+    config.add_index_field :name_with_role_tesim, label: I18n.t('fields.results.creator')
     config.add_index_field :subject_ssim, label: I18n.t('fields.results.subject'), link_to_facet: true
     config.add_index_field :collection_ssim, label: I18n.t('fields.results.collection'), link_to_facet: true
 
     # "Show"/work page fields
-    config.add_show_field :description_ssim, label: I18n.t('fields.work.description')
-    config.add_show_field :creator_with_role_ssim, label: I18n.t('fields.work.creator'), link_to_facet: true
+    config.add_show_field :description_tesim, label: I18n.t('fields.work.description')
+    config.add_show_field :name_with_role_tesim, label: I18n.t('fields.work.creator')
     # Place of publication
     # Genre
     config.add_show_field :date_ssim, label: I18n.t('fields.work.date')
@@ -132,10 +132,10 @@ class CatalogController < ApplicationController
     config.add_show_field :subject_ssim, label: I18n.t('fields.work.subject'), link_to_facet: true
     # Related URL
     config.add_show_field :collection_ssim, label: I18n.t('fields.work.collection'), link_to_facet: true
-    config.add_show_field :physical_location_ssim, label: I18n.t('fields.work.location')
+    config.add_show_field :physical_location_tesim, label: I18n.t('fields.work.location')
     # URI
-    config.add_show_field :rights_ssim, label: I18n.t('fields.work.rights')
-    config.add_show_field :unique_identifier_ssi, label: I18n.t('fields.work.identifier')
+    config.add_show_field :rights_uri_ssim, label: I18n.t('fields.work.rights')
+    config.add_show_field :ark_ssi, label: I18n.t('fields.work.identifier')
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields

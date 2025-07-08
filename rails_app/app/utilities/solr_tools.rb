@@ -43,7 +43,7 @@ class SolrTools
     raise CommandError, "Solr command failed with response: #{response.body}" unless response.success?
   end
 
-  # @param collection_name [String] collection to clear - defaults to collection defined in Settings.solr_url
+  # @param collection_name [String] collection to clear - defaults to collection defined in Settings.solr.url
   # @raise [CommandError]
   def self.clear_collection(collection_name = current_collection_name)
     body = "{'delete': {'query': '*:*'}}"
@@ -58,7 +58,7 @@ class SolrTools
   # Returns name of current collection configured in the Solr URL.
   # @return [String]
   def self.current_collection_name
-    uri = URI.parse(Settings.solr_url)
+    uri = URI.parse(Settings.solr.url)
     uri.path.delete_prefix('/solr/')
   end
 
@@ -70,7 +70,7 @@ class SolrTools
     false
   end
 
-  # @param collection_name [String] collection to check - defaults to collection defined in Settings.solr_url
+  # @param collection_name [String] collection to check - defaults to collection defined in Settings.solr.url
   # @return [Boolean]
   def self.collection_empty?(collection_name = current_collection_name)
     resp = connection.get("solr/#{collection_name}/select", params: { q: '*:*' }, rows: 0)
@@ -79,7 +79,7 @@ class SolrTools
 
   # @return [Faraday::Connection]
   def self.connection
-    uri = URI.parse(Settings.solr_url) # Parsing out connection details from URL.
+    uri = URI.parse(Settings.solr.url) # Parsing out connection details from URL.
 
     Faraday.new("#{uri.scheme}://#{uri.host}:#{uri.port}")
   end
