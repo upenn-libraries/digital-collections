@@ -37,9 +37,11 @@
 * The main Bootstrap CSS is loaded from CDN in the layout file.
 */
 @import url('bs-root.css');
+@import url('bs-reboot.css');
 @import url('bs-btn.css');
 @import url('bs-pagination.css');
 @import url('bs-dropdown-menu.css');
+@import url('bs-containers.css');
 
 /**
 * Blacklight (prefix: "bl-")

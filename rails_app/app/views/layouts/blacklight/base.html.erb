@@ -32,12 +32,14 @@
     <%= render blacklight_config.header_component.new(blacklight_config: blacklight_config, user: current_user) %>
   <% end %>
 
-  <main>
+  <main id="main-container" aria-label="<%= t('blacklight.main.aria.main_container') %>" class="<%= container_classes %>">
     <%= content_for(:container_header) %>
 
     <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
 
-    <%= content_for?(:content) ? yield(:content) : yield %>
+    <div class="row">
+      <%= content_for?(:content) ? yield(:content) : yield %>
+    </div>
   </main>
 
   <%= render partial: 'shared/footer' %>

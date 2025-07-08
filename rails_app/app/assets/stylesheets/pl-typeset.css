@@ -1,4 +1,6 @@
 :where(.pl-typeset) {
+  font-family: var(--font-family);
+  
   & :is(p, .pl-p) {
     font-family: var(--font-family);
   }

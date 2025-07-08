@@ -1,9 +1,8 @@
 :where(.pl-reset) {
-  font-family: var(--font-family);
   font-weight: 400;
   line-height: 1.5;
-  color: var(--color-fg-default);
-  accent-color: var(--color-fg-accent);
+  color: var(--pl-color-fg-default);
+  accent-color: var(--pl-color-fg-accent);
 
   /* Use a more-intuitive box-sizing model */
   & :is(*, *::before, *::after) {
@@ -19,7 +18,7 @@
 
   /* Inherit fonts for form controls */
   & :is(input, button, textarea, select) {
-    font: inherit;
+    font: var(--pl-font-family);
   }
 
   /* Avoid text overflows */
@@ -37,10 +36,10 @@
 
   /* Link styles */
   & a {
-    color: var(--color-fg-accent);
+    color: var(--pl-color-fg-accent);
     text-decoration: underline;
-    text-underline-offset: var(--link-text-underline-offset);
-    text-decoration-thickness: var(--link-text-decoration-thickness);
+    text-underline-offset: var(--pl-link-text-underline-offset);
+    text-decoration-thickness: var(--pl-link-text-decoration-thickness);
     font-weight: 500;
 
     &:hover {
