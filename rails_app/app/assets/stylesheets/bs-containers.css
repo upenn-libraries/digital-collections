@@ -1,0 +1,4 @@
+.container {
+  max-width: var(--max-width);
+  padding: 0 var(--viewport-margins-gutter, 1em);
+}

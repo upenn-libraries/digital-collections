@@ -1,0 +1,7 @@
+.pl-border-radius-subtle {
+  border-radius: var(--pl-border-radius-subtle);
+}
+
+.pl-border-radius {
+  border-radius: var(--pl-border-radius-base);
+}

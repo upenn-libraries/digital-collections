@@ -1,0 +1,50 @@
+:where(.pl-reset) {
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--pl-color-fg-default);
+  accent-color: var(--pl-color-fg-accent);
+
+  /* Use a more-intuitive box-sizing model */
+  & :is(*, *::before, *::after) {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  /* Improve media defaults */
+  & :is(img, picture, video, canvas, svg) {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Inherit fonts for form controls */
+  & :is(input, button, textarea, select) {
+    font: var(--pl-font-family);
+  }
+
+  /* Avoid text overflows */
+  & :is(p, h1, h2, h3, h4, h5, h6) {
+    overflow-wrap: break-word;
+  }
+
+  /* Improve line wrapping */
+  & p {
+    text-wrap: pretty;
+  }
+  & :is(h1, h2, h3, h4, h5, h6) {
+    text-wrap: balance;
+  }
+
+  /* Link styles */
+  & a {
+    color: var(--pl-color-fg-accent);
+    text-decoration: underline;
+    text-underline-offset: var(--pl-link-text-underline-offset);
+    text-decoration-thickness: var(--pl-link-text-decoration-thickness);
+    font-weight: 500;
+
+    &:hover {
+      text-decoration-thickness: 3px;
+    }
+  }
+
+}

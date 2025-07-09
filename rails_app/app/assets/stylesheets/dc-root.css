@@ -1,0 +1,27 @@
+:root {
+  --max-width: 1280px;
+
+  @media (min-width: 720px) {
+    --viewport-margins-gutter: 3rem;
+  }
+}
+
+pennlibs-header {
+  display: block;
+  min-height: 87.5px;
+}
+
+pennlibs-hero,
+pennlibs-header,
+pennlibs-footer {
+  --max-width: 1280px;
+}
+
+pennlibs-hero {
+  --hero-height: clamp(50vh, 32rem, 26rem);
+}
+
+*:focus {
+  box-shadow: 0 0 0 2px var(--color-bg-accent), 0 0 0 4px var(--color-fg-default);
+  outline: none;
+}

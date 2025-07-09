@@ -7,9 +7,8 @@ module DC
   class SearchBarComponent < Blacklight::SearchBarComponent
     def initialize(**)
       super
-      # the search bar classes cannot be customized, so we must override the instance variable
-      # to remove the default blacklight/bootstrap styles
-      @classes = %w[]
+
+      @classes = %w[dc-search-box]
     end
   end
 end

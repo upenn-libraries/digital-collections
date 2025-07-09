@@ -1,0 +1,22 @@
+.pagination {
+  --bs-pagination-padding-x: var(--pl-space-base);
+  --bs-pagination-padding-y: var(--pl-space-sm);
+  --bs-pagination-font-size: var(--pl-text-size-base);
+  --bs-pagination-color: var(--color-fg-default);
+  --bs-pagination-bg: var(--color-bg-default);
+  --bs-pagination-border-width: var(--pl-border-width);
+  --bs-pagination-border-color: var(--color-border-default);
+  --bs-pagination-border-radius: var(--pl-space-base);
+  --bs-pagination-hover-color: var(--color-fg-default);
+  --bs-pagination-hover-bg: var(--color-bg-secondary);
+  --bs-pagination-hover-border-color: var(--color-border-default);
+  --bs-pagination-focus-color: var(--color-fg-default);
+  --bs-pagination-focus-bg: var(--color-bg-secondary);
+  --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(49, 132, 253, 0.25);
+  --bs-pagination-active-color: var(--color-fg-on-emphasis);
+  --bs-pagination-active-bg: var(--color-bg-accent-emphasis);
+  --bs-pagination-active-border-color: var(--color-bg-accent-emphasis);
+  --bs-pagination-disabled-color: var(--color-fg-muted);
+  --bs-pagination-disabled-bg: var(--color-bg-secondary);
+  --bs-pagination-disabled-border-color: var(--color-border-default);
+}
