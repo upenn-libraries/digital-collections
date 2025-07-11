@@ -48,6 +48,8 @@ class CatalogController < ApplicationController
     # config.index.display_type_field = 'format'
     config.index.thumbnail_method = :thumbnail
 
+    config.index.default_thumbnail = :fallback_thumbnail
+
     # The presenter is the view-model class for the page
     # config.index.document_presenter_class = MyApp::IndexPresenter
 

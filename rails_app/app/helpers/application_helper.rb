@@ -7,4 +7,8 @@ module ApplicationHelper
 
     image_tag("#{Settings.digital_repository.url}/v1/items/#{document[:id]}/preview?size=300,300")
   end
+
+  def fallback_thumbnail(_document, _options)
+    content_tag 'pennlibs-fallback-img'
+  end
 end
