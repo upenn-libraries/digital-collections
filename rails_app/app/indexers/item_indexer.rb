@@ -4,6 +4,8 @@
 class ItemIndexer
   attr_reader :data
 
+  FACET_FIELDS = %i[physical_format language subject collection geographic_subject item_type].freeze
+
   # @param data [Hash] item json
   def initialize(data)
     @data = data.deep_symbolize_keys
@@ -51,7 +53,7 @@ class ItemIndexer
         end
       when :bibnumber
         document[:bibnumber_ssi] = values.pluck(:value)
-      when :physical_format, :language, :subject, :collection # facets
+      when *FACET_FIELDS
         document[:"#{field}_ssim"] = values.pluck(:value)
         document[:"#{field}_tesim"] = values.pluck(:value)
       else

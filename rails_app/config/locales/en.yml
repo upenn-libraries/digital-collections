@@ -6,7 +6,9 @@ en:
       subject: 'Subject'
       collection: 'Collection'
       creator: 'Creator'
-      year: 'Year'
+      date: 'Date'
+      resource_type: 'Resource Type'
+      geographic_subject: 'Geographic Subject'
     results:
       description: 'Description'
       form: 'Form'
