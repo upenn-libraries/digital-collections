@@ -47,7 +47,6 @@ en:
   search:
     button:
       label: 'Find it'
-    placeholder: 'Search using keywords, ex: dancing turtle'
   about:
     hero_heading: 'About digital collections'
     purpose:
