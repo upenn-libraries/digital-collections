@@ -46,7 +46,7 @@ en:
       learn_more: 'Learn more about digital collections'
   search:
     button:
-      label: 'Find It'
+      label: 'Find it'
     placeholder: 'Search using keywords, ex: dancing turtle'
   about:
     hero_heading: 'About digital collections'
