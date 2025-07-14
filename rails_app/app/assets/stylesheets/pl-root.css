@@ -81,6 +81,7 @@
   --pl-space-2xs: 0.125rem;
   --pl-space-xs: 0.25rem;
   --pl-space-sm: 0.5rem;
+  --pl-space-md: 0.75rem;
   --pl-space-base: 1rem;
   --pl-space-lg: 1.5rem;
   --pl-space-xl: 2rem;
@@ -89,6 +90,8 @@
 
   --pl-border-radius-subtle: 0.125rem;
   --pl-border-radius-base: 1rem;
+
+  --pl-focus-box-shadow: 0 0 0 2px var(--pl-color-bg-accent), 0 0 0 4px var(--pl-color-fg-default);
 }
 
 .viewport-margins {
