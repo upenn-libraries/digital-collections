@@ -28,8 +28,6 @@
 
   & .remove {
     position: static;
-    /* background: var(--pl-color-bg-accent-emphasis);
-    color: var(--pl-color-fg-on-emphasis); */
     padding-left: var(--pl-space-2xs) !important;
     display: flex;
     align-items: end;
@@ -76,12 +74,3 @@
     font-weight: 500;
   }
 }
-
-/* .applied-filter .constraint-value .filter-name:after {
-  top: -0.1rem;
-  position: relative;
-}
-
-.constraint .constraint-value {
-  padding-right: var(--pl-space-xs);
-} */
