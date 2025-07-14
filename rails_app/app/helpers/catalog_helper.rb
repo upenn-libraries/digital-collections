@@ -2,7 +2,7 @@
 
 # Helper methods for views rendered by CatalogController
 
-# Override BL 9.0.0beat1@de5ddb
+# Override BL 9.0.0beta1@de5ddb
 module CatalogHelper
   include Blacklight::CatalogHelperBehavior
 
