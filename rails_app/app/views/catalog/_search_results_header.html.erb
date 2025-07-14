@@ -1,3 +1,5 @@
+<%# Override Component from Blacklight 9.0.0.beta1 to replace default header with search results count %>
+
 <h1 class="pl-h2">
   <% if @response.total_count > 0 %>
     <%= pluralize(@response.total_count, t('results.h1.singular')) %>
