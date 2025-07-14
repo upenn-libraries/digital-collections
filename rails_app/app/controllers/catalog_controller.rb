@@ -62,6 +62,8 @@ class CatalogController < ApplicationController
     config.index.search_bar_component = DC::SearchBarComponent
     # config.index.document_actions.delete(:bookmark)
 
+    config.per_page = [25]
+
     config.add_results_collection_tool(:sort_widget)
     config.add_results_collection_tool(:view_type_group)
 
