@@ -1,3 +1,5 @@
+<%# Copied template from Blacklight 9.0.0.beta1 to remove "visually-hidden" on constraints headers, some additional styling %>
+
 <%= content_tag @tag || :div, id: @id, class: @classes do %>
   <% if @render_headers %>
     <h2 class="visually-hidden"><%= t('blacklight.search.search_constraints_header') %></h2>
