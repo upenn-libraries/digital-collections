@@ -21,7 +21,9 @@ FactoryBot.define do
           { value: 'second random, person', role: [{ value: 'illustrator' }] }
         ],
         rights: [{ value: 'No Copyright', uri: 'http://rightsstatements.org/vocab/NoC-US/1.0/' }],
-        date: [{ value: '2002-02-01' }, { value: '2003' }, { value: '199X' }, { value: 'ca. 2000' }]
+        date: [{ value: '2002-02-01' }, { value: '2003' }, { value: '199X' }, { value: 'ca. 2000' }],
+        geographic_subject: [{ value: 'Pennsylvania -- Philadelphia', uri: 'http://id.worldcat.org/fast/1204170' }],
+        item_type: [{ value: 'Text', uri: 'http://purl.org/dc/dcmitype/Text' }]
       }
     end
 
