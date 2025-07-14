@@ -63,7 +63,6 @@ class CatalogController < ApplicationController
     # config.index.document_actions.delete(:bookmark)
 
     config.add_results_collection_tool(:sort_widget)
-    config.add_results_collection_tool(:per_page_widget)
     config.add_results_collection_tool(:view_type_group)
 
     # solr field configuration for document/show views
