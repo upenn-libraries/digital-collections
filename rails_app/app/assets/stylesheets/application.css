@@ -74,7 +74,7 @@
 @import url('dc-home.css');
 @import url('dc-search-bar.css');
 @import url('dc-about.css');
-
+@import url('dc-start-over.css');
 
 pennlibs-hero .header-search__link {
 	color: var(--color-fg-on-emphasis);
