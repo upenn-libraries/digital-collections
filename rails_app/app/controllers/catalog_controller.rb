@@ -58,6 +58,7 @@ class CatalogController < ApplicationController
     # config.index.constraints_component = MyApp::ConstraintsComponent
     # config.index.search_bar_component = MyApp::SearchBarComponent
     config.header_component = DC::HeaderComponent
+    config.index.constraints_component = DC::ConstraintsComponent
     config.index.search_bar_component = DC::SearchBarComponent
     # config.index.document_actions.delete(:bookmark)
 

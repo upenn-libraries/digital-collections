@@ -90,6 +90,8 @@
 
   --pl-border-radius-subtle: 0.125rem;
   --pl-border-radius-base: 1rem;
+
+  --pl-focus-box-shadow: 0 0 0 2px var(--pl-color-bg-accent), 0 0 0 4px var(--pl-color-fg-default);
 }
 
 .viewport-margins {
