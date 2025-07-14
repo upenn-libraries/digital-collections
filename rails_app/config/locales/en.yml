@@ -6,7 +6,9 @@ en:
       subject: 'Subject'
       collection: 'Collection'
       creator: 'Creator'
-      year: 'Year'
+      date: 'Date'
+      resource_type: 'Resource Type'
+      geographic_subject: 'Geographic Subject'
     results:
       description: 'Description'
       form: 'Form'
@@ -44,6 +46,9 @@ en:
       heading: 'Find primary sources for your research'
       description: "Explore digitized original materials for your research and teaching. You'll find posters, manuscripts, photographs, letters, trading cards, maps, and more from the collections."
       learn_more: 'Learn more about digital collections'
+  search:
+    button:
+      label: 'Find it'
   about:
     hero_heading: 'About digital collections'
     purpose:

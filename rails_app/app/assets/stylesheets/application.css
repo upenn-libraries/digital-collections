@@ -42,6 +42,7 @@
 @import url('bs-pagination.css');
 @import url('bs-dropdown-menu.css');
 @import url('bs-containers.css');
+@import url('bs-accordion.css');
 
 /**
 * Blacklight (prefix: "bl-")
@@ -49,6 +50,7 @@
 * Custom Blacklight overrides and extensions for this application.
 */
 @import url('bl-constraint.css');
+@import url('bl-facet.css');
 
 /**
 * Penn Libraries Design System (prefix: "pl-")
@@ -74,6 +76,7 @@
 @import url('dc-home.css');
 @import url('dc-search-bar.css');
 @import url('dc-about.css');
+@import url('dc-index.css');
 @import url('dc-start-over.css');
 
 pennlibs-hero .header-search__link {
