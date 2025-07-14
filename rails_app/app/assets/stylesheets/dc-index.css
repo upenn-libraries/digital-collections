@@ -1,3 +1,59 @@
 .blacklight-catalog-index {
-  /* TODO: index/results page layout */
+
+  & #main-container {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+
+    width: 100%;
+    margin: 0px auto;
+    padding: 0 var(--viewport-margins-gutter, 1em);
+    margin-top: var(--pl-space-lg);
+
+    @media (min-width: 820px) {
+      display: grid;
+      grid-template-columns: 20rem 1fr;
+      align-items: start;
+    }
+
+    & h1 {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    & #sidebar {
+      width: 100%;
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    & #content {
+      grid-column: 2;
+      grid-row: 2;
+      width: 100%;
+
+      & > .container {
+        all: initial;
+      }
+
+      & .sort-pagination {
+        border-bottom: none;
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+  
+  /*
+  TODO: Comment about how this helps with grid layout.
+  */
+  & .row:has(#content) {
+    display: contents;
+  }
+
+  & #sidebar,
+  & #content {
+    padding: 0;
+    margin: 0;
+  }
 }

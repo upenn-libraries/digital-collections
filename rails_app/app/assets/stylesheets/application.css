@@ -60,12 +60,13 @@
 * they're moved, we can remove this import.
 */
 @import url('pl-root.css');
-@import url('pl-spacing.css');
 @import url('pl-reset.css');
 @import url('pl-typeset.css');
 @import url('pl-line-length.css');
 @import url('pl-font-size.css');
 @import url('pl-border-radius.css');
+@import url('pl-spacing.css');
+
 
 /**
 * Digital Collections Application Styles (prefix: "dc-")
@@ -78,6 +79,7 @@
 @import url('dc-about.css');
 @import url('dc-index.css');
 @import url('dc-start-over.css');
+@import url('dc-paginate-section.css');
 
 pennlibs-hero .header-search__link {
 	color: var(--color-fg-on-emphasis);
