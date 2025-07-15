@@ -51,6 +51,7 @@
 */
 @import url('bl-constraint.css');
 @import url('bl-facet.css');
+@import url('bl-flash-messages.css');
 
 /**
 * Penn Libraries Design System (prefix: "pl-")

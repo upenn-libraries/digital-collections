@@ -1,5 +1,4 @@
 .blacklight-catalog-index {
-
   & #main-container {
     display: flex;
     gap: 2rem;
@@ -12,7 +11,7 @@
 
     @media (min-width: 820px) {
       display: grid;
-      grid-template-columns: 20rem 1fr;
+      grid-template-columns: 18rem 1fr;
       align-items: start;
     }
 
@@ -25,26 +24,30 @@
       width: 100%;
       grid-column: 1;
       grid-row: 2;
+      order: initial !important;
     }
 
     & #content {
       grid-column: 2;
       grid-row: 2;
       width: 100%;
+    }
 
-      & .sort-pagination {
-        border-bottom: none;
-        margin: 0;
-        padding: 0;
-      }
+    & .sort-pagination {
+      border-bottom: none;
     }
   }
   
-  /*
-  TODO: Comment about how this helps with grid layout.
-  */
   & .row:has(#content) {
     display: contents;
+  }
+
+  & .row:has(#main-flashes) {
+    display: contents;
+
+    & > * {
+      display: contents;
+    }
   }
 
   & #sidebar,
@@ -59,4 +62,34 @@
 .dc-constraints-and-sort {
   display: flex;
   justify-content: space-between;
+  gap: var(--pl-space-base);
+  flex-wrap: wrap;
+  align-self: end;
+  width: 100%;
+
+  & .sort-pagination {
+    margin-left: auto !important;
+  }
+}
+
+.sort-dropdown {
+  margin: 0 !important;
+}
+
+.search-widgets .btn {
+  --bs-btn-padding-y: var(--pl-space-xs);
+}
+
+.view-type-group .btn {
+  --bs-btn-padding-x: var(--pl-space-sm);
+}
+
+.search-widgets {
+  gap: var(--pl-space-sm);
+  align-items: center;
+}
+
+.document:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }

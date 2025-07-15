@@ -31,7 +31,8 @@
     position: static;
     padding-left: var(--pl-space-2xs) !important;
     display: flex;
-    align-items: end;
+    align-items: center;
+    --bs-btn-padding-y: 0;
 
     &::after {
       content: '';
@@ -70,7 +71,7 @@
   & .constraint-value {
     display: flex;
     align-items: center;
-    --bs-btn-padding-y: var(--pl-space-2xs);
+    --bs-btn-padding-y: var(--pl-space-xs);
     padding-right: var(--pl-space-sm);
     font-weight: 500;
   }
