@@ -29,7 +29,7 @@
 
   & .search-q {
     border-radius: 1.125rem !important;
-    border: solid 1px var(--color-fg-subtle);
+    border: none;
     background: none;
     font-size: var(--pl-font-size-lg);
     padding: 0 !important;
@@ -51,7 +51,7 @@
 
     @media (min-width: 768px) {
       padding: var(--pl-space-sm) var(--pl-space-lg);
-      
+
       & .blacklight-icons-search {
         display: none;
       }
