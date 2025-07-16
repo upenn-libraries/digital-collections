@@ -17,3 +17,9 @@ pin 'bootstrap', to: 'https://ga.jspm.io/npm:bootstrap@5.3.5/dist/js/bootstrap.j
 pin 'chart.js', to: 'https://ga.jspm.io/npm:chart.js@4.2.0/dist/chart.js'
 # single dependency of chart.js:
 pin '@kurkle/color', to: 'https://ga.jspm.io/npm:@kurkle/color@0.3.2/dist/color.esm.js'
+
+# clover-iiif
+pin 'react', to: 'https://esm.sh/react@19.1.0'
+pin 'react-dom/client', to: 'https://esm.sh/react-dom@19.1.0/client'
+pin '@samvera/clover-iiif/viewer', to: 'https://esm.sh/@samvera/clover-iiif@2.18.3/dist/viewer'
+pin '@samvera/clover-iiif/image', to: 'https://esm.sh/@samvera/clover-iiif@2.18.3/dist/image'
