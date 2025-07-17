@@ -5,6 +5,7 @@ class ItemIndexer
   attr_reader :data
 
   FACET_FIELDS = %i[physical_format language subject collection geographic_subject item_type].freeze
+  SORT_FIELDS = %i[title].freeze
 
   # @param data [Hash] item json
   def initialize(data)
@@ -56,6 +57,9 @@ class ItemIndexer
       when *FACET_FIELDS
         document[:"#{field}_ssim"] = values.pluck(:value)
         document[:"#{field}_tesim"] = values.pluck(:value)
+      when *SORT_FIELDS
+        document[:"#{field}_tesim"] = values.pluck(:value)
+        document[:"#{field}_sort"] = values.pick(:value)
       else
         document[:"#{field}_tesim"] = values.pluck(:value)
       end
