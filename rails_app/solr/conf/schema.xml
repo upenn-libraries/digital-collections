@@ -58,8 +58,11 @@
     <dynamicField name="*_ssi" type="string" stored="true" indexed="true" multiValued="false"/>
     <dynamicField name="*_ssim" type="string" stored="true" indexed="true" multiValued="true"/>
 
+    <!-- dynamic sort fields -->
+
     <dynamicField name="*_ssort" type="alphaSort" stored="false" indexed="true" multiValued="false"/>
 
+    <dynamicField name="*_sort" type="alphaNumSort" stored="false" indexed="true" multiValued="false"/>
 
     <!-- integer (_i...) -->
 
@@ -302,6 +305,25 @@
         <filter class="solr.TrimFilterFactory" />
       </analyzer>
     </fieldtype>
+
+    <!-- A text field that uses the keyword tokenizer to support case insensitive alphanumeric sorting
+         Since we need to analyze our inputs for lowercasing and pattern replacement, we must use the TextField class.
+         For documentation on sorting text fields, see:
+         https://solr.apache.org/guide/solr/latest/query-guide/common-query-parameters.html#sort-parameter -->
+    <fieldType name="alphaNumSort" class="solr.TextField" sortMissingLast="true" omitNorms="true">
+      <analyzer type="index">
+        <!-- keyword tokenizer preserves input string as a single token -->
+        <tokenizer name="keyword" />
+        <filter name="lowercase" />
+        <!-- remove non alphanumerical characters -->
+        <filter name="patternReplace" pattern="([^a-z0-9])" replacement="" replace="all" />
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer name="keyword" />
+        <filter name="lowercase" />
+        <filter name="patternReplace" pattern="([^a-z0-9])" replacement="" replace="all" />
+      </analyzer>
+    </fieldType>
 
     <!-- A text field with defaults appropriate for English -->
     <fieldType name="text_en" class="solr.TextField" positionIncrementGap="100">
