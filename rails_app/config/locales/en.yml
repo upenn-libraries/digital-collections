@@ -49,6 +49,11 @@ en:
   search:
     button:
       label: 'Find it'
+  sort:
+    first_published_at_dtsi_desc: 'Newest'
+    last_published_at_dtsi_desc: 'Last modified'
+    relevance: 'Best match'
+    title_asc: 'Title'
   about:
     hero_heading: 'About digital collections'
     purpose:
