@@ -1,0 +1,61 @@
+.sidenav {
+  --bl-facet-active-bg: var(--pl-color-bg-subtle);
+  --bl-facet-active-item-color: var(--color-fg-on-emphasis);
+}
+
+.facets-header {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
+
+.facet-limit-active {
+  --bs-accordion-btn-color: var(--color-fg-default);
+}
+
+.facet-values {
+  padding: var(--pl-space-sm) 0;
+}
+
+.facet-values li {
+  padding: var(--pl-space-sm) var(--pl-space-base);
+  position: relative;
+}
+
+.facet-values li:has(.selected) {
+  color: var(--pl-color-fg-on-emphasis);
+  background: var(--color-bg-accent-emphasis);
+}
+
+.facet-values .remove,
+.facet-values a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.facet-values .blacklight-icons-remove {
+  display: none;
+}
+
+.facet-values a {
+  color: var(--pl-color-fg-default);
+  font-weight: 400;
+}
+
+.facet-values li:hover .facet-label {
+  text-decoration: underline;
+  text-underline-offset: var(--pl-link-text-underline-offset);
+  text-decoration-color: currentColor;
+}
+
+.facet-values .facet-count {
+  color: var(--pl-color-fg-subtle);
+}

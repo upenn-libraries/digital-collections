@@ -1,0 +1,10 @@
+<%# Copied template from Blacklight 9.0.0.beta1 to combine constraints/sort into one nav %>
+
+<nav class="dc-constraints-and-sort">
+  <%= render helpers
+    .blacklight_config
+    .view_config(helpers.document_index_view_type)
+    .constraints_component
+    .new(search_state: helpers.search_state) %>
+  <%= render "sort_and_per_page" %>
+</nav>
