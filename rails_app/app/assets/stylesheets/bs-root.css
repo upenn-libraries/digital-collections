@@ -1,5 +1,7 @@
-html {
+body {
   --bs-border-radius: var(--pl-space-base);
+  --bs-gray-100: var(--pl-color-bg-subtle);
+  --bs-gray-200: var(--pl-color-bg-subtle);
 }
 
 main {

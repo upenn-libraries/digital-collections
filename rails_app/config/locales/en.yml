@@ -60,4 +60,7 @@ en:
     platform:
       heading: 'Platform'
       description_html: '<p>We use a customized <a href="%{rails_url}">Ruby on Rails</a> application. The application relies on <a href="%{ceph_url}">Ceph</a> for asset storage, chosen for its high availability, high replication, performance, and fault tolerance. Git and git-annex are used to track changes to objects over time.</p><p>Data complies with <a href="%{iiif_url}">International Image Interoperability Framework (IIIF)</a> standards, ensuring high-quality images, interoperability with other image viewers, and the ability to download digital materials.</p>'
-
+  results:
+    h1:
+      singular: 'result'
+      none: 'No results'

@@ -42,6 +42,7 @@
 @import url('bs-pagination.css');
 @import url('bs-dropdown-menu.css');
 @import url('bs-containers.css');
+@import url('bs-accordion.css');
 
 /**
 * Blacklight (prefix: "bl-")
@@ -49,6 +50,8 @@
 * Custom Blacklight overrides and extensions for this application.
 */
 @import url('bl-constraint.css');
+@import url('bl-facet.css');
+@import url('bl-flash-messages.css');
 
 /**
 * Penn Libraries Design System (prefix: "pl-")
@@ -58,12 +61,13 @@
 * they're moved, we can remove this import.
 */
 @import url('pl-root.css');
-@import url('pl-spacing.css');
 @import url('pl-reset.css');
 @import url('pl-typeset.css');
 @import url('pl-line-length.css');
 @import url('pl-font-size.css');
 @import url('pl-border-radius.css');
+@import url('pl-spacing.css');
+
 
 /**
 * Digital Collections Application Styles (prefix: "dc-")
@@ -74,7 +78,8 @@
 @import url('dc-home.css');
 @import url('dc-search-bar.css');
 @import url('dc-about.css');
-
+@import url('dc-index.css');
+@import url('dc-start-over.css');
 
 pennlibs-hero .header-search__link {
 	color: var(--color-fg-on-emphasis);
