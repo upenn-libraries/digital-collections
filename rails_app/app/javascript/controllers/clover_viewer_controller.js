@@ -1,4 +1,3 @@
-import React from "react";
 import { createElement } from "react";
 import { createRoot } from "react-dom/client";
 import Viewer from "@samvera/clover-iiif/viewer";

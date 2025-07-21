@@ -15,8 +15,7 @@
     <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" %>
     <%= stylesheet_link_tag "https://use.typekit.net/gbh8cmg.css" %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-    <%= javascript_import_module_tag "https://cdn.jsdelivr.net/npm/@penn-libraries/web@#{Settings.pennlibs_web_version}/dist/web/web.esm.js" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
   </head>
