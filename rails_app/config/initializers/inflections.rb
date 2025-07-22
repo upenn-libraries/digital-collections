@@ -16,4 +16,5 @@
 ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'DC'
   inflect.acronym 'EDTF'
+  inflect.acronym 'URI'
 end
