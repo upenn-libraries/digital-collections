@@ -1,9 +1,10 @@
 <div class="iiif-viewer-container">
   <div
     data-controller="clover-viewer"
-    data-clover-viewer-url-value="https://api.dc.library.northwestern.edu/api/v2/works/8a833741-74a8-40dc-bd1d-c416a3b1bb38?as=iiif"
+    data-clover-viewer-url-value="<%= manifest_url %>"
   ></div>
 </div>
+
 <%= content_tag @component,
   id: @id,
   data: {

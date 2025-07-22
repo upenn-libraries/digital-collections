@@ -3,3 +3,8 @@ solr:
 redis:
   username: ''
   password: ''
+digital_repository:
+  url: https://apotheca-staging.library.upenn.edu
+  sample_records:
+    - 31452392-45e9-4ee5-a7f6-d7d8e71b1362
+    - 2b4caccf-bf44-418b-b172-a20a9daeaed5
