@@ -4,6 +4,7 @@ module DC
   # Ensures URI fields render as hyperlinks
   # Custom Blacklight::FieldPresenter subclass based on BL v9.0.0beta1@de5ddb
   class URIFieldPresenter < Blacklight::FieldPresenter
+    # @return [Array]
     def values
       @values ||= retrieve_values.map { |value| @view_context.link_to(value, value) }
     end

@@ -8,6 +8,7 @@ module DC
     CREATOR_ROLE = 'creator'
     FACET_FIELD = 'name_ssim'
     # Override #values method to return field values as links to faceted search
+    # @return [Array]
     def values
       @values ||= display_facet_pairs.map { |display, facet| link_to_facet(display, facet) }
     end
@@ -28,7 +29,7 @@ module DC
       end
     end
 
-    # @param [truncate] name_with_role
+    # @param name_with_role [String]
     # @return [Boolean]
     def creator?(name_with_role)
       name_with_role.include?(CREATOR_ROLE)
@@ -45,7 +46,8 @@ module DC
     end
 
     # Validates that display values and facets have matching lengths
-    # @raise [ArgumentError] if arrays have different lengths
+    # @raise [ArgumentError] if number of display values is different to number of facet values
+    # @return [Nil]
     def validate_array_lengths!
       return if display_values.length == facets.length
 
