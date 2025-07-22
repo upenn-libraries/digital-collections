@@ -5,6 +5,8 @@ class CatalogController < ApplicationController
   include Blacklight::Catalog
   include BlacklightRangeLimit::ControllerOverride
 
+  FACET_LIMIT = 10
+
   # If you'd like to handle errors returned by Solr in a certain way,
   # you can use Rails rescue_from with a method you define in this controller,
   # uncomment:
@@ -110,14 +112,17 @@ class CatalogController < ApplicationController
 
     config.add_facet_fields_to_solr_request!
 
-    config.add_facet_field :collection_ssim, label: I18n.t('fields.facets.collection'), collapse: false
-    config.add_facet_field :physical_format_ssim, label: I18n.t('fields.facets.form'), collapse: false
-    config.add_facet_field :language_ssim, label: I18n.t('fields.facets.language')
-    config.add_facet_field :subject_ssim, label: I18n.t('fields.facets.subject')
-    config.add_facet_field :name_ssim, label: I18n.t('fields.facets.creator')
-    config.add_facet_field :year_isim, label: I18n.t('fields.facets.date'), range: true
-    config.add_facet_field :item_type_ssim, label: I18n.t('fields.facets.resource_type')
-    config.add_facet_field :geographic_subject_ssim, label: I18n.t('fields.facets.geographic_subject')
+    config.add_facet_field :collection_ssim, label: I18n.t('fields.facets.collection'), limit: FACET_LIMIT,
+                                             collapse: false
+    config.add_facet_field :physical_format_ssim, label: I18n.t('fields.facets.form'), limit: FACET_LIMIT,
+                                                  collapse: false
+    config.add_facet_field :language_ssim, label: I18n.t('fields.facets.language'), limit: FACET_LIMIT
+    config.add_facet_field :subject_ssim, label: I18n.t('fields.facets.subject'), limit: FACET_LIMIT
+    config.add_facet_field :name_ssim, label: I18n.t('fields.facets.creator'), limit: FACET_LIMIT
+    config.add_facet_field :year_isim, label: I18n.t('fields.facets.date'), limit: FACET_LIMIT, range: true
+    config.add_facet_field :item_type_ssim, label: I18n.t('fields.facets.resource_type'), limit: FACET_LIMIT
+    config.add_facet_field :geographic_subject_ssim, label: I18n.t('fields.facets.geographic_subject'),
+                                                     limit: FACET_LIMIT
 
     # "Index"/results page fields
     config.add_index_field :description_tesim, label: I18n.t('fields.results.description')
