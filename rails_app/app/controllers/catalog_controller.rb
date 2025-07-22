@@ -119,7 +119,7 @@ class CatalogController < ApplicationController
     config.add_facet_field :language_ssim, label: I18n.t('fields.facets.language'), limit: FACET_LIMIT
     config.add_facet_field :subject_ssim, label: I18n.t('fields.facets.subject'), limit: FACET_LIMIT
     config.add_facet_field :name_ssim, label: I18n.t('fields.facets.creator'), limit: FACET_LIMIT
-    config.add_facet_field :year_isim, label: I18n.t('fields.facets.date'), limit: FACET_LIMIT, range: true
+    config.add_facet_field :year_isim, label: I18n.t('fields.facets.date'), range: true
     config.add_facet_field :item_type_ssim, label: I18n.t('fields.facets.resource_type'), limit: FACET_LIMIT
     config.add_facet_field :geographic_subject_ssim, label: I18n.t('fields.facets.geographic_subject'),
                                                      limit: FACET_LIMIT
