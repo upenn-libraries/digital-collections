@@ -27,7 +27,7 @@ describe ItemIndexer do
           collection_tesim: ['University of Pennsylvania Papyrological Collection'],
           collection_ssim: ['University of Pennsylvania Papyrological Collection'],
           rights_uri_ssim: ['http://rightsstatements.org/vocab/NoC-US/1.0/'],
-          date_ssim: ['2002-02-01', '2003', '1990s', 'ca. 2000'],
+          date_ssim: ['2002-02-01', '2003', 'between 1990 and 1999', 'ca. 2000'],
           year_isim: %w[2002 2003 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999],
           item_type_ssim: ['Text'],
           item_type_tesim: ['Text'],

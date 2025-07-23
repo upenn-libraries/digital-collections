@@ -12,6 +12,7 @@ gem 'bootsnap', require: false
 gem 'config'
 gem 'devise'
 gem 'devise-guests', '~> 0.8'
+gem 'edtf-humanize'
 gem 'faraday'
 gem 'honeybadger'
 gem 'importmap-rails'
