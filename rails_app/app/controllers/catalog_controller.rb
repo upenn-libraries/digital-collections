@@ -154,7 +154,7 @@ class CatalogController < ApplicationController
     config.add_show_field :rights_uri_ssim, label: I18n.t('fields.work.rights'), presenter: DC::URIFieldPresenter
     config.add_show_field :rights_note_tesim, label: I18n.t('fields.work.rights_note')
     config.add_show_field :item_type_ssim, label: I18n.t('fields.work.resource_type'), link_to_facet: true
-    config.add_show_field :id, label: I18n.t('fields.work.identifier')
+    config.add_show_field :identifier_tesim, label: I18n.t('fields.work.identifier')
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
