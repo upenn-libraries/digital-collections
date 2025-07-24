@@ -125,27 +125,41 @@ class CatalogController < ApplicationController
                                                      limit: FACET_LIMIT
 
     # "Index"/results page fields
-    config.add_index_field :description_tesim, label: I18n.t('fields.results.description')
     config.add_index_field :physical_format_ssim, label: I18n.t('fields.results.form'), link_to_facet: true,
                                                   gallery: true
-    config.add_index_field :name_with_role_tesim, label: I18n.t('fields.results.creator')
-    config.add_index_field :subject_ssim, label: I18n.t('fields.results.subject'), link_to_facet: true
+    config.add_index_field :name_with_role_tesim, label: I18n.t('fields.results.creator'),
+                                                  presenter: DC::NameWithRolePresenter,
+                                                  limit: 3
+
     config.add_index_field :collection_ssim, label: I18n.t('fields.results.collection'), link_to_facet: true
+    config.add_index_field :date_ssim, label: I18n.t('fields.results.date')
 
     # "Show"/work page fields
     config.add_show_field :description_tesim, label: I18n.t('fields.work.description')
-    config.add_show_field :name_with_role_tesim, label: I18n.t('fields.work.creator')
+    config.add_show_field :alt_title_tesim, label: I18n.t('fields.work.alt_title')
+    config.add_show_field :name_with_role_tesim, label: I18n.t('fields.work.creator'),
+                                                 presenter: DC::NameWithRolePresenter
+    config.add_show_field :physical_format_ssim, label: I18n.t('fields.work.form'), link_to_facet: true
     # Place of publication
     # Genre
     config.add_show_field :date_ssim, label: I18n.t('fields.work.date')
     config.add_show_field :language_ssim, label: I18n.t('fields.work.language'), link_to_facet: true
     config.add_show_field :subject_ssim, label: I18n.t('fields.work.subject'), link_to_facet: true
+    config.add_show_field :geographic_subject_ssim, label: I18n.t('fields.work.geographic_subject'), link_to_facet: true
     # Related URL
     config.add_show_field :collection_ssim, label: I18n.t('fields.work.collection'), link_to_facet: true
-    config.add_show_field :physical_location_tesim, label: I18n.t('fields.work.location')
-    # URI
-    config.add_show_field :rights_uri_ssim, label: I18n.t('fields.work.rights')
-    config.add_show_field :ark_ssi, label: I18n.t('fields.work.identifier')
+    config.add_show_field :extent_tesim, label: I18n.t('fields.work.extent')
+    config.add_show_field :publisher_tesim, label: I18n.t('fields.work.publisher')
+    config.add_show_field :location_tesim, label: I18n.t('fields.work.related_place')
+    config.add_show_field :note_tesim, label: I18n.t('fields.work.notes')
+    config.add_show_field :relation_tesim, label: I18n.t('fields.work.related_works')
+    config.add_show_field :bibnumber_ssi, label: I18n.t('fields.work.bibnumber')
+    config.add_show_field :physical_location_tesim, label: I18n.t('fields.work.physical_location')
+    config.add_show_field :provenance_tesim, label: I18n.t('fields.work.provenance')
+    config.add_show_field :rights_uri_ssim, label: I18n.t('fields.work.rights'), presenter: DC::URIFieldPresenter
+    config.add_show_field :rights_note_tesim, label: I18n.t('fields.work.rights_note')
+    config.add_show_field :item_type_ssim, label: I18n.t('fields.work.resource_type'), link_to_facet: true
+    config.add_show_field :identifier_tesim, label: I18n.t('fields.work.identifier')
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
