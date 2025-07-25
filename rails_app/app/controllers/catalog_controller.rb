@@ -147,8 +147,6 @@ class CatalogController < ApplicationController
                                                  **DEFAULT_METADATA_FIELD_CONFIG
     config.add_show_field :physical_format_ssim, label: I18n.t('fields.work.form'), link_to_facet: true,
                                                  **DEFAULT_METADATA_FIELD_CONFIG
-    # Place of publication
-    # Genre
     config.add_show_field :date_ssim, label: I18n.t('fields.work.date'),
                                       **DEFAULT_METADATA_FIELD_CONFIG
     config.add_show_field :language_ssim, label: I18n.t('fields.work.language'), link_to_facet: true,
@@ -158,7 +156,6 @@ class CatalogController < ApplicationController
     config.add_show_field :geographic_subject_ssim, label: I18n.t('fields.work.geographic_subject'),
                                                     link_to_facet: true,
                                                     **DEFAULT_METADATA_FIELD_CONFIG
-    # Related URL
     config.add_show_field :collection_ssim, label: I18n.t('fields.work.collection'), link_to_facet: true,
                                             **DEFAULT_METADATA_FIELD_CONFIG
     config.add_show_field :extent_tesim, label: I18n.t('fields.work.extent'),
