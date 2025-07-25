@@ -19,6 +19,10 @@
   @media (min-width: 992px) {
     grid-template-columns: 12rem 1fr;
   }
+
+  @media (min-width: 1400px) {
+    grid-template-columns: 12rem 1fr;
+  }
 }
 
 .documents-list .document .document-thumbnail {
@@ -40,6 +44,7 @@
 }
 
 .document-metadata dt {
+  text-align: left;
   font-weight: 600;
   color: var(--pl-color-fg-default);
 }
@@ -63,6 +68,7 @@
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
   grid-column-start: 2;
   list-style: none;
+  padding-left: 0;
 
   & .document-thumbnail img {
     width: 100%;
@@ -99,5 +105,9 @@
     & dd a {
       color: var(--pl-color-fg-subtle);
     }
+  }
+
+  .document-counter {
+    display: inline;
   }
 }
