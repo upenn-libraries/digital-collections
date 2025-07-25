@@ -14,6 +14,8 @@ en:
       set_later_prefix_exclusive: 'unknown date during or after '
       uncertain_date_prefix: "possibly "
       uncertain_date_suffix: ""
+      negative_date: "%{date} B.C."
     formats:
       day_precision_strftime_format: '%Y-%m-%d'
       month_precision_strftime_format: '%Y-%m'
+      time_precision_strftime_format: '%Y-%m-%d %T'

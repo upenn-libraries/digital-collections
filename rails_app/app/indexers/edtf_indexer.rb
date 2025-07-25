@@ -4,6 +4,10 @@
 class EDTFIndexer
   attr_reader :original, :edtf
 
+  DECADE_REGEX = /^\d\d\dX$/
+  CENTURY_REGEX = /^\d\dXX$/
+  NEGATIVE_YEAR_REGEX = /^-\d{4,5}$/
+
   # @param date [String] date encoded in EDTF
   def initialize(date)
     @original = date
@@ -19,22 +23,15 @@ class EDTFIndexer
     when EDTF::Century, EDTF::Decade
       "between #{edtf.min.year} and #{edtf.max.year}"
     when DateTime # Date has time
-      edtf.strftime('%Y-%m-%d %T')
+      edtf.strftime(I18n.t('edtf.formats.time_precision_strftime_format'))
     when NilClass
       original
     when Date
-      if edtf.year.negative?
-        match = edtf.humanize.match(/^-0*(\d+)/)
-        "#{match[1]} B.C."
-      else
-        edtf.humanize
-      end
+      edtf.year.negative? ? humanize_negative_date : edtf.humanize
     else
       edtf.humanize
     end
   end
-
-
 
   # Returns an array containing all the years represented by the EDTF date value.
   #
@@ -53,6 +50,16 @@ class EDTFIndexer
   end
 
   private
+
+  # Convert negative date to human readable format.
+  #
+  # @return [String]
+  def humanize_negative_date
+    match = edtf.humanize.match(/^-0*(\d+)/)
+    return unless match
+
+    I18n.t('edtf.terms.negative_date', date: match[1])
+  end
 
   # Returns years for a EDTF::Interval. If the interval is unknown or open only returns the year specified because
   # otherwise, the intervals might be rather large and would make year search less helpful.
@@ -75,11 +82,11 @@ class EDTFIndexer
   def generate_edtf_object(date)
     # Need to normalize the date to match the EDTF specification used by ruby-edtf
     case date
-    when /^\d\d\dX$/ # Custom logic for '100X' dates
+    when DECADE_REGEX # Custom logic for '100X' dates
       EDTF::Decade.new(date.tr('X', '0').to_i)
-    when /^\d\dXX$/ # Custom logic for '10XX' dates
+    when CENTURY_REGEX # Custom logic for '10XX' dates
       EDTF::Century.new(date.tr('X', '0').to_i)
-    when /^-\d{4,5}$/ # Custom logic to create the appropriate object for negative years.
+    when NEGATIVE_YEAR_REGEX # Custom logic to create the appropriate object for negative years.
       Date.new(date.to_i).year_precision!
     else
       DateTime.edtf(adjust_open_and_unknown_intervals(date.dup))
