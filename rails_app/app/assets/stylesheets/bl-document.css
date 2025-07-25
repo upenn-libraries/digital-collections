@@ -65,7 +65,7 @@
 .documents-gallery {
   display: grid;
   gap: var(--pl-space-lg) var(--pl-space-base);
-  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
   grid-column-start: 2;
   list-style: none;
   padding-left: 0;
@@ -115,6 +115,11 @@
 
     & dd a {
       color: var(--pl-color-fg-subtle);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
