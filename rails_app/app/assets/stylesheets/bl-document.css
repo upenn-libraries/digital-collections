@@ -92,6 +92,10 @@
   }
 
   & .document-metadata {
+    display: block;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+
     & dt {
       clip: rect(0 0 0 0); 
       clip-path: inset(50%);
@@ -100,6 +104,13 @@
       position: absolute;
       white-space: nowrap; 
       width: 1px; 
+    }
+
+    & dd {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      padding-right: 0.25rem;
     }
 
     & dd a {
