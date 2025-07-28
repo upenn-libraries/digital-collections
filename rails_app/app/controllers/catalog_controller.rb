@@ -82,7 +82,8 @@ class CatalogController < ApplicationController
     # config.show.embed_component = MyApp::EmbedComponent
 
     # Blacklight-gallery configuration
-    config.view.gallery(document_component: DC::GalleryComponent, icon: Blacklight::Gallery::Icons::GalleryComponent)
+    config.view.gallery(document_component: DC::Gallery::DocumentComponent,
+                        icon: Blacklight::Gallery::Icons::GalleryComponent)
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
