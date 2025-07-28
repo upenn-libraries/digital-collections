@@ -3,6 +3,13 @@ import { createRoot } from "react-dom/client";
 import Viewer from "@samvera/clover-iiif/viewer";
 import { Controller } from "@hotwired/stimulus";
 
+const options = {
+	showTitle: false,
+	informationPanel: {
+		open: false,
+	},
+};
+
 export default class CloverViewerController extends Controller {
 	static values = {
 		url: String,
@@ -16,6 +23,7 @@ export default class CloverViewerController extends Controller {
 	getViewer(url) {
 		return createElement(Viewer, {
 			iiifContent: url,
+			options: options,
 		});
 	}
 }
