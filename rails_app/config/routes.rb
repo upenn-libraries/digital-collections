@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     concerns :range_searchable
   end
 
+  # redirect legacy urls to item show page
+  get '/catalog/:id', to: redirect('/items/%{id}')
+
   resources :solr_documents, only: [:show], path: '/items', controller: 'catalog'
 
   get '/home' => 'catalog#home'
