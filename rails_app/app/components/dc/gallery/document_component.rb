@@ -2,7 +2,7 @@
 
 module DC
   module Gallery
-    # Customizing Blacklight::Gallery::DocumentComponent to only display gallery index_fields.
+    # Customizing Blacklight::Gallery::DocumentComponent v6.0.0 to only display gallery index_fields.
     class DocumentComponent < Blacklight::Gallery::DocumentComponent
       def before_render
         # Only displaying fields that have set the gallery flag to true.
