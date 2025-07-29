@@ -143,6 +143,12 @@ GEM
       devise
     diff-lcs (1.6.1)
     drb (2.2.3)
+    edtf (3.2.0)
+      activesupport (>= 3.0, < 9.0)
+    edtf-humanize (2.3.0)
+      activesupport (>= 4)
+      edtf (>= 2.3, < 4)
+      roman (~> 0.2.0)
     erb (5.0.1)
     erubi (1.13.1)
     factory_bot (6.5.1)
@@ -309,6 +315,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    roman (0.2.0)
     rsolr (2.6.0)
       builder (>= 2.1.2)
       faraday (>= 0.9, < 3, != 2.0.0)
@@ -440,6 +447,7 @@ DEPENDENCIES
   debug
   devise
   devise-guests (~> 0.8)
+  edtf-humanize
   factory_bot_rails
   faraday
   honeybadger

@@ -28,7 +28,6 @@
 */
 
 @import url(blacklight.css);
-@import url('blacklight_gallery/gallery.css');
 
 /**
 * Bootstrap (prefix: "bs-")
@@ -52,6 +51,7 @@
 @import url('bl-constraint.css');
 @import url('bl-facet.css');
 @import url('bl-flash-messages.css');
+@import url('bl-document.css');
 
 /**
 * Penn Libraries Design System (prefix: "pl-")
@@ -67,6 +67,7 @@
 @import url('pl-font-size.css');
 @import url('pl-border-radius.css');
 @import url('pl-spacing.css');
+@import url('pl-dl.css');
 
 
 /**

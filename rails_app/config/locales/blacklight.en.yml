@@ -5,3 +5,8 @@ en:
       form:
         search:
           placeholder: 'Search using keywords, ex: dancing turtle'
+      index:
+        label: "%{label}"
+      show:
+        label: "%{label}"
+

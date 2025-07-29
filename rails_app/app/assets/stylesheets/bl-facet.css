@@ -59,3 +59,7 @@
 .facet-values .facet-count {
   color: var(--pl-color-fg-subtle);
 }
+
+.more_facets {
+  padding: var(--pl-space-sm) var(--pl-space-base);
+}
