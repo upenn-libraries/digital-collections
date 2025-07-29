@@ -68,7 +68,17 @@ If the `pg` gem fails due to `libpq` issues, follow [this guide](https://gist.gi
 
 ### Install Javascript Dependencies
 
-To use `jsbundling-rails`, we must have `node` and `yarn` installed. It's recommended to use a version manager to do so, like [`nvm`](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating), [`asdf`](https://asdf-vm.com/), or [`mise`](https://mise.jdx.dev/).
+To use `jsbundling-rails`, we must have `node` and `yarn` installed. It's recommended to use a version manager to install `node`, like [`nvm`](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating), [`asdf`](https://asdf-vm.com/), or [`mise`](https://mise.jdx.dev/).
+
+Check that node is installed:
+```bash
+node -v
+```
+
+Install Yarn:
+```bash
+npm install --global yarn
+```
 
 ### Starting App Services
 
