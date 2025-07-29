@@ -80,6 +80,11 @@ Install Yarn:
 npm install --global yarn
 ```
 
+Install JS dev dependencies:
+```bash
+yarn install
+```
+
 ### Starting App Services
 
 Use these Rake tasks to manage app services:
