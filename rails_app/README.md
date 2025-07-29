@@ -102,7 +102,7 @@ Access the app at `http://localhost:3000`.
 
 - A slightly annoying change of removing `importmap-rails` is our loss of automatic Stimulus controller loading. Unfortunately, `importmap-rails` includes Stimulus controller eager loading, so switching to `jsbundling-rails` means that we now have to manually declare new Stimulus controllers and register them with the application. This can be automated (to a certain degree). Here's a snippet of the [docs](https://github.com/hotwired/stimulus-rails?tab=readme-ov-file#usage-with-javascript-bundler):
 
-    > This can be done automatically using either the Stimulus generator (./bin/rails generate stimulus [controller]) or the dedicated stimulus:manifest:update task. Either will overwrite the controllers/index.js file.Doing this is not a huge deal and is quite easy, but it's not what we're used to, so I thought it would be best to note.
+    > This can be done automatically using either the Stimulus generator (./bin/rails generate stimulus [controller]) or the dedicated stimulus:manifest:update task. Either will overwrite the controllers/index.js file.
 
 ### Add Sample Records
 Sample records are retrieved from the Apotheca API and indexed into Solr. `rake tools:start` automatically adds sample 
