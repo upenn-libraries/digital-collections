@@ -11,11 +11,8 @@
     remote:        data-remote
 -%>
 <% if current_page.last? %>
-  <%= link_to '#', :rel => 'next', :onclick=>'return false;', class: 'page-link', aria: { label: t('views.pagination.aria.go_to_next_page') } do %>
-    <%= image_tag 'arrow.svg' %>
-  <% end %>
 <% else %>
-  <%= link_to url, :rel => 'next', :remote => remote, class: 'page-link', aria: { label: t('views.pagination.aria.go_to_next_page') } do %>
+  <%= link_to url, :rel => 'next', :remote => remote, class: 'btn btn-light', aria: { label: t('views.pagination.aria.go_to_next_page') } do %>
     <%= image_tag 'arrow.svg' %>
   <% end %>
 <% end %>
