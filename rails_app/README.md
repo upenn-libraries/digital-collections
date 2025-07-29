@@ -66,6 +66,10 @@ which ruby
 
 If the `pg` gem fails due to `libpq` issues, follow [this guide](https://gist.github.com/tomholford/f38b85e2f06b3ddb9b4593e841c77c9e).
 
+### Install Javascript Dependencies
+
+To use `jsbundling-rails`, we must have `node` and `yarn` installed. It's recommended to use a version manager to do so, like [`nvm`](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating), [`asdf`](https://asdf-vm.com/), or [`mise`](https://mise.jdx.dev/).
+
 ### Starting App Services
 
 Use these Rake tasks to manage app services:
