@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   # redirect legacy urls to item show page
-  get '/catalog/:id', to: redirect('/items/%{id}')
+  get '/catalog/:normalized_ark', to: 'catalog#legacy_redirect'
 
   resources :solr_documents, only: [:show], path: '/items', controller: 'catalog'
 
