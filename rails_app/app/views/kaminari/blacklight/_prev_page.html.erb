@@ -10,8 +10,7 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
-<% if current_page.first? %>
-<% else %>
+<% unless current_page.first? %>
   <%= link_to url, :rel => 'prev', :remote => remote, class: 'btn btn-light dc-pagination__prev', aria: { label: t('views.pagination.aria.go_to_previous_page') } do %>
     <%= image_tag 'arrow.svg' %>
   <% end %>
