@@ -228,4 +228,11 @@ class CatalogController < ApplicationController
 
   # about the digital collections
   def about; end
+
+  # redirect legacy show page urls to item show page
+  def legacy_redirect
+    ark = "ark:/#{params[:normalized_ark].tr('-', '/')}"
+    uuid = DigitalRepository.new.item_by_ark(ark).dig('item', 'id')
+    redirect_to solr_document_path(id: uuid)
+  end
 end
