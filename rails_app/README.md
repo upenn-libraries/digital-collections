@@ -83,11 +83,26 @@ bundle exec rake tools:clean
 
 ### Start the Development Server
 
+Because we're using a Javascript bundler, it's important to start the server like this:
 ```bash
-bundle exec rails server
+bin/dev
+```
+
+The `Procfile` will run the following server commands:
+```bash
+env RUBY_DEBUG_OPEN=true bin/rails server
+yarn build --watch
 ```
 
 Access the app at `http://localhost:3000`.
+
+#### Javascript Bundler Caveats
+
+- The `@penn-libraries/web` assets cannot be pulled in via Yarn and `jsbundling-rails` - the way that the local assets (ie. footer image) get packaged in the [Stencil.js](https://stenciljs.com/docs/assets) output is a pain point that many others in the community struggle with. There isn't really a way to serve up assets from node_modules without having a build step that copies them locally. The easiest thing to do is serve it from a CDN where the asset paths can resolve. This also allows us to use the design system in this app like we would use it in other places, and that consistency is a positive.
+
+- A slightly annoying change of removing `importmap-rails` is our loss of automatic Stimulus controller loading. Unfortunately, `importmap-rails` includes Stimulus controller eager loading, so switching to `jsbundling-rails` means that we now have to manually declare new Stimulus controllers and register them with the application. This can be automated (to a certain degree). Here's a snippet of the [docs](https://github.com/hotwired/stimulus-rails?tab=readme-ov-file#usage-with-javascript-bundler):
+
+    > This can be done automatically using either the Stimulus generator (./bin/rails generate stimulus [controller]) or the dedicated stimulus:manifest:update task. Either will overwrite the controllers/index.js file.Doing this is not a huge deal and is quite easy, but it's not what we're used to, so I thought it would be best to note.
 
 ### Add Sample Records
 Sample records are retrieved from the Apotheca API and indexed into Solr. `rake tools:start` automatically adds sample 
