@@ -62,16 +62,13 @@ en:
     relevance: 'Best match'
     title_asc: 'Title'
   about:
-    hero_heading: 'About digital collections'
+    hero_heading: 'Digital collections'
     purpose:
-      heading: 'Purpose'
-      description_html: '<p>This website exists to make available thousands of digitized original materials, from historical documents to photos, manuscripts, and more. Our goal is to preserve these works and share them with you—whether you''re researching a topic or just browsing, we hope you find something that sparks your curiosity.</p><p>At the center of these digitized materials is the <a href="%{sceti_url}">Schoenberg Center for Electronic Text & Image (SCETI)</a>. SCETI is dedicated to digitizing rare and fragile materials, making it possible to offer these original materials online.</p>'
+      heading: 'About'
+      description_html: '<p>Search thousands of digitized original materials from across our libraries, archives and community. Although our digitized materials here represent a small portion of <a href="%{collections_url}">all our collections</a>, <a href="%{new_material_url}">new materials are added</a> often. You can use our digital collections for your research and teaching.</p><p>The <a href="%{sceti_url}">Schoenberg Center for Electronic Text & Image (SCETI)</a> makes it possible to offer these materials to you online through digitization and digital asset management.</p>'
     copyright:
-      heading: 'Copyright'
-      description_html: '<p>Collections are as accessible as possible, while respecting copyright laws. If you have questions about using materials, the Copyright Advisor is available to answer any questions and can help you navigate permissions and usage rights.</p>'
-    platform:
-      heading: 'Platform'
-      description_html: '<p>We use a customized <a href="%{rails_url}">Ruby on Rails</a> application. The application relies on <a href="%{ceph_url}">Ceph</a> for asset storage, chosen for its high availability, high replication, performance, and fault tolerance. Git and git-annex are used to track changes to objects over time.</p><p>Data complies with <a href="%{iiif_url}">International Image Interoperability Framework (IIIF)</a> standards, ensuring high-quality images, interoperability with other image viewers, and the ability to download digital materials.</p>'
+      heading: 'Rights statement'
+      description_html: '<p>We offer support when you use Digital Collections materials and metadata and have questions about copyright, fair use and why this matters to your scholarship, research, and teaching. Our <a href="%{copyright_help_url}">copyright advisor</a>, <a href="%{copyright_guide_url}">copyright guide</a>, and <a href="%{open_metadata_url}">open metadata policy</a> are available to help.</p>'
   results:
     h1:
       singular: 'result'

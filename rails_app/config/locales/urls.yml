@@ -1,7 +1,9 @@
 en:
   urls:
     about:
+      new_material: '/items?q=&search_field=all_fields&sort=first_published_at_dtsi+desc'
+      collections: 'https://www.library.upenn.edu/collections'
       sceti: 'https://www.library.upenn.edu/sceti'
-      rails: 'https://rubyonrails.org/'
-      ceph: 'https://ceph.io/en/'
-      iiif: 'https://iiif.io/'
+      copyright_help: 'https://www.library.upenn.edu/services/get-help-copyright'
+      copyright_guide: 'https://guides.library.upenn.edu/copyright'
+      open_metadata: 'https://www.library.upenn.edu/about/policies/open-metadata'
