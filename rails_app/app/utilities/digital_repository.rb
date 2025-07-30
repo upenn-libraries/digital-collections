@@ -28,4 +28,13 @@ class DigitalRepository
     connection.get("/v1/items/#{id}", { assets: assets })
               .body['data']
   end
+
+  # Return Item JSON using ark id lookup
+  #
+  # @param ark [Object] ark id
+  # @param assets [Boolean] flag to include assets
+  # @return [Hash]
+  def item_by_ark(ark, assets: false)
+    connection.get("/v1/items/lookup/#{ark}", { assets: assets }).body['data']
+  end
 end
