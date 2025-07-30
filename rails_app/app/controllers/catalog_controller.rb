@@ -169,7 +169,7 @@ class CatalogController < ApplicationController
                                        **DEFAULT_METADATA_FIELD_CONFIG
     config.add_show_field :relation_tesim, label: I18n.t('fields.work.related_works'),
                                            **DEFAULT_METADATA_FIELD_CONFIG
-    config.add_show_field :bibnumber_ssi, label: I18n.t('fields.work.bibnumber')
+    config.add_show_field :bibnumber_ssi, label: I18n.t('fields.work.bibnumber'), **DEFAULT_METADATA_FIELD_CONFIG
     config.add_show_field :physical_location_tesim, label: I18n.t('fields.work.physical_location'),
                                                     **DEFAULT_METADATA_FIELD_CONFIG
     config.add_show_field :provenance_tesim, label: I18n.t('fields.work.provenance'),
