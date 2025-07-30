@@ -211,7 +211,7 @@ class CatalogController < ApplicationController
     config.add_sort_field 'relevance', sort: 'score desc', label: I18n.t('sort.relevance')
     config.add_sort_field 'title_sort asc,', label: I18n.t('sort.title_asc')
     config.add_sort_field 'last_published_at_dtsi desc', label: I18n.t('sort.last_published_at_dtsi_desc')
-    config.add_sort_field 'first_published_at_dtsi  desc', label: I18n.t('sort.first_published_at_dtsi_desc')
+    config.add_sort_field 'first_published_at_dtsi desc', label: I18n.t('sort.first_published_at_dtsi_desc')
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
     config.spell_max = 5
