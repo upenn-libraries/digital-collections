@@ -3,3 +3,4 @@ solr:
 redis:
   username: ''
   password: ''
+
