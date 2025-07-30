@@ -34,7 +34,8 @@
   --bs-btn-disabled-border-color: var(--color-bg-accent-emphasis);
 }
 
-.btn-outline-secondary {
+.btn-outline-secondary,
+.btn-secondary {
   --bs-btn-color: var(--color-fg-default);
   --bs-btn-border-color: var(--color-bg-subtle);
   --bs-btn-hover-color: var(--color-fg-default);
