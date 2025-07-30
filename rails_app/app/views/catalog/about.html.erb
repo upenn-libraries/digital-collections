@@ -21,18 +21,13 @@
   <h2>
     <%= t("about.purpose.heading") %>
   </h2>
-  <%= t("about.purpose.description_html", sceti_url: t("urls.about.sceti")) %>
+  <%= t("about.purpose.description_html", collections_url: t("urls.about.collections"),
+                                          new_material_url: t("urls.about.new_material"),
+                                          sceti_url: t("urls.about.sceti")) %>
   <h2>
     <%= t("about.copyright.heading") %>
   </h2>
-  <%= t("about.copyright.description_html") %>
-  <h2>
-    <%= t("about.platform.heading") %>
-  </h2>
-  <%= t(
-    "about.platform.description_html",
-    rails_url: t("urls.about.rails"),
-    ceph_url: t("urls.about.ceph"),
-    iiif_url: t("urls.about.iiif"),
-  ).html_safe %>
+  <%= t("about.copyright.description_html", copyright_help_url: t("urls.about.copyright_help"),
+                                            copyright_guide_url: t("urls.about.copyright_guide"),
+                                            open_metadata_url: t("urls.about.open_metadata")) %>
 </div>
