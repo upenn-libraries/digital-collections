@@ -39,3 +39,7 @@ config/environments/*.local.yml
 
 # Ignore development bundle files
 vendor/bundle
+
+# Ignore dev dirs
+.cache/
+.bash_history
