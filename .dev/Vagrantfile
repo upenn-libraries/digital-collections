@@ -1,0 +1,99 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require 'vault'
+require 'io/console'
+
+def get_vault_token
+  vault_address = "https://vault.library.upenn.edu"
+  Vault.address = vault_address
+
+  # Try fetching from environment variable first
+  if ENV['VAULT_TOKEN'] && !ENV['VAULT_TOKEN'].empty?
+    begin
+      Vault.auth.token(ENV['VAULT_TOKEN'])
+      return ENV['VAULT_TOKEN']
+    rescue Vault::AuthenticationError
+      puts "\nInvalid VAULT_TOKEN environment variable. Falling back to LDAP authentication."
+    end
+  end
+
+  # Fallback to LDAP authentication if ENV['VAULT_TOKEN'] is invalid or missing
+  begin
+    puts "\nNo valid Vault token found. Please enter Vault credentials."
+
+    print "HashiCorp Vault username: "
+    hv_user = STDIN.gets.chomp
+    print "HashiCorp Vault password: "
+    hv_pass = STDIN.noecho(&:gets).chomp
+
+    vault_client = Vault.auth.ldap(hv_user, hv_pass)
+    return vault_client.auth.client_token
+  rescue Vault::AuthenticationError => e
+    puts "Invalid Vault credentials: #{e.message}. Please try again."
+    retry
+  rescue => e
+    puts "An unexpected error occurred during Vault authentication: #{e.message}. Please try again."
+    retry
+  end
+end
+
+VAGRANT_NODES = {
+  "dc-manager-01" => { ip: "172.20.128.2" }
+}.freeze
+
+Vagrant.configure("2") do |config|
+
+  required_plugins = ["vagrant-hostsupdater", "vault"]
+  config.ssh.insert_key = false
+
+
+  VAGRANT_NODES.each do |hostname, info|
+    config.vm.define hostname do |cfg|
+      cfg.vm.hostname = hostname
+      cfg.vm.network :private_network, ip: info[:ip]
+
+      config.vm.provider "docker" do |d|
+        d.create_args = [
+          "--add-host=registry-mirror.library.upenn.int=172.16.225.202"
+        ]
+        d.has_ssh = true
+        d.image = "gitlab.library.upenn.edu/devops/docker-images/development/almalinux:main"
+        d.name = "digital-collections"
+        d.ports = ["2222:22", "3486:2375", "8080:80"]
+        d.privileged = true
+        d.remains_running = true
+      end
+
+      if hostname == "dc-manager-01"
+        cfg.vm.synced_folder "../", "/digital-collections"
+
+        cfg.vm.provision :ansible_local do |ansible|
+          ansible.compatibility_mode = "2.0"
+          ansible.config_file = "/digital-collections/ansible/ansible.cfg"
+          ansible.extra_vars = {
+            ansible_hashi_vault_token: get_vault_token,
+            ansible_hashi_vault_url: "https://vault.library.upenn.edu",
+            ansible_user: "vagrant"
+          }
+          ansible.galaxy_command = "ansible-galaxy install -r %{role_file} --force --no-deps"
+          ansible.galaxy_role_file = "/digital-collections/ansible/roles/requirements.yml"
+          ansible.galaxy_roles_path = "/digital-collections/ansible/roles"
+          ansible.install = false
+          ansible.inventory_path = "/digital-collections/ansible/inventories/development"
+          ansible.limit = "all"
+          ansible.playbook = "/digital-collections/ansible/site.yml"
+          ansible.tags = "all"
+          ansible.verbose = true
+        end
+      end
+    end
+  end
+
+  config.hostsupdater.aliases = {
+    "172.20.128.2" => [
+      "digital-collections-dev.library.upenn.edu",
+      "digital-collections-dev.library.upenn.int"
+    ]
+  }
+end
