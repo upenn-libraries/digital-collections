@@ -23,6 +23,16 @@
   @media (min-width: 1400px) {
     grid-template-columns: 12rem 1fr;
   }
+
+  & .document-title-heading a {
+    font-weight: 600;
+    text-decoration: none;
+    font-size: var(--pl-font-size-xl);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .documents-list .document .document-thumbnail {
