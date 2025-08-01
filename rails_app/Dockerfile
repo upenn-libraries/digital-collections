@@ -99,7 +99,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
       nodejs \
       postgresql \
       postgresql-contrib \
-      procps && \
+      procps \
+      yarn && \
     addgroup app && useradd -m -d ${PROJECT_ROOT} -s /bin/bash -g app app && \
     mkdir -p ${PROJECT_ROOT}/tmp/pids && \
     rm -rf /var/lib/apt/lists/*
@@ -156,7 +157,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     nodejs \
     postgresql \
     postgresql-contrib \
-    procps && \
+    procps \
+    yarn && \
     addgroup app && useradd -m -d ${PROJECT_ROOT} -s /bin/bash -g app app && \
     mkdir -p ${PROJECT_ROOT}/tmp/pids && \
   rm -rf /var/lib/apt/lists/*

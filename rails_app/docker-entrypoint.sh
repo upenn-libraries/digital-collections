@@ -1,5 +1,5 @@
 #!/bin/sh
-set -eux
+set -e
 
 if [ "$1" = "bundle" -a "$2" = "exec" -a "$3" = "puma" ] || [ "$1" = "bundle" -a "$2" = "exec" -a "$3" = "sidekiq" ]; then
     if [ ! -z "${APP_UID}" ] && [ ! -z "${APP_GID}" ]; then
@@ -14,10 +14,12 @@ if [ "$1" = "bundle" -a "$2" = "exec" -a "$3" = "puma" ] || [ "$1" = "bundle" -a
         bundle config --local path ${BUNDLE_HOME}
         bundle config set --local with 'development:test:assets'
         bundle config set --local gems.contribsys.com $(cat /run/secrets/sidekiq_pro_credentials)
-        
+
         bundle install -j$(nproc) --retry 3
         bundle exec bootsnap precompile --gemfile
         bundle exec bootsnap precompile app/ lib/
+
+        # run js hotloading with yarn
     fi
 
     # remove puma server.pid
