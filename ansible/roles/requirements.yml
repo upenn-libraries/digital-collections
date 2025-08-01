@@ -1,0 +1,39 @@
+---
+collections:
+  - name: community.docker
+
+roles:
+  - name: docker-swarm
+    src: https://gitlab.library.upenn.edu/devops/ansible/roles/docker-swarm.git
+    scm: git
+    version: main
+
+  - name: chrome
+    src: https://gitlab.library.upenn.edu/devops/ansible/roles/chrome.git
+    scm: git
+    version: main
+
+  - name: postgres
+    src: https://gitlab.library.upenn.edu/devops/ansible/roles/postgres.git
+    scm: git
+    version: main
+
+  - name: redis
+    src: https://gitlab.library.upenn.edu/devops/ansible/roles/redis.git
+    scm: git
+    version: 1.2.1
+
+  - name: traefik
+    src: https://gitlab.library.upenn.edu/devops/ansible/roles/traefik.git
+    scm: git
+    version: 2.1.0
+
+  - name: solr
+    src: https://gitlab.library.upenn.edu/devops/ansible/roles/solr.git
+    scm: git
+    version: main
+  
+  - name: zookeeper
+    src: https://gitlab.library.upenn.edu/devops/ansible/roles/zookeeper.git
+    scm: git
+    version: main

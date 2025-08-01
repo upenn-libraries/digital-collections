@@ -1,0 +1,50 @@
+---
+- name: "Set up Docker and Docker Swarm"
+  hosts: all
+  become: true
+  gather_facts: true
+  roles:
+    - docker-swarm
+
+- name: "Deploy application"
+  hosts: docker_swarm_managers
+  become: true
+  gather_facts: false
+  roles:
+    - role: traefik
+      tags:
+        - traefik
+    - role: zookeeper
+      tags:
+        - zookeeper
+    - role: solr
+      tags:
+        - solr
+    - role: redis
+      tags:
+        - redis
+    - role: postgres
+      tags:
+        - postgres
+    - role: digital-collections
+      tags:
+        - digital_collections
+    - role: sidekiq
+      tags:
+        - sidekiq
+    - role: chrome
+      tags:
+        - chrome
+      when: is_development | default(false, true)
+  post_tasks:
+    - name: Recursively remove project directory
+      ansible.builtin.file:
+        path: "{{ project_root }}"
+        state: absent
+    - name: Prune images that are older than 2+ hours
+      community.docker.docker_prune:
+        images: true
+        images_filters:
+          dangling: false
+          until: 2h
+      when: not is_development | default(false, true)

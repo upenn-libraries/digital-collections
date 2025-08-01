@@ -1,0 +1,25 @@
+---
+docker_swarm_managers:
+  hosts:
+    dc-manager-01:
+      ansible_connection: local
+      ansible_host: 127.0.0.1
+      swarm_labels:
+        - api
+        - digital_collections
+        - postgres
+        - redis
+        - sidekiq
+        - solr-1
+        - solr-2
+        - solr-3
+        - traefik
+        - zookeeper-1
+        - zookeeper-2
+        - zookeeper-3
+
+swarm:
+  children:
+    dc-manager-01:
+  vars:
+    ansible_user: vagrant
