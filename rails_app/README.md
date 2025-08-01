@@ -167,6 +167,12 @@ yarn build --watch
 
 Access the app at `http://localhost:3000`.
 
+#### Development Server IDE Integrations
+
+IDE users may wish to run the Ruby and Yarn server processes without using the `Procfile`. This will allow, for example, RubyMine's process-attached debugger to function normally.
+
+The IDE's runner can be configured to run the Yarn server with the command `yarn run dev-server`. This is defined as a `script` in the `package.json` file. [RubyMine's documentation on build tool integration](https://www.jetbrains.com/help/ruby/installing-and-removing-external-software-using-node-package-manager.html) may be helpful.
+
 #### Javascript Bundler Caveats
 
 - The `@penn-libraries/web` assets cannot be pulled in via Yarn and `jsbundling-rails` - the way that the local assets (ie. footer image) get packaged in the [Stencil.js](https://stenciljs.com/docs/assets) output is a pain point that many others in the community struggle with. There isn't really a way to serve up assets from node_modules without having a build step that copies them locally. The easiest thing to do is serve it from a CDN where the asset paths can resolve. This also allows us to use the design system in this app like we would use it in other places, and that consistency is a positive.
