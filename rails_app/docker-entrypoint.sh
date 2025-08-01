@@ -8,9 +8,13 @@ if [ "$1" = "bundle" -a "$2" = "exec" -a "$3" = "puma" ] || [ "$1" = "bundle" -a
     fi
 
     if [ "${RAILS_ENV}" = "development" ]; then
-        bundle config --local path ${PROJECT_ROOT}/vendor/bundle
+        git config --global --add safe.directory '*'
+        gem install bundler -v $(grep -A 1 "BUNDLED WITH" ${PROJECT_ROOT}/Gemfile.lock | tail -n 1 | awk '{print $1}') --verbose
+
+        bundle config --local path ${BUNDLE_HOME}
         bundle config set --local with 'development:test:assets'
         bundle config set --local gems.contribsys.com $(cat /run/secrets/sidekiq_pro_credentials)
+        
         bundle install -j$(nproc) --retry 3
         bundle exec bootsnap precompile --gemfile
         bundle exec bootsnap precompile app/ lib/
