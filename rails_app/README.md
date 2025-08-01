@@ -117,16 +117,19 @@ Download Node.js 24.5.0 from the [official website](https://nodejs.org/).
 
 #### Install Yarn
 
+**If you used a version manager above, Yarn should already be installed. Verify with:**
+```bash
+yarn -v
+# Should output: 1.22.22
+```
+
+**If you need to install Yarn manually:**
+
 ```bash
 npm install --global yarn@1.22.22
 ```
 
 #### Verify Yarn Installation
-
-```bash
-yarn -v
-# Should output: 1.22.22
-```
 
 #### Install Project Dependencies
 
