@@ -1,0 +1,11 @@
+# Ignore ansible galaxy roles
+roles/chrome
+roles/docker-swarm
+roles/postgres
+roles/redis
+roles/solr
+roles/traefik
+roles/zookeeper
+
+# Ignore ansible galaxy collections
+collections

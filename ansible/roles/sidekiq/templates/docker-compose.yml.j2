@@ -1,0 +1,110 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+version: "3.8"
+
+{% set queues = item.queues | map('regex_replace', '^(.*)$', '"-q", "\\1"') | join(', ') %}
+
+services:
+  sidekiq-{{ item.name }}:
+    image: "{{ digital_collections_image_name }}:{{ digital_collections_image_tag }}"
+    command: ["bundle", "exec", "sidekiq", {{ queues }}, "-c", "{{ item.concurrency }}"]
+    deploy:
+      placement:
+        constraints:
+          - "node.labels.sidekiq == true"
+      update_config:
+        order: "start-first"
+        parallelism: 1
+    environment:
+      {% if is_development == true %}
+      APP_UID: ${UID:-1000}
+      APP_GID: ${GID:-1000}
+      {% endif %}
+      APP_URL: "{{ digital_collections_url }}"
+      APP_IMAGE_TAG: "{{ digital_collections_image_name }}"
+      DATABASE_HOST: "postgres"
+      DATABASE_NAME: "{{ postgres_database_name }}"
+      DATABASE_PASSWORD: "/run/secrets/database_password"
+      DATABASE_USER: "{{ postgres_database_user }}"
+      RAILS_ENV: "{{ digital_collections_rails_env }}"
+      RAILS_LOG_TO_STDOUT: "true"
+      RAILS_SERVE_STATIC_FILES: "true"
+      DB_POOL: "{{ item.concurrency }}"
+      REDIS_SIDEKIQ_USER: "sidekiq"
+      REDIS_URL: "redis://redis:{{ redis_port }}/0"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "ps aux | grep '[s]idekiq 7' || exit 1",
+        ]
+      interval: 30s
+      retries: 3
+      start_period: 1m
+      timeout: 30s
+    logging:
+      driver: json-file
+      options:
+        max-file: "3"
+        max-size: "10m"
+    networks:
+      - {{ postgres_network }}
+      - {{ redis_network }}
+      - traefik
+    secrets:
+      - database_password
+      - source: rails_master_key
+        target: "/home/app/config/credentials/{{ digital_collections_rails_env }}.key"
+        uid: "1000"
+        gid: "1000"
+        mode: 0440
+      - {{ redis_docker_stack_name ~ "_redis_sidekiq_password" }}
+      {% if is_development == false %}
+      - honeybadger_api_key
+      - solr_url
+      {% elif is_development == true %}
+      - sidekiq_pro_credentials
+      {% endif %}
+    volumes:
+      {% if is_development == true %}
+      - /digital-collections/rails_app/:/home/app
+      {% else %}
+      - digital_collections_app_storage:/home/app/storage
+      {% endif %}
+
+networks:
+  {{ postgres_network }}:
+    external: true
+  {{ redis_network }}:
+    external: true
+  traefik:
+    external: true
+
+secrets:
+  database_password:
+    external: true
+    name: "{{ postgres_database_versioned_secrets.database_password.secret_name_prefix + postgres_database_versioned_secrets.database_password.version }}"
+  rails_master_key:
+    external: true
+    name: "{{ 'digital_collections_rails_master_key_v' ~ digital_collections_versioned_secrets.rails_master_key.version }}"
+  {{ redis_docker_stack_name ~ "_redis_sidekiq_password" }}:
+    external: true
+    name: "{{ redis_docker_stack_name ~ '_redis_sidekiq_password_v' ~ redis_users | selectattr('name', 'equalto', 'sidekiq') | map(attribute='version')  | join('') }}"
+  {% if is_development == false %}
+  honeybadger_api_key:
+    external: true
+    name: "{{ 'digital_collections_honeybadger_api_key_v' ~ digital_collections_versioned_secrets.honeybadger_api_key.version }}"
+  {% elif is_development == true %}
+  sidekiq_pro_credentials:
+    external: true
+    name: "{{ 'digital_collections_sidekiq_pro_credentials_v' ~ digital_collections_versioned_secrets.sidekiq_pro_credentials.version }}"
+  {% endif %}
+  solr_url:
+    external: true
+    name: "{{ 'digital_collections_solr_url_v' ~ digital_collections_versioned_secrets.solr_url.version }}"
+
+{% if is_development == false %}
+volumes:
+  digital_collections_app_storage:
+    external: true
+    name: digital_collections_app_storage
+{% endif %}
