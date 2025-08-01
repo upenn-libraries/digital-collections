@@ -7,6 +7,7 @@ Frontend application for discovering content in Penn Libraries Digital Collectio
 1. [Local Development Environment](#local-development-environment)  
    - [Requirements](#requirements)  
    - [Install Gems](#install-gems)  
+   - [Install JavaScript Dependencies](#install-javascript-dependencies)
    - [Starting App Services](#starting-app-services)
    - [Start the Development Server](#start-the-development-server)
    - [Add Sample Records](#add-sample-records)
@@ -21,17 +22,34 @@ Frontend application for discovering content in Penn Libraries Digital Collectio
 
 ### Requirements
 
-Your development machine needs the following:
+#### Version Managers
 
-#### Ruby
+We recommend using a version manager to automatically install and manage the correct versions of dependencies. This project includes a `.tool-versions` file that specifies the exact versions needed.
 
-Use [`rbenv`](https://github.com/rbenv/rbenv), [`asdf`](https://asdf-vm.com/), or [`mise`](https://mise.jdx.dev/) to manage Ruby versions. The required version is specified in `.ruby-version`.
+**Multi-language version managers (recommended):**
+- **[mise](https://mise.jdx.dev/)** - Modern, fast, cross-platform (works with `asdf` plugins)
+- **[asdf](https://asdf-vm.com/)** - Established, plugin-based, cross-platform
 
-To be able to install all the required gems, your `bundler` must have valid credentials to the `sidekiq-pro` gem repository. [Configure](https://bundler.io/man/bundle-config.1.html) your user-level bundler config (`~/.bundle/config`) or repository-level config (`./.bundle/config`) with the environment variable expected by Bundler:
+**Language-specific version managers:**
+- **[rbenv](https://github.com/rbenv/rbenv)** - Ruby-only, lightweight (macOS/Linux)
+- **[nvm](https://github.com/nvm-sh/nvm)** - Node.js-only (macOS/Linux)
 
+#### Quick Setup with Version Managers
+
+If using `mise` or `asdf`, the `.tool-versions` file will automatically install both Ruby and Node.js:
+```bash
+# Install all dependencies specified in .tool-versions
+mise install  # or: asdf install
 ```
-BUNDLE_GEMS__CONTRIBSYS__COM=username:password
+
+**Required versions** (automatically handled by version managers):
 ```
+Ruby: 3.4.2
+Node.js: 24.5.0
+Yarn: 1.22.22
+```
+
+For language-specific managers, you'll need to install Ruby and Node.js separately using their respective tools.
 
 #### Docker Compose
 
@@ -41,6 +59,14 @@ BUNDLE_GEMS__CONTRIBSYS__COM=username:password
 - **Mac users**: Install [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) for an easy setup. To access full functionality, request membership in the Penn Libraries Docker Team via [the IT Helpdesk](https://ithelp.library.upenn.edu/support/home).
 
 ### Install Gems
+
+**Note:** If you used `mise` or `asdf` above, Ruby should already be installed.
+
+To be able to install all the required gems, your `bundler` must have valid credentials to the `sidekiq-pro` gem repository. [Configure](https://bundler.io/man/bundle-config.1.html) your user-level bundler config (`~/.bundle/config`) or repository-level config (`./.bundle/config`) with the environment variable expected by Bundler:
+
+```
+BUNDLE_GEMS__CONTRIBSYS__COM=username:password
+```
 
 Ensure your Ruby version matches `.ruby-version`:
 
@@ -54,7 +80,7 @@ Then install dependencies:
 bundle install
 ```
 
-If you get an error when installing the `sidekiq-pro` gem, [ensure you have bundler configured](#ruby) with the proper credentials.
+If you get an error when installing the `sidekiq-pro` gem, ensure you have bundler configured with the proper credentials (see [Version Managers](#version-managers) section above).
 
 If there's a version mismatch, debug with:
 
@@ -66,21 +92,44 @@ which ruby
 
 If the `pg` gem fails due to `libpq` issues, follow [this guide](https://gist.github.com/tomholford/f38b85e2f06b3ddb9b4593e841c77c9e).
 
-### Install Javascript Dependencies
+### Install JavaScript Dependencies
 
-To use `jsbundling-rails`, we must have `node` and `yarn` installed. It's recommended to use a version manager to install `node`, like [`nvm`](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating), [`asdf`](https://asdf-vm.com/), or [`mise`](https://mise.jdx.dev/).
+This project uses `jsbundling-rails` which requires `node` and `yarn` to be installed.
 
-Check that node is installed:
+#### Install Node.js
+
+**If you used a version manager above, Node.js should already be installed. Verify with:**
 ```bash
 node -v
+# Should output: v24.5.0
 ```
 
-Install Yarn:
+**If you need to install Node.js manually:**
+
+**Option 1: Using nvm**
 ```bash
-npm install --global yarn
+nvm install 24.5.0
+nvm use 24.5.0
 ```
 
-Install JS dev dependencies:
+**Option 2: Manual installation**
+Download Node.js 24.5.0 from the [official website](https://nodejs.org/).
+
+#### Install Yarn
+
+```bash
+npm install --global yarn@1.22.22
+```
+
+#### Verify Yarn Installation
+
+```bash
+yarn -v
+# Should output: 1.22.22
+```
+
+#### Install Project Dependencies
+
 ```bash
 yarn install
 ```
