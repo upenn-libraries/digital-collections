@@ -1,0 +1,16 @@
+<section class="my-5">
+<h2>Files</h2>
+<ul class="list-group">
+  <% assets.each do |asset| %>
+    <li class="list-group-item d-flex justify-content-between">
+      <span><%= asset.dig('preservation_file', 'original_filename') %></span>
+      <div class="d-flex gap-3">
+        <% if access?(asset) %>
+        <span> <%= link_to(t('show.assets.download.access'), access_file_url(asset)) %></span>
+        <% end %>
+        <span> <%= link_to(t('show.assets.download.preservation', size: human_readable_size(asset)), preservation_file_url(asset)) %></span>
+      </div>
+    </li>
+  <% end %>
+</ul>
+</section>
