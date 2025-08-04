@@ -62,9 +62,12 @@ RUN --mount=type=secret,id=sidekiq_pro_credentials \
 
 RUN bundle install -j$(nproc) --retry 3 --verbose && \
     rm -rf ${BUNDLE_HOME}/ruby/${RUBY_MAJOR}/cache/*.gem && \
-    find ${BUNDLE_HOME}/ruby/${RUBY_MAJOR}/gems/ \( -name "*.c" -o -name "*.o" \) -delete
+    find ${BUNDLE_HOME}/ruby/${RUBY_MAJOR}/gems/ \( -name "*.c" -o -name "*.o" \) -delete && \
+    bundle exec bootsnap precompile --gemfile
 
 COPY . .
+
+RUN bundle exec bootsnap precompile app/ lib/
 
 # Development Stage ----------------------------------
 FROM ${IMAGE_NAME}:${IMAGE_TAG} AS development
