@@ -17,4 +17,11 @@ class SolrDocument
   def preview?
     fetch(:has_preview_bsi, false)
   end
+
+  # @return [Array<Hash>]
+  def non_iiif_assets
+    assets = fetch(:non_iiif_asset_listing_ss, '[]')
+
+    JSON.parse assets
+  end
 end
