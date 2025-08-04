@@ -14,8 +14,24 @@ class SolrDocument
   use_extension(Blacklight::Document::DublinCore)
 
   # Returns true if preview is available
+  #
+  # @return [Boolean]
   def preview?
     fetch(:has_preview_bsi, false)
+  end
+
+  # Returns true if IIIF manifest is available
+  #
+  # @return [Boolean]
+  def manifest?
+    fetch(:has_iiif_manifest_bsi, false)
+  end
+
+  # IIIF manifest URL.
+  #
+  # @return [String]
+  def manifest_url
+    "#{Settings.digital_repository.url}/iiif/items/#{id}/manifest"
   end
 
   # @return [Array<Hash>]

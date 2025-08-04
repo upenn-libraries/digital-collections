@@ -1,9 +1,11 @@
-<div class="iiif-viewer-container">
-  <div
-    data-controller="clover-viewer"
-    data-clover-viewer-url-value="<%= manifest_url %>"
-  ></div>
-</div>
+<% if @document.manifest? %>
+  <div class="iiif-viewer-container">
+    <div
+      data-controller="clover-viewer"
+      data-clover-viewer-url-value="<%= @document.manifest_url %>"
+    ></div>
+  </div>
+<% end %>
 
 <%= content_tag @component,
   id: @id,
