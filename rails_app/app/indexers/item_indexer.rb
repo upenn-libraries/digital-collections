@@ -72,6 +72,9 @@ class ItemIndexer
     document[:non_iiif_asset_listing_ss] = data.fetch(:assets, [])
                                                .reject { |a| a[:preservation_file][:mime_type] == 'image/tiff' }
                                                .to_json
+
+    document[:iiif_image_count_isi] = data.fetch(:assets, [])
+                                          .count { |a| a[:preservation_file][:mime_type] == 'image/tiff' }
   end
 
   # Add derivative information.
