@@ -97,3 +97,14 @@
 .range_limit_form {
   margin: var(--pl-space-base) 0;
 }
+
+.facets {
+  & .accordion {
+    --bs-accordion-body-padding-y: 0;
+    --bs-accordion-body-padding-x: 0;
+  }
+
+  & .facet-field-heading {
+    margin-bottom: 0;
+  }
+}
