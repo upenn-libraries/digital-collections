@@ -33,4 +33,11 @@ class SolrDocument
   def manifest_url
     "#{Settings.digital_repository.url}/iiif/items/#{id}/manifest"
   end
+
+  # @return [Array<Hash>]
+  def non_iiif_assets
+    assets = fetch(:non_iiif_asset_listing_ss, '[]')
+
+    JSON.parse assets
+  end
 end
