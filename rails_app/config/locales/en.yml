@@ -73,3 +73,8 @@ en:
     h1:
       singular: 'result'
       none: 'No results'
+  show:
+    assets:
+      download:
+        access: 'Download Access Copy'
+        preservation: 'Download Original (%{size})'
