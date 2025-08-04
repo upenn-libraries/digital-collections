@@ -77,7 +77,7 @@ class CatalogController < ApplicationController
     # config.show.document_presenter_class = MyApp::ShowPresenter
     #
     # These components can be configured
-    # config.show.document_component = MyApp::DocumentComponent
+    config.show.document_component = DC::ShowDocumentComponent
     # config.show.sidebar_component = MyApp::SidebarComponent
     # config.show.embed_component = MyApp::EmbedComponent
 
