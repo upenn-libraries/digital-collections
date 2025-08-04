@@ -1,0 +1,20 @@
+<%# Copied template from blacklight-gallery 6.0.0 to:
+      - changing DocumentComponent to:
+          - remove css classes
+          - use li as outer tag
+      - remove thumbnail-container div
+      - remove caption-area amd caption div %>
+
+
+<% component = Blacklight::DocumentComponent.new(component: :li, document: @presenter, counter: @counter) %>
+<%= render(component) do |component| %>
+  <% component.with_body do %>
+      <%= thumbnail %>
+      <%= title %>
+      <%= content %>
+      <%= metadata %>
+      <% metadata_sections.each do |section| %>
+        <%= section %>
+      <% end %>
+  <% end %>
+<% end %>

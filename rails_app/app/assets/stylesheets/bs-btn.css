@@ -3,6 +3,20 @@
   --bs-btn-focus-box-shadow: var(--pl-focus-box-shadow);
 }
 
+.btn-link {
+  --bs-btn-color: var(--pl-color-fg-accent);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-color: var(--pl-color-fg-accent);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-color: var(--pl-color-fg-accent);
+  --bs-btn-active-border-color: transparent;
+  --bs-btn-disabled-color: #6c757d;
+  --bs-btn-disabled-border-color: transparent;
+  --bs-btn-box-shadow: 0 0 0 #000;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+}
+
 .btn-primary {
   --bs-btn-color: var(--color-fg-on-emphasis);
   --bs-btn-bg: var(--color-bg-accent-emphasis);
@@ -20,7 +34,8 @@
   --bs-btn-disabled-border-color: var(--color-bg-accent-emphasis);
 }
 
-.btn-outline-secondary {
+.btn-outline-secondary,
+.btn-secondary {
   --bs-btn-color: var(--color-fg-default);
   --bs-btn-border-color: var(--color-bg-subtle);
   --bs-btn-hover-color: var(--color-fg-default);

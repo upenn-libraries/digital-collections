@@ -7,6 +7,7 @@ Frontend application for discovering content in Penn Libraries Digital Collectio
 1. [Local Development Environment](#local-development-environment)  
    - [Requirements](#requirements)  
    - [Install Gems](#install-gems)  
+   - [Install JavaScript Dependencies](#install-javascript-dependencies)
    - [Starting App Services](#starting-app-services)
    - [Start the Development Server](#start-the-development-server)
    - [Add Sample Records](#add-sample-records)
@@ -21,17 +22,34 @@ Frontend application for discovering content in Penn Libraries Digital Collectio
 
 ### Requirements
 
-Your development machine needs the following:
+#### Version Managers
 
-#### Ruby
+We recommend using a version manager to automatically install and manage the correct versions of dependencies. This project includes a `.tool-versions` file that specifies the exact versions needed.
 
-Use [`rbenv`](https://github.com/rbenv/rbenv), [`asdf`](https://asdf-vm.com/), or [`mise`](https://mise.jdx.dev/) to manage Ruby versions. The required version is specified in `.ruby-version`.
+**Multi-language version managers (recommended):**
+- **[mise](https://mise.jdx.dev/)** - Modern, fast, cross-platform (works with `asdf` plugins)
+- **[asdf](https://asdf-vm.com/)** - Established, plugin-based, cross-platform
 
-To be able to install all the required gems, your `bundler` must have valid credentials to the `sidekiq-pro` gem repository. [Configure](https://bundler.io/man/bundle-config.1.html) your user-level bundler config (`~/.bundle/config`) or repository-level config (`./.bundle/config`) with the environment variable expected by Bundler:
+**Language-specific version managers:**
+- **[rbenv](https://github.com/rbenv/rbenv)** - Ruby-only, lightweight (macOS/Linux)
+- **[nvm](https://github.com/nvm-sh/nvm)** - Node.js-only (macOS/Linux)
 
+#### Quick Setup with Version Managers
+
+If using `mise` or `asdf`, the `.tool-versions` file will automatically install both Ruby and Node.js:
+```bash
+# Install all dependencies specified in .tool-versions
+mise install  # or: asdf install
 ```
-BUNDLE_GEMS__CONTRIBSYS__COM=username:password
+
+**Required versions** (automatically handled by version managers):
 ```
+Ruby: 3.4.2
+Node.js: 24.5.0
+Yarn: 1.22.22
+```
+
+For language-specific managers, you'll need to install Ruby and Node.js separately using their respective tools.
 
 #### Docker Compose
 
@@ -41,6 +59,14 @@ BUNDLE_GEMS__CONTRIBSYS__COM=username:password
 - **Mac users**: Install [Docker Desktop](https://docs.docker.com/desktop/install/mac-install/) for an easy setup. To access full functionality, request membership in the Penn Libraries Docker Team via [the IT Helpdesk](https://ithelp.library.upenn.edu/support/home).
 
 ### Install Gems
+
+**Note:** If you used `mise` or `asdf` above, Ruby should already be installed.
+
+To be able to install all the required gems, your `bundler` must have valid credentials to the `sidekiq-pro` gem repository. [Configure](https://bundler.io/man/bundle-config.1.html) your user-level bundler config (`~/.bundle/config`) or repository-level config (`./.bundle/config`) with the environment variable expected by Bundler:
+
+```
+BUNDLE_GEMS__CONTRIBSYS__COM=username:password
+```
 
 Ensure your Ruby version matches `.ruby-version`:
 
@@ -54,7 +80,7 @@ Then install dependencies:
 bundle install
 ```
 
-If you get an error when installing the `sidekiq-pro` gem, [ensure you have bundler configured](#ruby) with the proper credentials.
+If you get an error when installing the `sidekiq-pro` gem, ensure you have bundler configured with the proper credentials (see [Version Managers](#version-managers) section above).
 
 If there's a version mismatch, debug with:
 
@@ -65,6 +91,51 @@ which ruby
 #### PostgreSQL Issues on macOS
 
 If the `pg` gem fails due to `libpq` issues, follow [this guide](https://gist.github.com/tomholford/f38b85e2f06b3ddb9b4593e841c77c9e).
+
+### Install JavaScript Dependencies
+
+This project uses `jsbundling-rails` which requires `node` and `yarn` to be installed.
+
+#### Install Node.js
+
+**If you used a version manager above, Node.js should already be installed. Verify with:**
+```bash
+node -v
+# Should output: v24.5.0
+```
+
+**If you need to install Node.js manually:**
+
+**Option 1: Using nvm**
+```bash
+nvm install 24.5.0
+nvm use 24.5.0
+```
+
+**Option 2: Manual installation**
+Download Node.js 24.5.0 from the [official website](https://nodejs.org/).
+
+#### Install Yarn
+
+**If you used a version manager above, Yarn should already be installed. Verify with:**
+```bash
+yarn -v
+# Should output: 1.22.22
+```
+
+**If you need to install Yarn manually:**
+
+```bash
+npm install --global yarn@1.22.22
+```
+
+#### Verify Yarn Installation
+
+#### Install Project Dependencies
+
+```bash
+yarn install
+```
 
 ### Starting App Services
 
@@ -83,11 +154,32 @@ bundle exec rake tools:clean
 
 ### Start the Development Server
 
+Because we're using a Javascript bundler, it's important to start the server like this:
 ```bash
-bundle exec rails server
+bin/dev
+```
+
+The `Procfile` will run the following server commands:
+```bash
+env RUBY_DEBUG_OPEN=true bin/rails server
+yarn build --watch
 ```
 
 Access the app at `http://localhost:3000`.
+
+#### Development Server IDE Integrations
+
+IDE users may wish to run the Ruby and Yarn server processes without using the `Procfile`. This will allow, for example, RubyMine's process-attached debugger to function normally.
+
+The IDE's runner can be configured to run the Yarn server with the command `yarn run dev-server`. This is defined as a `script` in the `package.json` file. [RubyMine's documentation on build tool integration](https://www.jetbrains.com/help/ruby/installing-and-removing-external-software-using-node-package-manager.html) may be helpful.
+
+#### Javascript Bundler Caveats
+
+- The `@penn-libraries/web` assets cannot be pulled in via Yarn and `jsbundling-rails` - the way that the local assets (ie. footer image) get packaged in the [Stencil.js](https://stenciljs.com/docs/assets) output is a pain point that many others in the community struggle with. There isn't really a way to serve up assets from node_modules without having a build step that copies them locally. The easiest thing to do is serve it from a CDN where the asset paths can resolve. This also allows us to use the design system in this app like we would use it in other places, and that consistency is a positive.
+
+- A slightly annoying change of removing `importmap-rails` is our loss of automatic Stimulus controller loading. Unfortunately, `importmap-rails` includes Stimulus controller eager loading, so switching to `jsbundling-rails` means that we now have to manually declare new Stimulus controllers and register them with the application. This can be automated (to a certain degree). Here's a snippet of the [docs](https://github.com/hotwired/stimulus-rails?tab=readme-ov-file#usage-with-javascript-bundler):
+
+    > This can be done automatically using either the Stimulus generator (./bin/rails generate stimulus [controller]) or the dedicated stimulus:manifest:update task. Either will overwrite the controllers/index.js file.
 
 ### Add Sample Records
 Sample records are retrieved from the Apotheca API and indexed into Solr. `rake tools:start` automatically adds sample 

@@ -6,7 +6,7 @@ class CatalogController < ApplicationController
   include BlacklightRangeLimit::ControllerOverride
 
   FACET_LIMIT = 10
-
+  DEFAULT_METADATA_FIELD_CONFIG = { component: DC::MetadataFieldComponent }.freeze
   # If you'd like to handle errors returned by Solr in a certain way,
   # you can use Rails rescue_from with a method you define in this controller,
   # uncomment:
@@ -77,12 +77,13 @@ class CatalogController < ApplicationController
     # config.show.document_presenter_class = MyApp::ShowPresenter
     #
     # These components can be configured
-    # config.show.document_component = MyApp::DocumentComponent
+    config.show.document_component = DC::ShowDocumentComponent
     # config.show.sidebar_component = MyApp::SidebarComponent
     # config.show.embed_component = MyApp::EmbedComponent
 
     # Blacklight-gallery configuration
-    config.view.gallery(document_component: DC::GalleryComponent, icon: Blacklight::Gallery::Icons::GalleryComponent)
+    config.view.gallery(document_component: DC::Gallery::DocumentComponent,
+                        icon: Blacklight::Gallery::Icons::GalleryComponent)
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -126,40 +127,61 @@ class CatalogController < ApplicationController
 
     # "Index"/results page fields
     config.add_index_field :physical_format_ssim, label: I18n.t('fields.results.form'), link_to_facet: true,
-                                                  gallery: true
+                                                  gallery: true,
+                                                  **DEFAULT_METADATA_FIELD_CONFIG
     config.add_index_field :name_with_role_tesim, label: I18n.t('fields.results.creator'),
                                                   presenter: DC::NameWithRolePresenter,
-                                                  limit: 3
-
-    config.add_index_field :collection_ssim, label: I18n.t('fields.results.collection'), link_to_facet: true
-    config.add_index_field :date_ssim, label: I18n.t('fields.results.date')
+                                                  limit: 3,
+                                                  **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_index_field :collection_ssim, label: I18n.t('fields.results.collection'), link_to_facet: true,
+                                             **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_index_field :date_ssim, label: I18n.t('fields.results.date'),
+                                       **DEFAULT_METADATA_FIELD_CONFIG
 
     # "Show"/work page fields
-    config.add_show_field :description_tesim, label: I18n.t('fields.work.description')
-    config.add_show_field :alt_title_tesim, label: I18n.t('fields.work.alt_title')
+    config.add_show_field :description_tesim, label: I18n.t('fields.work.description'),
+                                              **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :alt_title_tesim, label: I18n.t('fields.work.alt_title'),
+                                            **DEFAULT_METADATA_FIELD_CONFIG
     config.add_show_field :name_with_role_tesim, label: I18n.t('fields.work.creator'),
-                                                 presenter: DC::NameWithRolePresenter
-    config.add_show_field :physical_format_ssim, label: I18n.t('fields.work.form'), link_to_facet: true
-    # Place of publication
-    # Genre
-    config.add_show_field :date_ssim, label: I18n.t('fields.work.date')
-    config.add_show_field :language_ssim, label: I18n.t('fields.work.language'), link_to_facet: true
-    config.add_show_field :subject_ssim, label: I18n.t('fields.work.subject'), link_to_facet: true
-    config.add_show_field :geographic_subject_ssim, label: I18n.t('fields.work.geographic_subject'), link_to_facet: true
-    # Related URL
-    config.add_show_field :collection_ssim, label: I18n.t('fields.work.collection'), link_to_facet: true
-    config.add_show_field :extent_tesim, label: I18n.t('fields.work.extent')
-    config.add_show_field :publisher_tesim, label: I18n.t('fields.work.publisher')
-    config.add_show_field :location_tesim, label: I18n.t('fields.work.related_place')
-    config.add_show_field :note_tesim, label: I18n.t('fields.work.notes')
-    config.add_show_field :relation_tesim, label: I18n.t('fields.work.related_works')
-    config.add_show_field :bibnumber_ssi, label: I18n.t('fields.work.bibnumber')
-    config.add_show_field :physical_location_tesim, label: I18n.t('fields.work.physical_location')
-    config.add_show_field :provenance_tesim, label: I18n.t('fields.work.provenance')
-    config.add_show_field :rights_uri_ssim, label: I18n.t('fields.work.rights'), presenter: DC::URIFieldPresenter
-    config.add_show_field :rights_note_tesim, label: I18n.t('fields.work.rights_note')
-    config.add_show_field :item_type_ssim, label: I18n.t('fields.work.resource_type'), link_to_facet: true
-    config.add_show_field :identifier_tesim, label: I18n.t('fields.work.identifier')
+                                                 presenter: DC::NameWithRolePresenter,
+                                                 **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :physical_format_ssim, label: I18n.t('fields.work.form'), link_to_facet: true,
+                                                 **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :date_ssim, label: I18n.t('fields.work.date'),
+                                      **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :language_ssim, label: I18n.t('fields.work.language'), link_to_facet: true,
+                                          **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :subject_ssim, label: I18n.t('fields.work.subject'), link_to_facet: true,
+                                         **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :geographic_subject_ssim, label: I18n.t('fields.work.geographic_subject'),
+                                                    link_to_facet: true,
+                                                    **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :collection_ssim, label: I18n.t('fields.work.collection'), link_to_facet: true,
+                                            **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :extent_tesim, label: I18n.t('fields.work.extent'),
+                                         **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :publisher_tesim, label: I18n.t('fields.work.publisher'),
+                                            **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :location_tesim, label: I18n.t('fields.work.related_place'),
+                                           **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :note_tesim, label: I18n.t('fields.work.notes'),
+                                       **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :relation_tesim, label: I18n.t('fields.work.related_works'),
+                                           **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :bibnumber_ssi, label: I18n.t('fields.work.bibnumber'), **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :physical_location_tesim, label: I18n.t('fields.work.physical_location'),
+                                                    **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :provenance_tesim, label: I18n.t('fields.work.provenance'),
+                                             **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :rights_uri_ssim, label: I18n.t('fields.work.rights'), presenter: DC::URIFieldPresenter,
+                                            **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :rights_note_tesim, label: I18n.t('fields.work.rights_note'),
+                                              **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :item_type_ssim, label: I18n.t('fields.work.resource_type'), link_to_facet: true,
+                                           **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :identifier_tesim, label: I18n.t('fields.work.identifier'),
+                                             **DEFAULT_METADATA_FIELD_CONFIG
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -189,7 +211,7 @@ class CatalogController < ApplicationController
     config.add_sort_field 'relevance', sort: 'score desc', label: I18n.t('sort.relevance')
     config.add_sort_field 'title_sort asc,', label: I18n.t('sort.title_asc')
     config.add_sort_field 'last_published_at_dtsi desc', label: I18n.t('sort.last_published_at_dtsi_desc')
-    config.add_sort_field 'first_published_at_dtsi  desc', label: I18n.t('sort.first_published_at_dtsi_desc')
+    config.add_sort_field 'first_published_at_dtsi desc', label: I18n.t('sort.first_published_at_dtsi_desc')
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
     config.spell_max = 5
@@ -207,4 +229,11 @@ class CatalogController < ApplicationController
 
   # about the digital collections
   def about; end
+
+  # redirect legacy show page urls to item show page
+  def legacy_redirect
+    ark = "ark:/#{params[:normalized_ark].tr('-', '/')}"
+    uuid = DigitalRepository.new.item_by_ark(ark).dig('item', 'id')
+    redirect_to solr_document_path(id: uuid)
+  end
 end

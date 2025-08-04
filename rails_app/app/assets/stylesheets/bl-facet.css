@@ -59,3 +59,41 @@
 .facet-values .facet-count {
   color: var(--pl-color-fg-subtle);
 }
+
+.more_facets {
+  padding: var(--pl-space-sm) var(--pl-space-base);
+}
+
+.blacklight-year_isim {
+  --bs-border-color: var(--pl-color-fg-subtle);
+
+  & .chart-wrapper {
+    padding: var(--pl-space-base);
+    padding-bottom: 0;
+  }
+
+  & details {
+    margin-top: var(--pl-space-sm) !important;
+  }
+
+  & .text-muted {
+    color: var(--pl-color-fg-default) !important;
+  }
+
+  & .distribution summary {
+    color: var(--pl-color-fg-default);
+    padding: var(--pl-space-sm) var(--pl-space-base);
+
+    & ~ ul {
+      margin-top: 0 !important;
+    }
+  }
+
+  & .missing {
+    margin-top: 0 !important;
+  }
+}
+
+.range_limit_form {
+  margin: var(--pl-space-base) 0;
+}
