@@ -16,8 +16,8 @@ services:
         parallelism: 1
     environment:
       {% if is_development == true %}
-      APP_UID: ${UID:-1000}
-      APP_GID: ${GID:-1000}
+      UID: ${UID:-1000}
+      GID: ${GID:-1000}
       {% endif %}
       APP_URL: "{{ digital_collections_url }}"
       APP_IMAGE_TAG: "{{ digital_collections_image_name }}"
@@ -54,8 +54,8 @@ services:
       - database_password
       - source: rails_master_key
         target: "/home/app/config/credentials/{{ digital_collections_rails_env }}.key"
-        uid: "1000"
-        gid: "1000"
+        uid: "${UID:-1000}"
+        gid: "${GID:-1000}"
         mode: 0440
       - {{ redis_docker_stack_name ~ "_redis_sidekiq_password" }}
       {% if is_development == false %}

@@ -2,9 +2,9 @@
 set -e
 
 if [ "$1" = "bundle" -a "$2" = "exec" -a "$3" = "puma" ] || [ "$1" = "bundle" -a "$2" = "exec" -a "$3" = "sidekiq" ]; then
-    if [ ! -z "${APP_UID}" ] && [ ! -z "${APP_GID}" ]; then
-        usermod -u ${APP_UID} app
-        groupmod -g ${APP_GID} app
+    if [ ! -z "${UID}" ] && [ ! -z "${GID}" ]; then
+        usermod -u ${UID} app
+        groupmod -g ${GID} app
     fi
 
     if [ "${RAILS_ENV}" = "development" ]; then
@@ -18,8 +18,6 @@ if [ "$1" = "bundle" -a "$2" = "exec" -a "$3" = "puma" ] || [ "$1" = "bundle" -a
         bundle install -j$(nproc) --retry 3
         bundle exec bootsnap precompile --gemfile
         bundle exec bootsnap precompile app/ lib/
-
-        # run js hotloading with yarn
     fi
 
     # remove puma server.pid
