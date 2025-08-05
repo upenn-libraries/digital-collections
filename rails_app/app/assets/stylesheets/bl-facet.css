@@ -94,6 +94,10 @@
   }
 }
 
+.facet-field-heading {
+  margin-bottom: 0 !important;
+}
+
 .range_limit_form {
   margin: var(--pl-space-base) 0;
 }
