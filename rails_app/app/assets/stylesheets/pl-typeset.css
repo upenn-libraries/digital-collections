@@ -55,4 +55,15 @@
       width: 2.25rem;
     }
   }
+
+  & :is(h3, .pl-h3) {
+    font-size: var(--pl-font-size-2xl);
+    font-family: var(--font-sans);
+    color: var(--pl-color-fg-default);
+    margin-bottom: var(--pl-space-base);
+
+    &:after {
+      content: none;
+    }
+  }
 }
