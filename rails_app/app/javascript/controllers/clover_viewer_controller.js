@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import Viewer from "@samvera/clover-iiif/viewer";
 import { Controller } from "@hotwired/stimulus";
 
-import TableOfContentsButton from "../components/table_of_contents_button.jsx";
+import Panel from "../components/table_of_contents/panel.jsx";
 
 const options = {
   showTitle: false,
@@ -13,11 +13,10 @@ const options = {
 };
 
 const contentsPlugin = {
-  id: "Demo",
-  imageViewer: {
-    controls: {
-      component: TableOfContentsButton,
-    },
+  id: "TOCList",
+  informationPanel: {
+    component: Panel,
+    label: { none: ["Table of Contents"] },
   },
 };
 
