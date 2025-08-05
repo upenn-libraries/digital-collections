@@ -1,33 +1,35 @@
 import React from "react";
 
-export default function Panel(props) {
-	const { canvas, useViewerDispatch, useViewerState } = props;
+export default function Panel({ useViewerDispatch, useViewerState }) {
 	const viewerState = useViewerState();
-	const { activeManifest, vault } = viewerState;
-	const data = vault.toPresentation3({ id: activeManifest, type: "Manifest" });
-
-	// use useViewerDispatch to update viewer state
 	const dispatch = useViewerDispatch();
 
-	// console.log(data);
-	// data.structures.map((range, index) => console.log(range.items[0].id));
+	const { activeManifest, vault } = viewerState;
+	const manifestData = vault.toPresentation3({
+		id: activeManifest,
+		type: "Manifest",
+	});
 
-	function clickHandler(targetCanvas) {
+	const containerStyle = { padding: "0px 1.618rem 2rem" };
+	const listStyleClasses = ["list-unstyled", "list-group"];
+	const entryStyleClasses = ["list-group-item", "list-group-item-action"];
+
+	const handleClick = (targetCanvas) => {
 		dispatch({
 			type: "updateActiveCanvas",
 			canvasId: targetCanvas.id,
 		});
-	}
+	};
 
 	return (
-		<div style={{ padding: "0px 1.618rem 2rem" }}>
-			<ul className="list-unstyled list-group list-group-flush">
-				{data.structures.map((range, index) => (
-					<li key={index}>
+		<div style={containerStyle}>
+			<ul className={listStyleClasses.join(" ")}>
+				{manifestData.structures.map((range) => (
+					<li key={range.id}>
 						<button
 							type="button"
-							className="list-group-item list-group-item-action"
-							onClick={() => clickHandler(range.items[0])}
+							className={entryStyleClasses.join(" ")}
+							onClick={() => handleClick(range.items[0])}
 						>
 							{range.label.none[0]}
 						</button>
