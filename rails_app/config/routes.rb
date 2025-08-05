@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get '/home' => 'catalog#home'
   get '/about' => 'catalog#about'
+  get '/collections' => 'catalog#collections'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

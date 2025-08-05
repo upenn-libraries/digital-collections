@@ -1,0 +1,9 @@
+.dc-collections {
+  list-style: none;
+
+  display: grid;
+  gap: 2rem 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+
+  margin-bottom: 4rem;
+}

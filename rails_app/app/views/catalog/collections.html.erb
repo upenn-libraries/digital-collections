@@ -1,0 +1,6 @@
+<h1>Collections</h1>
+<p>Browse a complete list of all collections. Some digitized materials are not in a collection, but can be found by searching.</p>
+
+<%= render(CollectionListComponent.new) do |component| %>
+  <% component.with_collections(Settings.collections.map(&:to_h)) %>
+<% end %>

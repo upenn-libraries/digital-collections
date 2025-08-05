@@ -31,3 +31,14 @@
   </p>
   <%= link_to t("home.explore.learn_more"), about_path %>
 </section>
+
+<section>
+  <h2>
+    <%= t("home.collections.heading") %>
+  </h2>
+  <%= link_to t("home.collections.explore"), collections_path %>
+
+  <%= render(CollectionListComponent.new) do |component| %>
+    <% component.with_collections(Settings.collections.map(&:to_h).first(5)) %>
+  <% end %>
+</section>
