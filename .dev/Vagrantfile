@@ -2,8 +2,6 @@
 # vi: set ft=ruby :
 
 require 'etc'
-require 'io/console'
-require 'vault'
 
 def get_current_user_info(default_uid = 1000, default_gid = 1000)
   begin
