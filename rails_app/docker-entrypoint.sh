@@ -18,6 +18,13 @@ if [ "$1" = "bundle" -a "$2" = "exec" -a "$3" = "puma" ] || [ "$1" = "bundle" -a
         bundle install -j$(nproc) --retry 3
         bundle exec bootsnap precompile --gemfile
         bundle exec bootsnap precompile app/ lib/
+
+        if [ "$1" = "bundle" -a "$2" = "exec" -a "$3" = "puma" ]; then
+          # run js hotloading in the background
+          rm -fr ${PROJECT_ROOT}/node_modules
+          gosu app yarn install --frozen-lockfile
+          gosu app yarn build --watch=forever &
+        fi
     fi
 
     # remove puma server.pid
@@ -36,12 +43,12 @@ if [ "$1" = "bundle" -a "$2" = "exec" -a "$3" = "puma" ] || [ "$1" = "bundle" -a
     fi
 
     # chown all dirs
-    find . -type d -exec chown app:app {} \;
+    find "${PROJECT_ROOT}" -type d -not \( -user "app" -a -group "app" \) -exec chown app:app {} \;
 
     # chown all files except keys
-    find . -type f \( ! -name "*.key" \) -exec chown app:app {} \;
+    find "${PROJECT_ROOT}" -type f -not \( -user "app" -a -group "app" -or -name "*.key" \) -exec chown "app:app" {} \;
 
-    # run the application as the app user
+    # run the service as the app user
     exec gosu app "$@"
 fi
 
