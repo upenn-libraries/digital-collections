@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import Viewer from "@samvera/clover-iiif/viewer";
 import { Controller } from "@hotwired/stimulus";
 
-import Panel from "../components/table_of_contents/panel.jsx";
+import Panel from "../components/table_of_contents/Panel";
 
 const options = {
   showTitle: false,
