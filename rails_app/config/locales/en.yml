@@ -74,7 +74,18 @@ en:
       singular: 'result'
       none: 'No results'
   show:
-    assets:
-      download:
-        access: 'Download Access Copy'
-        preservation: 'Download Original (%{size})'
+    download_and_share:
+      button: 'Download and share'
+      h2: 'Download and share'
+      non_iiif_assets:
+        download:
+          access: 'Small'
+          preservation: 'Original'
+      pdf:
+        button: 'Download all %{count} images'
+        download: 'PDF'
+      iiif_manifest:
+        button: 'IIIF Manifest'
+        body: 'What is IIIF?'
+      find:
+        button: 'Find this item'
