@@ -5,7 +5,7 @@
     "esbuild": "^0.25.6"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --alias:@components=./app/javascript/components",
     "dev-server": "yarn build --watch"
   },
   "dependencies": {
