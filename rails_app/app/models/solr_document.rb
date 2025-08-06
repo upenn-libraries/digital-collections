@@ -27,6 +27,20 @@ class SolrDocument
     fetch(:has_iiif_manifest_bsi, false)
   end
 
+  # Returns true if PDF is available
+  #
+  # @return [Boolean]
+  def pdf?
+    fetch(:has_pdf_bsi, false)
+  end
+
+  # PDF URL
+  #
+  # @return [String]
+  def pdf_url
+    "#{Settings.digital_repository.url}#{Settings.digital_repository.api.resource.path}/#{id}/pdf"
+  end
+
   # IIIF manifest URL.
   #
   # @return [String]
@@ -39,5 +53,10 @@ class SolrDocument
     assets = fetch(:non_iiif_asset_listing_ss, '[]')
 
     JSON.parse assets
+  end
+
+  # @return [Hash]
+  def pdf
+    JSON.parse fetch(:pdf_ss, '{}')
   end
 end
