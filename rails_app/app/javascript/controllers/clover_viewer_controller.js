@@ -25,16 +25,26 @@ export default class CloverViewerController extends Controller {
     url: String,
   };
 
-  connect() {
+  async connect() {
     const root = createRoot(this.element);
-    root.render(this.getViewer(this.urlValue));
+    const viewer = await this.getViewer();
+    root.render(viewer);
   }
 
-  getViewer(url) {
+  async prefetchManifest(url) {
+    const response = await fetch(url);
+    const manifest = await response.json();
+    return manifest;
+  }
+
+  async getViewer() {
+    const manifest = await this.prefetchManifest(this.urlValue);
+    const hasStructures = manifest.structures && manifest.structures.length > 0;
+
     return createElement(Viewer, {
-      iiifContent: url,
+      iiifContent: manifest,
       options: options,
-      plugins: [contentsPlugin],
+      plugins: hasStructures ? [contentsPlugin] : [],
     });
   }
 }
