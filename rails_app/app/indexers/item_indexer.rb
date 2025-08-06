@@ -81,5 +81,7 @@ class ItemIndexer
   def add_derivative_information(document)
     document[:has_preview_bsi] = data.dig(:derivatives, :preview).present?
     document[:has_iiif_manifest_bsi] = data.dig(:derivatives, :iiif_manifest).present?
+    document[:has_pdf_bsi] = data.dig(:derivatives, :pdf).present?
+    document[:pdf_ss] = data.dig(:derivatives, :pdf).to_json
   end
 end
