@@ -48,6 +48,11 @@ class SolrDocument
     "#{Settings.digital_repository.url}/iiif/items/#{id}/manifest"
   end
 
+  # @return [Integer]
+  def iiif_image_count
+    fetch(:iiif_image_count_isi, 0)
+  end
+
   # @return [Array<Hash>]
   def non_iiif_assets
     assets = fetch(:non_iiif_asset_listing_ss, '[]')
