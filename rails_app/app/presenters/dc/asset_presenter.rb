@@ -5,8 +5,9 @@ module DC
   class AssetPresenter
     attr_reader :asset
 
+    # @param asset [Hash]
     def initialize(asset:)
-      @asset = asset
+      @asset = asset.deep_stringify_keys
     end
 
     # @return [String, Nil]
