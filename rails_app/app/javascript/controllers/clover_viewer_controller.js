@@ -4,16 +4,25 @@ import Viewer from "@samvera/clover-iiif/viewer";
 import { Controller } from "@hotwired/stimulus";
 
 import Panel from "@components/table_of_contents/Panel";
+import Button from "@components/table_of_contents/Button";
 
 const options = {
   showTitle: false,
+  showDownload: false,
+  showIIIFBadge: false,
   informationPanel: {
     open: false,
+    renderToggle: false,
   },
 };
 
 const contentsPlugin = {
-  id: "TOCList",
+  id: "toc-list",
+  imageViewer: {
+    controls: {
+      component: Button,
+    },
+  },
   informationPanel: {
     component: Panel,
     label: { none: ["Table of Contents"] },

@@ -14,6 +14,7 @@ export default function Panel({ useViewerDispatch, useViewerState }) {
   const listStyleClasses = ["list-unstyled", "list-group"];
   const entryStyleClasses = ["list-group-item", "list-group-item-action"];
 
+	// update the viewer state to display canvas attached to TOC entry
   const handleClick = (targetCanvas) => {
     dispatch({
       type: "updateActiveCanvas",
