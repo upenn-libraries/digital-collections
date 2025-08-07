@@ -1,0 +1,4 @@
+---
+traefik_dashboard_enable: true
+traefik_network_aliases:
+  - "{{ solr_proxy_host }}"

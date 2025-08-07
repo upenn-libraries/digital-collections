@@ -1,0 +1,7 @@
+---
+zookeeper_custom_env_variables:
+  ZOO_LOG_LEVEL: DEBUG
+
+zookeeper_docker_image_tag: "3.9.3"
+
+zookeeper_instances: 1

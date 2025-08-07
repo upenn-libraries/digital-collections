@@ -1,0 +1,4 @@
+---
+chrome_app_path: "/digital-collections/rails_app"
+chrome_docker_network: "traefik"
+chrome_docker_stack_name: "digital_collections"

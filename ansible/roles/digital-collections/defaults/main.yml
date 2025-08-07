@@ -1,0 +1,16 @@
+---
+digital_collections_base_image_name: "ruby"
+digital_collections_base_image_tag: "3.4.2-slim-bookworm"
+digital_collections_build_docker_image: false
+digital_collections_image_name: "digital_collections"
+digital_collections_image_registry: "gitlab.library.upenn.edu/dld/digital-repository/digital_collections"
+digital_collections_image_tag: "main-development"
+digital_collections_port: 3000
+digital_collections_rails_env: "development"
+digital_collections_replicas: 1
+digital_collections_url: "digitalcollections-dev.library.upenn.edu"
+digital_collections_solr_url: http://digitalcollections-dev.library.upenn.int/solr/digital-collections-development
+
+digital_collections_docker_buildx_config_path: "/tmp/buildkit"
+digital_collections_docker_buildx_config_file: "buildkitd.default.toml"
+digital_collections_docker_buildx_config: "{{ digital_collections_docker_buildx_config_path }}/{{ digital_collections_docker_buildx_config_file }}"

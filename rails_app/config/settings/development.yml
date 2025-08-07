@@ -1,6 +1,5 @@
 solr:
-  url: <%= ENV.fetch('SOLR_URL', 'http://127.0.0.1:8983/solr/digital-collections-development') %>
+  url: <%= DockerSecrets.lookup(:solr_url, ENV.fetch('SOLR_URL', 'http://127.0.0.1:8983/solr/digital-collections-development')) %>
 redis:
-  username: ''
-  password: ''
-
+  username: <%= DockerSecrets.lookup(:redis_username, ENV.fetch('REDIS_USERNAME', '')) %>
+  password: <%= DockerSecrets.lookup(:redis_password, ENV.fetch('REDIS_PASSWORD', '')) %>

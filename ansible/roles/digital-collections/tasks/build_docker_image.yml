@@ -1,0 +1,62 @@
+---
+- name: Configure Docker Buildkit daemon
+  block:
+    - name: Create Buildkit daemon configuration directory
+      ansible.builtin.file:
+        path: "{{ digital_collections_docker_buildx_config_path }}"
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+    - name: Create configuration file
+      ansible.builtin.copy:
+        content: |
+          [registry."docker.io"]
+            mirrors = ["registry-mirror.library.upenn.int:5000"]
+            http = true
+            insecure = true
+          [registry."registry-mirror.library.upenn.int:5000"]
+            http = true
+            insecure = true
+        dest: "{{ digital_collections_docker_buildx_config }}"
+        owner: root
+        group: root
+        mode: '0644'
+
+- name: Get NodeJS and Yarn versions from .tool-versions
+  block:
+    - name: Read .tool-versions
+      ansible.builtin.set_fact:
+        tool_versions_content: "{{ lookup('ansible.builtin.file', '/digital-collections/rails_app/.tool-versions') }}"
+    - name: Extract the NodeJS version
+      ansible.builtin.set_fact:
+        nodejs_version: "{{ tool_versions_content | regex_search('nodejs\\s+(\\S+)', '\\1') | first }}"
+    - name: Extract the Yarn version
+      ansible.builtin.set_fact:
+        yarn_version: "{{ tool_versions_content | regex_search('yarn\\s+(\\S+)', '\\1') | first }}"
+
+- name: Create custom docker image
+  community.docker.docker_image_build:
+    name: "{{ digital_collections_image_name }}"
+    tag: "{{ digital_collections_image_tag }}"
+    path: "/digital-collections/rails_app"
+    dockerfile: "/digital-collections/rails_app/Dockerfile"
+    outputs:
+      - type: image
+    target: "development"
+    secrets:
+      - id: sidekiq_pro_credentials
+        type: value
+        value: "{{ dld_sidekiq_pro_vault_values.secret.credentials }}"
+    rebuild: "{{ 'always' if (digital_collections_build_docker_image | default(false, true)) else 'never' }}"
+    args:
+      IMAGE_NAME: "{{ digital_collections_base_image_name }}"
+      IMAGE_TAG: "{{ digital_collections_base_image_tag }}"
+      NODE_VERSION: "{{ nodejs_version }}"
+      RAILS_ENV: "{{ digital_collections_rails_env }}"
+      YARN_VERSION: "{{ yarn_version }}"
+    cache_from:
+      - "{{ digital_collections_base_image_name }}:{{ digital_collections_base_image_tag }}"
+      - "{{ digital_collections_image_name }}:{{ digital_collections_image_tag }}"
+  environment:
+    BUILDX_CONFIG: "{{ digital_collections_docker_buildx_config_path }}"

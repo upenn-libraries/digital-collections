@@ -1,0 +1,136 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+version: '3.8'
+
+services:
+  digital_collections:
+    image: "{{ digital_collections_image_name }}:{{ digital_collections_image_tag }}"
+    command: ["bundle", "exec", "puma", "-b", "tcp://0.0.0.0:{{ digital_collections_port }}"]
+    deploy:
+      labels:
+        - "traefik.enable=true"
+
+        - "traefik.http.routers.digital_collections.entrypoints=web"
+        - "traefik.http.routers.digital_collections.rule=Host(`{{ digital_collections_url }}`)"
+        - "traefik.http.routers.digital_collections.service=digital_collections"
+        - "traefik.http.services.digital_collections.loadbalancer.server.port={{ digital_collections_port }}"
+
+        {% if is_development == true %}
+        - "traefik.http.routers.digital_collections.middlewares=digital_collections_https"
+        - "traefik.http.middlewares.digital_collections_https.redirectscheme.scheme=https"
+        - "traefik.http.middlewares.digital_collections_https.redirectscheme.permanent=true"
+
+        - "traefik.http.routers.digital_collections_secure.entrypoints=websecure"
+        - "traefik.http.routers.digital_collections_secure.rule=Host(`{{ digital_collections_url }}`)"
+        - "traefik.http.routers.digital_collections_secure.service=digital_collections_secure"
+        - "traefik.http.services.digital_collections_secure.loadbalancer.server.port={{ digital_collections_port }}"
+
+        - "traefik.http.routers.digital_collections_secure.tls=true"
+        - "traefik.http.routers.digital_collections_secure.tls.certresolver=letsencrypt"
+        {% endif %}
+
+      placement:
+        constraints:
+          - "node.labels.digital_collections == true"
+      replicas: {{ digital_collections_replicas }}
+      update_config:
+        order: "start-first"
+        parallelism: 1
+    environment:
+      {% if is_development == true %}
+      UID: ${UID:-1000}
+      GID: ${GID:-1000}
+      CHROME_URL: "http://chrome:{{ chrome_port }}"
+      {% endif %}
+      DATABASE_HOST: "postgres"
+      DATABASE_NAME: "{{ postgres_database_name }}"
+      DATABASE_PASSWORD: /run/secrets/database_password
+      DATABASE_USER: "{{ postgres_database_user }}"
+      APP_URL: "{{ digital_collections_url }}"
+      APP_IMAGE_TAG:  "{{ digital_collections_image_tag }}"
+      RAILS_ENV: "{{ digital_collections_rails_env }}"
+      REDIS_USER: "sidekiq"
+      REDIS_URL: "redis://redis:{{ redis_port }}/0"
+      RAILS_LOG_TO_STDOUT: "true"
+      RAILS_SERVE_STATIC_FILES: "true"
+      SOLR_BACKUP_LOCATION: "solr/backups"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -fsSL localhost:{{ digital_collections_port }}|| exit 1",
+        ]
+      interval: 10s
+      {% if is_development == false %}
+      retries: 6
+      start_period: 60s
+      timeout: 120s
+      {% elif is_development == true %}
+      retries: 20
+      start_period: 5m
+      timeout: 10s
+      {% endif %}
+    networks:
+      - database
+      - redis
+      - traefik
+    secrets:
+      - database_password
+      - source: rails_master_key
+        target: /home/app/config/credentials/{{ digital_collections_rails_env }}.key
+        uid: "${UID:-1000}"
+        gid: "${GID:-1000}"
+        mode: 0440
+      - redis_password
+      - solr_url
+      {% if is_development == false %}
+      - honeybadger_api_key
+      {% elif is_development == true %}
+      - sidekiq_pro_credentials
+      {% endif %}
+    volumes:
+      {% if is_development == true %}
+      - /digital-collections/rails_app/:/home/app
+      {% else %}
+      - app_storage:/home/app/storage
+      {% endif %}
+
+networks:
+  database:
+    external: true
+    name: "{{ postgres_network }}"
+  redis:
+    external: true
+    name: "{{ redis_network }}"
+  traefik:
+    external: true
+    name: "{{ traefik_network_name }}"
+
+secrets:
+  database_password:
+    external: true
+    name: "{{ 'digital_collections_postgres_password_v' ~ digital_collections_vault_values.metadata.version }}"
+  rails_master_key:
+    external: true
+    name: "{{ 'digital_collections_rails_master_key_v' ~ digital_collections_vault_values.metadata.version }}"
+  redis_password:
+    external: true
+    name: "{{ 'digital_collections_redis_sidekiq_password_v' ~ redis_users | selectattr('name', 'equalto', 'sidekiq') | map(attribute='version')  | join('') }}"
+  {% if is_development == false %}
+  honeybadger_api_key:
+    external: true
+    name: "{{ 'digital_collections_honeybadger_api_key_v' ~ digital_collections_vault_values.metadata.version }}"
+  {% elif is_development == true %}
+  sidekiq_pro_credentials:
+    external: true
+    name: "{{ 'digital_collections_sidekiq_pro_credentials_v' ~ dld_sidekiq_pro_vault_values.metadata.version }}"
+  {% endif %}
+  solr_url:
+    external: true
+    name: "{{ 'digital_collections_solr_url_v' ~ digital_collections_versioned_secrets.solr_url.version }}"
+
+{% if is_development == false %}
+volumes:
+  app_storage:
+    external: true
+    name: app_storage
+{% endif %}
