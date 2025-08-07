@@ -48,8 +48,7 @@ services:
       APP_URL: "{{ digital_collections_url }}"
       APP_IMAGE_TAG:  "{{ digital_collections_image_tag }}"
       RAILS_ENV: "{{ digital_collections_rails_env }}"
-      REDIS_SIDEKIQ_USER: "sidekiq"
-      REDIS_SIDEKIQ_PASSWORD: "{{ 'redis_sidekiq_password_v' ~ redis_users | selectattr('name', 'equalto', 'sidekiq') | map(attribute='version')  | join('') }}"
+      REDIS_USER: "sidekiq"
       REDIS_URL: "redis://redis:{{ redis_port }}/0"
       RAILS_LOG_TO_STDOUT: "true"
       RAILS_SERVE_STATIC_FILES: "true"
@@ -81,7 +80,7 @@ services:
         uid: "${UID:-1000}"
         gid: "${GID:-1000}"
         mode: 0440
-      - redis_sidekiq_password
+      - redis_password
       - solr_url
       {% if is_development == false %}
       - honeybadger_api_key
@@ -113,7 +112,7 @@ secrets:
   rails_master_key:
     external: true
     name: "{{ 'digital_collections_rails_master_key_v' ~ digital_collections_vault_values.metadata.version }}"
-  redis_sidekiq_password:
+  redis_password:
     external: true
     name: "{{ 'digital_collections_redis_sidekiq_password_v' ~ redis_users | selectattr('name', 'equalto', 'sidekiq') | map(attribute='version')  | join('') }}"
   {% if is_development == false %}
