@@ -1,0 +1,4 @@
+---
+zookeeper_docker_image_tag: "3.9.3"
+
+zookeeper_instances: 1
