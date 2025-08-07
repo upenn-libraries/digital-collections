@@ -95,8 +95,8 @@ Vagrant.configure("2") do |config|
 
   config.hostsupdater.aliases = {
     "172.20.128.2" => [
-      "digital-collections-dev.library.upenn.edu",
-      "digital-collections-dev.library.upenn.int"
+      "digitalcollections-dev.library.upenn.edu",
+      "digitalcollections-dev.library.upenn.int"
     ]
   }
 end

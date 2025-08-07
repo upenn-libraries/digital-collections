@@ -1,7 +1,6 @@
 ---
 is_development: true
 
-# Variables for Vault
 digital_collections_vault_values: "{{ lookup('community.hashi_vault.vault_kv2_get', 'digital-collections/development', engine_mount_point='kv-applications') }}"
 dld_sidekiq_pro_vault_values: "{{ lookup('community.hashi_vault.vault_kv2_get', 'sidekiq_pro', engine_mount_point='dld') }}"
 
