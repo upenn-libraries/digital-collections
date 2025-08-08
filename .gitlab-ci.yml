@@ -1,5 +1,6 @@
 variables:
   GIT_CLONE_PATH: "${CI_BUILDS_DIR}/${CI_PROJECT_NAME}/${CI_JOB_ID}"
+  VAULT_AUTH_ROLE_SIDEKIQ: "sidekiq_pro_ro"
 
 include:
   # Rails tests
@@ -109,7 +110,7 @@ build_and_push_docker_images_base:
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
   variables:
-    VAULT_AUTH_ROLE: ${VAULT_SIDEKIQ_ENDPOINT}
+    VAULT_AUTH_ROLE: ${VAULT_AUTH_ROLE_SIDEKIQ}
 
 build_and_push_docker_images_development:
   extends:
@@ -120,7 +121,7 @@ build_and_push_docker_images_development:
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
   variables:
-    VAULT_AUTH_ROLE: ${VAULT_SIDEKIQ_ENDPOINT}
+    VAULT_AUTH_ROLE: ${VAULT_AUTH_ROLE_SIDEKIQ}
 
 build_and_push_docker_images_production:
   extends:
@@ -131,7 +132,7 @@ build_and_push_docker_images_production:
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
   variables:
-    VAULT_AUTH_ROLE: ${VAULT_SIDEKIQ_ENDPOINT}
+    VAULT_AUTH_ROLE: ${VAULT_AUTH_ROLE_SIDEKIQ}
 
 # Rails tests
 rspec_app_test:
