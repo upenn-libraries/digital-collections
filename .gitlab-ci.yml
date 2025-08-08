@@ -108,6 +108,8 @@ build_and_push_docker_images_base:
     - !reference [.vault_jwt_auth, before_script]
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
+  variables:
+    VAULT_AUTH_ROLE: ${VAULT_SIDEKIQ_ENDPOINT}
 
 build_and_push_docker_images_development:
   extends:
@@ -117,6 +119,8 @@ build_and_push_docker_images_development:
     - !reference [.vault_jwt_auth, before_script]
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
+  variables:
+    VAULT_AUTH_ROLE: ${VAULT_SIDEKIQ_ENDPOINT}
 
 build_and_push_docker_images_production:
   extends:
@@ -126,6 +130,8 @@ build_and_push_docker_images_production:
     - !reference [.vault_jwt_auth, before_script]
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
+  variables:
+    VAULT_AUTH_ROLE: ${VAULT_SIDEKIQ_ENDPOINT}
 
 # Rails tests
 rspec_app_test:
