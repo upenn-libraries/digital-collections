@@ -14,9 +14,9 @@ include:
     inputs:
       job_image_tag: "28-dind"
       docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
-      docker_build_context: "{CI_PROJECT_DIR}/rails_app/"
+      docker_build_context: "rails_app/"
       docker_target: "base"
-      dockerfile_path: "${CI_PROJECT_DIR}/rails_app/"
+      dockerfile_path: "$rails_app/"
       job_suffix: "_base"
       stage: "build_base"
 
@@ -25,9 +25,9 @@ include:
     inputs:
       job_image_tag: "28-dind"
       docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
-      docker_build_context: "{CI_PROJECT_DIR}/rails_app/"
+      docker_build_context: "rails_app/"
       docker_target: "development"
-      dockerfile_path: "${CI_PROJECT_DIR}/rails_app/"
+      dockerfile_path: "rails_app/"
       job_suffix: "_development"
       stage: "build_development"
 
@@ -36,9 +36,9 @@ include:
     inputs:
       job_image_tag: "28-dind"
       docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
-      docker_build_context: "{CI_PROJECT_DIR}/rails_app/"
+      docker_build_context: "rails_app/"
       docker_target: "production"
-      dockerfile_path: "${CI_PROJECT_DIR}/rails_app/"
+      dockerfile_path: "$rails_app/"
       job_suffix: "_production"
       stage: "build_production"
 
@@ -156,7 +156,7 @@ rspec_app_test:
     SOLR_TEST_URL: "http://solr:8983/solr/digital-collections-test"
   script:
     - apt-get update && apt-get -y install zip
-    - cd ${CI_PROJECT_DIR}/rails_app/
+    - cd $rails_app/
     - bundle add rspec_junit_formatter
     - bundle exec rake db:migrate
     - >
@@ -197,7 +197,7 @@ rubocop_app_test:
   extends:
     - .rubocop
   before_script:
-    - cd ${CI_PROJECT_DIR}/rails_app/
+    - cd $rails_app/
   rules:
     - if: $DISABLE_RUBOCOP == "true"
       when: never
