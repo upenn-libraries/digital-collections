@@ -35,7 +35,7 @@ describe DC::AssetPresenter do
   describe '#access_file_extension' do
     subject { presenter.access_file_extension }
 
-    it { is_expected.to eq '.mp4v' }
+    it { is_expected.to eq '.mp4' }
   end
 
   describe '#access_file_size' do
