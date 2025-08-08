@@ -161,7 +161,7 @@ rspec_app_test:
         CONNECTION_TIMEOUT: 600000
     - name: postgres:17.5
       variables:
-        POSTGRES_DB: "digitalcollections_test"
+        POSTGRES_DB: "digital_collections_test"
         POSTGRES_PASSWORD: "rspec_test"
         POSTGRES_USER: "rspec_test"
     - name: bitnami/solr:9.8.1
