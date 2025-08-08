@@ -166,6 +166,19 @@ rspec_app_test:
         POSTGRES_USER: "rspec_test"
     - name: bitnami/solr:9.8.1
       alias: solr
+      entrypoint: [""]
+      command: [
+        "/bin/bash",
+        "-c",
+        "./opt/bitnami/scripts/solr/entrypoint.sh /opt/bitnami/scripts/solr/run.sh & \n
+            for ((i = 0; i <= 9; i += 1)); do \n
+              curl --silent 'http://solr:8983/api/' && break; \n
+              echo 'Waiting for solr api to be ready'; \n
+              sleep '10s'; \n
+            done & \n
+            /opt/bitnami/solr/bin/solr zk upconfig -z 'zookeeper-1:2181/solr' -n 'digital-collections' -d 'rails_app/solr/conf' & \n
+            curl --user 'admin:bitnami solr-1:8983/solr/admin/collections?action=CREATE&name=digital-collections-test&collection.configName=digital-collections&numShards=1&replicationFactor=1'"
+      ]
       variables:
         SOLR_CLOUD_BOOTSTRAP: "yes"
         SOLR_ENABLE_AUTHENTICATION: "yes"
@@ -174,6 +187,11 @@ rspec_app_test:
         SOLR_MODE: "solrcloud"
         SOLR_OPTS: "-Dsolr.disableConfigSetsCreateAuthChecks=true"
         ZK_CREATE_CHROOT: "true"
+        SOLR_AUTH_TYPE: "basic"
+        SOLR_AUTHENTICATION_OPTS: "-Dbasicauth=admin:bitnami"
+    
+
+        ZK_SCRIPT_LOCATION: "/opt/bitnami/solr/server/scripts/cloud-scripts"
   extends:
     - .rspec
   variables:
@@ -189,19 +207,15 @@ rspec_app_test:
     RAILS_SYSTEM_TESTING_SCREENSHOT_HTML: "1"
     SOLR_URL: "http://solr:8983/solr/digital-collections-test"
   script:
-    - apt-get update && apt-get -y install zip
-    - cd rails_app/
-    - bundle add rspec_junit_formatter
-    - bundle exec rake db:migrate
     - >
       for ((i = 0; i <= 9; i += 1)); do
         curl --silent "http://solr:8983/api/" "-H" "'Content-type:application/json'" && break
         echo "Waiting for solr api to be ready"
-        sleep "30s"
+        sleep "10s"
       done
-    - (cd ./solr/conf && zip -r - *) > configset.zip
-    - curl -X POST --user "admin:Bitnami" --header "Content-Type:application/octet-stream" --data-binary @configset.zip "http://solr:8983/solr/admin/configs?action=UPLOAD&name=digital-collections"
-    - curl -v --user "admin:Bitnami" "http://solr:8983/solr/admin/collections?action=CREATE&name=digital-collections-test&collection.configName=digital-collections&numShards=1"
+    - cd rails_app/
+    - bundle add rspec_junit_formatter
+    - bundle exec rake db:migrate
     - bundle exec rspec --format progress --format RspecJunitFormatter --out rspec.xml
   needs:
     - amend_manifest_development
