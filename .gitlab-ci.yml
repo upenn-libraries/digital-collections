@@ -36,6 +36,8 @@ include:
       docker_target: "development"
       dockerfile_path: "rails_app/"
       job_suffix: "_development"
+      needs_build:
+        - "amend_manifest_base"
       stage: "build_development"
 
   # Prod image
@@ -48,6 +50,8 @@ include:
       docker_target: "production"
       dockerfile_path: "rails_app/"
       job_suffix: "_production"
+      needs_build:
+        - "amend_manifest_base"
       stage: "build_production"
 
   # Sast
@@ -63,6 +67,8 @@ include:
     inputs:
       needs:
         - trivy_scan
+        - rspec_app_test
+        - rubocop_app_test
 
   # Remove tmp registry repository
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/remove_tmp_registry@~latest
