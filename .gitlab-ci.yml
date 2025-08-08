@@ -25,7 +25,6 @@ include:
       dockerfile_path: "rails_app/"
       job_suffix: "_base"
       stage: "build_base"
-      tag_with_docker_target: true
 
   # Dev image
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
@@ -38,7 +37,6 @@ include:
       dockerfile_path: "rails_app/"
       job_suffix: "_development"
       stage: "build_development"
-      tag_with_docker_target: true
 
   # Prod image
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
@@ -51,7 +49,6 @@ include:
       dockerfile_path: "rails_app/"
       job_suffix: "_production"
       stage: "build_production"
-      tag_with_docker_target: true
 
   # Sast
   - component: $CI_SERVER_FQDN/devops/gitlab/components/sast/trivy@~latest
@@ -181,7 +178,7 @@ rspec_app_test:
     SOLR_TEST_URL: "http://solr:8983/solr/digital-collections-test"
   script:
     - apt-get update && apt-get -y install zip
-    - cd $rails_app/
+    - cd rails_app/
     - bundle add rspec_junit_formatter
     - bundle exec rake db:migrate
     - >
@@ -222,7 +219,7 @@ rubocop_app_test:
   extends:
     - .rubocop
   before_script:
-    - cd $rails_app/
+    - cd rails_app/
   rules:
     - if: $DISABLE_RUBOCOP == "true"
       when: never
