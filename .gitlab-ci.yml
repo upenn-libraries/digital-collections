@@ -177,7 +177,7 @@ rspec_app_test:
               sleep '10s'; \n
             done & \n
             /opt/bitnami/solr/bin/solr zk upconfig -z 'zookeeper-1:2181/solr' -n 'digital-collections' -d 'rails_app/solr/conf' & \n
-            curl --user 'admin:bitnami' 'solr-1:8983/solr/admin/collections?action=CREATE&name=digital-collections-test&collection.configName=digital-collections&numShards=1&replicationFactor=1'"
+            curl --user 'admin:bitnami' 'solr:8983/solr/admin/collections?action=CREATE&name=digital-collections-test&collection.configName=digital-collections&numShards=1&replicationFactor=1'"
       ]
       variables:
         SOLR_CLOUD_BOOTSTRAP: "yes"
