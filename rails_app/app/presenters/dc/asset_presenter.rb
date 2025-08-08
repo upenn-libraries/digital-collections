@@ -70,11 +70,11 @@ module DC
     end
 
     # @param mime_type [String]
-    # @return [String]
+    # @return [String, Nil]
     def mime_extension(mime_type)
       return unless mime_type
 
-      Rack::Mime::MIME_TYPES.invert[mime_type]
+      MIME::Types[mime_type].first&.preferred_extension
     end
   end
 end
