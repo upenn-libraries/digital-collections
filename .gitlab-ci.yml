@@ -171,13 +171,13 @@ rspec_app_test:
         "/bin/bash",
         "-c",
         "./opt/bitnami/scripts/solr/entrypoint.sh /opt/bitnami/scripts/solr/run.sh & \n
-            for ((i = 0; i <= 9; i += 1)); do \n
-              curl --silent 'http://solr:8983/api/' && break; \n
-              echo 'Waiting for solr api to be ready'; \n
-              sleep '10s'; \n
-            done & \n
-            /opt/bitnami/solr/bin/solr zk upconfig -z 'zookeeper-1:2181/solr' -n 'digital-collections' -d 'rails_app/solr/conf' & \n
-            curl --user 'admin:bitnami' 'solr:8983/solr/admin/collections?action=CREATE&name=digital-collections-test&collection.configName=digital-collections&numShards=1&replicationFactor=1'"
+          for ((i = 0; i <= 9; i += 1)); do \n
+            /opt/bitnami/solr/bin/solr assert --started http://solr:8983 && break; \n
+            echo 'Waiting for solr api to be ready'; \n
+            sleep '10s'; \n
+          done & \n
+          /opt/bitnami/solr/bin/solr zk upconfig -z 'zookeeper-1:2181/solr' -n 'digital-collections' -d 'rails_app/solr/conf' & \n
+          /opt/bitnami/solr/bin/solr create -c digital-collections-test -n digital-collections -p 8983"
       ]
       variables:
         SOLR_CLOUD_BOOTSTRAP: "yes"
