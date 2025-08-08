@@ -1,4 +1,5 @@
 variables:
+  FF_SCRIPT_SECTIONS: "true"
   GIT_CLONE_PATH: "${CI_BUILDS_DIR}/${CI_PROJECT_NAME}/${CI_JOB_ID}"
   VAULT_AUTH_ROLE_SIDEKIQ: "sidekiq_pro_ro"
 
