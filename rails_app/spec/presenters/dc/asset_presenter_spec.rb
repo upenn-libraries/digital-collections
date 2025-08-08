@@ -40,9 +40,7 @@ describe DC::AssetPresenter do
 
   describe '#access_file_size' do
     it 'returns the access derivative file size' do
-      file_size = ActiveSupport::NumberHelper.number_to_human_size(asset[:derivatives][:access][:size_bytes],
-                                                                   prefix: :si)
-      expect(presenter.access_file_size).to eq file_size
+      expect(presenter.access_file_size).to eq '322 KB'
     end
   end
 
@@ -60,8 +58,7 @@ describe DC::AssetPresenter do
 
   describe '#preservation_file_size' do
     it 'returns the preservation file size' do
-      file_size = ActiveSupport::NumberHelper.number_to_human_size(asset[:preservation_file][:size_bytes], prefix: :si)
-      expect(presenter.preservation_file_size).to eq file_size
+      expect(presenter.preservation_file_size).to eq '570 MB'
     end
   end
 end
