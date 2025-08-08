@@ -35,7 +35,7 @@ describe DC::AssetPresenter do
   describe '#access_file_extension' do
     subject { presenter.access_file_extension }
 
-    it { is_expected.to eq '.mp4' }
+    it { is_expected.to eq 'mp4' }
   end
 
   describe '#access_file_size' do
@@ -55,7 +55,7 @@ describe DC::AssetPresenter do
   describe '#preservation_file_extension' do
     subject { presenter.preservation_file_extension }
 
-    it { is_expected.to eq '.mov' }
+    it { is_expected.to eq 'mov' }
   end
 
   describe '#preservation_file_size' do

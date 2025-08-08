@@ -43,7 +43,8 @@ module DC
 
     # @return [String, Nil]
     def preservation_file_extension
-      Pathname.new(filename).extname.presence || mime_extension(preservation_file['mime_type'])
+      Pathname.new(filename).extname.tr('.',
+                                        '').presence || mime_extension(preservation_file['mime_type'])
     end
 
     # @return [String, Nil]
