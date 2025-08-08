@@ -13,7 +13,10 @@ include:
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
     inputs:
       job_image_tag: "28-dind"
+      docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
+      docker_build_context: "{CI_PROJECT_DIR}/rails_app/"
       docker_target: "base"
+      dockerfile_path: "${CI_PROJECT_DIR}/rails_app/"
       job_suffix: "_base"
       stage: "build_base"
 
@@ -21,7 +24,10 @@ include:
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
     inputs:
       job_image_tag: "28-dind"
+      docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
+      docker_build_context: "{CI_PROJECT_DIR}/rails_app/"
       docker_target: "development"
+      dockerfile_path: "${CI_PROJECT_DIR}/rails_app/"
       job_suffix: "_development"
       stage: "build_development"
 
@@ -29,7 +35,10 @@ include:
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
     inputs:
       job_image_tag: "28-dind"
+      docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
+      docker_build_context: "{CI_PROJECT_DIR}/rails_app/"
       docker_target: "production"
+      dockerfile_path: "${CI_PROJECT_DIR}/rails_app/"
       job_suffix: "_production"
       stage: "build_production"
 
