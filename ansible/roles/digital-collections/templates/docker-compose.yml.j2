@@ -57,7 +57,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "curl -fsSL localhost:{{ digital_collections_port }}|| exit 1",
+          "curl -fsSL localhost:{{ digital_collections_port }}/up || exit 1",
         ]
       interval: 10s
       {% if is_development == false %}
