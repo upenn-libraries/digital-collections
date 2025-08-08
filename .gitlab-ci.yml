@@ -16,7 +16,7 @@ include:
       docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
       docker_build_context: "rails_app/"
       docker_target: "base"
-      dockerfile_path: "$rails_app/"
+      dockerfile_path: "rails_app/"
       job_suffix: "_base"
       stage: "build_base"
 
@@ -38,7 +38,7 @@ include:
       docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
       docker_build_context: "rails_app/"
       docker_target: "production"
-      dockerfile_path: "$rails_app/"
+      dockerfile_path: "rails_app/"
       job_suffix: "_production"
       stage: "build_production"
 
