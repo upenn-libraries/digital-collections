@@ -86,6 +86,8 @@ include:
     inputs:
       vault_auth_role: "${VAULT_AUTH_ROLE}"
 
+  - component: gitlab.library.upenn.edu/devops/gitlab/components/general/install_hashicorp_vault@~latest
+
 stages:
   - build_base
   - build_development
@@ -99,6 +101,7 @@ build_and_push_docker_images_base:
   extends:
     - .vault_jwt_auth
   before_script:
+    - !reference [.install_hashicorp_vault, before_script]
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
 
@@ -106,6 +109,7 @@ build_and_push_docker_images_development:
   extends:
     - .vault_jwt_auth
   before_script:
+    - !reference [.install_hashicorp_vault, before_script]
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
 
@@ -113,6 +117,7 @@ build_and_push_docker_images_production:
   extends:
     - .vault_jwt_auth
   before_script:
+    - !reference [.install_hashicorp_vault, before_script]
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
 
