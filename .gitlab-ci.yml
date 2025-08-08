@@ -65,10 +65,10 @@ include:
         - trivy_scan
 
   # Remove tmp registry repository
-  # - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/remove_tmp_registry@~latest
-  #   inputs:
-  #     needs:
-  #       - copy_docker_images
+  - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/remove_tmp_registry@~latest
+    inputs:
+      needs:
+        - copy_docker_images
 
   # Deploy staging
   - component: $CI_SERVER_FQDN/devops/gitlab/components/deploy/deploy@~latest
