@@ -102,6 +102,7 @@ build_and_push_docker_images_base:
     - .vault_jwt_auth
   before_script:
     - !reference [.install_hashicorp_vault, before_script]
+    - !reference [.vault_jwt_auth, before_script]
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
 
@@ -110,6 +111,7 @@ build_and_push_docker_images_development:
     - .vault_jwt_auth
   before_script:
     - !reference [.install_hashicorp_vault, before_script]
+    - !reference [.vault_jwt_auth, before_script]
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
 
@@ -118,6 +120,7 @@ build_and_push_docker_images_production:
     - .vault_jwt_auth
   before_script:
     - !reference [.install_hashicorp_vault, before_script]
+    - !reference [.vault_jwt_auth, before_script]
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
 
