@@ -25,7 +25,7 @@ const contentsPlugin = {
   },
   informationPanel: {
     component: EntriesPanel,
-    label: { none: ["Table of Contents"] },
+    label: { none: ["Table of contents"] },
   },
 };
 

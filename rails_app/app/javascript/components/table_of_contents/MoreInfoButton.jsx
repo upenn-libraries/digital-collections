@@ -72,6 +72,8 @@ export default function MoreInfoButton({ useViewerState, useViewerDispatch }) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={clickHandler}
+      aria-label="More info"
+      aria-expanded={viewerState.isInformationOpen}
     >
       {buttonIcon()}
     </button>
