@@ -58,7 +58,7 @@ en:
       explore: 'Explore Collections'
   collections:
     header: 'Collections'
-    description: 'Browse a complete list of all collections. Some digitized materials are not in a collection, but can be found by searching.'
+    description: 'Browse all digital collections in our A to Z list.'
   search:
     button:
       label: 'Find it'

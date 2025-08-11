@@ -11,6 +11,6 @@ module BlacklightHelper
   #
   # @return [String]
   def container_classes
-    %w[index collections].include?(action_name) ? 'container-fluid' : 'container'
+    %w[index collections home].include?(action_name) ? 'container-fluid' : 'container'
   end
 end
