@@ -3,8 +3,8 @@ import { createRoot } from "react-dom/client";
 import Viewer from "@samvera/clover-iiif/viewer";
 import { Controller } from "@hotwired/stimulus";
 
-import Panel from "@components/table_of_contents/Panel";
-import Button from "@components/table_of_contents/Button";
+import EntriesPanel from "@components/table_of_contents/EntriesPanel";
+import MoreInfoButton from "@components/table_of_contents/MoreInfoButton";
 
 const options = {
   showTitle: false,
@@ -20,11 +20,11 @@ const contentsPlugin = {
   id: "toc-list",
   imageViewer: {
     controls: {
-      component: Button,
+      component: MoreInfoButton,
     },
   },
   informationPanel: {
-    component: Panel,
+    component: EntriesPanel,
     label: { none: ["Table of Contents"] },
   },
 };

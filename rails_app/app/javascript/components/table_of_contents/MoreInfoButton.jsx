@@ -17,7 +17,7 @@ const buttonHoverStyles = {
   backgroundColor: "var(--colors-accent, #007bff)",
 };
 
-export default function Button({ useViewerState, useViewerDispatch }) {
+export default function MoreInfoButton({ useViewerState, useViewerDispatch }) {
   const [isHovered, setIsHovered] = useState(false);
   const viewerState = useViewerState();
   const dispatch = useViewerDispatch();
