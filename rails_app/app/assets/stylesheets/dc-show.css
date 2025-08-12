@@ -1,8 +1,4 @@
 .show-document {
-  /* display: flex;
-  flex-direction: column;
-  gap: var(--pl-space-2xl); */
-
   & .iiif-viewer-container {
     margin-top: var(--pl-space-base);
   }
