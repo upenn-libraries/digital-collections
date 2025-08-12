@@ -1,0 +1,22 @@
+.show-document {
+  /* display: flex;
+  flex-direction: column;
+  gap: var(--pl-space-2xl); */
+
+  & .iiif-viewer-container {
+    margin-top: var(--pl-space-base);
+  }
+
+  & .clover-viewer-painting > div[style] {
+    background: var(--pl-color-bg-subtle) !important;
+  }
+
+  & h1 {
+    margin-top: var(--pl-space-xl);
+  }
+
+  & .pl-dl {
+    margin-top: var(--pl-space-base);
+    margin-bottom: var(--pl-space-3xl);
+  }
+}
