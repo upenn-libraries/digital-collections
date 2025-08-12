@@ -24,3 +24,7 @@
     font-weight: 600;
   }
 }
+
+.clover-viewer-information-panel {
+  z-index: auto !important;
+}
