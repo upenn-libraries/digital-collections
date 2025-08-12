@@ -19,4 +19,8 @@
       text-underline-offset: var(--pl-link-text-underline-offset);
     }
   }
+
+  & button[aria-current="true"] {
+    font-weight: 600;
+  }
 }
