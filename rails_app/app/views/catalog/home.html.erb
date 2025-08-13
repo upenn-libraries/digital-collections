@@ -42,7 +42,7 @@
     </div>
 
     <%= render(CollectionListComponent.new(heading_tag: :h3)) do |component| %>
-      <% component.with_collections(Settings.collections.map(&:to_h).first(7)) %>
+      <% component.with_collections(Settings.collections.map(&:to_h).sample(7)) %>
     <% end %>
   </section>
 </div>
