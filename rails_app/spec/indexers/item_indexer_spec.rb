@@ -5,7 +5,7 @@ describe ItemIndexer do
     let(:uuid) { '62ad79cf-2264-4841-ae4e-84b58d66248e' }
 
     context 'with iiif assets' do
-      subject(:indexer) { build(:item_indexer) }
+      subject(:indexer) { described_class.new(build(:item_hash)) }
 
       it 'document contains expected fields' do
         expect(indexer.to_solr).to include(
@@ -41,7 +41,7 @@ describe ItemIndexer do
     end
 
     context 'with non-iiif assets' do
-      let(:indexer) { create(:item_indexer, :video) }
+      let(:indexer) { described_class.new(build(:item_hash, :video)) }
 
       it 'document contains expected fields' do
         expect(indexer.to_solr).to include(

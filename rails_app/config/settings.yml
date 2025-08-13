@@ -5,6 +5,7 @@ redis:
   url: <%= ENV.fetch('REDIS_URL', 'redis://127.0.0.1:6379/0') %>
 digital_repository:
   url: https://apotheca.library.upenn.edu
+  webhook_token: '12345'
   api:
     resource:
       path: /v1/items
@@ -36,3 +37,4 @@ digital_repository:
     - 35fb98ee-c707-419f-bad9-422f68b75647
     - ef51af07-3a9d-4863-afc6-c84169adae80
     - d16cae7e-e31c-4c86-96a5-ca307190d39e
+    - 53c931b0-f81b-4137-948d-d35c67b5d77d
