@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
+# Component for displaying one collection.
 class CollectionCardComponent < ViewComponent::Base
-  attr_reader :name, :representative_item
+  attr_reader :name, :representative_item, :header_tag
 
-  def initialize(name:, representative_item:)
+  def initialize(name:, representative_item:, header_tag: :h2)
     @name = name
     @representative_item = representative_item
+    @header_tag = header_tag
   end
 
   def collection_facet_url

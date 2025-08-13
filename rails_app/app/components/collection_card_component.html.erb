@@ -1,4 +1,6 @@
 <li>
   <img src="<%= preview_image_url %>">
-  <h3><%= link_to name, collection_facet_url %></h3>
+  <%= content_tag header_tag do %>
+    <%= link_to name, collection_facet_url %>
+  <% end %>
 </li>

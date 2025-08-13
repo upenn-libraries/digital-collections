@@ -41,7 +41,7 @@
       <%= link_to t("home.collections.explore"), collections_path, class: "pl-font-size-lg" %>
     </div>
 
-    <%= render(CollectionListComponent.new) do |component| %>
+    <%= render(CollectionListComponent.new(header_tag: :h3)) do |component| %>
       <% component.with_collections(Settings.collections.map(&:to_h).first(7)) %>
     <% end %>
   </section>
