@@ -147,8 +147,8 @@ class CatalogController < ApplicationController
     config.add_show_field :date_ssim, label: I18n.t('fields.work.date'), **DEFAULT_METADATA_FIELD_CONFIG
     config.add_show_field :language_ssim, label: I18n.t('fields.work.language'), **DEFAULT_METADATA_FIELD_CONFIG,
                                           link_to_facet: true
-    config.add_show_field :subject_ssim, label: I18n.t('fields.work.subject'), link_to_facet: true,
-                                         **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :subject_ssim, label: I18n.t('fields.work.subject'), **DEFAULT_METADATA_FIELD_CONFIG,
+                                         link_to_facet: true
     config.add_show_field :geographic_subject_ssim, label: I18n.t('fields.work.geographic_subject'),
                                                     **DEFAULT_METADATA_FIELD_CONFIG,
                                                     link_to_facet: true
