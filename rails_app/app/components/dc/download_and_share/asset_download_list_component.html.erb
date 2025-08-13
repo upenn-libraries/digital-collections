@@ -6,18 +6,12 @@
         <% if asset.access_derivative? %>
           <%= link_to(asset.access_file_url) do %>
             <%= t('show.download_and_share.non_iiif_assets.download.access') %>
-            <%= asset.access_file_extension %>
-            <% if asset.access_file_size %>
-              <small>— <%= asset.access_file_size %></small>
-            <% end %>
+            <span> — <%= asset.access_file_extension %><% if asset.access_file_size %> <small><%= asset.access_file_size %><% end %></small></span>
           <% end %>
         <% end %>
         <%= link_to(asset.preservation_file_url) do %>
           <%= t('show.download_and_share.non_iiif_assets.download.preservation') %>
-          <%= asset.preservation_file_extension %>
-          <% if asset.preservation_file_size %>
-            <small>— <%= asset.preservation_file_size %></small>
-          <% end %>
+          <span> — <%= asset.preservation_file_extension %><% if asset.preservation_file_size %> <small><%= asset.preservation_file_size %><% end %></small></span>
         <% end %>
       </span>
     </li>

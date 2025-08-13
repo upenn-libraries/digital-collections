@@ -87,8 +87,8 @@ en:
       h2: 'Download and share'
       non_iiif_assets:
         download:
-          access: 'Small'
-          preservation: 'Original'
+          access: 'Smaller file'
+          preservation: 'Original file'
       pdf:
         button: 'Download all %{count} images'
         download: 'PDF'
