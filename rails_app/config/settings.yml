@@ -9,6 +9,9 @@ digital_repository:
   api:
     resource:
       path: /v1/items
+digital_catalog:
+  url: find.library.upenn.edu
+  path: /catalog
   sample_records:
     - 362ba96f-2fab-4a35-bd42-98f6667da1d0
     - 375a37c2-0cc4-4512-86f0-9113d9c80ca8
