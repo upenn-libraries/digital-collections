@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function EntriesPanel({ useViewerDispatch, useViewerState }) {
+  const [activeEntry, setActiveEntry] = useState(null);
+
   const viewerState = useViewerState();
   const dispatch = useViewerDispatch();
 
@@ -10,12 +12,9 @@ export default function EntriesPanel({ useViewerDispatch, useViewerState }) {
     type: "Manifest",
   });
 
-  const containerStyle = { padding: "0px 1.618rem 2rem" };
-  const listStyleClasses = ["list-unstyled", "list-group"];
-  const entryStyleClasses = ["list-group-item", "list-group-item-action"];
-
   // update the viewer state to display canvas attached to TOC entry
   const handleClick = (targetCanvas) => {
+    setActiveEntry(targetCanvas.id);
     dispatch({
       type: "updateActiveCanvas",
       canvasId: targetCanvas.id,
@@ -23,20 +22,18 @@ export default function EntriesPanel({ useViewerDispatch, useViewerState }) {
   };
 
   return (
-    <div style={containerStyle}>
-      <ul className={listStyleClasses.join(" ")}>
-        {manifestData.structures.map((range) => (
-          <li key={range.id}>
-            <button
-              type="button"
-              className={entryStyleClasses.join(" ")}
-              onClick={() => handleClick(range.items[0])}
-            >
-              {range.label.none[0]}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ol className="dc-iiif-table-of-contents" style={{ margin: "0 1.618rem" }}>
+      {manifestData.structures.map((range) => (
+        <li key={range.id}>
+          <button
+            type="button"
+            onClick={() => handleClick(range.items[0])}
+            aria-current={activeEntry === range.items[0].id}
+          >
+            {range.label.none[0]}
+          </button>
+        </li>
+      ))}
+    </ol>
   );
 }

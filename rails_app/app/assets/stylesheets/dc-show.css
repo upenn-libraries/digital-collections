@@ -1,4 +1,23 @@
-.download-and-share-modal {
+.show-document {
+  & .iiif-viewer-container {
+    margin-top: var(--pl-space-base);
+  }
+
+  & .clover-viewer-painting > div[style] {
+    background: var(--pl-color-bg-subtle) !important;
+  }
+
+  & h1 {
+    margin-top: var(--pl-space-xl);
+  }
+
+  & .pl-dl {
+    margin-top: var(--pl-space-base);
+    margin-bottom: var(--pl-space-3xl);
+  }
+}
+
+.dc-download-and-share-modal {
   --bs-modal-padding: var(--pl-space-lg);
   --bs-modal-header-padding: var(--pl-space-lg);
 }
