@@ -37,9 +37,7 @@ en:
       resource_type: 'Resource Type'
       identifier: 'Identifier'
   header:
-    login: 'Log in'
     service_name: 'Digital Collections'
-    sign_out: 'Sign out'
   footer:
     digital_collections:
       heading: 'Digital Collections'
