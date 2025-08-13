@@ -15,6 +15,15 @@ module DC
 
       private
 
+      # @return [String, nil]
+      def iiif_image_count_text
+        count = @document.iiif_image_count
+        return unless count.positive?
+
+        locale_scope = 'show.download_and_share.pdf.button'
+        count == 1 ? t("#{locale_scope}.single_image") : t("#{locale_scope}.multiple_images", count: count)
+      end
+
       # @return [String, Nil]
       def pdf_size
         bytes = @document.pdf['size_bytes']

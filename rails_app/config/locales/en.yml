@@ -90,7 +90,9 @@ en:
           access: 'Smaller file'
           preservation: 'Original file'
       pdf:
-        button: 'Download all %{count} images'
+        button:
+          multiple_images: 'Download all %{count} images'
+          single_image: 'Download image'
         download: 'PDF'
       iiif_manifest:
         button: 'IIIF Manifest'
