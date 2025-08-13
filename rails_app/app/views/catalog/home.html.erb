@@ -34,14 +34,14 @@
   </section>
 
   <section class="pl-padding-y-3xl">
-    <div class="d-flex justify-content-between align-items-center pl-margin-b-base viewport-margins">
-      <h2>
+    <div class="d-flex flex-wrap gap-3 justify-content-between align-items-center pl-margin-b-xl viewport-margins">
+      <h2 class="mb-0">
         <%= t("home.collections.heading") %>
       </h2>
       <%= link_to t("home.collections.explore"), collections_path, class: "pl-font-size-lg" %>
     </div>
 
-    <%= render(CollectionListComponent.new(header_tag: :h3)) do |component| %>
+    <%= render(CollectionListComponent.new(heading_tag: :h3)) do |component| %>
       <% component.with_collections(Settings.collections.map(&:to_h).first(7)) %>
     <% end %>
   </section>

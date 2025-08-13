@@ -57,8 +57,8 @@ en:
       heading: 'Collections'
       explore: 'Browse collections A to Z'
   collections:
-    header: 'Collections'
-    description: 'Browse all digital collections in our A to Z list.'
+    header: 'Collections A to Z'
+    description: 'Browse all our digital collections in our A to Z list. Once you find a collection you like, you can search and use filters within it.'
   search:
     button:
       label: 'Find it'

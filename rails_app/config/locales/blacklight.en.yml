@@ -6,7 +6,7 @@ en:
         search:
           placeholder: 'Search using keywords, ex: dancing turtle'
       link:
-        all_collections: 'All Collections'
+        all_collections: 'Collections A to Z'
       index:
         label: "%{label}"
       show:
