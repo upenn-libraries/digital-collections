@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
 module DC
-  # Ensures URI fields render as hyperlinks
+  # Ensures URI fields render as hyperlinks for non-json requests
   # Custom Blacklight::FieldPresenter subclass based on BL v9.0.0beta1@de5ddb
-  class URIFieldPresenter < Blacklight::FieldPresenter
+  class URIFieldPresenter < DC::FieldPresenter
     # @return [Array]
     def values
-      @values ||= retrieve_values.map { |value| @view_context.link_to(value, value) }
+      @values ||= if json_request?
+                    super
+                  else
+                    retrieve_values.map { |value| view_context.link_to(value, value) }
+                  end
     end
   end
 end
