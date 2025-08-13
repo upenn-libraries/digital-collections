@@ -15,6 +15,9 @@ describe ItemIndexer do
           last_published_at_dtsi: '2024-01-03T11:22:30Z',
           has_preview_bsi: true,
           has_iiif_manifest_bsi: true,
+          has_pdf_bsi: true,
+          pdf_ss: indexer.data[:derivatives][:pdf].to_json,
+          iiif_image_count_isi: 1,
           non_iiif_asset_listing_ss: '[]',
           name_ssim: [
             'creator, random', 'author, random', 'contributor, random', 'random, person', 'second random, person'
