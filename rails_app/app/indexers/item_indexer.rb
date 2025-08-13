@@ -72,11 +72,16 @@ class ItemIndexer
     document[:non_iiif_asset_listing_ss] = data.fetch(:assets, [])
                                                .reject { |a| a[:preservation_file][:mime_type] == 'image/tiff' }
                                                .to_json
+
+    document[:iiif_image_count_isi] = data.fetch(:assets, [])
+                                          .count { |a| a[:preservation_file][:mime_type] == 'image/tiff' }
   end
 
   # Add derivative information.
   def add_derivative_information(document)
     document[:has_preview_bsi] = data.dig(:derivatives, :preview).present?
     document[:has_iiif_manifest_bsi] = data.dig(:derivatives, :iiif_manifest).present?
+    document[:has_pdf_bsi] = data.dig(:derivatives, :pdf).present?
+    document[:pdf_ss] = data.dig(:derivatives, :pdf).to_json
   end
 end

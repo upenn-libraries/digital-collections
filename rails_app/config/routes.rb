@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   get '/about' => 'catalog#about'
   get '/collections' => 'catalog#collections'
 
+  # Digital repository webhook
+  post 'listen', to: 'digital_repository_webhook#listen', as: 'listen'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

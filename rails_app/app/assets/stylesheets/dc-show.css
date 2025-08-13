@@ -1,0 +1,4 @@
+.download-and-share-modal {
+  --bs-modal-padding: var(--pl-space-lg);
+  --bs-modal-header-padding: var(--pl-space-lg);
+}
