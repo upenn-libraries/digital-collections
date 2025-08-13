@@ -28,3 +28,35 @@
 .clover-viewer-information-panel {
   z-index: auto !important;
 }
+
+.dc-iiff-viewer-controls__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 2rem;
+  padding: 0px;
+  margin-left: 0.618rem;
+  font-family: inherit;
+  background-color: var(--colors-primary);
+  border: none;
+  color: white;
+  cursor: pointer;
+  filter: drop-shadow(rgba(0, 0, 0, 0.2) 2px 2px 5px);
+  transition: var(--transitions-all);
+  box-sizing: content-box !important;
+
+  &:hover,
+  &:focus {
+    background-color: var(--pl-color-bg-accent-emphasis);
+    color: var(--pl-color-fg-on-emphasis);
+  }
+}
+
+@media (max-width: 575px) {
+  .dc-iiff-viewer-controls__button {
+    display: none;
+  }
+}

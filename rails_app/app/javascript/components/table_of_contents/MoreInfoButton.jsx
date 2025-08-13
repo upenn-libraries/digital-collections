@@ -1,24 +1,6 @@
 import React, { useState } from "react";
 
-const buttonStyles = {
-  width: "2rem",
-  height: "2rem",
-  margin: "0 0 0 0.618rem",
-  cursor: "pointer",
-  border: 0,
-  borderRadius: "50%",
-  color: "var(--colors-secondary, #000)",
-  backgroundColor: "var(--colors-primary, #fff)",
-  transition: "background-color 0.1s ease",
-};
-
-const buttonHoverStyles = {
-  ...buttonStyles,
-  backgroundColor: "var(--colors-accent, #007bff)",
-};
-
 export default function MoreInfoButton({ useViewerState, useViewerDispatch }) {
-  const [isHovered, setIsHovered] = useState(false);
   const viewerState = useViewerState();
   const dispatch = useViewerDispatch();
 
@@ -33,10 +15,7 @@ export default function MoreInfoButton({ useViewerState, useViewerDispatch }) {
   return (
     <button
       type="button"
-      className="d-flex align-items-center justify-content-center"
-      style={isHovered ? buttonHoverStyles : buttonStyles}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="dc-iiff-viewer-controls__button"
       onClick={clickHandler}
       aria-label="More info"
       aria-expanded={viewerState.isInformationOpen}
@@ -48,8 +27,8 @@ export default function MoreInfoButton({ useViewerState, useViewerDispatch }) {
           viewBox="0 -960 960 960"
           width="24px"
           fill="currentColor"
+          aria-hidden="true"
         >
-          <title>Open information panel</title>
           <path d="M300-640v320l160-160-160-160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm440-80h120v-560H640v560Zm-80 0v-560H200v560h360Zm80 0h120-120Z" />
         </svg>
       ) : (
@@ -59,8 +38,8 @@ export default function MoreInfoButton({ useViewerState, useViewerDispatch }) {
           viewBox="0 -960 960 960"
           width="24px"
           fill="currentColor"
+          aria-hidden="true"
         >
-          <title>Close information panel</title>
           <path d="M460-320v-320L300-480l160 160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm440-80h120v-560H640v560Zm-80 0v-560H200v560h360Zm80 0h120-120Z" />
         </svg>
       )}
