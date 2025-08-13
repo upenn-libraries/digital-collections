@@ -29,7 +29,7 @@ en:
       related_place: 'Related Place'
       notes: 'Notes'
       related_works: 'Related works'
-      bibnumber: 'Bibnumber'
+      bibnumber: 'Also listed in'
       physical_location: 'Physical Location'
       provenance: 'Provenance'
       rights: 'Rights'
@@ -99,3 +99,4 @@ en:
         body: 'What is IIIF?'
       find:
         button: 'Find this item'
+    digital_catalog: 'Penn Libraries Catalog'
