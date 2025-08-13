@@ -15,7 +15,6 @@ describe DC::URIFieldPresenter do
 
   describe '#values' do
     before do
-      allow(view_context).to receive(:search_action_path) { |f| "/items?#{f.keys.first}=#{f.values.first}" }
       allow(view_context).to receive(:link_to) { |text, url| "<a href='#{url}'>#{text}</a>" }
     end
 
