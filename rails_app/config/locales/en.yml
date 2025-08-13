@@ -44,8 +44,8 @@ en:
     digital_collections:
       heading: 'Digital Collections'
       about: 'About'
-      collections: 'Collections'
-      works: 'Works'
+      collections: 'Collections A to Z'
+      home: 'Home'
   home:
     hero_heading: 'Boys wearing sailor suits, playing music to a dancing turtle'
     hero_subheading: 'Arnold and Deanne Kaplan Collection of Early American Judaica'
@@ -55,7 +55,7 @@ en:
       learn_more: 'Learn more about digital collections'
     collections:
       heading: 'Collections'
-      explore: 'Explore Collections'
+      explore: 'Browse collections A to Z'
   collections:
     header: 'Collections'
     description: 'Browse all digital collections in our A to Z list.'

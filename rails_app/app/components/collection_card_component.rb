@@ -2,12 +2,13 @@
 
 # Component for displaying one collection.
 class CollectionCardComponent < ViewComponent::Base
-  attr_reader :name, :representative_item, :header_tag
+  attr_reader :name, :representative_item, :header_tag, :header_class
 
-  def initialize(name:, representative_item:, header_tag: :h2)
+  def initialize(name:, representative_item:, header_tag: :h2, header_class: nil)
     @name = name
     @representative_item = representative_item
     @header_tag = header_tag
+    @header_class = header_class
   end
 
   def collection_facet_url
