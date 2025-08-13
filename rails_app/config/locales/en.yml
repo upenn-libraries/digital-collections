@@ -81,3 +81,21 @@ en:
       contact_us:
         link_text: 'Contact us'
         remaining_text: "to get help finding what you're looking for."
+  show:
+    download_and_share:
+      button: 'Download and share'
+      h2: 'Download and share'
+      non_iiif_assets:
+        download:
+          access: 'Smaller file'
+          preservation: 'Original file'
+      pdf:
+        button:
+          multiple_images: 'Download all %{count} images'
+          single_image: 'Download image'
+        download: 'PDF'
+      iiif_manifest:
+        button: 'IIIF Manifest'
+        body: 'What is IIIF?'
+      find:
+        button: 'Find this item'

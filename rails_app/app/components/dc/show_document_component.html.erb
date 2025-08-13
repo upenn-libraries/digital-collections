@@ -22,13 +22,13 @@
   <% else %>
     <div class="document-main-section">
       <%= title %>
+      <%= download_and_share %>
       <%= embed %>
       <%= content %>
       <%= metadata %>
       <% metadata_sections.each do |section| %>
         <%= section %>
       <% end %>
-
       <% partials.each do |partial| %>
         <%= partial %>
       <% end %>

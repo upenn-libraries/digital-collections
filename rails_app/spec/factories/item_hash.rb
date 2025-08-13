@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :item_indexer, class: 'ItemIndexer' do
+  # Factory for the item json provided by the Digital Repository endpoint.
+  factory :item_hash, class: Hash do
     id { '36a224db-c416-4769-9da1-28513827d179' }
     ark { 'ark:/99999/fk4pp0qk3c' }
     first_published_at { '2023-01-03T14:27:35Z' }
@@ -113,6 +114,6 @@ FactoryBot.define do
     end
 
     skip_create
-    initialize_with { new(attributes) }
+    initialize_with { attributes }
   end
 end

@@ -1,0 +1,21 @@
+  <div class="d-flex gap-2 pl-margin-b-xl pl-margin-t-sm">
+    <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#dc-download-and-share-modal"><%= t('show.download_and_share.button') %></button>
+    <div class="modal fade modal-lg dc-download-and-share-modal" id="dc-download-and-share-modal" tabindex="-1" role="dialog" aria-labelledby="dc-download-and-share-modal-heading" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content dc-download-and-share-modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title mb-0" id="dc-download-and-share-modal-heading"><%= t('show.download_and_share.h2') %></h2>
+            <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= asset_download_list %>
+            <%= item_derivatives %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-secondary btn-lg"><%= t('show.download_and_share.find.button') %></button>
+  </div>
+

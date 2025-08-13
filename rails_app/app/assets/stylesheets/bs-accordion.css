@@ -10,8 +10,7 @@
   --bs-btn-active-bg: var(--pl-color-bg-subtle);
   --bs-accordion-btn-focus-box-shadow: 0 0 0 2px var(--color-bg-accent), 0 0 0 4px var(--color-fg-default);
   --bs-accordion-btn-bg: var(--pl-color-bg-subtle);
-  --bs-accordion-body-padding-y: 0;
-  --bs-accordion-body-padding-x: 0;
+  --bs-accordion-active-bg: var(--pl-color-bg-subtle);
 
   display: flex !important;
   flex-direction: column;
