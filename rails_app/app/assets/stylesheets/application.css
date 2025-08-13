@@ -84,6 +84,7 @@
 @import url('dc-start-over.css');
 @import url('dc-pagination.css');
 @import url('dc-show.css');
+@import url('dc-iiif.css');
 
 pennlibs-hero .header-search__link {
 	color: var(--color-fg-on-emphasis);

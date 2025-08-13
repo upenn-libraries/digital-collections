@@ -29,6 +29,38 @@ const contentsPlugin = {
   },
 };
 
+const customTheme = {
+  colors: {
+    /**
+     * Black and dark grays in a light theme.
+     * All must contrast to 4.5 or greater with `secondary`.
+     */
+    primary: "#2D3545",
+    primaryMuted: "#595F6A",
+    primaryAlt: "#2D3545",
+ 
+    /**
+     * Key brand color(s).
+     * `accent` must contrast to 4.5 or greater with `secondary`.
+     */
+    accent: "#0E5696",
+    accentMuted: "#0E5696",
+    accentAlt: "#0E5696",
+ 
+    /**
+     * White and light grays in a light theme.
+     * All must must contrast to 4.5 or greater with `primary` and  `accent`.
+     */
+    secondary: "#FFFFFF",
+    secondaryMuted: "#F5F5F6",
+    secondaryAlt: "#F5F5F6",
+  },
+  fonts: {
+    sans: "proxima-nova, system-ui, sans-serif",
+    display: "proxima-nova, system-ui, sans-serif",
+  },
+};
+
 export default class CloverViewerController extends Controller {
   static values = {
     url: String,
@@ -54,6 +86,7 @@ export default class CloverViewerController extends Controller {
       iiifContent: manifest,
       options: options,
       plugins: hasStructures ? [contentsPlugin] : [],
+      customTheme: customTheme,
     });
   }
 }

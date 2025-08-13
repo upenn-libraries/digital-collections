@@ -42,13 +42,17 @@
   --bs-btn-hover-bg: var(--color-bg-subtle);
   --bs-btn-hover-border-color: var(--color-fg-subtle);
   --bs-btn-focus-shadow-rgb: 108, 117, 125;
-  --bs-btn-active-color: var(--color-fg-on-emphasis);
-  --bs-btn-active-bg: var(--color-bg-accent-emphasis);
-  --bs-btn-active-border-color: var(--color-bg-accent-emphasis);
+  --bs-btn-active-color: var(--color-fg-default);
+  --bs-btn-active-bg: var(--color-bg-subtle);
+  --bs-btn-active-border-color: var(--color-bg-subtle);
   --bs-btn-active-shadow: none;
   --bs-btn-disabled-color: var(--color-fg-default);
   --bs-btn-disabled-bg: transparent;
   --bs-btn-disabled-border-color: none;
   --bs-gradient: none;
   --bs-btn-bg: var(--color-bg-subtle);
+}
+
+.btn-lg {
+  font-size: var(--pl-font-size-lg);
 }
