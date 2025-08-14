@@ -74,6 +74,12 @@
       display: none;
     }
   }
+
+  & .view-type-group .btn.active {
+    --bs-btn-active-bg: var(--pl-color-bg-accent-emphasis);
+    --bs-btn-active-border-color: var(--pl-color-bg-accent-emphasis);
+    --bs-btn-active-color: var(--pl-color-fg-on-emphasis);
+  }
 }
 
 .sort-dropdown {
