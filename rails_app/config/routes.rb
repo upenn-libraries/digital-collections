@@ -7,8 +7,6 @@ Rails.application.routes.draw do
 
   root to: 'catalog#home'
 
-  devise_for :users
-
   resource :catalog, only: [], as: 'catalog', path: '/items', controller: 'catalog' do
     concerns :searchable
     concerns :range_searchable
