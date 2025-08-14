@@ -64,4 +64,16 @@ class SolrDocument
   def pdf
     JSON.parse fetch(:pdf_ss, '{}')
   end
+
+  # @return [String, nil]
+  def bibnumber
+    fetch(:bibnumber_ssi, nil)
+  end
+
+  # @return [String, nil]
+  def digital_catalog_url
+    return unless bibnumber
+
+    URI::HTTPS.build(host: Settings.digital_catalog.url, path: "#{Settings.digital_catalog.path}/#{bibnumber}").to_s
+  end
 end

@@ -147,8 +147,8 @@ class CatalogController < ApplicationController
     config.add_show_field :date_ssim, label: I18n.t('fields.work.date'), **DEFAULT_METADATA_FIELD_CONFIG
     config.add_show_field :language_ssim, label: I18n.t('fields.work.language'), **DEFAULT_METADATA_FIELD_CONFIG,
                                           link_to_facet: true
-    config.add_show_field :subject_ssim, label: I18n.t('fields.work.subject'), link_to_facet: true,
-                                         **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :subject_ssim, label: I18n.t('fields.work.subject'), **DEFAULT_METADATA_FIELD_CONFIG,
+                                         link_to_facet: true
     config.add_show_field :geographic_subject_ssim, label: I18n.t('fields.work.geographic_subject'),
                                                     **DEFAULT_METADATA_FIELD_CONFIG,
                                                     link_to_facet: true
@@ -159,7 +159,8 @@ class CatalogController < ApplicationController
     config.add_show_field :location_tesim, label: I18n.t('fields.work.related_place'), **DEFAULT_METADATA_FIELD_CONFIG
     config.add_show_field :note_tesim, label: I18n.t('fields.work.notes'), **DEFAULT_METADATA_FIELD_CONFIG
     config.add_show_field :relation_tesim, label: I18n.t('fields.work.related_works'), **DEFAULT_METADATA_FIELD_CONFIG
-    config.add_show_field :bibnumber_ssi, label: I18n.t('fields.work.bibnumber'), **DEFAULT_METADATA_FIELD_CONFIG
+    config.add_show_field :bibnumber_ssi, label: I18n.t('fields.work.bibnumber'), **DEFAULT_METADATA_FIELD_CONFIG,
+                                          presenter: DC::BibnumberPresenter
     config.add_show_field :physical_location_tesim, label: I18n.t('fields.work.physical_location'),
                                                     **DEFAULT_METADATA_FIELD_CONFIG
     config.add_show_field :provenance_tesim, label: I18n.t('fields.work.provenance'), **DEFAULT_METADATA_FIELD_CONFIG
@@ -216,6 +217,9 @@ class CatalogController < ApplicationController
 
   # about the digital collections
   def about; end
+
+  # Listing collections. Collections are configured in `Settings.collections`
+  def collections; end
 
   # redirect legacy show page urls to item show page
   def legacy_redirect
