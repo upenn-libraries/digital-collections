@@ -3,6 +3,9 @@ honeybadger:
   api_key: '12345'
 redis:
   url: <%= ENV.fetch('REDIS_URL', 'redis://127.0.0.1:6379/0') %>
+digital_catalog:
+  url: find.library.upenn.edu
+  path: /catalog
 digital_repository:
   url: https://apotheca.library.upenn.edu
   webhook_token: '12345'
@@ -38,6 +41,3 @@ digital_repository:
     - ef51af07-3a9d-4863-afc6-c84169adae80
     - d16cae7e-e31c-4c86-96a5-ca307190d39e
     - 53c931b0-f81b-4137-948d-d35c67b5d77d
-digital_catalog:
-  url: find.library.upenn.edu
-  path: /catalog
