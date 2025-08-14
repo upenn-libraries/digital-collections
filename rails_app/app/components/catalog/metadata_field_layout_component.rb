@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DC
+module Catalog
   # Custom Component to render each value in a multivalued field in a single dd
   class MetadataFieldLayoutComponent < ViewComponent::Base
     renders_one :label

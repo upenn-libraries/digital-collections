@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DC
+module Catalog
   # This is a custom header component that render a search bar.
   # It's used in two places:
   # 1. We set the header to this component in the catalog controller to render on all Blacklight pages.
@@ -9,7 +9,7 @@ module DC
   class HeaderComponent < Blacklight::Component
     attr_accessor :blacklight_config, :theme
 
-    renders_one :search_bar, lambda { |component: DC::SearchNavbarComponent|
+    renders_one :search_bar, lambda { |component: Catalog::SearchNavbarComponent|
       component.new(blacklight_config: blacklight_config)
     }
 

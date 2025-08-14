@@ -6,7 +6,7 @@ class CatalogController < ApplicationController
   include BlacklightRangeLimit::ControllerOverride
 
   FACET_LIMIT = 10
-  DEFAULT_METADATA_FIELD_CONFIG = { component: DC::MetadataFieldComponent, presenter: DC::FieldPresenter }.freeze
+  DEFAULT_METADATA_FIELD_CONFIG = { component: Catalog::MetadataFieldComponent, presenter: DC::FieldPresenter }.freeze
   # If you'd like to handle errors returned by Solr in a certain way,
   # you can use Rails rescue_from with a method you define in this controller,
   # uncomment:
@@ -57,10 +57,10 @@ class CatalogController < ApplicationController
 
     # Some components can be configured
     # config.index.document_component = MyApp::SearchResultComponent
-    config.header_component = DC::HeaderComponent
-    config.index.search_header_component = DC::SearchHeaderComponent
-    config.index.constraints_component = DC::ConstraintsComponent
-    config.index.search_bar_component = DC::SearchBarComponent
+    config.header_component = Catalog::HeaderComponent
+    config.index.search_header_component = Catalog::SearchHeaderComponent
+    config.index.constraints_component = Catalog::ConstraintsComponent
+    config.index.search_bar_component = Catalog::SearchBarComponent
     # config.index.document_actions.delete(:bookmark)
 
     config.per_page = [25]
@@ -77,12 +77,12 @@ class CatalogController < ApplicationController
     # config.show.document_presenter_class = MyApp::ShowPresenter
     #
     # These components can be configured
-    config.show.document_component = DC::ShowDocumentComponent
+    config.show.document_component = Catalog::ShowDocumentComponent
     # config.show.sidebar_component = MyApp::SidebarComponent
     # config.show.embed_component = MyApp::EmbedComponent
 
     # Blacklight-gallery configuration
-    config.view.gallery(document_component: DC::Gallery::DocumentComponent,
+    config.view.gallery(document_component: Catalog::Gallery::DocumentComponent,
                         icon: Blacklight::Gallery::Icons::GalleryComponent)
 
     # solr fields that will be treated as facets by the blacklight application
