@@ -44,8 +44,8 @@ en:
     digital_collections:
       heading: 'Digital Collections'
       about: 'About'
-      collections: 'Collections'
-      works: 'Works'
+      collections: 'Collections A to Z'
+      home: 'Home'
   home:
     hero_heading: 'Boys wearing sailor suits, playing music to a dancing turtle'
     hero_subheading: 'Arnold and Deanne Kaplan Collection of Early American Judaica'
@@ -53,6 +53,12 @@ en:
       heading: 'Find primary sources for your research'
       description: "Explore digitized original materials for your research and teaching. You'll find posters, manuscripts, photographs, letters, trading cards, maps, and more from the collections."
       learn_more: 'Learn more about digital collections'
+    collections:
+      heading: 'Collections'
+      explore: 'Browse collections A to Z'
+  collections:
+    header: 'Collections A to Z'
+    description: 'Browse all our digital collections in our A to Z list. Once you find a collection you like, you can search and use filters within it.'
   search:
     button:
       label: 'Find it'

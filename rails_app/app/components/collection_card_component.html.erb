@@ -1,0 +1,6 @@
+<li class="dc-collections__card">
+  <img src="<%= preview_image_url %>" class="dc-collections__card-img">
+  <%= content_tag heading_tag, class: "dc-collections__card-heading" do %>
+    <%= link_to name, collection_facet_url, class: "dc-collections__card-link" %>
+  <% end %>
+</li>

@@ -1,8 +1,21 @@
-.dc-home-section {
-  margin: var(--pl-space-3xl) 0;
-  font-size: var(--pl-font-size-lg);
-}
+.dc-home-sections {
+  & .dc-collections {
+    display: flex;
+    gap: var(--pl-space-2xl) var(--pl-space-xl);
+    flex-wrap: wrap;
+    padding: 0 var(--viewport-margins-gutter, 1rem);
+    justify-content: center;
 
-.dc-home-section:nth-child(2) {
-	background: var(--colors-bg-subtle-brand);
+    & li {
+      max-width: 18rem;
+    }
+  }
+
+  & h2::after {
+    background: #EEAA64;
+  }
+
+  & section:nth-child(2) {
+    background: var(--pl-color-bg-subtle-brand);
+  }
 }
