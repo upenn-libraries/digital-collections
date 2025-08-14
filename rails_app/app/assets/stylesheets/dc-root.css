@@ -34,3 +34,7 @@ pennlibs-hero {
 html[aria-busy="true"] {
   scroll-behavior: auto !important;
 }
+
+.container-fluid {
+  padding: 0;
+}

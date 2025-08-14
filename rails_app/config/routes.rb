@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get '/home' => 'catalog#home'
   get '/about' => 'catalog#about'
+  get '/collections' => 'catalog#collections'
 
   # Digital repository webhook
   post 'listen', to: 'digital_repository_webhook#listen', as: 'listen'

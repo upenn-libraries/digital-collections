@@ -33,6 +33,7 @@
     background: none;
     font-size: var(--pl-font-size-lg);
     padding: 0 !important;
+    color: #0d1015; /* slightly darker shade */
 
     &::placeholder {
       color: var(--color-fg-subtle) !important;

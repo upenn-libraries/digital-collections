@@ -218,6 +218,9 @@ class CatalogController < ApplicationController
   # about the digital collections
   def about; end
 
+  # Listing collections. Collections are configured in `Settings.collections`
+  def collections; end
+
   # redirect legacy show page urls to item show page
   def legacy_redirect
     ark = "ark:/#{params[:normalized_ark].tr('-', '/')}"

@@ -1,6 +1,6 @@
 :where(.pl-reset) {
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.4;
   color: var(--pl-color-fg-default);
   accent-color: var(--pl-color-fg-accent);
 
