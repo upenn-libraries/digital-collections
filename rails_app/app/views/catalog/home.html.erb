@@ -40,8 +40,10 @@
       <%= link_to t("home.collections.explore"), collections_path, class: "pl-font-size-lg" %>
     </div>
 
-    <%= render(CollectionListComponent.new(heading_tag: :h3)) do |component| %>
-      <% component.with_collections(Settings.collections.map(&:to_h).sample(7)) %>
-    <% end %>
+    <div class="pl-viewport-margins pl-viewport-margins--full">
+      <%= render(CollectionListComponent.new(heading_tag: :h3)) do |component| %>
+        <% component.with_collections(Settings.collections.map(&:to_h).sample(7)) %>
+      <% end %>
+    </div>
   </section>
 </div>
