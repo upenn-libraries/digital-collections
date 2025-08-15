@@ -101,7 +101,14 @@ en:
       iiif_manifest:
         button: 'IIIF Manifest'
         body: 'What is IIIF?'
-      find:
-        button: 'Find this item'
+    find_this_item:
+      button: 'Find this item'
+      h2: 'Find this item'
+      location:
+        button: 'This item is found at'
+      availability:
+        button: 'Availability'
+        link_text: 'Find and check availability'
+        remaining_text: 'for this item in our catalog.'
     sensitive_materials_statement: 'The Penn Libraries is committed to producing, preserving, and providing access to knowledge. We make materials accessible to improve information equity and enhance teaching, research, and learning. Some materials may be considered offensive and do not represent opinions, values, positions or norms that are held by the University of Pennsylvania Libraries. Where possible, we strive to present these materials within the historical or cultural context they were created by providing descriptive information.'
     digital_catalog: 'Penn Libraries Catalog'
