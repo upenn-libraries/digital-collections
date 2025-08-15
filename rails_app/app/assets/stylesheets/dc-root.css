@@ -35,6 +35,20 @@ html[aria-busy="true"] {
   scroll-behavior: auto !important;
 }
 
+/*
+* We don't want Bootstrap gutters for container-fluid
+* since they are not compatible with our full width design.
+*/
 .container-fluid {
+  --bs-gutter-x: 0;
   padding: 0;
+
+  & .row {
+    margin-left: 0;
+    margin-right: 0;
+
+    & > * {
+      --bs-gutter-x: 0;
+    }
+  }
 }

@@ -94,13 +94,16 @@
   --pl-focus-box-shadow: 0 0 0 2px var(--pl-color-bg-accent), 0 0 0 4px var(--pl-color-fg-default);
 }
 
-.viewport-margins {
+.viewport-margins,
+.pl-viewport-margins {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--viewport-margins-gutter, 1rem);
   width: 100%;
 }
 
+.pl-viewport-margins--full {
+  max-width: 100%;
 /*
   Prevents a flash of unstyled content (FOUC) while custom elements are loading.
   Ensures that elements are only visible once they're fully defined and ready to be displayed.

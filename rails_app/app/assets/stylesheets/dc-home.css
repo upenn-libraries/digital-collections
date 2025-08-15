@@ -3,12 +3,7 @@
     display: flex;
     gap: var(--pl-space-2xl) var(--pl-space-xl);
     flex-wrap: wrap;
-    padding: 0 var(--viewport-margins-gutter, 1rem);
     justify-content: center;
-
-    & li {
-      max-width: 18rem;
-    }
   }
 
   & h2::after {
@@ -17,5 +12,11 @@
 
   & section:nth-child(2) {
     background: var(--pl-color-bg-subtle-brand);
+  }
+}
+
+@media (min-width: 720px) {
+  .dc-home-sections li {
+    max-width: 18rem;
   }
 }
