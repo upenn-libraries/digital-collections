@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module DC
+module Catalog
   # Ensures names with creator roles appear first and display values link to the facet values without roles
   # Limits number of elements by provided 'limit' field configuration value
   # Custom Blacklight::FieldPresenter subclass based on BL v9.0.0beta1@de5ddb
-  class NameWithRolePresenter < DC::FieldPresenter
+  class NameWithRolePresenter < Catalog::FieldPresenter
     CREATOR_ROLE = 'creator'
     FACET_FIELD = 'name_ssim'
     # Override #values method to return field values as links to faceted search for non-json requests

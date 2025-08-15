@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe DC::FieldPresenter do
+describe Catalog::FieldPresenter do
   subject(:presenter) { described_class.new(view_context, SolrDocument.new, field_config) }
 
   let(:search_state) { Blacklight::SearchState.new(params, CatalogController.blacklight_config, CatalogController.new) }

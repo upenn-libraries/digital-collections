@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module DC
+module Catalog
   # Transforms bibnumber value into links to digital catalog
   # Custom Blacklight::FieldPresenter subclass based on BL v9.0.0beta1@de5ddb
-  class BibnumberPresenter < DC::FieldPresenter
+  class BibnumberPresenter < Catalog::FieldPresenter
     # @return [Array]
     def values
       @values ||= if json_request?

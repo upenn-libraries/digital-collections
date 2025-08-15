@@ -2,7 +2,7 @@
 
 require 'active_support/number_helper'
 
-describe DC::AssetPresenter do
+describe AssetPresenter do
   let(:presenter) { described_class.new(asset: asset) }
   let(:asset) { build(:item_hash, :video)[:assets].first }
 

@@ -7,7 +7,7 @@ module DownloadAndShare
 
     # @param assets [Array<Hash>]
     def initialize(assets: [])
-      @assets = assets.map { |a| DC::AssetPresenter.new(asset: a) }
+      @assets = assets.map { |a| AssetPresenter.new(asset: a) }
     end
 
     # @return [Boolean]
