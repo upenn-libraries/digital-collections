@@ -2,7 +2,7 @@
 
 # copied from Blacklight 9
 
-module DC
+module Catalog
   # Override Search Bar Component to apply class and render custom search button
   class SearchBarComponent < Blacklight::SearchBarComponent
     def initialize(**)
@@ -17,9 +17,9 @@ module DC
 
     private
 
-    # @return [DC::SearchButtonComponent]
+    # @return [Catalog::SearchButtonComponent]
     def custom_search_button
-      DC::SearchButtonComponent.new(id: "#{@prefix}search", text: t('search.button.label'))
+      Catalog::SearchButtonComponent.new(id: "#{@prefix}search", text: t('search.button.label'))
     end
   end
 end

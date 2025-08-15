@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DC
+module Catalog
   # Custom hero component that renders a header, a picture, and a heading.
   # Used by the base Blacklight layout to render the hero on static pages.
   class HeaderHeroComponent < Blacklight::Component

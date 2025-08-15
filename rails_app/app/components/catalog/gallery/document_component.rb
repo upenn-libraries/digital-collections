@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DC
+module Catalog
   module Gallery
     # Customizing Blacklight::Gallery::DocumentComponent v6.0.0 to only display gallery index_fields.
     class DocumentComponent < Blacklight::Gallery::DocumentComponent

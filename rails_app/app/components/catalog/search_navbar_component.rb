@@ -2,7 +2,7 @@
 
 # Overrides Blacklight 9 search_navbar_component.rb
 
-module DC
+module Catalog
   class SearchNavbarComponent < Blacklight::SearchNavbarComponent
   end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe DC::NameWithRolePresenter do
+describe Catalog::NameWithRolePresenter do
   subject(:presenter) do
     described_class.new(view_context, document,
                         Blacklight::Configuration::IndexField.new(field: 'name_with_role_tesim', limit: nil))

@@ -1,6 +1,6 @@
 <% content_for :header do %>
-  <%= render DC::HeaderHeroComponent.new(
-    blacklight_config: blacklight_config
+  <%= render Catalog::HeaderHeroComponent.new(
+    blacklight_config: blacklight_config,
   ) do |component| %>
     <% component.with_picture do %>
       <%= tag.picture hero: 'art-direction' do %>
