@@ -1,4 +1,4 @@
-<button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#dc-find-this-item-modal"><%= t('show.find_this_item.button') %></button>
+<button class="btn btn-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#dc-find-this-item-modal"><%= t('show.find_this_item.button') %></button>
 <div class="modal fade modal-lg dc-find-this-item-modal" id="dc-find-this-item-modal" tabindex="-1" role="dialog" aria-labelledby="dc-find-this-item-modal-heading" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content dc-find-this-item-modal-content">
@@ -8,39 +8,21 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="accordion" id="dc-find-this-item-accordion">
-          <% if location? %>
-            <div class="accordion-item">
-              <h3 class="accordion-header mb-0">
-                <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#location" aria-expanded="true" aria-controls="location">
-                  <%= t('show.find_this_item.location.button') %>
-                </button>
-              </h3>
-              <div id="location" class="accordion-collapse collapse show">
-                <div class="accordion-body">
-                  <% location.each do |location| %>
-                    <ul>
-                      <li><%= location %></li>
-                    </ul>
-                  <% end %>
-                </div>
-              </div>
-            </div>
+        <% if @document.digital_catalog_url %>
+          <p><%= link_to(t('show.find_this_item.availability.link_text'), @document.digital_catalog_url) %> <%= t('show.find_this_item.availability.remaining_text') %></p>
+        <% end %>
+
+        <% if location? %>
+          <p>Physical location notes:</p>
+
+          <div class="alert alert-light">
+          <% location.each do |location| %>
+            <ul class="list-unstyled mb-0">
+              <li><%= location %></li>
+            </ul>
           <% end %>
-          <% if @document.digital_catalog_url %>
-            <div class="accordion-item">
-              <h3 class="accordion-header mb-0">
-                <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#availability" aria-expanded="true" aria-controls="availability">
-                  <%= t('show.find_this_item.availability.button') %>
-                </button>
-              </h3>
-              <div id="availability" class="accordion-collapse collapse show">
-                <div class="accordion-body">
-                  <p><%= link_to(t('show.find_this_item.availability.link_text'), @document.digital_catalog_url) %> <%= t('show.find_this_item.availability.remaining_text') %></p>
-                </div>
-              </div>
-            </div>
-          <% end %>
+          </div>
+        <% end %>
         </div>
       </div>
     </div>

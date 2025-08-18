@@ -108,7 +108,7 @@ en:
         button: 'This item is found at'
       availability:
         button: 'Availability'
-        link_text: 'Find and check availability'
-        remaining_text: 'for this item in our catalog.'
+        link_text: 'Find availability options in our catalog'
+        remaining_text: 'where you may be able to request or schedule a visit to see this item in-person.'
     sensitive_materials_statement: 'The Penn Libraries is committed to producing, preserving, and providing access to knowledge. We make materials accessible to improve information equity and enhance teaching, research, and learning. Some materials may be considered offensive and do not represent opinions, values, positions or norms that are held by the University of Pennsylvania Libraries. Where possible, we strive to present these materials within the historical or cultural context they were created by providing descriptive information.'
     digital_catalog: 'Penn Libraries Catalog'
