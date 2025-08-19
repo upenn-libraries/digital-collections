@@ -1,6 +1,6 @@
 .sidenav {
   --bl-facet-active-bg: var(--pl-color-bg-subtle);
-  --bl-facet-active-item-color: var(--color-fg-on-emphasis);
+  --bl-facet-active-item-color: var(--pl-color-fg-on-emphasis);
 }
 
 .facets-header {
@@ -14,7 +14,7 @@
 }
 
 .facet-limit-active {
-  --bs-accordion-btn-color: var(--color-fg-default);
+  --bs-accordion-btn-color: var(--pl-color-fg-default);
 }
 
 .facet-values {
@@ -28,7 +28,7 @@
 
 .facet-values li:has(.selected) {
   color: var(--pl-color-fg-on-emphasis);
-  background: var(--color-bg-accent-emphasis);
+  background: var(--pl-color-bg-accent-emphasis);
 }
 
 .facet-values .remove,

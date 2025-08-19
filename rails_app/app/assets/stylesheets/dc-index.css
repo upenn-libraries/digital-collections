@@ -6,7 +6,7 @@
 
     width: 100%;
     margin: 0px auto;
-    padding: 0 var(--viewport-margins-gutter, 1em);
+    padding: 0 var(--pl-viewport-margins-gutter, 1em);
     margin-top: var(--pl-space-lg);
 
     @media (min-width: 820px) {

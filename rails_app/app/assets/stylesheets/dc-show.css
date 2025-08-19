@@ -15,6 +15,8 @@
     margin-top: var(--pl-space-base);
     margin-bottom: var(--pl-space-xl);
   }
+
+  margin-bottom: var(--pl-space-base);
 }
 
 .dc-download-and-share-modal {

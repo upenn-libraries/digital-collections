@@ -60,7 +60,7 @@
 }
 
 .document-metadata dd a {
-  color: var(--color-fg-default);
+  color: var(--pl-color-fg-default);
   text-decoration-style: dotted;
   font-weight: 400;
   text-decoration-color: var(--pl-color-fg-subtle);
