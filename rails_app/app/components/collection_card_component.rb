@@ -4,7 +4,7 @@
 class CollectionCardComponent < ViewComponent::Base
   attr_reader :name, :representative_item, :heading_tag
 
-  def initialize(name:, representative_item:, heading_tag: :h2)
+  def initialize(name:, representative_item: nil, heading_tag: :h2)
     @name = name
     @representative_item = representative_item
     @heading_tag = heading_tag
@@ -14,7 +14,13 @@ class CollectionCardComponent < ViewComponent::Base
     search_catalog_path(f: { collection_ssim: [name] })
   end
 
+  def representative_item?
+    representative_item&.present?
+  end
+
   def preview_image_url
+    return unless representative_item?
+
     "#{Settings.digital_repository.url}/v1/items/#{representative_item}/preview?size=350,350"
   end
 end
