@@ -3,7 +3,7 @@
 module Catalog
   # Override DocumentComponent from Blacklight 9.0.0beta1 to
   #  - add Clover IIIF Viewer
-  #  - render DownloadAndShare component
+  #  - render DownloadActions component
   class ShowDocumentComponent < Blacklight::DocumentComponent
     renders_one :document_actions, DocumentActionsComponent
 
