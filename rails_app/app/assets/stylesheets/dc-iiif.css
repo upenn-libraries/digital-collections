@@ -29,6 +29,10 @@
   z-index: auto !important;
 }
 
+.clover-viewer-media-search {
+	display: none !important;
+}
+
 .dc-iiff-viewer-controls__button {
   display: flex;
   justify-content: center;
