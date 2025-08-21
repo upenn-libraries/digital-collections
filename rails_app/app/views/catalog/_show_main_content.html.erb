@@ -11,7 +11,7 @@
   <% component.with_title(as: 'h1', classes: nil, link_to_document: false, actions: false) %>
   <% component.with_metadata(classes: 'pl-dl') %>
   <% component.with_footer do %>
-    <p class="alert alert-light pl-margin-b-xl pl-font-size-sm"><%= t('show.sensitive_materials_statement') %></p>
+    <p class="alert alert-light pl-font-size-sm"><%= t('show.sensitive_materials_statement') %></p>
     <% if @document.respond_to?(:export_as_openurl_ctx_kev) %>
       <!-- COinS, for Zotero among others. -->
       <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev(document_presenter(@document).display_type) %>"></span>

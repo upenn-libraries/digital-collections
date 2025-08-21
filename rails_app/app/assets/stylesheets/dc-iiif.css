@@ -5,7 +5,7 @@
   padding-bottom: var(--pl-space-2xl);
 
   & li {
-    border-bottom: 1px solid var(--color-bg-subtle-brand);
+    border-bottom: 1px solid var(--pl-color-bg-subtle-brand);
   }
 
   & button {

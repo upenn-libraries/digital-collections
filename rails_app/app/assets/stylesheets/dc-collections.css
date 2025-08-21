@@ -26,7 +26,7 @@
 
 .dc-collections__card-heading {
   margin: 0;
-  padding-top: var(--pl-space-base);
+  padding-top: var(--pl-space-sm);
   font-size: var(--pl-font-size-base);
   font-family: var(--pl-font-family);
   line-height: 1.4;

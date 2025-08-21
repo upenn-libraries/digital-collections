@@ -22,7 +22,7 @@
 <% end %>
 
 <div class="dc-home-sections">
-  <section class="pl-margin-y-3xl viewport-margins">
+  <section class="pl-margin-y-3xl pl-viewport-margins">
     <h2>
       <%= t("home.explore.heading") %>
     </h2>
@@ -33,14 +33,14 @@
   </section>
 
   <section class="pl-padding-y-3xl">
-    <div class="d-flex flex-wrap gap-3 justify-content-between align-items-center pl-margin-b-xl viewport-margins">
+    <div class="d-flex flex-wrap gap-3 justify-content-between align-items-center pl-margin-b-xl pl-viewport-margins">
       <h2 class="mb-0">
         <%= t("home.collections.heading") %>
       </h2>
       <%= link_to t("home.collections.explore"), collections_path, class: "pl-font-size-lg" %>
     </div>
 
-    <div class="pl-viewport-margins pl-viewport-margins--full">
+    <div class="pl-viewport-margins dc-max-width-full">
       <%= render(CollectionListComponent.new(heading_tag: :h3)) do |component| %>
         <% component.with_collections(Settings.collections.map(&:to_h).sample(7)) %>
       <% end %>

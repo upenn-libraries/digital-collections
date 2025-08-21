@@ -1,8 +1,8 @@
 :root {
-  --max-width: 1280px;
+  --pl-viewport-max-width: 1280px;
 
   @media (min-width: 720px) {
-    --viewport-margins-gutter: 3rem;
+    --pl-viewport-margins-gutter: 3rem;
   }
 }
 
@@ -18,12 +18,18 @@ pennlibs-footer {
 }
 
 pennlibs-hero {
-  --hero-height: clamp(50vh, 32rem, 26rem);
+  display: block;
+  --pl-hero-height: clamp(32rem, 62vh, 62vh);
+  min-height: var(--pl-hero-height);
 }
 
 *:focus {
   box-shadow: var(--pl-focus-box-shadow);
   outline: none;
+}
+
+pennlibs-header:focus {
+  box-shadow: none;
 }
 
 /*
@@ -51,4 +57,13 @@ html[aria-busy="true"] {
       --bs-gutter-x: 0;
     }
   }
+}
+
+.dc-max-width-full {
+  max-width: 100%;
+}
+
+pennlibs-hero .header-search__link {
+	color: var(--pl-color-fg-on-emphasis);
+	text-shadow: 1px 1px 2px var(--pl-color-fg-default);
 }
