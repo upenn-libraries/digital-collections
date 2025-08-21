@@ -19,7 +19,8 @@
   margin-bottom: var(--pl-space-base);
 }
 
-.dc-download-and-share-modal {
+.dc-download-and-share-modal,
+.dc-find-this-item-modal {
   --bs-modal-padding: var(--pl-space-lg);
   --bs-modal-header-padding: var(--pl-space-lg);
 }
