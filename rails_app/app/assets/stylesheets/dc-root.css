@@ -18,7 +18,9 @@ pennlibs-footer {
 }
 
 pennlibs-hero {
+  display: block;
   --pl-hero-height: clamp(32rem, 62vh, 62vh);
+  min-height: var(--pl-hero-height);
 }
 
 *:focus {
