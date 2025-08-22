@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
-# Override Component from Blacklight 9.0.0.beta1 to remove "visually-hidden" on constraints headers,
-# some additional styling
+# Override component from Blacklight 9.0.0.beta7 to adjust heading_classes.
 module Catalog
   # Override constraints
   class ConstraintsComponent < Blacklight::ConstraintsComponent
+    def initialize(**)
+      super
+
+      @heading_classes = nil
+    end
   end
 end

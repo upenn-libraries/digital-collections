@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-# copied from Blacklight 9
-
 module Catalog
-  # Override Search Bar Component to apply class and render custom search button
+  # Override component from Blacklight 9.0.0.beta7 to apply class and render custom search button
   class SearchBarComponent < Blacklight::SearchBarComponent
     def initialize(**)
       super

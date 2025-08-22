@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-# Overrides Blacklight 9 search_navbar_component.rb
-
+# Overrides component from Blacklight 9.0.0.beta7
 module Catalog
   class SearchNavbarComponent < Blacklight::SearchNavbarComponent
   end

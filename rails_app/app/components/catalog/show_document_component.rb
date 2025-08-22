@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Catalog
-  # Override DocumentComponent from Blacklight 9.0.0beta1 to
+  # Override DocumentComponent from Blacklight 9.0.0.beta7 to
   #  - add Clover IIIF Viewer
-  #  - render DownloadActions component
+  #  - render DocumentActions component
   class ShowDocumentComponent < Blacklight::DocumentComponent
     renders_one :document_actions, DocumentActionsComponent
 

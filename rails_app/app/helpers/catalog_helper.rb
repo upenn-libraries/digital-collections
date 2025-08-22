@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 # Helper methods for views rendered by CatalogController
-
-# Override BL 9.0.0beta1@de5ddb
 module CatalogHelper
   include Blacklight::CatalogHelperBehavior
 

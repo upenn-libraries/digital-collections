@@ -1,13 +1,13 @@
-<%#  Copied from Blacklight 9.0.0beta1@de5ddb to:
-    - remove the show page header component.
-    - render metadata component with custom class
+<%# Overriding view from Blacklight 9.0.0.beta7 to:
+     - remove the show page header component
+     - render metadata component with custom class
 %>
 
 <% @page_title = t('blacklight.search.show.title', document_title: document_presenter(@document).html_title, application_name: application_name).html_safe %>
 <% content_for(:head) { render_link_rel_alternates } %>
 
 <% document_component = blacklight_config.view_config(:show).document_component -%>
-<%= render (document_component).new(document_component.collection_parameter => document_presenter(@document), component: :div, show: true, partials: blacklight_config.view_config(:show).partials) do |component| %>
+<%= render document_component.new(document: document_presenter(@document), component: :div, show: true, partials: blacklight_config.view_config(:show).partials) do |component| %>
   <% component.with_title(as: 'h1', classes: nil, link_to_document: false, actions: false) %>
   <% component.with_metadata(classes: 'pl-dl') %>
   <% component.with_footer do %>
