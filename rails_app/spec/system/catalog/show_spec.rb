@@ -115,6 +115,13 @@ describe 'Catalog Show Page', :solr do
       end
     end
 
+    it 'links to the digital catalog' do
+      within('#document .pl-dl') do
+        digital_catalog_url = 'https://find.library.upenn.edu/catalog/9960736793503681'
+        expect(page).to have_link(I18n.t('show.digital_catalog', href: digital_catalog_url))
+      end
+    end
+
     context 'with a creator bearing a role' do
       let(:json) { build(:item_hash) }
 
@@ -123,13 +130,6 @@ describe 'Catalog Show Page', :solr do
           expect(page).to have_link('author, random (author)',
                                     href: search_catalog_path({ 'f[name_ssim][]': 'author, random' }))
         end
-      end
-    end
-
-    it 'links to the digital catalog' do
-      within('#document .pl-dl') do
-        digital_catalog_url = 'https://find.library.upenn.edu/catalog/9960736793503681'
-        expect(page).to have_link(I18n.t('show.digital_catalog', href: digital_catalog_url))
       end
     end
   end
