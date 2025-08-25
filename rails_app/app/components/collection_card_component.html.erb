@@ -2,7 +2,7 @@
   <% if representative_item? %>
     <img src="<%= preview_image_url %>" class="dc-collections__card-img">
   <% else %>
-    <pennlibs-fallback-img></pennlibs-fallback-img>
+    <pennlibs-fallback-img class="dc-collections__card-img"></pennlibs-fallback-img>
   <% end %>
   <%= content_tag heading_tag, class: "dc-collections__card-heading" do %>
     <%= link_to name, collection_facet_url, class: "dc-collections__card-link" %>
