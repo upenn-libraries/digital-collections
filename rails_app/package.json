@@ -13,7 +13,7 @@
     "@hotwired/turbo-rails": "^8.0.16",
     "@popperjs/core": "^2.11.8",
     "@samvera/clover-iiif": "^2.18.3",
-    "blacklight-frontend": "^9.0.0-beta1",
+    "blacklight-frontend": "^9.0.0-beta7",
     "blacklight-range-limit": "^9.0.0",
     "bootstrap": "^5.3.7",
     "react": "18.2",
