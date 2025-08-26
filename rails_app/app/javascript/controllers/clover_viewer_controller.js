@@ -99,7 +99,7 @@ export default class CloverViewerController extends Controller {
       iiifContent: manifest,
       options: options,
       plugins: hasStructures
-        ? [contentsPlugin, downloadPlugin]
+        ? [downloadPlugin, contentsPlugin]
         : [downloadPlugin],
       customTheme: customTheme,
     });

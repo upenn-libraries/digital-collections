@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makeBlob, mimicDownload } from "@samvera/image-downloader";
 import * as Popover from "@radix-ui/react-popover";
-import Download from "../viewer_icons/Download";
+import Download from "@components/viewer_icons/Download";
 
 export default function DownloadButton({ useViewerState }) {
   const viewerState = useViewerState();

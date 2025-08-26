@@ -1,6 +1,6 @@
 import React from "react";
-import ClosePanel from "../viewer_icons/ClosePanel";
-import OpenPanel from "../viewer_icons/OpenPanel";
+import ClosePanel from "@components/viewer_icons/ClosePanel";
+import OpenPanel from "@components/viewer_icons/OpenPanel";
 
 export default function MoreInfoButton({ useViewerState, useViewerDispatch }) {
   const viewerState = useViewerState();
