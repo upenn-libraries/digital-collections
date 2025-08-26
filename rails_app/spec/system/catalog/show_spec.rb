@@ -36,7 +36,7 @@ describe 'Catalog Show Page', :solr do
     it 'links to IIIF manifest' do
       click_on I18n.t('show.download_and_share.button')
       within('#dc-download-and-share-modal') do
-        manifest_url = 'https://apotheca.library.upenn.edu/iiif/items/2cb93aa7-a2e9-41ef-95de-08ae48700a84/manifest'
+        manifest_url = "https://apotheca.library.upenn.edu/iiif/items/#{item.id}/manifest"
         expect(page).to have_link(manifest_url, href: manifest_url)
       end
     end
