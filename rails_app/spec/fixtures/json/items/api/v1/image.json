@@ -1,0 +1,451 @@
+{
+  "status": "success",
+  "data": {
+    "item": {
+      "id": "2cb93aa7-a2e9-41ef-95de-08ae48700a84",
+      "ark": "ark:/81431/p3sj1b55t",
+      "first_published_at": "2021-11-30T16:53:44Z",
+      "last_published_at": "2025-07-31T12:05:18Z",
+      "descriptive_metadata": {
+        "title": [
+          {
+            "value": "Qāla al-Shaykh al-Imām al-ʻallāmah al-humām Abū al-ʻAbbās Sayyidī Aḥmad ibn ʻAbd al-ʻAzīz al-Hilālī raḥimahu Allāh wa-raḍiya ʻanhu"
+          },
+          {
+            "value": "قال الشيخ الامام العلامة الهمام ابو العباس سيدى احمد بن عبد العزيز الهلالى رحمه الله ورضى عنه"
+          }
+        ],
+        "alt_title": [],
+        "name": [
+          {
+            "value": "Hilālī, Aḥmad ibn ʻAbd al-ʻAzīz, 1701-1761",
+            "uri": "http://id.loc.gov/authorities/names/n82110708"
+          }
+        ],
+        "publisher": [
+          {
+            "value": "[publisher not identified]"
+          }
+        ],
+        "date": [
+          {
+            "value": "1865"
+          }
+        ],
+        "collection": [
+          {
+            "value": "Fez Lithographs Collection (University of Pennsylvania)"
+          },
+          {
+            "value": "Allan G. Chester and Florence K. Chester Fund"
+          }
+        ],
+        "item_type": [
+          {
+            "value": "Text",
+            "uri": "http://purl.org/dc/dcmitype/Text"
+          }
+        ],
+        "physical_format": [
+          {
+            "value": "Poetry",
+            "uri": "http://id.loc.gov/authorities/genreForms/gf2014026481"
+          },
+          {
+            "value": "books",
+            "uri": "http://vocab.getty.edu/aat/300028051"
+          }
+        ],
+        "description": [],
+        "extent": [
+          {
+            "value": "8 pages ; 23 cm"
+          }
+        ],
+        "language": [
+          {
+            "value": "Arabic",
+            "uri": "https://id.loc.gov/vocabulary/iso639-2/ara"
+          }
+        ],
+        "coverage": [
+          {
+            "value": "Early works to 1800"
+          }
+        ],
+        "note": [
+          {
+            "value": "Caption title."
+          },
+          {
+            "value": "Lithographed."
+          },
+          {
+            "value": "Collated. Catch words. Text is in Maghribi script, and is partially pointed and vocalized."
+          },
+          {
+            "value": "Acquired for the Penn Libraries with assistance from the Allan G. Chester and Florence K. Chester Fund."
+          },
+          {
+            "value": "Penn Libraries copy bound with: Tirmidhī, Muḥammad ibn ʻĪsá, -892. [Shamāʼil] Qāla al-Shaykh al-Imām al-ḥāfiẓ Abū ʻĪsá Muḥammad Ibn ʻĪsá ibn Sawrah al-Tirmidhī raḍiya Allāh ʻanhu. [Fès : s.n., 18--?]. [Item 2 of 6]."
+          },
+          {
+            "value": "Handlist #36b."
+          },
+          {
+            "value": "PENN Libraries' copy in original binding (type 2). Text block is separated from binding."
+          },
+          {
+            "value": "Handwritten table of contents on flyleaf."
+          },
+          {
+            "value": "Original binding (type 2). Text block is separated from binding."
+          }
+        ],
+        "relation": [
+          {
+            "value": "The Allan G. Chester and Florence K. Chester Fund Home Page: http://hdl.library.upenn.edu/1017.12/366196"
+          },
+          {
+            "value": "Digital facsimile for browsing (Colenda): https://colenda.library.upenn.edu/catalog/81431-p3sj1b55t"
+          }
+        ],
+        "subject": [
+          {
+            "value": "Muḥammad, Prophet, -632",
+            "uri": "http://id.worldcat.org/fast/1836298"
+          },
+          {
+            "value": "Islamic poetry, Arabic",
+            "uri": "http://id.worldcat.org/fast/980001"
+          },
+          {
+            "value": "Muḥammad, Prophet, -632 Poetry"
+          },
+          {
+            "value": "Islamic poetry, Arabic -- Early works to 1800"
+          }
+        ],
+        "geographic_subject": [],
+        "location": [
+          {
+            "value": "Morocco -- Fès."
+          }
+        ],
+        "physical_location": [
+          {
+            "value": "LIBRA, LIBRA Special - must be used in Rare Book Reading Room, BP75 .T54 1800z"
+          }
+        ],
+        "provenance": [
+          {
+            "value": "Abdulrazak, Fawzi"
+          }
+        ],
+        "rights": [
+          {
+            "value": "No Copyright - United States",
+            "uri": "http://rightsstatements.org/vocab/NoC-US/1.0/"
+          }
+        ],
+        "rights_note": [],
+        "identifier": [],
+        "bibnumber": [
+          {
+            "value": "9960736793503681"
+          }
+        ]
+      },
+      "structural_metadata": {
+        "viewing_direction": "right-to-left",
+        "viewing_hint": null
+      },
+      "derivatives": {
+        "preview": {
+          "mime_type": "image/jpeg",
+          "size_bytes": 12636,
+          "url": "https://apotheca.library.upenn.edu/v1/items/2cb93aa7-a2e9-41ef-95de-08ae48700a84/preview"
+        },
+        "pdf": {
+          "mime_type": "application/pdf",
+          "size_bytes": 15532384,
+          "url": "https://apotheca.library.upenn.edu/v1/items/2cb93aa7-a2e9-41ef-95de-08ae48700a84/pdf"
+        },
+        "iiif_manifest": {
+          "mime_type": "application/json",
+          "size_bytes": 14717,
+          "url": "https://apotheca.library.upenn.edu/iiif/items/2cb93aa7-a2e9-41ef-95de-08ae48700a84/manifest"
+        }
+      },
+      "assets": [
+        {
+          "id": "992df305-2861-4aef-876e-4f274dd2a186",
+          "label": null,
+          "preservation_file": {
+            "mime_type": "image/tiff",
+            "original_filename": "pj7604_m76_h55_1800z_wk1_body0001.tif",
+            "size_bytes": 94631586,
+            "url": "https://apotheca.library.upenn.edu/v1/assets/992df305-2861-4aef-876e-4f274dd2a186/preservation"
+          },
+          "derivatives": {
+            "thumbnail": {
+              "mime_type": "image/jpeg",
+              "size_bytes": 14415,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/992df305-2861-4aef-876e-4f274dd2a186/thumbnail"
+            },
+            "access": {
+              "mime_type": "image/tiff",
+              "size_bytes": 11765542,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/992df305-2861-4aef-876e-4f274dd2a186/access"
+            }
+          }
+        },
+        {
+          "id": "f8b34f57-d240-4937-b56f-f10c83cd4844",
+          "label": null,
+          "preservation_file": {
+            "mime_type": "image/tiff",
+            "original_filename": "pj7604_m76_h55_1800z_wk1_body0002.tif",
+            "size_bytes": 94631030,
+            "url": "https://apotheca.library.upenn.edu/v1/assets/f8b34f57-d240-4937-b56f-f10c83cd4844/preservation"
+          },
+          "derivatives": {
+            "thumbnail": {
+              "mime_type": "image/jpeg",
+              "size_bytes": 12636,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/f8b34f57-d240-4937-b56f-f10c83cd4844/thumbnail"
+            },
+            "access": {
+              "mime_type": "image/tiff",
+              "size_bytes": 6637714,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/f8b34f57-d240-4937-b56f-f10c83cd4844/access"
+            }
+          }
+        },
+        {
+          "id": "5da30041-83f1-4948-897f-8ed90ecbb7a4",
+          "label": null,
+          "preservation_file": {
+            "mime_type": "image/tiff",
+            "original_filename": "pj7604_m76_h55_1800z_wk1_body0003.tif",
+            "size_bytes": 94631030,
+            "url": "https://apotheca.library.upenn.edu/v1/assets/5da30041-83f1-4948-897f-8ed90ecbb7a4/preservation"
+          },
+          "derivatives": {
+            "thumbnail": {
+              "mime_type": "image/jpeg",
+              "size_bytes": 12179,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/5da30041-83f1-4948-897f-8ed90ecbb7a4/thumbnail"
+            },
+            "access": {
+              "mime_type": "image/tiff",
+              "size_bytes": 6134836,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/5da30041-83f1-4948-897f-8ed90ecbb7a4/access"
+            }
+          }
+        },
+        {
+          "id": "231703a1-8609-4e52-8bc1-3173549924fc",
+          "label": null,
+          "preservation_file": {
+            "mime_type": "image/tiff",
+            "original_filename": "pj7604_m76_h55_1800z_wk1_body0004.tif",
+            "size_bytes": 94631030,
+            "url": "https://apotheca.library.upenn.edu/v1/assets/231703a1-8609-4e52-8bc1-3173549924fc/preservation"
+          },
+          "derivatives": {
+            "thumbnail": {
+              "mime_type": "image/jpeg",
+              "size_bytes": 12599,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/231703a1-8609-4e52-8bc1-3173549924fc/thumbnail"
+            },
+            "access": {
+              "mime_type": "image/tiff",
+              "size_bytes": 6384732,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/231703a1-8609-4e52-8bc1-3173549924fc/access"
+            }
+          }
+        },
+        {
+          "id": "00a0f212-e3be-4875-952d-9084e8afa2ca",
+          "label": null,
+          "preservation_file": {
+            "mime_type": "image/tiff",
+            "original_filename": "pj7604_m76_h55_1800z_wk1_body0005.tif",
+            "size_bytes": 94631030,
+            "url": "https://apotheca.library.upenn.edu/v1/assets/00a0f212-e3be-4875-952d-9084e8afa2ca/preservation"
+          },
+          "derivatives": {
+            "thumbnail": {
+              "mime_type": "image/jpeg",
+              "size_bytes": 11150,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/00a0f212-e3be-4875-952d-9084e8afa2ca/thumbnail"
+            },
+            "access": {
+              "mime_type": "image/tiff",
+              "size_bytes": 6254268,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/00a0f212-e3be-4875-952d-9084e8afa2ca/access"
+            }
+          }
+        },
+        {
+          "id": "3c04ddf9-ee82-43a1-b831-79ba02975ba2",
+          "label": null,
+          "preservation_file": {
+            "mime_type": "image/tiff",
+            "original_filename": "pj7604_m76_h55_1800z_wk1_body0006.tif",
+            "size_bytes": 94631030,
+            "url": "https://apotheca.library.upenn.edu/v1/assets/3c04ddf9-ee82-43a1-b831-79ba02975ba2/preservation"
+          },
+          "derivatives": {
+            "thumbnail": {
+              "mime_type": "image/jpeg",
+              "size_bytes": 12155,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/3c04ddf9-ee82-43a1-b831-79ba02975ba2/thumbnail"
+            },
+            "access": {
+              "mime_type": "image/tiff",
+              "size_bytes": 6565646,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/3c04ddf9-ee82-43a1-b831-79ba02975ba2/access"
+            }
+          }
+        },
+        {
+          "id": "1aa8a504-787c-4a74-9136-efdfd00d7364",
+          "label": null,
+          "preservation_file": {
+            "mime_type": "image/tiff",
+            "original_filename": "pj7604_m76_h55_1800z_wk1_body0007.tif",
+            "size_bytes": 94631030,
+            "url": "https://apotheca.library.upenn.edu/v1/assets/1aa8a504-787c-4a74-9136-efdfd00d7364/preservation"
+          },
+          "derivatives": {
+            "thumbnail": {
+              "mime_type": "image/jpeg",
+              "size_bytes": 11576,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/1aa8a504-787c-4a74-9136-efdfd00d7364/thumbnail"
+            },
+            "access": {
+              "mime_type": "image/tiff",
+              "size_bytes": 6044438,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/1aa8a504-787c-4a74-9136-efdfd00d7364/access"
+            }
+          }
+        },
+        {
+          "id": "cbfcdfbc-b1a0-4b69-9798-38615cf89003",
+          "label": null,
+          "preservation_file": {
+            "mime_type": "image/tiff",
+            "original_filename": "pj7604_m76_h55_1800z_wk1_body0008.tif",
+            "size_bytes": 94631030,
+            "url": "https://apotheca.library.upenn.edu/v1/assets/cbfcdfbc-b1a0-4b69-9798-38615cf89003/preservation"
+          },
+          "derivatives": {
+            "thumbnail": {
+              "mime_type": "image/jpeg",
+              "size_bytes": 12653,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/cbfcdfbc-b1a0-4b69-9798-38615cf89003/thumbnail"
+            },
+            "access": {
+              "mime_type": "image/tiff",
+              "size_bytes": 6262336,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/cbfcdfbc-b1a0-4b69-9798-38615cf89003/access"
+            }
+          }
+        },
+        {
+          "id": "b171065b-49f7-4622-9f83-7a1303cd4866",
+          "label": null,
+          "preservation_file": {
+            "mime_type": "image/tiff",
+            "original_filename": "pj7604_m76_h55_1800z_wk1_body0009.tif",
+            "size_bytes": 94631030,
+            "url": "https://apotheca.library.upenn.edu/v1/assets/b171065b-49f7-4622-9f83-7a1303cd4866/preservation"
+          },
+          "derivatives": {
+            "thumbnail": {
+              "mime_type": "image/jpeg",
+              "size_bytes": 11568,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/b171065b-49f7-4622-9f83-7a1303cd4866/thumbnail"
+            },
+            "access": {
+              "mime_type": "image/tiff",
+              "size_bytes": 6215236,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/b171065b-49f7-4622-9f83-7a1303cd4866/access"
+            }
+          }
+        },
+        {
+          "id": "4c87cde3-f83a-4653-89db-923edf2a6a14",
+          "label": null,
+          "preservation_file": {
+            "mime_type": "image/tiff",
+            "original_filename": "pj7604_m76_h55_1800z_wk1_body0010.tif",
+            "size_bytes": 94631030,
+            "url": "https://apotheca.library.upenn.edu/v1/assets/4c87cde3-f83a-4653-89db-923edf2a6a14/preservation"
+          },
+          "derivatives": {
+            "thumbnail": {
+              "mime_type": "image/jpeg",
+              "size_bytes": 14112,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/4c87cde3-f83a-4653-89db-923edf2a6a14/thumbnail"
+            },
+            "access": {
+              "mime_type": "image/tiff",
+              "size_bytes": 10232630,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/4c87cde3-f83a-4653-89db-923edf2a6a14/access"
+            }
+          }
+        },
+        {
+          "id": "42a3700c-6541-462d-97f3-3995a7ebf5e4",
+          "label": null,
+          "preservation_file": {
+            "mime_type": "image/tiff",
+            "original_filename": "pj7604_m76_h55_1800z_wk1_body0011.tif",
+            "size_bytes": 94631030,
+            "url": "https://apotheca.library.upenn.edu/v1/assets/42a3700c-6541-462d-97f3-3995a7ebf5e4/preservation"
+          },
+          "derivatives": {
+            "thumbnail": {
+              "mime_type": "image/jpeg",
+              "size_bytes": 7357,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/42a3700c-6541-462d-97f3-3995a7ebf5e4/thumbnail"
+            },
+            "access": {
+              "mime_type": "image/tiff",
+              "size_bytes": 3050936,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/42a3700c-6541-462d-97f3-3995a7ebf5e4/access"
+            }
+          }
+        },
+        {
+          "id": "da8da201-6c19-47e8-ac8f-c396ebd91819",
+          "label": null,
+          "preservation_file": {
+            "mime_type": "image/tiff",
+            "original_filename": "pj7604_m76_h55_1800z_wk1_body0012.tif",
+            "size_bytes": 94631030,
+            "url": "https://apotheca.library.upenn.edu/v1/assets/da8da201-6c19-47e8-ac8f-c396ebd91819/preservation"
+          },
+          "derivatives": {
+            "thumbnail": {
+              "mime_type": "image/jpeg",
+              "size_bytes": 6944,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/da8da201-6c19-47e8-ac8f-c396ebd91819/thumbnail"
+            },
+            "access": {
+              "mime_type": "image/tiff",
+              "size_bytes": 2603460,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/da8da201-6c19-47e8-ac8f-c396ebd91819/access"
+            }
+          }
+        }
+      ]
+    },
+    "related": {
+      "assets": "https://apotheca.library.upenn.edu/v1/items/2cb93aa7-a2e9-41ef-95de-08ae48700a84?assets=true"
+    }
+  }
+}
