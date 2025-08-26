@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 require 'system_helper'
-require './spec/support/fixture_helpers'
 
 describe 'Catalog Show Page', :solr do
-  include FixtureHelpers
   let(:item) { create(:item, published_json: json) }
   let(:solr_doc) { SolrDocument.new(item.to_solr) }
 
