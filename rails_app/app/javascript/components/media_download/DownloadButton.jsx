@@ -57,23 +57,17 @@ export default function DownloadButton({ useViewerState }) {
 
       <Popover.Portal>
         <Popover.Content
-          className="bg-white border rounded shadow-lg p-0 min-w-72"
+          className="bg-white border rounded shadow-lg min-w-72 pl-margin-t-sm"
+          style={{ padding: `1rem 0.75rem`}}
           align="end"
           sideOffset={5}
         >
-          <div className="p-3 border-bottom">
-            <h6
-              className="text-uppercase text-muted mb-0 fw-semibold"
-              style={{ fontSize: "0.75rem", letterSpacing: "0.05em" }}
-            >
-              Download Selected Image
-            </h6>
-          </div>
+          <h2 className="pl-margin-b-base pl-margin-r-base" style={{ padding: `0 0.75rem`}}>Download image</h2>
           <ul className="list-unstyled list-group">
             <li>
               <button
                 type="button"
-                className="btn btn-link text-decoration-none"
+                className="btn btn-link text-decoration-none d-block w-100 text-start"
                 onClick={(event) =>
                   handleDownloadClick(event, assetUrls.small, "small")
                 }
@@ -84,7 +78,7 @@ export default function DownloadButton({ useViewerState }) {
             <li>
               <button
                 type="button"
-                className="btn btn-link text-decoration-none"
+                className="btn btn-link text-decoration-none d-block w-100 text-start"
                 onClick={(event) =>
                   handleDownloadClick(event, assetUrls.fullSize, "full-size")
                 }
@@ -96,13 +90,12 @@ export default function DownloadButton({ useViewerState }) {
               <a
                 href={assetUrls.original.path}
                 download
-                className="btn btn-link text-decoration-none"
+                className="btn btn-link text-decoration-none d-block w-100 text-start"
               >
                 {assetUrls.original.label.en}
               </a>
             </li>
           </ul>
-          <Popover.Arrow className="fill-purple" />
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>
