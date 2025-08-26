@@ -58,11 +58,16 @@ export default function DownloadButton({ useViewerState }) {
       <Popover.Portal>
         <Popover.Content
           className="bg-white border rounded shadow-lg min-w-72 pl-margin-t-sm"
-          style={{ padding: `1rem 0.75rem`}}
+          style={{ padding: "1rem 0.75rem" }}
           align="end"
           sideOffset={5}
         >
-          <h2 className="pl-margin-b-base pl-margin-r-base" style={{ padding: `0 0.75rem`}}>Download image</h2>
+          <h2
+            className="pl-margin-b-base pl-margin-r-base"
+            style={{ padding: "0 0.75rem" }}
+          >
+            Download image
+          </h2>
           <ul className="list-unstyled list-group">
             <li>
               <button
