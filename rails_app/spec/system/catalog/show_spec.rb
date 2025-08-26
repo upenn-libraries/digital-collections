@@ -28,7 +28,7 @@ describe 'Catalog Show Page', :solr do
     it 'links to pdf download' do
       click_on I18n.t('show.download_and_share.button')
       within('#dc-download-and-share-modal') do
-        pdf_url = 'https://apotheca.library.upenn.edu/v1/items/2cb93aa7-a2e9-41ef-95de-08ae48700a84/pdf'
+        pdf_url = "https://apotheca.library.upenn.edu/v1/items/#{item.id}/pdf"
         expect(page).to have_link('PDF — 14.8 MB', href: pdf_url)
       end
     end
