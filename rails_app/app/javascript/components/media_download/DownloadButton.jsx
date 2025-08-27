@@ -22,7 +22,6 @@ export default function DownloadButton({ useViewerState }) {
     id: activeCanvas,
     type: "Canvas",
   });
-  const [open, setOpen] = useState(false);
 
   // download the image instead of opening it in browser
   const handleDownloadClick = async (e, url, size) => {
@@ -58,7 +57,7 @@ export default function DownloadButton({ useViewerState }) {
   const assetUrls = generateAssetUrls();
 
   return (
-    <Popover.Root open={open} onOpenChange={setOpen}>
+    <Popover.Root>
       <Popover.Trigger asChild>
         <button
           type="button"
