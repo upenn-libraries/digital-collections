@@ -74,11 +74,11 @@ export default function DownloadButton({ useViewerState }) {
 
       <Popover.Portal>
         <Popover.Content
-          className="bg-white border rounded shadow-lg p-3"
+          className="bg-white border rounded shadow-lg p-3 mt-2"
           align="end"
           sideOffset={5}
         >
-          <h2 className="px-2 mb-3">Download image</h2>
+          <h2 className="px-2 mb-3 me-2">Download image</h2>
           <ul className="list-unstyled list-group">
             {Object.entries(DOWNLOAD_OPTIONS).map(([key, option]) => (
               <li key={key}>
