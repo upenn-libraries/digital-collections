@@ -7,11 +7,11 @@ const DEFAULT_SCALE = "!200,200";
 const DOWNLOAD_OPTIONS = {
   small: {
     label: "Small JPG",
-    scale: "1200,",
+    iiifPath: "/full/1200,/0/default.jpg",
   },
   fullsize: {
     label: "Full-sized JPG",
-    scale: "max",
+    iiifPath: "/full/max/0/default.jpg",
   },
 };
 
@@ -28,7 +28,7 @@ export default function DownloadButton({ useViewerState }) {
   const handleDownloadClick = async (e, url, size) => {
     e.preventDefault();
 
-    const downloadFilename = `${canvasData.label.none[0]}-${size}`;
+    const downloadFilename = `${canvasData.label.none[0]}-${size}.jpg`;
     const response = await makeBlob(url);
 
     if (!response || response.error) {
@@ -41,15 +41,12 @@ export default function DownloadButton({ useViewerState }) {
 
   // Same URL generation logic as above
   const generateAssetUrls = () => {
-    const iiifAssetPath = canvasData.items[0].items[0].body.id;
+    const iiifServicePath = canvasData.items[0].items[0].body.service[0].id;
     const originalRendering = canvasData.rendering[0];
 
     return {
-      small: iiifAssetPath.replace(DEFAULT_SCALE, DOWNLOAD_OPTIONS.small.scale),
-      fullsize: iiifAssetPath.replace(
-        DEFAULT_SCALE,
-        DOWNLOAD_OPTIONS.fullsize.scale,
-      ),
+      small: iiifServicePath + DOWNLOAD_OPTIONS.small.iiifPath,
+      fullsize: iiifServicePath + DOWNLOAD_OPTIONS.fullsize.iiifPath,
       original: {
         label: originalRendering.label,
         path: originalRendering.id,
