@@ -38,14 +38,20 @@ class SolrDocument
   #
   # @return [String]
   def pdf_url
-    "#{Settings.digital_repository.url}#{Settings.digital_repository.api.resource.path}/#{id}/pdf"
+    host = Settings.digital_repository.url
+    path = "#{Settings.digital_repository.api.resource.items.path}/#{id}/pdf"
+
+    URI::HTTPS.build(host: host, path: path).to_s
   end
 
   # IIIF manifest URL.
   #
   # @return [String]
   def manifest_url
-    "#{Settings.digital_repository.url}/iiif/items/#{id}/manifest"
+    host = Settings.digital_repository.url
+    path = "#{Settings.digital_repository.api.iiif.items.path}/#{id}/manifest"
+
+    URI::HTTPS.build(host: host, path: path).to_s
   end
 
   # @return [String, nil]
@@ -53,7 +59,7 @@ class SolrDocument
     return nil unless preview?
 
     host = Settings.digital_repository.url
-    path = "#{Settings.digital_repository.api.resource.path}/#{id}/preview"
+    path = "#{Settings.digital_repository.api.resource.items.path}/#{id}/preview"
     query = 'size=300,300'
 
     URI::HTTPS.build(host: host, path: path, query: query).to_s

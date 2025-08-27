@@ -5,7 +5,7 @@ class DigitalRepository
   attr_reader :url
 
   def initialize(url: nil)
-    @url = url || Settings.digital_repository.url
+    @url = url || URI::HTTPS.build(host: Settings.digital_repository.url).to_s
   end
 
   # Faraday connection to the digital repository public API.
@@ -25,7 +25,7 @@ class DigitalRepository
   # @param assets [Boolean] flag to include assets
   # @return [Hash]
   def item(id, assets: false)
-    connection.get("/v1/items/#{id}", { assets: assets })
+    connection.get("#{Settings.digital_repository.api.resource.items.path}/#{id}", { assets: assets })
               .body['data']
   end
 
