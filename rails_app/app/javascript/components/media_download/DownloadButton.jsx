@@ -3,6 +3,18 @@ import { makeBlob, mimicDownload } from "@samvera/image-downloader";
 import * as Popover from "@radix-ui/react-popover";
 import Download from "@components/viewer_icons/Download";
 
+const DEFAULT_SCALE = "!200,200";
+const DOWNLOAD_OPTIONS = {
+  small: {
+    label: "Small JPG",
+    scale: "1200,",
+  },
+  fullsize: {
+    label: "Full-sized JPG",
+    scale: "max",
+  },
+};
+
 export default function DownloadButton({ useViewerState }) {
   const viewerState = useViewerState();
   const { activeCanvas, vault } = viewerState;
@@ -31,9 +43,13 @@ export default function DownloadButton({ useViewerState }) {
   const generateAssetUrls = () => {
     const iiifAssetPath = canvasData.items[0].items[0].body.id;
     const originalRendering = canvasData.rendering[0];
+
     return {
-      small: iiifAssetPath.replace("!200,200", "1200,"),
-      fullSize: iiifAssetPath.replace("!200,200", "max"),
+      small: iiifAssetPath.replace(DEFAULT_SCALE, DOWNLOAD_OPTIONS.small.scale),
+      fullsize: iiifAssetPath.replace(
+        DEFAULT_SCALE,
+        DOWNLOAD_OPTIONS.fullsize.scale,
+      ),
       original: {
         label: originalRendering.label,
         path: originalRendering.id,
@@ -41,6 +57,7 @@ export default function DownloadButton({ useViewerState }) {
     };
   };
 
+  // this can be removed (maybe when we upgrade to React 19 with built in memoization)
   const assetUrls = generateAssetUrls();
 
   return (
@@ -57,40 +74,25 @@ export default function DownloadButton({ useViewerState }) {
 
       <Popover.Portal>
         <Popover.Content
-          className="bg-white border rounded shadow-lg min-w-72 pl-margin-t-sm"
-          style={{ padding: "1rem 0.75rem" }}
+          className="bg-white border rounded shadow-lg p-3"
           align="end"
           sideOffset={5}
         >
-          <h2
-            className="pl-margin-b-base pl-margin-r-base"
-            style={{ padding: "0 0.75rem" }}
-          >
-            Download image
-          </h2>
+          <h2 className="px-2 mb-3">Download image</h2>
           <ul className="list-unstyled list-group">
-            <li>
-              <button
-                type="button"
-                className="btn btn-link text-decoration-none d-block w-100 text-start"
-                onClick={(event) =>
-                  handleDownloadClick(event, assetUrls.small, "small")
-                }
-              >
-                Small JPG
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="btn btn-link text-decoration-none d-block w-100 text-start"
-                onClick={(event) =>
-                  handleDownloadClick(event, assetUrls.fullSize, "full-size")
-                }
-              >
-                Full-sized JPG
-              </button>
-            </li>
+            {Object.entries(DOWNLOAD_OPTIONS).map(([key, option]) => (
+              <li key={key}>
+                <button
+                  type="button"
+                  className="btn btn-link text-decoration-none d-block w-100 text-start"
+                  onClick={(event) =>
+                    handleDownloadClick(event, assetUrls[key], key)
+                  }
+                >
+                  {option.label}
+                </button>
+              </li>
+            ))}
             <li>
               <a
                 href={assetUrls.original.path}
