@@ -48,6 +48,17 @@ class SolrDocument
     "#{Settings.digital_repository.url}/iiif/items/#{id}/manifest"
   end
 
+  # @return [String, nil]
+  def thumbnail_url
+    return nil unless preview?
+
+    host = Settings.digital_repository.url
+    path = "#{Settings.digital_repository.api.resource.path}/#{id}/preview"
+    query = 'size=300,300'
+
+    URI::HTTPS.build(host: host, path: path, query: query).to_s
+  end
+
   # @return [Integer]
   def iiif_image_count
     fetch(:iiif_image_count_isi, 0)
