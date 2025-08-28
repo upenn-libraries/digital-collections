@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeBlob, mimicDownload } from "@samvera/image-downloader";
 import * as Popover from "@radix-ui/react-popover";
 import Download from "@components/viewer_icons/Download";
 
-const DEFAULT_SCALE = "!200,200";
 const DOWNLOAD_OPTIONS = {
   small: {
     label: "Small JPG",
