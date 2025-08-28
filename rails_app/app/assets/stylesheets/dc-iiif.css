@@ -29,7 +29,11 @@
   z-index: auto !important;
 }
 
-.dc-iiff-viewer-controls__button {
+.clover-viewer-media-search {
+  display: none !important;
+}
+
+.dc-iiif-viewer-controls__button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,7 +60,7 @@
 }
 
 @media (max-width: 575px) {
-  .dc-iiff-viewer-controls__button {
+  .dc-iiif-viewer-controls__button {
     display: none;
   }
 }
