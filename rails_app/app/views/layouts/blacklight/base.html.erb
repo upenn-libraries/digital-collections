@@ -1,3 +1,5 @@
+<%# Overridden from Blacklight 9.0.0.beta7 to add custom asset handling and custom header logic. %>
+
 <!DOCTYPE html>
 <%= content_tag :html, class: 'no-js', **html_tag_attributes do %>
   <head>
@@ -41,7 +43,7 @@
   <main id="main-container" class="<%= container_classes %>" aria-label="<%= t('blacklight.main.aria.main_container') %>">
     <%= content_for(:container_header) %>
 
-    <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
+    <%= render 'shared/flash_msg', layout: 'shared/flash_messages' if flash.any? %>
 
     <div class="row">
       <%= content_for?(:content) ? yield(:content) : yield %>

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Helper methods for layouts
-# Override BL 9.0.0beta1
+# Overriding helpers methods in Blacklight 9.0.0.beta7
 module LayoutHelper
   include Blacklight::LayoutHelperBehavior
 
@@ -17,5 +17,14 @@ module LayoutHelper
   # @return [String]
   def sidebar_classes
     'page-sidebar'
+  end
+
+  # Overriding method to support using full-width layout for selected pages.
+  #
+  # Setting config.full_width_layout in CatalogController will no longer have an effect.
+  #
+  # @return [String]
+  def container_classes
+    %w[index collections home].include?(action_name) ? 'container-fluid' : 'container'
   end
 end

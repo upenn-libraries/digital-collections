@@ -2,7 +2,7 @@
 
 module Catalog
   # Transforms bibnumber value into links to digital catalog
-  # Custom Blacklight::FieldPresenter subclass based on BL v9.0.0beta1@de5ddb
+  # Custom Blacklight::FieldPresenter subclass based on Blacklight v9.0.0.beta7.
   class BibnumberPresenter < Catalog::FieldPresenter
     # @return [Array]
     def values

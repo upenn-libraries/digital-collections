@@ -1,8 +1,12 @@
-<% if @document.manifest? %>
+<%# Override DocumentComponent from Blacklight 9.0.0.beta7 to
+      - add Clover IIIF Viewer
+      - render DocumentActions component %>
+
+<% if document.manifest? %>
   <div class="iiif-viewer-container">
     <div
       data-controller="clover-viewer"
-      data-clover-viewer-url-value="<%= @document.manifest_url %>"
+      data-clover-viewer-url-value="<%= document.manifest_url %>"
     ></div>
   </div>
 <% end %>
@@ -10,11 +14,11 @@
 <%= content_tag @component,
   id: @id,
   data: {
-    'document-id': @document.id.to_s.parameterize,
-    'document-counter': @counter,
+    'document-id': document.id.to_s.parameterize,
+    'document-counter': counter,
   },
   itemscope: true,
-  itemtype: @document.itemtype,
+  itemtype: document.itemtype,
   class: classes.flatten.join(' ') do %>
   <%= header %>
   <% if body.present? %>

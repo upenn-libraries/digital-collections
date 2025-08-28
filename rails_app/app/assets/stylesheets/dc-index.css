@@ -8,6 +8,7 @@
     margin: 0px auto;
     padding: 0 var(--pl-viewport-margins-gutter, 1em);
     margin-top: var(--pl-space-lg);
+    margin-bottom: var(--pl-space-2xl);
 
     @media (min-width: 820px) {
       display: grid;
