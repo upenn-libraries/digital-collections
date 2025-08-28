@@ -3,8 +3,12 @@ import { createRoot } from "react-dom/client";
 import Viewer from "@samvera/clover-iiif/viewer";
 import { Controller } from "@hotwired/stimulus";
 
+// Table of Contents components
 import EntriesPanel from "@components/table_of_contents/EntriesPanel";
 import MoreInfoButton from "@components/table_of_contents/MoreInfoButton";
+
+// Viewer asset download component
+import DownloadButton from "@components/media_download/DownloadButton";
 
 const options = {
   showTitle: false,
@@ -29,6 +33,15 @@ const contentsPlugin = {
   },
 };
 
+const downloadPlugin = {
+  id: "download-button",
+  imageViewer: {
+    controls: {
+      component: DownloadButton,
+    },
+  },
+};
+
 const customTheme = {
   colors: {
     /**
@@ -38,7 +51,7 @@ const customTheme = {
     primary: "#2D3545",
     primaryMuted: "#595F6A",
     primaryAlt: "#2D3545",
- 
+
     /**
      * Key brand color(s).
      * `accent` must contrast to 4.5 or greater with `secondary`.
@@ -46,7 +59,7 @@ const customTheme = {
     accent: "#0E5696",
     accentMuted: "#0E5696",
     accentAlt: "#0E5696",
- 
+
     /**
      * White and light grays in a light theme.
      * All must must contrast to 4.5 or greater with `primary` and  `accent`.
@@ -85,7 +98,9 @@ export default class CloverViewerController extends Controller {
     return createElement(Viewer, {
       iiifContent: manifest,
       options: options,
-      plugins: hasStructures ? [contentsPlugin] : [],
+      plugins: hasStructures
+        ? [downloadPlugin, contentsPlugin]
+        : [downloadPlugin],
       customTheme: customTheme,
     });
   }

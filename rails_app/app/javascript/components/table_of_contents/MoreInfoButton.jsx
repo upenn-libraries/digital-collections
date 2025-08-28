@@ -15,7 +15,7 @@ export default function MoreInfoButton({ useViewerState, useViewerDispatch }) {
   return (
     <button
       type="button"
-      className="dc-iiff-viewer-controls__button"
+      className="dc-iiif-viewer-controls__button"
       onClick={clickHandler}
       aria-label="More info"
       aria-expanded={viewerState.isInformationOpen}
