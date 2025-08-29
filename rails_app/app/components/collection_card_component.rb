@@ -21,10 +21,6 @@ class CollectionCardComponent < ViewComponent::Base
   def preview_image_url
     return unless representative_item?
 
-    host = Settings.digital_repository.url
-    path = "#{Settings.digital_repository.api.resource.items.path}/#{representative_item}/preview"
-    query = 'size=350,350'
-
-    URI::HTTPS.build(host: host, path: path, query: query).to_s
+    DigitalRepository.new.item_preview_url(representative_item, 'size=350,350')
   end
 end

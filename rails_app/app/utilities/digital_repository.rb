@@ -5,7 +5,7 @@ class DigitalRepository
   attr_reader :url
 
   def initialize(url: nil)
-    @url = url || URI::HTTPS.build(host: Settings.digital_repository.url).to_s
+    @url = url || URI::HTTPS.build(host: host).to_s
   end
 
   # Faraday connection to the digital repository public API.
@@ -25,16 +25,55 @@ class DigitalRepository
   # @param assets [Boolean] flag to include assets
   # @return [Hash]
   def item(id, assets: false)
-    connection.get("#{Settings.digital_repository.api.resource.items.path}/#{id}", { assets: assets })
+    connection.get("#{item_resource_path}/#{id}", { assets: assets })
               .body['data']
   end
 
   # Return Item JSON using ark id lookup
   #
-  # @param ark [Object] ark id
+  # @param ark [String] ark id
   # @param assets [Boolean] flag to include assets
   # @return [Hash]
   def item_by_ark(ark, assets: false)
-    connection.get("/v1/items/lookup/#{ark}", { assets: assets }).body['data']
+    connection.get("#{item_resource_path}/lookup/#{ark}", { assets: assets }).body['data']
+  end
+
+  # @param id [String]
+  # @return [String]
+  def item_manifest_url(id)
+    path = "#{item_iiif_path}/#{id}/manifest"
+    URI::HTTPS.build(host: host, path: path).to_s
+  end
+
+  # @param id [String]
+  # @return [String]
+  def item_pdf_url(id)
+    path = "#{item_resource_path}/#{id}/pdf"
+    URI::HTTPS.build(host: host, path: path).to_s
+  end
+
+  # @param id [String]
+  # @param size [String] IIIF image API size param as a string
+  # @return [String]
+  def item_preview_url(id, size)
+    path = "#{item_resource_path}/#{id}/preview"
+    URI::HTTPS.build(host: host, path: path, query: size).to_s
+  end
+
+  private
+
+  # @return [String]
+  def host
+    Settings.digital_repository.host
+  end
+
+  # @return [String]
+  def item_resource_path
+    Settings.digital_repository.api.resource.items.path
+  end
+
+  # @return [String]
+  def item_iiif_path
+    Settings.digital_repository.api.iiif.items.path
   end
 end
