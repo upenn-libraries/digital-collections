@@ -35,9 +35,9 @@ pennlibs-header:focus {
 /*
 * This addresses an issue where the scroll position after a turbo action isn't properly set. Supposedly this is due to
 * conflicting interactions between Turbo Drive and Bootstrap. Seems to occur only in Firefox.
-* See: https://github.com/hotwired/turbo/issues/1165
+* See: https://github.com/hotwired/turbo/issues/1165, https://github.com/hotwired/turbo/issues/698
 */
-html[aria-busy="true"] {
+html {
   scroll-behavior: auto !important;
 }
 
