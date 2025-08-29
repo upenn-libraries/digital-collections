@@ -9,7 +9,7 @@ describe 'Catalog Index Page', :solr do
   before { item.add_to_solr! }
 
   context 'with search results' do
-    let(:json) { JSON.parse(json_fixture('image', 'items/api/v1'))['data']['item'] }
+    let(:json) { item_resource_fixture('image') }
     let(:query) { { q: item.id } }
 
     before { visit search_catalog_path(query) }
@@ -119,7 +119,7 @@ describe 'Catalog Index Page', :solr do
     end
 
     context 'when an item does not have a thumbnail' do
-      let(:json) { JSON.parse(json_fixture('audio', 'items/api/v1'))['data']['item'] }
+      let(:json) { item_resource_fixture('audio') }
 
       it 'shows the thumbnail placeholder' do
         within('#documents .document-position-1 div.document-thumbnail') do
@@ -130,7 +130,7 @@ describe 'Catalog Index Page', :solr do
   end
 
   context 'without search results' do
-    let(:json) { JSON.parse(json_fixture('audio', 'items/api/v1'))['data']['item'] }
+    let(:json) { item_resource_fixture('audio') }
     let(:query) { { q: 'no_result' } }
 
     before { visit search_catalog_path(query) }

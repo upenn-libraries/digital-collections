@@ -12,7 +12,7 @@ describe 'Catalog Show Page', :solr do
   end
 
   context 'when an item has IIIF images' do
-    let(:json) { JSON.parse(json_fixture('image', 'items/api/v1/'))['data']['item'] }
+    let(:json) { item_resource_fixture('image') }
 
     it 'shows the IIIF viewer' do
       within('.show-document') { expect(page).to have_css('.iiif-viewer-container') }
@@ -43,7 +43,7 @@ describe 'Catalog Show Page', :solr do
   end
 
   context 'when an item has no IIIF images' do
-    let(:json) { JSON.parse(json_fixture('audio', 'items/api/v1/'))['data']['item'] }
+    let(:json) { item_resource_fixture('audio') }
 
     it 'does not show the IIIF viewer' do
       within('.show-document') { expect(page).not_to have_css('.iiif-viewer-container') }
@@ -67,7 +67,7 @@ describe 'Catalog Show Page', :solr do
   end
 
   context 'when an item can be found' do
-    let(:json) { JSON.parse(json_fixture('image', 'items/api/v1/'))['data']['item'] }
+    let(:json) { item_resource_fixture('image') }
 
     before do
       click_on I18n.t('show.find_this_item.button')
@@ -92,7 +92,7 @@ describe 'Catalog Show Page', :solr do
   end
 
   context 'when viewing the document metadata' do
-    let(:json) { JSON.parse(json_fixture('image', 'items/api/v1/'))['data']['item'] }
+    let(:json) { item_resource_fixture('image') }
 
     it 'shows the title' do
       within('.document-main-section .documentHeader') do
