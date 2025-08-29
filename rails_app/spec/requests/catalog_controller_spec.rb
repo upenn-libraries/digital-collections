@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe 'Catalog Controller Requests' do
-  describe '#legacy_redirect' do
+  describe '#legacy_redirect', :solr do
     let(:item) { create(:item, published_json: json) }
     let(:solr_doc) { SolrDocument.new(item.to_solr) }
     let(:json) { item_resource_fixture('image') }
