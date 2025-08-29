@@ -36,7 +36,7 @@ export default function DownloadButton({ useViewerState }) {
     mimicDownload(response, downloadFilename);
   };
 
-  // Same URL generation logic as above
+  // create an object with our asset download URLs
   const generateAssetUrls = () => {
     const iiifServicePath = canvasData.items[0].items[0].body.service[0].id;
     const originalRendering = canvasData.rendering[0];
