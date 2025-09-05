@@ -21,6 +21,6 @@ class CollectionCardComponent < ViewComponent::Base
   def preview_image_url
     return unless representative_item?
 
-    "#{Settings.digital_repository.url}/v1/items/#{representative_item}/preview?size=350,350"
+    DigitalRepository.new.item_preview_url(representative_item, 'size=350,350')
   end
 end

@@ -38,14 +38,21 @@ class SolrDocument
   #
   # @return [String]
   def pdf_url
-    "#{Settings.digital_repository.url}#{Settings.digital_repository.api.resource.path}/#{id}/pdf"
+    digital_repository.item_pdf_url(id)
   end
 
   # IIIF manifest URL.
   #
   # @return [String]
   def manifest_url
-    "#{Settings.digital_repository.url}/iiif/items/#{id}/manifest"
+    digital_repository.item_manifest_url(id)
+  end
+
+  # @return [String, nil]
+  def thumbnail_url
+    return nil unless preview?
+
+    digital_repository.item_preview_url(id, 'size=300,300')
   end
 
   # @return [Integer]
@@ -74,6 +81,13 @@ class SolrDocument
   def digital_catalog_url
     return unless bibnumber
 
-    URI::HTTPS.build(host: Settings.digital_catalog.url, path: "#{Settings.digital_catalog.path}/#{bibnumber}").to_s
+    URI::HTTPS.build(host: Settings.digital_catalog.host, path: "#{Settings.digital_catalog.path}/#{bibnumber}").to_s
+  end
+
+  private
+
+  # @return [DigitalRepository]
+  def digital_repository
+    @digital_repository ||= DigitalRepository.new
   end
 end
