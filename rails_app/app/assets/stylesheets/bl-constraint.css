@@ -1,6 +1,6 @@
 .constraints-container {
   align-items: baseline;
-  gap: var(--pl-space-sm);
+  gap: var(--pl-space-s);
   margin: 0 !important;
   align-self: end;
 
@@ -8,7 +8,7 @@
 }
 
 .constraints-container > h2 {
-  font-size: var(--pl-font-size-base);
+  font-size: var(--pl-font-size-m);
   font-family: var(--pl-font-family);
   font-weight: 500;
   color: var(--pl-color-fg-default);
@@ -41,7 +41,7 @@
       top: 0;
       right: 0;
       bottom: 0;
-      border-radius: var(--pl-border-radius-base);
+      border-radius: var(--pl-border-radius);
     }
 
     &:hover {
@@ -71,8 +71,8 @@
   & .constraint-value {
     display: flex;
     align-items: center;
-    --bs-btn-padding-y: var(--pl-space-xs);
-    padding-right: var(--pl-space-sm);
+    --bs-btn-padding-y: var(--pl-space-2xs);
+    padding-right: var(--pl-space-s);
     font-weight: 500;
   }
 }

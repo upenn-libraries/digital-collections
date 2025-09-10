@@ -7,8 +7,7 @@
     width: 100%;
     margin: 0px auto;
     padding: 0 var(--pl-viewport-margins-gutter, 1em);
-    margin-top: var(--pl-space-lg);
-    margin-bottom: var(--pl-space-2xl);
+    margin-top: var(--pl-space-l);
 
     @media (min-width: 820px) {
       display: grid;
@@ -63,7 +62,7 @@
 .dc-constraints-and-sort {
   display: flex;
   justify-content: space-between;
-  gap: var(--pl-space-base);
+  gap: var(--pl-space-m);
   flex-wrap: wrap;
   align-self: end;
   width: 100%;
@@ -88,15 +87,15 @@
 }
 
 .search-widgets .btn {
-  --bs-btn-padding-y: var(--pl-space-xs);
+  --bs-btn-padding-y: var(--pl-space-2xs);
 }
 
 .view-type-group .btn {
-  --bs-btn-padding-x: var(--pl-space-sm);
+  --bs-btn-padding-x: var(--pl-space-s);
 }
 
 .search-widgets {
-  gap: var(--pl-space-sm);
+  gap: var(--pl-space-s);
   align-items: center;
 }
 

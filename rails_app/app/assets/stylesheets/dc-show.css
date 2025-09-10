@@ -1,6 +1,6 @@
 .show-document {
   & .iiif-viewer-container {
-    margin-top: var(--pl-space-base);
+    margin-top: var(--pl-space-m);
   }
 
   & .clover-viewer-painting > div[style] {
@@ -12,15 +12,15 @@
   }
 
   & .pl-dl {
-    margin-top: var(--pl-space-base);
+    margin-top: var(--pl-space-m);
     margin-bottom: var(--pl-space-xl);
   }
 
-  margin-bottom: var(--pl-space-base);
+  margin-bottom: var(--pl-space-m);
 }
 
 .dc-download-and-share-modal,
 .dc-find-this-item-modal {
-  --bs-modal-padding: var(--pl-space-lg);
-  --bs-modal-header-padding: var(--pl-space-lg);
+  --bs-modal-padding: var(--pl-space-l);
+  --bs-modal-header-padding: var(--pl-space-l);
 }

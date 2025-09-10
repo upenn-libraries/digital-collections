@@ -1,12 +1,12 @@
 .pagination {
-  --bs-pagination-padding-x: var(--pl-space-base);
-  --bs-pagination-padding-y: var(--pl-space-sm);
+  --bs-pagination-padding-x: var(--pl-space-m);
+  --bs-pagination-padding-y: var(--pl-space-s);
   --bs-pagination-font-size: var(--pl-text-size-base);
   --bs-pagination-color: var(--pl-color-fg-default);
   --bs-pagination-bg: var(--pl-color-bg-default);
   --bs-pagination-border-width: var(--pl-border-width);
   --bs-pagination-border-color: var(--pl-color-border-default);
-  --bs-pagination-border-radius: var(--pl-space-base);
+  --bs-pagination-border-radius: var(--pl-space-m);
   --bs-pagination-hover-color: var(--pl-color-fg-default);
   --bs-pagination-hover-bg: var(--pl-color-bg-secondary);
   --bs-pagination-hover-border-color: var(--pl-color-border-default);
