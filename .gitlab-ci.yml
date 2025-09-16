@@ -1,3 +1,8 @@
+variables:
+  FF_SCRIPT_SECTIONS: "true"
+  GIT_CLONE_PATH: "${CI_BUILDS_DIR}/${CI_PROJECT_NAME}/${CI_JOB_ID}"
+  VAULT_AUTH_ROLE_SIDEKIQ: "sidekiq_pro_ro"
+
 include:
   # Rails tests
   - project: "devops/gitlab/ci-templates/ruby"
@@ -13,25 +18,44 @@ include:
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
     inputs:
       job_image_tag: "28-dind"
+      docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
+      docker_build_context: "rails_app/"
+      docker_build_secrets: "--secret id=sidekiq_pro_credentials,env=SIDEKIQ_PRO_CREDENTIALS"
       docker_target: "base"
+      dockerfile_path: "rails_app/"
       job_suffix: "_base"
       stage: "build_base"
+      tag_with_docker_target: "true"
 
   # Dev image
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
     inputs:
       job_image_tag: "28-dind"
+      docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
+      docker_build_context: "rails_app/"
+      docker_build_secrets: "--secret id=sidekiq_pro_credentials,env=SIDEKIQ_PRO_CREDENTIALS"
       docker_target: "development"
+      dockerfile_path: "rails_app/"
       job_suffix: "_development"
+      needs_build:
+        - "amend_manifest_base"
       stage: "build_development"
+      tag_with_docker_target: "true"
 
   # Prod image
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
     inputs:
       job_image_tag: "28-dind"
+      docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
+      docker_build_context: "rails_app/"
+      docker_build_secrets: "--secret id=sidekiq_pro_credentials,env=SIDEKIQ_PRO_CREDENTIALS"
       docker_target: "production"
+      dockerfile_path: "rails_app/"
       job_suffix: "_production"
+      needs_build:
+        - "amend_manifest_base"
       stage: "build_production"
+      tag_with_docker_target: "true"
 
   # Sast
   - component: $CI_SERVER_FQDN/devops/gitlab/components/sast/trivy@~latest
@@ -44,14 +68,19 @@ include:
   # Copy docker images
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/copy_docker_images@~latest
     inputs:
+      job_image_tag: "28-dind"
       needs:
         - trivy_scan
+        - rspec_app_test
+        - rubocop_app_test
 
   # Remove tmp registry repository
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/remove_tmp_registry@~latest
     inputs:
+      job_image_tag: "28-dind"
       needs:
-        - copy_docker_images
+        - job: copy_docker_images
+          optional: true
 
   # Deploy staging
   - component: $CI_SERVER_FQDN/devops/gitlab/components/deploy/deploy@~latest
@@ -77,6 +106,8 @@ include:
     inputs:
       vault_auth_role: "${VAULT_AUTH_ROLE}"
 
+  - component: gitlab.library.upenn.edu/devops/gitlab/components/general/install_hashicorp_vault@~latest
+
 stages:
   - build_base
   - build_development
@@ -90,22 +121,34 @@ build_and_push_docker_images_base:
   extends:
     - .vault_jwt_auth
   before_script:
+    - !reference [.install_hashicorp_vault, before_script]
+    - !reference [.vault_jwt_auth, before_script]
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
+  variables:
+    VAULT_AUTH_ROLE: ${VAULT_AUTH_ROLE_SIDEKIQ}
 
 build_and_push_docker_images_development:
   extends:
     - .vault_jwt_auth
   before_script:
+    - !reference [.install_hashicorp_vault, before_script]
+    - !reference [.vault_jwt_auth, before_script]
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
+  variables:
+    VAULT_AUTH_ROLE: ${VAULT_AUTH_ROLE_SIDEKIQ}
 
 build_and_push_docker_images_production:
   extends:
     - .vault_jwt_auth
   before_script:
+    - !reference [.install_hashicorp_vault, before_script]
+    - !reference [.vault_jwt_auth, before_script]
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
+  variables:
+    VAULT_AUTH_ROLE: ${VAULT_AUTH_ROLE_SIDEKIQ}
 
 # Rails tests
 rspec_app_test:
@@ -118,11 +161,20 @@ rspec_app_test:
         CONNECTION_TIMEOUT: 600000
     - name: postgres:17.5
       variables:
-        POSTGRES_DB: "digitalcollections_test"
+        POSTGRES_DB: "digital_collections_test"
         POSTGRES_PASSWORD: "rspec_test"
         POSTGRES_USER: "rspec_test"
     - name: bitnami/solr:9.8.1
       alias: solr
+      entrypoint: [""]
+      command: [
+        "/bin/bash",
+        "-c",
+        "./opt/bitnami/scripts/solr/entrypoint.sh /opt/bitnami/scripts/solr/run.sh & \n
+          until [ \"$(/opt/bitnami/solr/bin/solr assert --started)\" = \"0\" ]; do sleep 1; echo 'Waiting for solr to be ready'; done & \n
+          /opt/bitnami/solr/bin/solr zk upconfig -n 'digital-collections' -d 'rails_app/solr/conf' & \n
+          /opt/bitnami/solr/bin/solr create -c digital-collections-test -n digital-collections"
+      ]
       variables:
         SOLR_CLOUD_BOOTSTRAP: "yes"
         SOLR_ENABLE_AUTHENTICATION: "yes"
@@ -131,6 +183,9 @@ rspec_app_test:
         SOLR_MODE: "solrcloud"
         SOLR_OPTS: "-Dsolr.disableConfigSetsCreateAuthChecks=true"
         ZK_CREATE_CHROOT: "true"
+        SOLR_AUTH_TYPE: "basic"
+        SOLR_AUTHENTICATION_OPTS: "-Dbasicauth=admin:bitnami"
+        ZK_SCRIPT_LOCATION: "/opt/bitnami/solr/server/scripts/cloud-scripts"
   extends:
     - .rspec
   variables:
@@ -140,25 +195,21 @@ rspec_app_test:
     DATABASE_NAME: "digital_collections_test"
     DATABASE_HOST: "postgres"
     DATABASE_PASSWORD: "rspec_test"
-    DATABASE_USERNAME: "rspec_test"
+    DATABASE_USER: "rspec_test"
     FF_NETWORK_PER_BUILD: "true"
     RAILS_ENV: "test"
     RAILS_SYSTEM_TESTING_SCREENSHOT_HTML: "1"
-    SOLR_TEST_URL: "http://solr:8983/solr/digital-collections-test"
+    SOLR_URL: "http://solr:8983/solr/digital-collections-test"
   script:
-    - apt-get update && apt-get -y install zip
-    - cd ${CI_PROJECT_DIR}/rails_app/
-    - bundle add rspec_junit_formatter
-    - bundle exec rake db:migrate
     - >
       for ((i = 0; i <= 9; i += 1)); do
         curl --silent "http://solr:8983/api/" "-H" "'Content-type:application/json'" && break
         echo "Waiting for solr api to be ready"
-        sleep "30s"
+        sleep "10s"
       done
-    - (cd ./solr/conf && zip -r - *) > configset.zip
-    - curl -X POST --user "admin:Bitnami" --header "Content-Type:application/octet-stream" --data-binary @configset.zip "http://solr:8983/solr/admin/configs?action=UPLOAD&name=digital-collections"
-    - curl -v --user "admin:Bitnami" "http://solr:8983/solr/admin/collections?action=CREATE&name=digital-collections-test&collection.configName=digital-collections&numShards=1"
+    - cd rails_app/
+    - bundle add rspec_junit_formatter
+    - bundle exec rake db:migrate
     - bundle exec rspec --format progress --format RspecJunitFormatter --out rspec.xml
   needs:
     - amend_manifest_development
@@ -188,7 +239,7 @@ rubocop_app_test:
   extends:
     - .rubocop
   before_script:
-    - cd ${CI_PROJECT_DIR}/rails_app/
+    - cd rails_app/
   rules:
     - if: $DISABLE_RUBOCOP == "true"
       when: never
