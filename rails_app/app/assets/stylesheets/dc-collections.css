@@ -19,15 +19,15 @@
 
 .dc-collections__card-img {
   box-shadow: rgba(140, 149, 159, 0.3) 0px 3px 6px 0px;
-  border-radius: var(--pl-space-sm);
+  border-radius: var(--pl-space-s);
   width: 100%;
   border: solid 2px var(--pl-color-fg-default);
 }
 
 .dc-collections__card-heading {
   margin: 0;
-  padding-top: var(--pl-space-sm);
-  font-size: var(--pl-font-size-base);
+  padding-top: var(--pl-space-s);
+  font-size: var(--pl-font-size-m);
   font-family: var(--pl-font-family);
   line-height: 1.4;
   position: initial;

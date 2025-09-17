@@ -1,18 +1,18 @@
 .document-counter {
-  font-size: var(--pl-font-size-base);
+  font-size: var(--pl-font-size-m);
   color: var(--pl-color-fg-subtle);
 }
 
 .document-title-heading {
   font-size: var(--pl-font-size-xl);
-  margin-bottom: var(--pl-space-base);
+  margin-bottom: var(--pl-space-m);
 }
 
 .documents-list .document {
   --bl-results-document-margin-top: var(--pl-space-2xl);
   --bl-results-document-padding-top: 0;
   display: grid;
-  gap: var(--pl-space-lg);
+  gap: var(--pl-space-l);
   border: 0;
   grid-template-columns: 6rem 1fr;
 
@@ -74,7 +74,7 @@
 
 .documents-gallery {
   display: grid;
-  gap: var(--pl-space-lg) var(--pl-space-base);
+  gap: var(--pl-space-l) var(--pl-space-m);
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
   grid-column-start: 2;
   list-style: none;
@@ -82,14 +82,14 @@
 
   & .document-thumbnail img {
     width: 100%;
-    margin-bottom: var(--pl-space-sm);
+    margin-bottom: var(--pl-space-s);
     box-shadow: rgba(140, 149, 159, 0.3) 0px 3px 6px 0px;
-    border-radius: var(--pl-space-sm);
+    border-radius: var(--pl-space-s);
   }
 
   & .document-title-heading {
     margin-bottom: 0;
-    font-size: var(--pl-font-size-base);
+    font-size: var(--pl-font-size-m);
     line-height: 1.4;
 
     & a {

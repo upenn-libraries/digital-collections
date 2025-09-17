@@ -1,5 +1,5 @@
 solr:
-  url: <%= ENV.fetch('SOLR_URL', 'http://127.0.0.1:8983/solr/digital-collections-development') %>
+  url: <%= ENV.fetch('SOLR_URL', 'http://127.0.0.1:8984/solr/digital-collections-development') %>
 redis:
   username: ''
   password: ''
