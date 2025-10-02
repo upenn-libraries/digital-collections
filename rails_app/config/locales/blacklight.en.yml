@@ -1,6 +1,6 @@
 en:
   blacklight:
-    application_name: 'Blacklight'
+    application_name: 'Digital Collections · Penn Libraries'
     search:
       form:
         search:
@@ -13,4 +13,8 @@ en:
         label: "%{label}"
       show:
         label: "%{label}"
+        title: "%{document_title} · %{application_name}"
+      page_title:
+        title: "%{constraints} · %{application_name}"
+        joiner: ' · '
 
