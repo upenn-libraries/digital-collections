@@ -54,42 +54,65 @@ Vagrant.configure("2") do |config|
       cfg.vm.network :private_network, ip: info[:ip]
 
       config.vm.provider "docker" do |d|
-        d.create_args = ["--add-host=registry-mirror.library.upenn.int=172.16.225.202"]
+        d.create_args = [
+          "--add-host=registry-mirror.library.upenn.int=172.16.225.202",
+          "--security-opt", "seccomp=unconfined",
+          "--security-opt", "apparmor=unconfined",
+          "--cap-add=SYS_ADMIN"
+        ]
         d.env = {
           "GID" => get_current_user_info[:gid],
           "UID" => get_current_user_info[:uid]
         }
-        d.has_ssh = true
-        d.image = "gitlab.library.upenn.edu/devops/docker-images/development/almalinux:main"
+        #d.has_ssh = true
+        #d.image = "gitlab.library.upenn.edu/devops/docker-images/development/almalinux:main"
+        d.build_dir = "."
         d.name = "digital-collections"
-        d.pull = true
+        d.pull = false
         d.ports = ["2222:22", "3486:2375", "8080:80"]
         d.privileged = true
         d.remains_running = true
       end
-
       if hostname == "dc-manager-01"
         cfg.vm.synced_folder "../", "/digital-collections"
 
-        cfg.vm.provision :ansible_local do |ansible|
-          ansible.compatibility_mode = "2.0"
-          ansible.config_file = "/digital-collections/ansible/ansible.cfg"
-          ansible.extra_vars = {
-            ansible_hashi_vault_token: Token.new,
-            ansible_hashi_vault_url: "https://vault.library.upenn.edu",
-            ansible_user: "vagrant"
-          }
-          ansible.galaxy_command = "ansible-galaxy install -r %{role_file} --force --no-deps"
-          ansible.galaxy_role_file = "/digital-collections/ansible/roles/requirements.yml"
-          ansible.galaxy_roles_path = "/digital-collections/ansible/roles"
-          ansible.install = false
-          ansible.inventory_path = "/digital-collections/ansible/inventories/development"
-          ansible.limit = "all"
-          ansible.playbook = "/digital-collections/ansible/site.yml"
-          ansible.tags = "all"
-          ansible.verbose = true
-        end
+        # Use a shell provisioner instead of ansible_local
+        cfg.vm.provision "shell", inline: <<-SHELL
+          echo "Running Ansible inside the container..."
+          cd /digital-collections
+
+          # Run Ansible playbook
+          ansible-playbook \
+            -i ansible/inventories/development \
+            ansible/site.yml \
+            --extra-vars "ansible_hashi_vault_token=#{Token.new} ansible_hashi_vault_url=https://vault.library.upenn.edu ansible_user=vagrant" \
+            --limit all \
+            --tags all \
+            -vvv
+        SHELL
       end
+      #if hostname == "dc-manager-01"
+        #cfg.vm.synced_folder "../", "/digital-collections"
+
+        #cfg.vm.provision :ansible_local do |ansible|
+        #  ansible.compatibility_mode = "2.0"
+        #  ansible.config_file = "/digital-collections/ansible/ansible.cfg"
+        #  ansible.extra_vars = {
+        #    ansible_hashi_vault_token: Token.new,
+        #    ansible_hashi_vault_url: "https://vault.library.upenn.edu",
+        #    ansible_user: "vagrant"
+        #  }
+        #  ansible.galaxy_command = "ansible-galaxy install -r %{role_file} --force --no-deps"
+        #  ansible.galaxy_role_file = "/digital-collections/ansible/roles/requirements.yml"
+        #  ansible.galaxy_roles_path = "/digital-collections/ansible/roles"
+        #  ansible.install = false
+        #  ansible.inventory_path = "/digital-collections/ansible/inventories/development"
+        #  ansible.limit = "all"
+        #  ansible.playbook = "/digital-collections/ansible/site.yml"
+        #  ansible.tags = "all"
+        #  ansible.verbose = true
+        #end
+      #end
     end
   end
 
