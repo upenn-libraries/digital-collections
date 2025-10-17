@@ -9,10 +9,22 @@ RUN apk add --no-cache \
       bash
 
 # Install Ansible and Jinja2 via pip
-RUN pip install --no-cache-dir --break-system-packages ansible jinja2
+RUN pip install --no-cache-dir --break-system-packages ansible jinja2 && \
+    ansible --version && python3 --version && pip --version
 
-# Verify installations
-RUN ansible --version && python3 --version && pip --version
+# Install vault
+ARG VAULT_VERSION=1.20.4
 
-ENTRYPOINT ["dockerd-entrypoint.sh"]
-CMD []
+RUN apk add --update --virtual .deps --no-cache gnupg && \
+    cd /tmp && \
+    wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip && \
+    wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_SHA256SUMS && \
+    wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_SHA256SUMS.sig && \
+    wget -qO- https://www.hashicorp.com/.well-known/pgp-key.txt | gpg --import && \
+    gpg --verify vault_${VAULT_VERSION}_SHA256SUMS.sig vault_${VAULT_VERSION}_SHA256SUMS && \
+    grep vault_${VAULT_VERSION}_linux_amd64.zip vault_${VAULT_VERSION}_SHA256SUMS | sha256sum -c && \
+    unzip /tmp/vault_${VAULT_VERSION}_linux_amd64.zip -d /tmp && \
+    mv /tmp/vault /usr/local/bin/vault && \
+    rm -f /tmp/vault_${VAULT_VERSION}_linux_amd64.zip vault_${VAULT_VERSION}_SHA256SUMS ${VAULT_VERSION}/vault_${VAULT_VERSION}_SHA256SUMS.sig && \
+    apk del .deps && \
+    vault --version
