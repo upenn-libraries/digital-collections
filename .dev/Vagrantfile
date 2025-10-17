@@ -50,13 +50,14 @@ Vagrant.configure("2") do |config|
   $script = <<-SCRIPT
     docker exec digital-collections /bin/sh -c "
     export ANSIBLE_CONFIG=/digital-collections/ansible/ansible.cfg
+    ansible-galaxy install -r /digital-collections/ansible/roles/requirements.yml
     ansible-playbook \
       -i /digital-collections/ansible/inventories/development \
-      /digital-collections/ansible/site.yml \
-      --extra-vars 'ansible_hashi_vault_token=#{Token.new} ansible_hashi_vault_url=https://vault.library.upenn.edu' \
+      --extra-vars 'ansible_hashi_vault_token=#{Token.new}' \
       --limit all \
       --tags all \
-      -vvv"
+      -vvv \
+      /digital-collections/ansible/site.yml"
   SCRIPT
 
   config.trigger.after :up do |trigger|
