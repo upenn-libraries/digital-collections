@@ -15,6 +15,9 @@ RUN pip install --no-cache-dir --break-system-packages ansible jinja2 && \
 # Install vault
 ARG VAULT_VERSION=1.20.4
 
+RUN apk add --no-cache shadow && \
+    addgroup app && adduser -D -h /digital-collections -s /bin/sh -G app app
+
 RUN apk add --update --virtual .deps --no-cache gnupg && \
     cd /tmp && \
     wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip && \
@@ -28,3 +31,7 @@ RUN apk add --update --virtual .deps --no-cache gnupg && \
     rm -f /tmp/vault_${VAULT_VERSION}_linux_amd64.zip vault_${VAULT_VERSION}_SHA256SUMS ${VAULT_VERSION}/vault_${VAULT_VERSION}_SHA256SUMS.sig && \
     apk del .deps && \
     vault --version
+
+COPY dockerd-entrypoint.sh /usr/local/bin/dockerd-entrypoint.sh
+RUN chmod +x /usr/local/bin/dockerd-entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/dockerd-entrypoint.sh"]
