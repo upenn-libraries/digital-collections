@@ -1,7 +1,22 @@
+default:
+  cache: &global-cache
+    - key:
+        files:
+          - package-lock.json
+          - yarn.json
+      paths:
+        - $NPM_CONFIG_CACHE
+    - key:
+        files:
+          - Gemfile.lock
+      paths:
+        - $GIT_CLONE_PATH/vendor/ruby
+
 variables:
   FF_SCRIPT_SECTIONS: "true"
   GIT_CLONE_PATH: "${CI_BUILDS_DIR}/${CI_PROJECT_NAME}/${CI_JOB_ID}"
   VAULT_AUTH_ROLE_SIDEKIQ: "sidekiq_pro_ro"
+  NPM_CONFIG_CACHE: $GIT_CLONE_PATH/.npm/
 
 include:
   # Rails tests
@@ -125,6 +140,7 @@ build_and_push_docker_images_base:
     - !reference [.vault_jwt_auth, before_script]
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
+  cache: *global-cache
   variables:
     VAULT_AUTH_ROLE: ${VAULT_AUTH_ROLE_SIDEKIQ}
 
@@ -136,6 +152,7 @@ build_and_push_docker_images_development:
     - !reference [.vault_jwt_auth, before_script]
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
+  cache: *global-cache
   variables:
     VAULT_AUTH_ROLE: ${VAULT_AUTH_ROLE_SIDEKIQ}
 
@@ -147,6 +164,7 @@ build_and_push_docker_images_production:
     - !reference [.vault_jwt_auth, before_script]
     - !reference [.auth_gitlab_registry, before_script]
     - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
+  cache: *global-cache
   variables:
     VAULT_AUTH_ROLE: ${VAULT_AUTH_ROLE_SIDEKIQ}
 
