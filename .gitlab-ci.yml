@@ -212,7 +212,7 @@ rspec_app_test:
     - cd rails_app/
     - bundle add rspec_junit_formatter
     - bundle exec rake db:migrate
-    - sleep
+    - sleep 3600
     - bundle exec rspec --format progress --format RspecJunitFormatter --out rspec.xml
   needs:
     - amend_manifest_development
