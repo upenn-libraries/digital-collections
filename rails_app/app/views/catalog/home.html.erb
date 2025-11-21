@@ -1,15 +1,18 @@
+<% content_for :page_title do %>
+  <%= t 'home.page_title', application_name: t('blacklight.application_name') %>
+<% end %>
+
 <% content_for :header do %>
-  <%= render DC::HeaderHeroComponent.new(
+  <%= render Catalog::HeaderHeroComponent.new(
     blacklight_config: blacklight_config,
-    user: current_user,
   ) do |component| %>
     <% component.with_picture do %>
       <%= tag.picture hero: 'art-direction' do %>
-        <%= tag.source srcset: "https://iiif-images.library.upenn.edu/iiif/2/d3f5f564-76c9-4911-aa5a-141923718c1e%2Faccess/full/2400,/0/default.jpg",
+        <%= tag.source srcset: "https://iiif-images.library.upenn.edu/iiif/2/d3f5f564-76c9-4911-aa5a-141923718c1e/full/2400,/0/default.jpg",
                        media: "(min-width: 1440px)" %>
-        <%= tag.source srcset: "https://iiif-images.library.upenn.edu/iiif/2/d3f5f564-76c9-4911-aa5a-141923718c1e%2Faccess/full/1440,/0/default.jpg",
+        <%= tag.source srcset: "https://iiif-images.library.upenn.edu/iiif/2/d3f5f564-76c9-4911-aa5a-141923718c1e/full/1440,/0/default.jpg",
                        media: "(min-width: 900px)" %>
-        <%= tag.img src: "https://iiif-images.library.upenn.edu/iiif/2/d3f5f564-76c9-4911-aa5a-141923718c1e%2Faccess/full/900,/0/default.jpg",
+        <%= tag.img src: "https://iiif-images.library.upenn.edu/iiif/2/d3f5f564-76c9-4911-aa5a-141923718c1e/full/900,/0/default.jpg",
                     alt: "" %>
       <% end %>
     <% end %>
@@ -22,12 +25,29 @@
   <% end %>
 <% end %>
 
-<section class="pl-typeset pl-line-length dc-home-section">
-  <h2>
-    <%= t("home.explore.heading") %>
-  </h2>
-  <p>
-    <%= t("home.explore.description") %>
-  </p>
-  <%= link_to t("home.explore.learn_more"), about_path %>
-</section>
+<div class="dc-home-sections">
+  <section class="pl-margin-y-3xl pl-viewport-margins">
+    <h2>
+      <%= t("home.explore.heading") %>
+    </h2>
+    <p class="pl-font-size-l pl-line-length">
+      <%= t("home.explore.description") %>
+    </p>
+    <%= link_to t("home.explore.learn_more"), about_path, class: "pl-font-size-l" %>
+  </section>
+
+  <section class="pl-padding-y-3xl">
+    <div class="d-flex flex-wrap gap-3 justify-content-between align-items-center pl-margin-b-xl pl-viewport-margins">
+      <h2 class="mb-0">
+        <%= t("home.collections.heading") %>
+      </h2>
+      <%= link_to t("home.collections.explore"), collections_path, class: "pl-font-size-l" %>
+    </div>
+
+    <div class="pl-viewport-margins dc-max-width-full">
+      <%= render(CollectionListComponent.new(heading_tag: :h3)) do |component| %>
+        <% component.with_collections(Settings.collections.map(&:to_h).sample(7)) %>
+      <% end %>
+    </div>
+  </section>
+</div>

@@ -29,7 +29,7 @@ en:
       related_place: 'Related Place'
       notes: 'Notes'
       related_works: 'Related works'
-      bibnumber: 'Bibnumber'
+      bibnumber: 'Also listed in'
       physical_location: 'Physical Location'
       provenance: 'Provenance'
       rights: 'Rights'
@@ -37,22 +37,28 @@ en:
       resource_type: 'Resource Type'
       identifier: 'Identifier'
   header:
-    login: 'Log in'
     service_name: 'Digital Collections'
-    sign_out: 'Sign out'
   footer:
     digital_collections:
       heading: 'Digital Collections'
       about: 'About'
-      collections: 'Collections'
-      works: 'Works'
+      collections: 'Collections A to Z'
+      home: 'Home'
   home:
+    page_title: "Home · %{application_name}"
     hero_heading: 'Boys wearing sailor suits, playing music to a dancing turtle'
     hero_subheading: 'Arnold and Deanne Kaplan Collection of Early American Judaica'
     explore:
       heading: 'Find primary sources for your research'
       description: "Explore digitized original materials for your research and teaching. You'll find posters, manuscripts, photographs, letters, trading cards, maps, and more from the collections."
       learn_more: 'Learn more about digital collections'
+    collections:
+      heading: 'Collections'
+      explore: 'Browse collections A to Z'
+  collections:
+    page_title: "Collections A to Z · %{application_name}"
+    header: 'Collections A to Z'
+    description: 'Browse all our digital collections in our A to Z list. Once you find a collection you like, you can search and use filters within it.'
   search:
     button:
       label: 'Find it'
@@ -62,6 +68,7 @@ en:
     relevance: 'Best match'
     title_asc: 'Title'
   about:
+    page_title: "About · %{application_name}"
     hero_heading: 'Digital collections'
     purpose:
       heading: 'About'
@@ -81,3 +88,30 @@ en:
       contact_us:
         link_text: 'Contact us'
         remaining_text: "to get help finding what you're looking for."
+  show:
+    download_and_share:
+      button: 'Download and share'
+      h2: 'Download and share'
+      non_iiif_assets:
+        download:
+          access: 'Smaller file'
+          preservation: 'Original file'
+      pdf:
+        button:
+          multiple_images: 'Download all %{count} images'
+          single_image: 'Download image'
+        download: 'PDF'
+      iiif_manifest:
+        button: 'IIIF Manifest'
+        body: 'What is IIIF?'
+    find_this_item:
+      button: 'Find this item'
+      h2: 'Find this item'
+      location:
+        button: 'This item is found at'
+      availability:
+        button: 'Availability'
+        link_text: 'Find availability options in our catalog'
+        remaining_text: 'where you may be able to request or schedule a visit to see this item in-person.'
+    sensitive_materials_statement: 'The Penn Libraries is committed to producing, preserving, and providing access to knowledge. We make materials accessible to improve information equity and enhance teaching, research, and learning. Some materials may be considered offensive and do not represent opinions, values, positions or norms that are held by the University of Pennsylvania Libraries. Where possible, we strive to present these materials within the historical or cultural context they were created by providing descriptive information.'
+    digital_catalog: 'Penn Libraries Catalog'

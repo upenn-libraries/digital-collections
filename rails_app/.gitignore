@@ -50,3 +50,6 @@ vendor/bundle
 
 node_modules
 .yarn
+/node_modules
+
+.DS_Store

@@ -1,6 +1,12 @@
-<%# Copied template from Blacklight 9.0.0.beta1 to render both `search_results_header` and `search_header_component` in the container header %>
+<%# Overriding view from Blacklight 9.0.0.beta7 to:
+      - render both `search_results_header` and `search_header_component` in the container header
+      - in page title if there are no constraints, display "All" %>
 
-<% @page_title = t('blacklight.search.page_title.title', constraints: render_search_to_page_title(search_state), application_name: application_name) %>
+<% content_for(:page_title) do %>
+  <% constraints = render_search_to_page_title(search_state) %>
+  <% constraints = 'All' if constraints.blank? %>
+  <%= t('blacklight.search.page_title.title', constraints: constraints, application_name: application_name) %>
+<% end %>
 
 <% content_for(:head) do -%>
   <%= render 'catalog/opensearch_response_metadata', response: @response %>

@@ -1,0 +1,66 @@
+.dc-iiif-table-of-contents {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-bottom: var(--pl-space-2xl);
+
+  & li {
+    border-bottom: 1px solid var(--pl-color-bg-subtle-brand);
+  }
+
+  & button {
+    all: unset;
+    display: block;
+    width: 100%;
+    padding: var(--pl-space-s) 0;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: var(--pl-link-text-underline-offset);
+    }
+  }
+
+  & button[aria-current="true"] {
+    font-weight: 600;
+  }
+}
+
+.clover-viewer-information-panel {
+  z-index: auto !important;
+}
+
+.clover-viewer-media-search {
+  display: none !important;
+}
+
+.dc-iiif-viewer-controls__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 2rem;
+  padding: 0px;
+  margin-left: 0.618rem;
+  font-family: inherit;
+  background-color: var(--colors-primary);
+  border: none;
+  color: white;
+  cursor: pointer;
+  filter: drop-shadow(rgba(0, 0, 0, 0.2) 2px 2px 5px);
+  transition: var(--transitions-all);
+  box-sizing: content-box !important;
+
+  &:hover,
+  &:focus {
+    background-color: var(--pl-color-bg-accent-emphasis);
+    color: var(--pl-color-fg-on-emphasis);
+  }
+}
+
+@media (max-width: 575px) {
+  .dc-iiif-viewer-controls__button {
+    display: none;
+  }
+}
