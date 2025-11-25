@@ -1,20 +1,23 @@
-<%# Overriding view from Blacklight 9.0.0.beta7 to:
+<%# Overriding view from Blacklight 9.0.0.beta8 to:
      - remove the show page header component
      - render metadata component with custom class
 %>
 
-<% @page_title = t('blacklight.search.show.title', document_title: document_presenter(@document).html_title, application_name: application_name).html_safe %>
+<%# locals: (presenter: nil) %>
+<% presenter ||= document_presenter(@document) %>
+
+<% @page_title = t('blacklight.search.show.title', document_title: presenter.html_title, application_name: application_name).html_safe %>
 <% content_for(:head) { render_link_rel_alternates } %>
 
-<% document_component = blacklight_config.view_config(:show).document_component -%>
-<%= render document_component.new(document: document_presenter(@document), component: :div, show: true, partials: blacklight_config.view_config(:show).partials) do |component| %>
+<% document_component = presenter.view_config.document_component -%>
+<%= render document_component.new(id: 'document', document: presenter, component: :div, show: true, partials: presenter.view_config.partials) do |component| %>
   <% component.with_title(as: 'h1', classes: nil, link_to_document: false, actions: false) %>
   <% component.with_metadata(classes: 'pl-dl') %>
   <% component.with_footer do %>
     <p class="alert alert-light pl-font-size-s"><%= t('show.sensitive_materials_statement') %></p>
     <% if @document.respond_to?(:export_as_openurl_ctx_kev) %>
       <!-- COinS, for Zotero among others. -->
-      <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev(document_presenter(@document).display_type) %>"></span>
+      <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev(presenter.display_type) %>"></span>
     <% end %>
   <% end %>
 <% end %>

@@ -755,17 +755,17 @@ bail@^2.0.0:
   resolved "https://registry.yarnpkg.com/bail/-/bail-2.0.2.tgz#d26f5cd8fe5d6f832a31517b9f7c356040ba6d5d"
   integrity sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==
 
-blacklight-frontend@^9.0.0-beta7:
-  version "9.0.0-beta7"
-  resolved "https://registry.yarnpkg.com/blacklight-frontend/-/blacklight-frontend-9.0.0-beta7.tgz#947b1868277ea783adb9216970cc682b441b1688"
-  integrity sha512-R3Z6/KS0ZPqCta9jfNucz88MPl02EDofmU4HDhrpfOwskj1mwn4CYKkAMmMpy7L28dUcE5VhluTGmmK2scXK/A==
+blacklight-frontend@^9.0.0-beta8:
+  version "9.0.0-beta8"
+  resolved "https://registry.yarnpkg.com/blacklight-frontend/-/blacklight-frontend-9.0.0-beta8.tgz#7f2bfb1491b8c049c3d55ddaf6c665139e02050e"
+  integrity sha512-qtEiFGi0hjvuV41I1jhTuKnUf6ckw4Qs7wa3wSlLDnFyiaIIY8fBR5gp8d/dQQiGJF4CMfcJK3DMMobTN0AkTg==
   dependencies:
     bootstrap ">=5.3.5 <6.0.0"
 
-blacklight-range-limit@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/blacklight-range-limit/-/blacklight-range-limit-9.0.0.tgz#89e1e7d36cef7fef205d0266fa0591006801f05d"
-  integrity sha512-Qr+3Rr0jOeoSNN5kN3fmZYqggAgpPpu3LX7HAHkCtrkHG5gPKqV+TK8BLvila9zueAs77dbWV7AmucZEvE+IBg==
+blacklight-range-limit@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/blacklight-range-limit/-/blacklight-range-limit-9.1.0.tgz#6ddd9a1f191d14100dcf9c3de34f3d8aa4588096"
+  integrity sha512-G75eUfMMr6+O9EqFzxkCNgqMJz7F5s5r9NbHTIt1roSV9vc4QH0t+EpFlh0WGOZc+KwI6OyFxjCOR4fAPbJafw==
   dependencies:
     chart.js "^ 4.4.1"
 

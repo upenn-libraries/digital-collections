@@ -32,7 +32,10 @@ class CatalogController < ApplicationController
     #
     ## Should the raw solr document endpoint (e.g. /catalog/:id/raw) be enabled
     # config.raw_endpoint.enabled = false
-
+    #
+    ## Should advanced search be enabled
+    config.advanced_search.enabled = false
+    #
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
       rows: 10

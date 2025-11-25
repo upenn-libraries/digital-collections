@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Catalog
-  # Overriding component from Blacklight v9.0.0.beta7 to render "Find it" rather
+  # Overriding component from Blacklight v9.0.0.beta8 to render "Find it" rather
   # than Blacklight's icon with a hidden label. A label comes with more affordances
   # such as being able to select the control with voice when an icon could be
   # difficult to know how to target.
