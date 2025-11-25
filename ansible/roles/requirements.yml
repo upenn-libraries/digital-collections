@@ -31,7 +31,7 @@ roles:
   - name: solr
     src: https://gitlab.library.upenn.edu/devops/ansible/roles/solr.git
     scm: git
-    version: main
+    version: dind
   
   - name: zookeeper
     src: https://gitlab.library.upenn.edu/devops/ansible/roles/zookeeper.git
