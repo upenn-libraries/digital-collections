@@ -48,12 +48,12 @@ Vagrant.configure("2") do |config|
   config.ssh.insert_key = false
 
   $script = <<-SCRIPT
-    docker exec digital-collections /bin/sh -c "
+    docker exec -u #{get_current_user_info[:uid]}:#{get_current_user_info[:gid]} digital-collections /bin/sh -c "
     export ANSIBLE_CONFIG=/digital-collections/ansible/ansible.cfg
-    ansible-galaxy install -r /digital-collections/ansible/roles/requirements.yml
+    ansible-galaxy install -f -r /digital-collections/ansible/roles/requirements.yml
     ansible-playbook \
       -i /digital-collections/ansible/inventories/development \
-      --extra-vars 'ansible_hashi_vault_token=#{Token.new}' \
+      --extra-vars \"ansible_hashi_vault_token=#{Token.new}\" \
       --limit all \
       --tags all \
       -vvv \
