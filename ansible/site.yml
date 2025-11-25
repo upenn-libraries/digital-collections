@@ -10,29 +10,49 @@
   hosts: docker_swarm_managers
   become: true
   gather_facts: false
-  roles:
-    - role: traefik
+  tasks:
+    - name: Deploy Traefik
+      ansible.builtin.import_role:
+        name: traefik
       tags:
         - traefik
-    - role: zookeeper
+    - name: Deploy Zookeeper
+      ansible.builtin.import_role:
+        name: zookeeper
       tags:
         - zookeeper
-    - role: solr
+    - name: Deploy Solr
+      ansible.builtin.import_role:
+        name: solr
       tags:
         - solr
-    - role: redis
+    - name: Force latest version of requests
+      ansible.builtin.pip:
+        name: requests
+        state: forcereinstall
+    - name: Deploy Redis
+      ansible.builtin.import_role:
+        name: redis
       tags:
         - redis
-    - role: postgres
+    - name: Deploy Postgres
+      ansible.builtin.import_role:
+        name: postgres
       tags:
         - postgres
-    - role: digital-collections
+    - name: Deploy Digital digital-collections
+      ansible.builtin.import_role:
+        name: digital-collections
       tags:
         - digital_collections
-    - role: sidekiq
+    - name: Deploy Sidekiq
+      ansible.builtin.import_role:
+        name: sidekiq
       tags:
         - sidekiq
-    - role: chrome
+    - name: Deploy Chrome
+      ansible.builtin.import_role:
+        name: chrome
       tags:
         - chrome
       when: is_development | default(false, true)
