@@ -1,5 +1,7 @@
 FROM docker:29-dind
 
+ARG VAULT_VERSION=1.20.4
+
 # Install system dependencies
 RUN apk add --no-cache \
       python3 py3-pip \
@@ -11,18 +13,21 @@ RUN apk add --no-cache \
       sudo
 
 # Install Ansible and Jinja2 via pip
-RUN pip install --no-cache-dir --break-system-packages ansible jinja2 && \
-    ansible --version && python3 --version && pip --version
+RUN pip install --no-cache-dir --break-system-packages \
+      ansible \
+      jinja2 && \
+    ansible --version && \
+    python3 --version && \
+    pip --version
 
-# Install vault
-ARG VAULT_VERSION=1.20.4
-
+# Add app user to sudoers 
 RUN addgroup app && adduser -D -h /digital-collections -s /bin/sh -G app app && \
     mkdir -p /etc/sudoers.d && \
     echo "app ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/app && \
     chmod 0440 /etc/sudoers.d/app
 
-RUN apk add --update --virtual .deps --no-cache gnupg && \
+# Install vault
+    RUN apk add --update --virtual .deps --no-cache gnupg && \
     cd /tmp && \
     wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip && \
     wget https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_SHA256SUMS && \
@@ -38,4 +43,5 @@ RUN apk add --update --virtual .deps --no-cache gnupg && \
 
 COPY dockerd-entrypoint.sh /usr/local/bin/dockerd-entrypoint.sh
 RUN chmod +x /usr/local/bin/dockerd-entrypoint.sh
+
 ENTRYPOINT ["/usr/local/bin/dockerd-entrypoint.sh"]
