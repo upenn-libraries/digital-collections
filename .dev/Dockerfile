@@ -1,4 +1,4 @@
-FROM docker:28-dind
+FROM docker:29-dind
 
 # Install system dependencies
 RUN apk add --no-cache \
@@ -6,7 +6,9 @@ RUN apk add --no-cache \
       openssh-client \
       git \
       curl \
-      bash
+      bash \
+      shadow \
+      sudo
 
 # Install Ansible and Jinja2 via pip
 RUN pip install --no-cache-dir --break-system-packages ansible jinja2 && \
@@ -15,8 +17,10 @@ RUN pip install --no-cache-dir --break-system-packages ansible jinja2 && \
 # Install vault
 ARG VAULT_VERSION=1.20.4
 
-RUN apk add --no-cache shadow && \
-    addgroup app && adduser -D -h /digital-collections -s /bin/sh -G app app
+RUN addgroup app && adduser -D -h /digital-collections -s /bin/sh -G app app && \
+    mkdir -p /etc/sudoers.d && \
+    echo "app ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/app && \
+    chmod 0440 /etc/sudoers.d/app
 
 RUN apk add --update --virtual .deps --no-cache gnupg && \
     cd /tmp && \
