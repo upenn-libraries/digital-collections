@@ -11,6 +11,10 @@
   become: true
   gather_facts: false
   tasks:
+    - name: Force latest version of requests
+      ansible.builtin.pip:
+        name: jsondiff
+        state: present
     - name: Deploy Traefik
       ansible.builtin.import_role:
         name: traefik
