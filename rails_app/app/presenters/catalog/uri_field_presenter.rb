@@ -2,7 +2,7 @@
 
 module Catalog
   # Ensures URI fields render as hyperlinks for non-json requests
-  # Custom Blacklight::FieldPresenter subclass based on Blacklight v9.0.0.beta7
+  # Custom Blacklight::FieldPresenter subclass based on Blacklight v9.0.0.beta8
   class URIFieldPresenter < Catalog::FieldPresenter
     # @return [Array]
     def values
