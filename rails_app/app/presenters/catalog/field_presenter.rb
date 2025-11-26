@@ -1,20 +1,9 @@
 # frozen_string_literal: true
 
 module Catalog
-  # Overrides Blacklight::FieldPresenter based on Blacklight v9.0.0.beta7 to ensure fields are not joined and
+  # Overrides Blacklight::FieldPresenter based on Blacklight v9.0.0.beta8 to ensure fields are not joined and
   # html links are not included in json responses.
   class FieldPresenter < Blacklight::FieldPresenter
-    def initialize(view_context, document, field_config, options = {})
-      super
-      @except_operations += [Blacklight::Rendering::Join]
-      @except_operations += [Blacklight::Rendering::LinkToFacet] if json_request?
-    end
-
-    # @return [Array]
-    def render
-      Array.wrap super
-    end
-
     private
 
     # @return [Boolean]

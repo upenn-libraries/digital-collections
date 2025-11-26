@@ -3,7 +3,7 @@
 module Catalog
   # Ensures names with creator roles appear first and display values link to the facet values without roles
   # Limits number of elements by provided 'limit' field configuration value
-  # Custom Blacklight::FieldPresenter subclass based on Blacklight v9.0.0.beta7
+  # Custom Blacklight::FieldPresenter subclass based on Blacklight v9.0.0.beta8
   class NameWithRolePresenter < Catalog::FieldPresenter
     CREATOR_ROLE = 'creator'
     FACET_FIELD = 'name_ssim'
