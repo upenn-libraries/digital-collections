@@ -10,6 +10,7 @@ docker_daemon_hosts:
   - "unix:///var/run/docker.sock"
 
 docker_daemon_config:
+  debug: true
   default-ulimits:
     nofile:
       Name: "nofile"
@@ -19,3 +20,11 @@ docker_daemon_config:
     - "http://registry-mirror.library.upenn.int:5000"
   insecure-registries:
     - "http://registry-mirror.library.upenn.int:5000"
+
+skip_firewall: true
+skip_docker_group: true
+skip_docker_user: true
+skip_docker_install: true
+skip_docker_repo_setup: true
+skip_install_deps: true
+skip_docker_config: true

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Helper methods for layouts
-# Overriding helpers methods in Blacklight 9.0.0.beta7
+# Overriding helpers methods in Blacklight 9.0.0.beta8
 module LayoutHelper
   include Blacklight::LayoutHelperBehavior
 

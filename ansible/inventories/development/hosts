@@ -1,9 +1,9 @@
 ---
 docker_swarm_managers:
   hosts:
-    dc-manager-01:
-      ansible_connection: local
+    digital-collections:
       ansible_host: 127.0.0.1
+      ansible_connection: local
       swarm_labels:
         - api
         - digital_collections
@@ -20,6 +20,6 @@ docker_swarm_managers:
 
 swarm:
   children:
-    dc-manager-01:
+    digital-collections:
   vars:
-    ansible_user: vagrant
+    ansible_docker_privileged: "true"

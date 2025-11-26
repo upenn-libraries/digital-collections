@@ -82,24 +82,24 @@ networks:
 secrets:
   database_password:
     external: true
-    name: "{{ postgres_database_versioned_secrets.database_password.secret_name_prefix + postgres_database_versioned_secrets.database_password.version }}"
+    name: "{{ postgres_database_versioned_secrets.database_password.secret_name_prefix }}{{ postgres_database_versioned_secrets.database_password.version }}"
   rails_master_key:
     external: true
-    name: "{{ 'digital_collections_rails_master_key_v' ~ digital_collections_versioned_secrets.rails_master_key.version }}"
+    name: "digital_collections_rails_master_key_v{{ digital_collections_versioned_secrets.rails_master_key.version }}"
   redis_password:
     external: true
-    name: "{{ 'digital_collections_redis_sidekiq_password_v' ~ redis_users | selectattr('name', 'equalto', 'sidekiq') | map(attribute='version')  | join('') }}"
+    name: "digital_collections_redis_sidekiq_password_v{{ redis_users | selectattr('name', 'equalto', 'sidekiq') | map(attribute='version')  | join('') }}"
   solr_url:
     external: true
-    name: "{{ 'digital_collections_solr_url_v' ~ digital_collections_versioned_secrets.solr_url.version }}"
+    name: "digital_collections_solr_url_v{{ digital_collections_versioned_secrets.solr_url.version }}"
   {% if is_development == false %}
   honeybadger_api_key:
     external: true
-    name: "{{ 'digital_collections_honeybadger_api_key_v' ~ digital_collections_versioned_secrets.honeybadger_api_key.version }}"
+    name: "digital_collections_honeybadger_api_key_v{{ digital_collections_versioned_secrets.honeybadger_api_key.version }}"
   {% elif is_development == true %}
   sidekiq_pro_credentials:
     external: true
-    name: "{{ 'digital_collections_sidekiq_pro_credentials_v' ~ digital_collections_versioned_secrets.sidekiq_pro_credentials.version }}"
+    name: "digital_collections_sidekiq_pro_credentials_v{{ digital_collections_versioned_secrets.sidekiq_pro_credentials.version }}"
   {% endif %}
 
 {% if is_development == false %}

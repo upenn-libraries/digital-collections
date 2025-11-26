@@ -1,1 +1,3 @@
+.swarm_certificates/*
+!.swarm_certificates/.keep
 .vagrant
