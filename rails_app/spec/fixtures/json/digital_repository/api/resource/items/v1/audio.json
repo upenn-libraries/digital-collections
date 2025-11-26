@@ -1,0 +1,118 @@
+{
+  "status": "success",
+  "data": {
+    "item": {
+      "id": "a0f6cbbf-ecfc-4e14-8fc7-d5cc47f9749c",
+      "ark": "ark:/81431/p3901zj8s",
+      "first_published_at": "2019-10-09T18:11:04Z",
+      "last_published_at": "2025-08-20T21:22:43Z",
+      "descriptive_metadata": {
+        "title": [
+          {
+            "value": "[Taubman interview tape 1]"
+          }
+        ],
+        "alt_title": [],
+        "name": [
+          {
+            "value": "Anderson, Marian, 1897-1993",
+            "uri": "http://id.loc.gov/authorities/names/n50022372"
+          },
+          {
+            "value": "Taubman, Howard, 1907-1996",
+            "uri": "http://id.loc.gov/authorities/names/n79109152"
+          }
+        ],
+        "publisher": [],
+        "date": [
+          {
+            "value": "1955/1956"
+          }
+        ],
+        "collection": [
+          {
+            "value": "Marian Anderson Papers (University of Pennsylvania)"
+          }
+        ],
+        "item_type": [
+          {
+            "value": "Sound",
+            "uri": "http://purl.org/dc/dcmitype/Sound"
+          }
+        ],
+        "physical_format": [
+          {
+            "value": "Sound recordings"
+          }
+        ],
+        "description": [
+          {
+            "value": "Howard Taubman interviews Marian Anderson about her life and career in preparation for ghost-writing her autobiography, My Lord, What a Morning."
+          },
+          {
+            "value": "Duration: 1:04:06"
+          }
+        ],
+        "extent": [
+          {
+            "value": "7 in., 1/4 in. tape."
+          }
+        ],
+        "language": [],
+        "coverage": [],
+        "note": [],
+        "relation": [],
+        "subject": [],
+        "geographic_subject": [],
+        "location": [],
+        "physical_location": [
+          {
+            "value": "Ms. Coll 201 box 1 item 1 side a"
+          }
+        ],
+        "provenance": [],
+        "rights": [
+          {
+            "value": "Copyright Not Evaluated",
+            "uri": "http://rightsstatements.org/vocab/CNE/1.0/"
+          }
+        ],
+        "rights_note": [],
+        "identifier": [],
+        "bibnumber": []
+      },
+      "structural_metadata": {
+        "viewing_direction": null,
+        "viewing_hint": null
+      },
+      "derivatives": {
+        "preview": null,
+        "pdf": null,
+        "iiif_manifest": null
+      },
+      "assets": [
+        {
+          "id": "5788b27c-5987-4cec-b625-f9e289669687",
+          "label": null,
+          "preservation_file": {
+            "mime_type": "audio/x-wave",
+            "original_filename": "201_1_ma1_sidea.wav",
+            "size_bytes": 1107664498,
+            "url": "https://apotheca.library.upenn.edu/v1/assets/5788b27c-5987-4cec-b625-f9e289669687/preservation"
+          },
+          "derivatives": {
+            "thumbnail": null,
+            "access": {
+              "mime_type": "audio/mpeg",
+              "size_bytes": null,
+              "url": "https://apotheca.library.upenn.edu/v1/assets/5788b27c-5987-4cec-b625-f9e289669687/access"
+            }
+          }
+        }
+      ]
+    },
+    "related": {
+      "assets": "https://apotheca.library.upenn.edu/v1/items/a0f6cbbf-ecfc-4e14-8fc7-d5cc47f9749c?assets=true"
+    }
+  }
+}

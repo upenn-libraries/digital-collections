@@ -1,10 +1,21 @@
-pennlibs_web_version: '0.3'
+pennlibs_web_version: '1.0.0'
 honeybadger:
   api_key: '12345'
 redis:
   url: <%= ENV.fetch('REDIS_URL', 'redis://127.0.0.1:6379/0') %>
+digital_catalog:
+  host: find.library.upenn.edu
+  path: /catalog
 digital_repository:
-  url: https://apotheca.library.upenn.edu
+  host: apotheca.library.upenn.edu
+  webhook_token: '12345'
+  api:
+    resource:
+      items:
+        path: /v1/items
+    iiif:
+      items:
+        path: /iiif/items
   sample_records:
     - 362ba96f-2fab-4a35-bd42-98f6667da1d0
     - 375a37c2-0cc4-4512-86f0-9113d9c80ca8
@@ -33,3 +44,163 @@ digital_repository:
     - 35fb98ee-c707-419f-bad9-422f68b75647
     - ef51af07-3a9d-4863-afc6-c84169adae80
     - d16cae7e-e31c-4c86-96a5-ca307190d39e
+    - 53c931b0-f81b-4137-948d-d35c67b5d77d
+collections:
+  - name: Allen J. Winigrad Photographs of Performing Artists, 1973-1989 (University of Pennsylvania)
+    representative_item: fdf6cfa2-77ad-4599-bd7b-cedb76955dbf
+  - name: Alumni Association of the Philadelphia General Hospital School of Nursing Image Collection, Center for the Study of the History of Nursing, School of Nursing, University of Pennsylvania
+    representative_item: 51e98b26-5045-433b-93db-91954bdcd648
+  - name: American Institute of Indian Studies (AIIS) Image Collection
+    representative_item: 96d0b37c-248e-4ac7-a3a8-3d36d1a378e2
+  - name: Arnold and Deanne Kaplan Collection of Early American Judaica (University of Pennsylvania)
+    representative_item: f8840ab9-f352-471b-ab19-9586ca9ac63d
+  - name: Arnold and Deanne Kaplan Collection of Modern American Judaica (University of Pennsylvania)
+    representative_item: 1dafae5d-157d-4caa-8c2f-7d623cff74da
+  - name: Arnold and Deanne Kaplan Isaac Leeser Collection
+    representative_item: 532c3fac-3c98-4e4c-a2cb-70cf4ec1edc0
+  - name: Arthur Henry Papers (University of Pennsylvania)
+    representative_item: e8868767-6130-4f3d-87ee-281b2c57130e
+  - name: Arthur Tress Collection of Japanese Illustrated Books (University of Pennsylvania)
+    representative_item: cfcf9c81-7811-402a-a9c7-23c9c4b096ef
+  - name: Benjamin Champneys Lecture Notes, approximately 1794-1810
+    representative_item: 7a22168a-8d1c-4318-96dc-6be8fc82d052
+  - name: Benjamin Franklin Papers (University of Pennsylvania)
+    representative_item: 91ca5cac-4ee0-4407-b3fb-1f5809603887
+  - name: Benjamin Rush lecture notes, 1783-1810
+    representative_item: 04e6fc56-2a7e-4b2b-9c7c-900325afe3a9
+  - name: Benjamin Smith Barton lecture notes, 1810-1823
+    representative_item: 064ff11f-9f3b-4331-b2d5-143a405a070d
+  - name: Berendt-Brinton Linguistic Collection
+    representative_item: d3ce2dc9-d044-4902-8587-9c58555dd5f2
+  - name: Bibliotheca Philadelphiensis
+    representative_item: 8a5b8dc4-42eb-43ef-8350-077e33dd4c7d
+  - name: Cairo Genizah Collection (University of Pennsylvania. Center for Advanced Judaic Studies. Library)
+    representative_item: ce33a050-6ff0-477f-87bc-3f294b7e3625
+  - name: Christianity in Egypt collection
+    representative_item: c95ea149-0f54-414d-8d08-48a42694ce82
+  - name: Collection of British and American Fiction, 1660-1830 (University of Pennsylvania)
+    representative_item: b8636c3f-133e-40b5-8856-cf1389e28a53
+  - name: Collection of Indic Manuscripts
+    representative_item: 99381a75-6e9a-4d7e-a2a0-006a94a4a9b9
+  - name: Corporate reports online
+    representative_item: null # 18ea4a84-8eda-4951-aa07-80c849daa619
+  - name: Curtis Collection of Franklin Imprints (University of Pennsylvania)
+    representative_item: c83bb699-1c4d-4cba-a90f-0386973d7f4a
+  - name: Documents of the Centennial Exhibition, 1876 (University of Pennsylvania)
+    representative_item: ffce2437-a9b8-43b9-a7f2-70cd0bfb5453
+  - name: Early Soviet Posters Collection
+    representative_item: 4ee1e5a6-e8e8-4934-8922-2c6018b3d437
+  - name: Edgar Fahs Smith Image Collection (University of Pennsylvania)
+    representative_item: a725aa01-3311-4041-8357-d60f54a57a64
+  - name: Etta Winigrad papers (University of Pennsylvania)
+    representative_item: 49210fb5-8e17-4751-aa30-b573dbba4ac3
+  - name: Eugene Ormandy Collection of Photographs, 1880-1992 (University of Pennsylvania)
+    representative_item: 917e6e2f-3f68-41f0-878e-b8d999131095
+  - name: Fairman Rogers Collection (University of Pennsylvania)
+    representative_item: df0f3ab8-a7f4-41b8-80c8-258e748e7e2a
+  - name: Fez Lithographs Collection (University of Pennsylvania)
+    representative_item: 76ee1ec4-cbd0-4063-a680-b05015bb2d23
+  - name: Fisher Fine Arts Library Web Archive
+    representative_item: null # 649de518-f3a7-4285-b4bc-ddbafc04a08f
+  - name: Furness Theatrical Image Collection (University of Pennsylvania)
+    representative_item: d8ae61af-2a5e-40cc-a78e-ac5b64bf4359
+  - name: Gordon Block Collection of Lincolniana, 1760-1963
+    representative_item: 2303865f-109a-4b9a-a952-6cf04b363e22
+  - name: Gratz-Mandell Jewish Music Collection (University of Pennsylvania)
+    representative_item: 8a693af4-158d-4b6f-ab60-ac4cc929f419
+  - name: Hale Signers Collection
+    representative_item: d97297b6-04ee-48fc-81af-4d0128027b6b
+  - name: Harrisburg Car Manufacturing Co. Photographs (University of Pennsylvania)
+    representative_item: 62d5d94d-e11d-4783-8d43-aa5a324c9be5
+  - name: Harvey Finkle photographs
+    representative_item: e8f71024-d5bc-4c9a-b80e-09bf783d18cb
+  - name: Helen Kate Furness Free Library
+    representative_item: 58da4032-f03f-4b2a-b474-88bb05a9a199
+  - name: Holy Land Collections (University of Pennsylvania)
+    representative_item: b33ec0d8-e766-4796-8487-ec6915972841
+  - name: Hopkinson collection of music
+    representative_item: a2718d28-a0bd-4a34-aa1a-520ef23de049
+  - name: Horace Howard Furness Memorial Library (University of Pennsylvania)
+    representative_item: 455a01dd-71a1-420c-955d-78afa278c1d3
+  - name: Isaac Leeser Collection at the Herbert D. Katz Center for Advanced Judaic Studies (University of Pennsylvania)
+    representative_item: 2dab673e-7075-4535-a9cc-f5c4594e3d98
+  - name: Japanese Juvenile Fiction Collection (University of Pennsylvania)
+    representative_item: 0d5cd3fb-dbd9-4f03-89c6-77508f6dba4a
+  - name: Japanese Naval Collection (University of Pennsylvania)
+    representative_item: ffd4c8fa-409f-4324-86ca-a5a7d4f836cb
+  - name: Jatindra Mohan Bhattacharjee Collection
+    representative_item: 5dc744c9-7fd6-457b-b426-9ca71571e6ed
+  - name: Keffer Collection of Sheet Music (University of Pennsylvania)
+    representative_item: c3f91250-fbcf-48e7-82bd-96a84542ec7a
+  - name: Kurt Stein collection of Francis Johnson sheet music
+    representative_item: 1e7df7f6-0ce4-4319-9725-04eb673e5aaa
+  - name: Laurence and Ayşe Gürsan-Salzmann Collection
+    representative_item: f56ba39a-0644-429f-9f8d-16c5aeb2778b
+  - name: Lawrence J. Schoenberg Collection (University of Pennsylvania)
+    representative_item: 32460e8e-1f7b-4731-a336-65ffc5fe4dea
+  - name: Lenkin Family Collection of Photography (University of Pennsylvania)
+    representative_item: 1ca6ccdf-25e3-4551-91de-cb395e7cf749
+  - name: Lord and Lady Palmer Collection
+    representative_item: 6f03f00b-3e97-415e-9c3b-d55ae9dbe9f1
+  - name: 'Mahler-Werfel Papers: Photographs, 1888-1984 (University of Pennsylvania)'
+    representative_item: 4ce1458f-e922-4736-ac8a-aeda23896211
+  - name: Marian Anderson Collection of Photographs, 1898-1992 (University of Pennsylvania)
+    representative_item: 8657ce6b-306c-4f87-9f51-76dbaf71d889
+  - name: Marian Anderson Papers (University of Pennsylvania)
+    representative_item: 079de04f-5fe8-42e4-b6c0-c9666740899d
+  - name: Mary Binney Wheeler Image Collection
+    representative_item: 0bff055d-1471-4e2b-a43a-9892d16181a5
+  - name: Moldovan Family Digital Holy Land Map Collection
+    representative_item: 636c1e23-8765-43cb-aa0c-85bb8552d477
+  - name: Penn in the Age of Franklin (University of Pennsylvania)
+    representative_item: d1338480-de4e-4bcb-b840-53997341b820
+  - name: Philadelphia Neighborhoods Project Collection (University of Pennsylvania)
+    representative_item: bd6faa72-2be2-4d02-9a31-e79f27ae46a2
+  - name: Philadelphia Society for Promoting Agriculture Records
+    representative_item: e40a5345-1c6d-43cb-acd4-35a4fcd9fd71
+  - name: Philip H. Ward Collection of Theatrical Images, 1856-1910, Ms. Coll. 331
+    representative_item: ba58593a-e942-4f5c-8ddf-905ac5a1c154
+  - name: Philip Syng Physick lecture notes and addresses, approximately 1785-1819
+    representative_item: ca8e6d26-af97-4cfa-97f7-fcc273451e6a
+  - name: Photographs from the American Poetry Review Records, 1971-1998 (University of Pennsylvania)
+    representative_item: 7a3879e0-2060-467e-b17b-e0225a5e8cc6
+  - name: Photographs in the Theodore Dreiser Papers (University of Pennsylvania)
+    representative_item: 276db07e-fe29-439a-b72f-644a5df0c95d
+  - name: Photographs in the W. A. Swanberg Papers (University of Pennsylvania)
+    representative_item: 5bec62d8-da81-4393-94b1-632674984e10
+  - name: Playbill and Program Collection (University of Pennsylvania)
+    representative_item: 9465c518-abef-4f7c-b272-55d7fdc5c203
+  - name: Postcards relating to Indo-Caribbeans
+    representative_item: fa8c0e78-085f-4448-b644-3be23fc0929c
+  - name: Sabato Morais Collection (University of Pennsylvania)
+    representative_item: c48e3ce8-2a33-4247-9992-47de97e52dc4
+  - name: South Asia Art Archive
+    representative_item: d71a85b8-d85f-43b1-a7f0-86f67f5d2481
+  - name: Southwell family papers on Ireland
+    representative_item: fff47e47-7e14-4dd2-982e-5ba557b117ec
+  - name: Theodore Dreiser Papers (University of Pennsylvania)
+    representative_item: a31f071a-d784-4647-b993-b0fdcedfbbaf
+  - name: Thompson Westcott scrapbooks of Charles Durang's history of Philadelphia theater between the years 1749 and 1855
+    representative_item: 19862233-803e-4cdc-836b-f0f0225c9625
+  - name: University Archives Image Collection (University of Pennsylvania)
+    representative_item: 47bc78cd-d905-41c9-b0fc-7d4a694ffd51
+  - name: University of Pennsylvania Board of Trustees Records
+    representative_item: f05e2629-911b-43b2-861d-4b6e66942bc8
+  - name: University of Pennsylvania Bulletin
+    representative_item: 4d425d82-0dd3-41f4-95ea-63d4d9558053
+  - name: University of Pennsylvania catalogues
+    representative_item: 2d4aefcf-1152-4ab0-adc2-6de1137d4b67
+  - name: University of Pennsylvania Medical Dissertation Digital Library
+    representative_item: 5e51ad20-2c3b-4fd7-91c7-345ad2c183ba
+  - name: University of Pennsylvania Museum of Archaeology and Anthropology Collection
+    representative_item: 0f174c64-a49e-48d5-8e96-dccae80c2c55
+  - name: University of Pennsylvania reports
+    representative_item: 0272d227-5e1f-4021-a235-bc073fd6272d
+  - name: University of Pennsylvania student yearbooks
+    representative_item: 509441ac-0206-4656-b6a2-533c90da444d
+  - name: William Smith Papers (University Archives)
+    representative_item: bd78db23-c89a-41ec-9cb4-1ddc77447f96
+  - name: World War I Pamphlet Collection (University of Pennsylvania)
+    representative_item: adc19c43-284d-41df-86b9-2caf370d5866
+  - name: World War I printed media and art collection
+    representative_item: 1813e79f-dfea-4fd2-86ff-dfd567741fbc

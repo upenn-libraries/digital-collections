@@ -1,7 +1,7 @@
 .flash_messages {
   display: flex;
   flex-direction: column;
-  gap: var(--pl-space-base);
+  gap: var(--pl-space-m);
 
   & .alert {
     --bs-alert-margin-bottom: 0;

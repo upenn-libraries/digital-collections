@@ -1,0 +1,37 @@
+<div class="accordion" id="download-and-share-accordion">
+  <% if @document.pdf? %>
+    <div class="accordion-item">
+      <h3 class="accordion-header mb-0">
+        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#download" aria-expanded="true" aria-controls="download">
+          <%= iiif_image_count_text %>
+        </button>
+      </h3>
+      <div id="download" class="accordion-collapse collapse show">
+        <div class="accordion-body">
+          <%= link_to(@document.pdf_url) do %>
+            <%= t('show.download_and_share.pdf.download') %>
+            <% if pdf_size %>
+              <small>— <%= pdf_size %></small>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% if @document.manifest? %>
+    <div class="accordion-item">
+      <h3 class="accordion-header mb-0">
+        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#iiif-manifest" aria-expanded="true" aria-controls="iiif-manifest">
+          <%= t('show.download_and_share.iiif_manifest.button') %>
+        </button>
+      </h3>
+      <div id="iiif-manifest" class="accordion-collapse collapse show">
+        <div class="accordion-body">
+          <p><%= link_to @document.manifest_url, @document.manifest_url %></p>
+
+          <p class="mb-0"><%= link_to t('show.download_and_share.iiif_manifest.body'), "https://iiif.io/get-started/why-iiif/" %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

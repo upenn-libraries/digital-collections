@@ -4,3 +4,5 @@ redis:
   url: ''
   username: ''
   password: ''
+google_analytics:
+  tag_id: GTM-N79KMH6F

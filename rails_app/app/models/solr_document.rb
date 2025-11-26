@@ -14,7 +14,80 @@ class SolrDocument
   use_extension(Blacklight::Document::DublinCore)
 
   # Returns true if preview is available
+  #
+  # @return [Boolean]
   def preview?
     fetch(:has_preview_bsi, false)
+  end
+
+  # Returns true if IIIF manifest is available
+  #
+  # @return [Boolean]
+  def manifest?
+    fetch(:has_iiif_manifest_bsi, false)
+  end
+
+  # Returns true if PDF is available
+  #
+  # @return [Boolean]
+  def pdf?
+    fetch(:has_pdf_bsi, false)
+  end
+
+  # PDF URL
+  #
+  # @return [String]
+  def pdf_url
+    digital_repository.item_pdf_url(id)
+  end
+
+  # IIIF manifest URL.
+  #
+  # @return [String]
+  def manifest_url
+    digital_repository.item_manifest_url(id)
+  end
+
+  # @return [String, nil]
+  def thumbnail_url
+    return nil unless preview?
+
+    digital_repository.item_preview_url(id, 'size=300,300')
+  end
+
+  # @return [Integer]
+  def iiif_image_count
+    fetch(:iiif_image_count_isi, 0)
+  end
+
+  # @return [Array<Hash>]
+  def non_iiif_assets
+    assets = fetch(:non_iiif_asset_listing_ss, '[]')
+
+    JSON.parse assets
+  end
+
+  # @return [Hash]
+  def pdf
+    JSON.parse fetch(:pdf_ss, '{}')
+  end
+
+  # @return [String, nil]
+  def bibnumber
+    fetch(:bibnumber_ssi, nil)
+  end
+
+  # @return [String, nil]
+  def digital_catalog_url
+    return unless bibnumber
+
+    URI::HTTPS.build(host: Settings.digital_catalog.host, path: "#{Settings.digital_catalog.path}/#{bibnumber}").to_s
+  end
+
+  private
+
+  # @return [DigitalRepository]
+  def digital_repository
+    @digital_repository ||= DigitalRepository.new
   end
 end

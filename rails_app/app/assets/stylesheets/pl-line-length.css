@@ -1,5 +1,0 @@
-:where(.pl-line-length) {
-  & :is(p) {
-    max-width: 60ch;
-  }
-}

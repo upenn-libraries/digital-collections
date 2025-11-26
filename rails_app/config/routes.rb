@@ -7,8 +7,6 @@ Rails.application.routes.draw do
 
   root to: 'catalog#home'
 
-  devise_for :users
-
   resource :catalog, only: [], as: 'catalog', path: '/items', controller: 'catalog' do
     concerns :searchable
     concerns :range_searchable
@@ -21,6 +19,10 @@ Rails.application.routes.draw do
 
   get '/home' => 'catalog#home'
   get '/about' => 'catalog#about'
+  get '/collections' => 'catalog#collections'
+
+  # Digital repository webhook
+  post 'listen', to: 'digital_repository_webhook#listen', as: 'listen'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

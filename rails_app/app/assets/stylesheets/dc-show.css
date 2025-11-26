@@ -1,0 +1,26 @@
+.show-document {
+  & .iiif-viewer-container {
+    margin-top: var(--pl-space-m);
+  }
+
+  & .clover-viewer-painting > div[style] {
+    background: var(--pl-color-bg-subtle) !important;
+  }
+
+  & h1 {
+    margin-top: var(--pl-space-xl);
+  }
+
+  & .pl-dl {
+    margin-top: var(--pl-space-m);
+    margin-bottom: var(--pl-space-xl);
+  }
+
+  margin-bottom: var(--pl-space-m);
+}
+
+.dc-download-and-share-modal,
+.dc-find-this-item-modal {
+  --bs-modal-padding: var(--pl-space-l);
+  --bs-modal-header-padding: var(--pl-space-l);
+}

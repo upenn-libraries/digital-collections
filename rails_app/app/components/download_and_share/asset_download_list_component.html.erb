@@ -1,0 +1,19 @@
+<ul class="list-group list-group-flush mb-3" style="--bs-list-group-item-padding-x: 0;">
+  <% assets.each do |asset| %>
+    <li class="list-group-item d-flex flex-wrap justify-content-between">
+      <span class="d-block"><%= asset.filename %></span>
+      <span class="d-flex gap-3 flex-wrap">
+        <% if asset.access_derivative? %>
+          <%= link_to(asset.access_file_url) do %>
+            <%= t('show.download_and_share.non_iiif_assets.download.access') %>
+            <span> — <%= asset.access_file_extension %><% if asset.access_file_size %> <small><%= asset.access_file_size %><% end %></small></span>
+          <% end %>
+        <% end %>
+        <%= link_to(asset.preservation_file_url) do %>
+          <%= t('show.download_and_share.non_iiif_assets.download.preservation') %>
+          <span> — <%= asset.preservation_file_extension %><% if asset.preservation_file_size %> <small><%= asset.preservation_file_size %><% end %></small></span>
+        <% end %>
+      </span>
+    </li>
+  <% end %>
+</ul>

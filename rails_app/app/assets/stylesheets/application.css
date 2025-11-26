@@ -6,8 +6,7 @@
 *
 * The Penn Libraries Design System provides foundational styles with the "pl-" prefix. Classes
 * like pl-reset, pl-typeset, pl-spacing, pl-font-size, and pl-line-length establish base
-* typography, spacing, and layout utilities. We plan to eventually move these styles to the
-* @penn-libraries/web package but develop them here for now.
+* typography, spacing, and layout utilities.
 *
 * Bootstrap CSS framework comes from the Blacklight gem and uses no prefix. Classes like btn,
 * form-control, dropdown-menu, and navbar provide UI components for buttons, forms, and
@@ -36,12 +35,14 @@
 * The main Bootstrap CSS is loaded from CDN in the layout file.
 */
 @import url('bs-root.css');
+@import url('bs-link.css');
 @import url('bs-reboot.css');
 @import url('bs-btn.css');
 @import url('bs-pagination.css');
 @import url('bs-dropdown-menu.css');
 @import url('bs-containers.css');
 @import url('bs-accordion.css');
+@import url('bs-alert.css');
 
 /**
 * Blacklight (prefix: "bl-")
@@ -52,23 +53,6 @@
 @import url('bl-facet.css');
 @import url('bl-flash-messages.css');
 @import url('bl-document.css');
-
-/**
-* Penn Libraries Design System (prefix: "pl-")
-*
-* These are styles that are being made to be hoisted out of the application.css into
-* the design system web package, but they're being worked here for now. Once
-* they're moved, we can remove this import.
-*/
-@import url('pl-root.css');
-@import url('pl-reset.css');
-@import url('pl-typeset.css');
-@import url('pl-line-length.css');
-@import url('pl-font-size.css');
-@import url('pl-border-radius.css');
-@import url('pl-spacing.css');
-@import url('pl-dl.css');
-
 
 /**
 * Digital Collections Application Styles (prefix: "dc-")
@@ -82,8 +66,6 @@
 @import url('dc-index.css');
 @import url('dc-start-over.css');
 @import url('dc-pagination.css');
-
-pennlibs-hero .header-search__link {
-	color: var(--color-fg-on-emphasis);
-	text-shadow: 1px 1px 2px var(--color-fg-default);
-}
+@import url('dc-collections.css');
+@import url('dc-show.css');
+@import url('dc-iiif.css');

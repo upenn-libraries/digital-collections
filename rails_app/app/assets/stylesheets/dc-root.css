@@ -1,8 +1,8 @@
 :root {
-  --max-width: 1280px;
+  --pl-viewport-margins-max-width: 1280px;
 
   @media (min-width: 720px) {
-    --viewport-margins-gutter: 3rem;
+    --pl-viewport-margins-gutter: 3rem;
   }
 }
 
@@ -18,7 +18,9 @@ pennlibs-footer {
 }
 
 pennlibs-hero {
-  --hero-height: clamp(50vh, 32rem, 26rem);
+  display: block;
+  --pl-hero-height: clamp(32rem, 62vh, 62vh);
+  min-height: var(--pl-hero-height);
 }
 
 *:focus {
@@ -26,11 +28,42 @@ pennlibs-hero {
   outline: none;
 }
 
+pennlibs-header:focus {
+  box-shadow: none;
+}
+
 /*
 * This addresses an issue where the scroll position after a turbo action isn't properly set. Supposedly this is due to
 * conflicting interactions between Turbo Drive and Bootstrap. Seems to occur only in Firefox.
-* See: https://github.com/hotwired/turbo/issues/1165
+* See: https://github.com/hotwired/turbo/issues/1165, https://github.com/hotwired/turbo/issues/698
 */
-html[aria-busy="true"] {
+html {
   scroll-behavior: auto !important;
+}
+
+/*
+* We don't want Bootstrap gutters for container-fluid
+* since they are not compatible with our full width design.
+*/
+.container-fluid {
+  --bs-gutter-x: 0;
+  padding: 0;
+
+  & .row {
+    margin-left: 0;
+    margin-right: 0;
+
+    & > * {
+      --bs-gutter-x: 0;
+    }
+  }
+}
+
+.dc-max-width-full {
+  max-width: 100%;
+}
+
+pennlibs-hero .header-search__link {
+	color: var(--pl-color-fg-on-emphasis);
+	text-shadow: 1px 1px 2px var(--pl-color-fg-default);
 }

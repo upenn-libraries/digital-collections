@@ -1,7 +1,10 @@
+<% content_for :page_title do %>
+  <%= t 'about.page_title', application_name: t('blacklight.application_name') %>
+<% end %>
+
 <% content_for :header do %>
-  <%= render DC::HeaderHeroComponent.new(
+  <%= render Catalog::HeaderHeroComponent.new(
     blacklight_config: blacklight_config,
-    user: current_user,
   ) do |component| %>
     <% component.with_picture do %>
       <%= tag.picture hero: 'art-direction' do %>
@@ -17,7 +20,7 @@
   <% end %>
 <% end %>
 
-<div class="pl-font-size-lg pl-margin-y-3xl pl-line-length">
+<div class="pl-font-size-l pl-margin-y-3xl pl-line-length">
   <h2>
     <%= t("about.purpose.heading") %>
   </h2>

@@ -2,20 +2,19 @@
   --bs-accordion-active-color: var(--pl-color-fg-default);
   --bs-accordion-border-width: 0;
   --bs-accordion-transition: 0;
-  --bs-accordion-btn-padding-y: var(--pl-space-sm);
-  --bs-accordion-btn-padding-x: var(--pl-space-base);
+  --bs-accordion-btn-padding-y: var(--pl-space-xs);
+  --bs-accordion-btn-padding-x: var(--pl-space-m);
   --bs-accordion-btn-bg: var(--pl-color-bg-subtle);
-  --bs-accordion-inner-border-radius: var(--pl-space-sm);
+  --bs-accordion-inner-border-radius: var(--pl-space-s);
   --bs-btn-hover-bg: auto;
   --bs-btn-active-bg: var(--pl-color-bg-subtle);
-  --bs-accordion-btn-focus-box-shadow: 0 0 0 2px var(--color-bg-accent), 0 0 0 4px var(--color-fg-default);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 2px var(--pl-color-bg-accent), 0 0 0 4px var(--pl-color-fg-default);
   --bs-accordion-btn-bg: var(--pl-color-bg-subtle);
-  --bs-accordion-body-padding-y: 0;
-  --bs-accordion-body-padding-x: 0;
+  --bs-accordion-active-bg: var(--pl-color-bg-subtle);
 
   display: flex !important;
   flex-direction: column;
-  gap: var(--pl-space-md);
+  gap: var(--pl-space-m);
 }
 
 .accordion-item,

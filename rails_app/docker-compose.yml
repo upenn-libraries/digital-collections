@@ -23,7 +23,7 @@ services:
   solrcloud:
     image: solr:9.8.1
     ports:
-      - "8983:8983"
+      - "8984:8983"
     volumes:
       - solrcloud_data:/var/solr
       - ./solr/conf:/opt/solr/configsets/dcoll

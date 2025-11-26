@@ -5,18 +5,19 @@
     "esbuild": "^0.25.6"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --alias:@components=./app/javascript/components",
     "dev-server": "yarn build --watch"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.16",
     "@popperjs/core": "^2.11.8",
-    "@samvera/clover-iiif": "^2.18.3",
-    "blacklight-frontend": "^9.0.0-beta1",
+    "@samvera/clover-iiif": "^3.0.0",
+    "@samvera/image-downloader": "^1.1.6",
+    "blacklight-frontend": "^9.0.0-beta7",
     "blacklight-range-limit": "^9.0.0",
     "bootstrap": "^5.3.7",
-    "react": "18.2",
-    "react-dom": "18.2"
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
   }
 }

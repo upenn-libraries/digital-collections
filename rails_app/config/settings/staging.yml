@@ -1,2 +1,4 @@
 honeybadger:
   api_key: <%= DockerSecrets.lookup(:honeybadger_api_key) %>
+google_analytics:
+  tag_id: GTM-WP684VC6
