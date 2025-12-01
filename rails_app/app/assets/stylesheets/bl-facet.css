@@ -111,4 +111,6 @@
   & .facet-field-heading {
     margin-bottom: 0;
   }
+
+  margin-bottom: var(--pl-space-xl);
 }
