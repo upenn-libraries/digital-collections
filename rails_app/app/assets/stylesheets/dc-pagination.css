@@ -1,3 +1,7 @@
 .dc-pagination__prev img {
   transform: rotate(180deg);
 }
+
+.documents-list ~ .paginate-section {
+  margin-bottom: var(--pl-space-xl);
+}
