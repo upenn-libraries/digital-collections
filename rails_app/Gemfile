@@ -10,7 +10,7 @@ gem 'blacklight-gallery'
 gem 'blacklight_range_limit', '9.1.0'
 gem 'bootsnap', require: false
 gem 'config'
-gem 'devise'
+gem 'devise', github: 'heartcombo/devise', branch: 'main'
 gem 'devise-guests', '~> 0.8'
 gem 'edtf-humanize'
 gem 'faraday'
