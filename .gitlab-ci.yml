@@ -12,7 +12,7 @@ include:
       - ".rubocop.yml"
 
   # Workflow rules
-  # - template: "Workflows/MergeRequest-Pipelines.gitlab-ci.yml"
+  - template: "Workflows/MergeRequest-Pipelines.gitlab-ci.yml"
 
   # Base image
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
