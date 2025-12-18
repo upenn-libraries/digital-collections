@@ -155,7 +155,7 @@ rspec_app_test:
   stage: test
   image: ${CI_REGISTRY_IMAGE}/${CI_PIPELINE_ID}:${CI_COMMIT_SHORT_SHA}-development
   services:
-    - name: ghcr.io/browserless/chrome:v2.33.0
+    - name: ghcr.io/browserless/chromium:v2.27.0
       alias: chrome
       variables:
         CONNECTION_TIMEOUT: 600000
