@@ -17,6 +17,10 @@
   gap: var(--pl-space-m);
 }
 
+.accordion-button:active {
+  --bs-btn-active-color: var(--pl-color-fg-default);
+}
+
 .accordion-item,
 .accordion-button {
   border-radius: var(--bs-accordion-inner-border-radius);
@@ -46,4 +50,8 @@
 .accordion-item > :is(.show, .collapsing) {
   border: solid 1px var(--pl-color-fg-subtle);
   border-radius: 0 0 var(--bs-accordion-inner-border-radius) var(--bs-accordion-inner-border-radius);
+}
+
+.facet-limit-active {
+  --bs-accordion-btn-icon: unset;
 }
