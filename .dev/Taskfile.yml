@@ -1,16 +1,11 @@
 version: "3"
 
-# Project-specific variables
-vars:
-  PROJECT_NAME: digital-collections
-  PROJECT_DOMAIN: digitalcollections-dev
-  PROJECT_CONTAINER_NAME: ""
-
-  # Docker
-  DOCKER_TLS_PORT_INT: 2376
-  DOCKER_TLS_PORT_EXT: 3486
-
 includes:
-  remote:
+  app:
     taskfile: https://gitlab.library.upenn.edu/devops/taskfile/-/raw/main/Taskfile.yml
-    dir: .
+    vars:
+      PROJECT_NAME: "digital-collections"
+      PROJECT_DOMAIN: digitalcollections-dev
+      ANSIBLE_NETWORK_SUBNET: 172.16.5.0/24
+      ANSIBLE_CONTAINER_IP: "172.16.5.10"
+      ANSIBLE_CONTAINER_NAME: "digital-collections"
