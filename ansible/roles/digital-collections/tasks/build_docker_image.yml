@@ -7,7 +7,7 @@
         state: directory
         owner: root
         group: root
-        mode: '0755'
+        mode: "0755"
     - name: Create configuration file
       ansible.builtin.copy:
         content: |
@@ -21,13 +21,13 @@
         dest: "{{ digital_collections_docker_buildx_config }}"
         owner: root
         group: root
-        mode: '0644'
+        mode: "0644"
 
 - name: Get NodeJS and Yarn versions from .tool-versions
   block:
     - name: Read .tool-versions
       ansible.builtin.set_fact:
-        tool_versions_content: "{{ lookup('ansible.builtin.file', '/digital-collections/rails_app/.tool-versions') }}"
+        tool_versions_content: "{{ lookup('ansible.builtin.file', '/home/app/rails_app/.tool-versions') }}"
     - name: Extract the NodeJS version
       ansible.builtin.set_fact:
         nodejs_version: "{{ tool_versions_content | regex_search('nodejs\\s+(\\S+)', '\\1') | first }}"
@@ -39,8 +39,8 @@
   community.docker.docker_image_build:
     name: "{{ digital_collections_image_name }}"
     tag: "{{ digital_collections_image_tag }}"
-    path: "/digital-collections/rails_app"
-    dockerfile: "/digital-collections/rails_app/Dockerfile"
+    path: "/home/app/rails_app"
+    dockerfile: "/home/app/rails_app/Dockerfile"
     outputs:
       - type: image
     target: "development"
