@@ -1,3 +1,4 @@
 .certs/*
 !.certs/.keep
 .task
+.vault-token
