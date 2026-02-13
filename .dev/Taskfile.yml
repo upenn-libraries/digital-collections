@@ -2,10 +2,14 @@ version: "3"
 
 includes:
   app:
-    taskfile: https://gitlab.library.upenn.edu/devops/taskfile/-/raw/main/Taskfile.yml
+    taskfile: https://gitlab.library.upenn.edu/devops/taskfile/-/raw/expanded/DevEnvTasks.yml?ref_type=heads
+    flatten: true
     vars:
       PROJECT_NAME: "digital-collections"
-      PROJECT_DOMAIN: digitalcollections-dev
-      ANSIBLE_NETWORK_SUBNET: 172.16.5.0/24
-      ANSIBLE_CONTAINER_IP: "172.16.5.10"
-      ANSIBLE_CONTAINER_NAME: "digital-collections"
+      DOMAIN: digitalcollections-dev
+      DOCKER_NETWORK_SUBNET: 172.16.5.0/24
+      DOCKER_CONTAINER_IP: "172.16.5.10"
+      DOCKER_CONTAINER_NAME: "digital-collections"
+      DOCKER_CONTAINER_REGISTRY:
+      DOCKER_CONTAINER_REGISTRY_MIRROR:
+      ANSIBLE_REQUIREMENTS_FILE: "requirements.yml"
