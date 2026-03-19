@@ -1,4 +1,5 @@
 variables:
+  FF_ENABLE_BASH_EXIT_CODE_CHECK: "true"
   FF_SCRIPT_SECTIONS: "true"
   GIT_CLONE_PATH: "${CI_BUILDS_DIR}/${CI_PROJECT_NAME}/${CI_JOB_ID}"
   VAULT_AUTH_ROLE_SIDEKIQ: "sidekiq_pro_ro"
@@ -202,12 +203,14 @@ rspec_app_test:
     SOLR_URL: "http://admin:bitnami@solr:8983/solr/digital-collections-test"
     SOLR_TEST_COLLECTION: "digital-collections-test"
     SOLR_TEST_CONFIGNAME: "digital-collections"
+  before_script:
+    - echo "before_script"
   script:
     - >
       for ((i = 0; i <= 9; i += 1)); do
         curl --silent "http://solr:8983/api/" "-H" "'Content-type:application/json'" && break
         echo "Waiting for solr api to be ready"
-        sleep "10s"
+        sleep 3600
       done
     - cd rails_app/
     - bundle add rspec_junit_formatter
