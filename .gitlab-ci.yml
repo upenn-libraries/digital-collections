@@ -204,13 +204,12 @@ rspec_app_test:
     SOLR_TEST_COLLECTION: "digital-collections-test"
     SOLR_TEST_CONFIGNAME: "digital-collections"
   before_script:
-    - echo "before_script"
+    - sleep 3600
   script:
     - >
       for ((i = 0; i <= 9; i += 1)); do
         curl --silent "http://solr:8983/api/" "-H" "'Content-type:application/json'" && break
         echo "Waiting for solr api to be ready"
-        sleep 3600
       done
     - cd rails_app/
     - bundle add rspec_junit_formatter
