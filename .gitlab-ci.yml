@@ -172,7 +172,10 @@ rspec_app_test:
         "/bin/bash",
         "-c",
         "./opt/bitnami/scripts/solr/entrypoint.sh /opt/bitnami/scripts/solr/run.sh & \n
-          until [ \"$(/opt/bitnami/solr/bin/solr assert --started)\" = \"0\" ]; do sleep 1; echo 'Waiting for solr to be ready'; done & \n
+          until /opt/bitnami/solr/bin/solr assert --started http://solr:8983; do
+            sleep 1
+            echo 'Waiting for Solr to be ready'
+          done \n
         ./opt/bitnami/solr/bin/solr create_collection -d ${CI_PROJECT_DIR}/rails_app/solr/conf -c ${SOLR_TEST_COLLECTION} -n ${SOLR_TEST_CONFIGNAME} \n
         wait"
       ]
@@ -205,7 +208,6 @@ rspec_app_test:
     SOLR_TEST_CONFIGNAME: "digital-collections"
   before_script:
     - |
-      sleep 3600
       until curl -sf "http://solr:8983/solr/admin/info/system" > /dev/null; do
         sleep 1
         echo 'Waiting for Solr to be ready'
