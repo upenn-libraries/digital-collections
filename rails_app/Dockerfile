@@ -1,72 +1,206 @@
-# syntax=docker/dockerfile:1
-# check=error=true
+# Global Build Args ----------------------------------
+# Default project root
+ARG PROJECT_ROOT=/home/app
 
-# This Dockerfile is designed for production, not development. Use with Kamal or build'n'run by hand:
-# docker build -t rails_app .
-# docker run -d -p 80:3000 -e RAILS_MASTER_KEY=<value from config/master.key> --name rails_app rails_app
+# Default Bundle home
+ARG BUNDLE_HOME=${PROJECT_ROOT}/vendor/bundle
 
-# For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
+# Default Image name
+ARG IMAGE_NAME=ruby
 
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version
-ARG RUBY_VERSION=3.4.2
-FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
+# Default Image tag
+ARG IMAGE_TAG=3.4.2-slim-bookworm
 
-# Rails app lives here
-WORKDIR /rails
+# Default Node version
+ARG NODE_VERSION=24.5.0
 
-# Install base packages
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 postgresql-client && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+# Default Rails env
+ARG RAILS_ENV=development
 
-# Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+# Default Ruby
+ARG RUBY_MAJOR=3.4.0
 
-# Throw-away build stage to reduce size of final image
-FROM base AS build
+# Default Yarn version
+ARG YARN_VERSION=1.22.22
 
-# Install packages needed to build gems
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+# Build Stage ----------------------------------------
+FROM ${IMAGE_NAME}:${IMAGE_TAG} AS base
 
-# Install application gems
-COPY Gemfile Gemfile.lock ./
-RUN bundle install && \
-    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
+ARG BUNDLE_HOME
+ARG NODE_VERSION
+ARG PROJECT_ROOT
+ARG RAILS_ENV
+ARG RUBY_MAJOR
+ARG YARN_VERSION
+
+ENV BUNDLE_HOME=${BUNDLE_HOME}
+ENV PROJECT_ROOT=${PROJECT_ROOT}
+ENV RAILS_ENV=${RAILS_ENV}
+ENV RUBY_MAJOR=${RUBY_MAJOR}
+
+ENV BUNDLE_APP_CONFIG="${PROJECT_ROOT}/.bundle"
+ENV GEM_HOME="${BUNDLE_HOME}/ruby/${RUBY_MAJOR}/bundle"
+ENV PATH="${BUNDLE_HOME}/ruby/${RUBY_MAJOR}/bin:$PATH"
+
+WORKDIR ${PROJECT_ROOT}
+
+RUN apt-get update && apt-get install --no-install-recommends -y \
+      apt-transport-https \
+      ca-certificates \
+      build-essential \
+      curl \
+      git \
+      libpq-dev \
+      libyaml-dev \
+      postgresql \
+      postgresql-contrib && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION%%.*}.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g "yarn@${YARN_VERSION}" && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY package.json yarn.lock ${PROJECT_ROOT}
+RUN yarn install --frozen-lockfile
+
+COPY Gemfile* ./
+
+RUN bundle config path ${BUNDLE_HOME} && \
+    set -eux; \
+    if [ "${RAILS_ENV}" = "development" ]; then \
+    bundle config set with "development:test:assets"; \
+    else \
+    bundle config set without "development:test:assets"; \
+    fi
+
+RUN --mount=type=secret,id=sidekiq_pro_credentials \
+    bundle config set --local gems.contribsys.com $(cat /run/secrets/sidekiq_pro_credentials)
+
+RUN bundle install -j$(nproc) --retry 3 --verbose && \
+    rm -rf ${BUNDLE_HOME}/ruby/${RUBY_MAJOR}/cache/*.gem && \
+    find ${BUNDLE_HOME}/ruby/${RUBY_MAJOR}/gems/ \( -name "*.c" -o -name "*.o" \) -delete && \
     bundle exec bootsnap precompile --gemfile
 
-# Copy application code
-COPY . .
+COPY . ${PROJECT_ROOT}/
 
-# Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+# Development Stage ----------------------------------
+FROM ${IMAGE_NAME}:${IMAGE_TAG} AS development
 
+ARG BUNDLE_HOME
+ARG NODE_VERSION
+ARG PROJECT_ROOT
+ARG RAILS_ENV
+ARG RUBY_MAJOR
+ARG YARN_VERSION
 
+ENV BUNDLE_HOME=${BUNDLE_HOME}
+ENV PROJECT_ROOT=${PROJECT_ROOT}
+ENV RAILS_ENV=${RAILS_ENV}
+ENV RUBY_MAJOR=${RUBY_MAJOR}
 
+ENV BUNDLE_APP_CONFIG="${PROJECT_ROOT}/.bundle"
+ENV GEM_HOME="${BUNDLE_HOME}/ruby/${RUBY_MAJOR}/bundle"
+ENV NLS_LANG=$LANG
+ENV PATH="${BUNDLE_HOME}/ruby/${RUBY_MAJOR}/bin:$PATH"
+ENV RAILS_ENV=${RAILS_ENV}
 
-# Final stage for app image
-FROM base
+WORKDIR ${PROJECT_ROOT}
 
-# Copy built artifacts: gems, application
-COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
-COPY --from=build /rails /rails
+RUN apt-get update && apt-get install --no-install-recommends -y \
+      build-essential \
+      curl \
+      git \
+      gosu \
+      libpq-dev \
+      libyaml-dev \
+      postgresql \
+      postgresql-contrib \
+      procps && \
+    addgroup app && useradd -m -d ${PROJECT_ROOT} -s /bin/bash -g app app && \
+    mkdir -p ${PROJECT_ROOT}/tmp/pids && \
+    rm -rf /var/lib/apt/lists/*
 
-# Run and own only the runtime files as a non-root user for security
-RUN groupadd --system --gid 1000 rails && \
-    useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    chown -R rails:rails db log tmp
-USER 1000:1000
+COPY --chmod=755 --from=base ${PROJECT_ROOT}/docker-entrypoint.sh /usr/local/bin/
+COPY --chmod=744 --chown=app:app --from=base ${PROJECT_ROOT} ${PROJECT_ROOT}
 
-# Entrypoint prepares the database.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION%%.*}.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g "yarn@${YARN_VERSION}" && \
+    rm -rf /var/lib/apt/lists/*
 
-# Start the server by default, this can be overwritten at runtime
+RUN mkdir -p ${PROJECT_ROOT}/app/assets/builds/ && \
+    find ${PROJECT_ROOT} -type d -exec chmod 755 {} + && \
+    chmod 744 -R ./bin && \
+    chmod +x -R ${BUNDLE_HOME}/ruby/${RUBY_MAJOR}/bin/ && \
+    SECRET_KEY_BASE_DUMMY=x bundle exec rails assets:precompile
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+
 EXPOSE 3000
-CMD ["./bin/rails", "server"]
+VOLUME ${PROJECT_ROOT}
+
+CMD ["bundle", "exec", "puma", "-b", "tcp://0.0.0.0:3000"]
+
+
+# Production Stage -----------------------------------
+FROM ${IMAGE_NAME}:${IMAGE_TAG} AS production
+
+ARG BUNDLE_HOME
+ARG NODE_VERSION
+ARG PROJECT_ROOT
+ARG RAILS_ENV=production
+ARG RUBY_MAJOR
+ARG YARN_VERSION
+
+ENV BUNDLE_HOME=${BUNDLE_HOME}
+ENV PROJECT_ROOT=${PROJECT_ROOT}
+ENV RAILS_ENV=${RAILS_ENV}
+ENV RUBY_MAJOR=${RUBY_MAJOR}
+
+ENV BUNDLE_APP_CONFIG="${PROJECT_ROOT}/.bundle"
+ENV GEM_HOME="${BUNDLE_HOME}/ruby/${RUBY_MAJOR}/bundle"
+ENV NLS_LANG=$LANG
+ENV PATH="${BUNDLE_HOME}/ruby/${RUBY_MAJOR}/bin:$PATH"
+ENV RAILS_ENV=${RAILS_ENV}
+ENV RAILS_LOG_TO_STDOUT=true
+ENV RAILS_SERVE_STATIC_FILES=true
+
+WORKDIR ${PROJECT_ROOT}
+
+RUN apt-get update && apt-get install --no-install-recommends -y \
+      build-essential \
+      curl \
+      git \
+      gosu \
+      libpq-dev \
+      libyaml-dev \
+      postgresql \
+      postgresql-contrib \
+      procps && \
+    addgroup app && useradd -m -d ${PROJECT_ROOT} -s /bin/bash -g app app && \
+    mkdir -p ${PROJECT_ROOT}/tmp/pids && \
+  rm -rf /var/lib/apt/lists/*
+
+COPY --chmod=755 --from=base ${PROJECT_ROOT}/docker-entrypoint.sh /usr/local/bin/
+COPY --chmod=744 --chown=app:app --from=base ${PROJECT_ROOT} ${PROJECT_ROOT}
+
+RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION%%.*}.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g "yarn@${YARN_VERSION}" && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p ${PROJECT_ROOT}/app/assets/builds/ && \
+    find ${PROJECT_ROOT} -type d -exec chmod 755 {} + && \
+    chmod 744 -R ./bin && \
+    chmod +x -R ${BUNDLE_HOME}/ruby/${RUBY_MAJOR}/bin/ && \
+    SECRET_KEY_BASE_DUMMY=x bundle exec rails assets:precompile
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+
+EXPOSE 3000
+VOLUME ${PROJECT_ROOT}
+
+CMD ["bundle", "exec", "puma", "-b", "tcp://0.0.0.0:3000"]
