@@ -1,0 +1,13 @@
+---
+postgres_database_name: "digital_collections_staging"
+
+postgres_database_versioned_secrets:
+  database_password:
+    secret_name_prefix: "digital_collections_postgres_password_v"
+    value: "{{ digital_collections_vault_values.secret.database_password }}"
+    version: "{{ digital_collections_vault_values.metadata.version }}"
+
+postgres_docker_image_tag: "17.5"
+
+postgres_docker_node_constraint: postgres
+postgres_network: digital_collections_postgres

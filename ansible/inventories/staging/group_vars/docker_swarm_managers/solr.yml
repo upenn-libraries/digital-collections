@@ -1,0 +1,24 @@
+---
+solr_collections:
+  - name: digital-collections-staging
+    configset: digital-collections
+    replicas: 1
+    shards: 1
+
+solr_configsets:
+  - name: "digital-collections"
+    path: "/digital-collections/rails_app/solr/conf/"
+
+solr_docker_image_tag: 9.8.1
+
+solr_proxy_host: "digitalcollections-staging.library.upenn.int"
+
+solr_instances: 1
+
+solr_collection_replicas: 1
+
+solr_custom_env_variables:
+  SOLR_ENABLE_AUTHENTICATION: "yes"
+  SOLR_ADMIN_USERNAME: "{{ digital_collections_vault_values.secret.solr_username }}"
+  SOLR_ADMIN_PASSWORD: "{{ digital_collections_vault_values.secret.solr_password }}"
+  SOLR_MODULES: "analysis-extras"

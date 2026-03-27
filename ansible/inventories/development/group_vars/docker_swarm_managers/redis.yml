@@ -1,0 +1,14 @@
+---
+redis_docker_image_tag: "8-alpine"
+
+redis_docker_node_constraint: "redis"
+
+redis_docker_stack_name: "digital_collections"
+
+redis_network: "digital_collections_redis"
+
+redis_users:
+  - name: "sidekiq"
+    acl_rules: "+@all ~*"
+    password: "{{ digital_collections_vault_values.secret.redis_sidekiq_password }}"
+    version: "{{ digital_collections_vault_values.metadata.version }}"
