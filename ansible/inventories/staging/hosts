@@ -3,7 +3,6 @@ docker_swarm_managers:
   hosts:
     dc-manager-01:
       swarm_labels:
-        - api
         - digital_collections
         - postgres
         - redis
