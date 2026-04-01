@@ -16,10 +16,6 @@ docker_daemon_config:
       Name: "nofile"
       Hard: 1048576
       Soft: 1048576
-  registry-mirrors:
-    - "http://registry-mirror.library.upenn.int:5000"
-  insecure-registries:
-    - "http://registry-mirror.library.upenn.int:5000"
 
 skip_firewall: true
 skip_docker_group: true

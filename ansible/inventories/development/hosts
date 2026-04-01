@@ -6,6 +6,7 @@ docker_swarm_managers:
       ansible_connection: local
       swarm_labels:
         - digital_collections
+        - chrome
         - postgres
         - redis
         - sidekiq
