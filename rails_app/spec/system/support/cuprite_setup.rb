@@ -5,49 +5,20 @@
 # First, load Cuprite Capybara integration
 require 'capybara/cuprite'
 
-# Parse URL
-# NOTE: REMOTE_CHROME_HOST should be added to Webmock/VCR allowlist if you use any of those.
-REMOTE_CHROME_URL = ENV.fetch('CHROME_URL', 'http://localhost:3333')
-REMOTE_CHROME_HOST, REMOTE_CHROME_PORT =
-  if REMOTE_CHROME_URL
-    URI.parse(REMOTE_CHROME_URL).then do |uri|
-      [uri.host, uri.port]
-    end
-  end
-
-# Check whether the remote chrome is running.
-remote_chrome =
-  begin
-    if REMOTE_CHROME_URL.nil?
-      false
-    else
-      Socket.tcp(REMOTE_CHROME_HOST, REMOTE_CHROME_PORT, connect_timeout: 1).close
-      true
-    end
-  rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH, SocketError
-    false
-  end
-
-remote_options = remote_chrome ? { url: REMOTE_CHROME_URL } : {}
-
-# Then, we need to register our driver to be able to use it later
-# with #driven_by method.
-# NOTE: The name :cuprite is already registered by Rails.
-# See https://github.com/rubycdp/cuprite/issues/180
+# Register our driver to be able to use it later with #driven_by method.
+# NOTE: The name :cuprite is already registered by Rails. See https://github.com/rubycdp/cuprite/issues/180
 Capybara.register_driver(:better_cuprite) do |app|
   Capybara::Cuprite::Driver.new(
     app,
     **{
-      window_size: [1200, 800],
-      browser_options: remote_chrome ? { 'no-sandbox' => nil } : {},
-      # Increase Chrome startup wait time (required for stable CI builds)
-      process_timeout: 10,
-      # Enable debugging capabilities
-      inspector: true,
-      # TODO: "expected" console error from importmaps shim (?) causes exception failing all system specs
-      js_errors: false,
-      timeout: 10
-    }.merge(remote_options)
+      # See ferrum docs for config options: https://github.com/rubycdp/ferrum
+      flatten: false,
+      inspector: !ENV['CI'], # Enable debugging capabilities
+      js_errors: true, # Re-raise js errors in Ruby
+      timeout: 30, # How long to wait for a response from browser before raising a pending connection error
+      window_size: [1600, 1200],
+      ws_url: ENV.fetch('CHROME_URL', 'ws://localhost:3333')
+    }
   )
 end
 
@@ -63,7 +34,7 @@ module CupriteHelpers
   end
 
   def debug(binding = nil)
-    $stdout.puts '🔎 Open Chrome inspector at http://0.0.0.0:3333/debugger/?token=xxx'
+    $stdout.puts '🔎 Open Chrome inspector at http://digitalcollections-dev.library.upenn.int/chrome/debugger/?token=xxx'
     return binding.break if binding
 
     page.driver.pause
