@@ -81,6 +81,9 @@ class SolrTools
   def self.connection
     uri = URI.parse(Settings.solr.url) # Parsing out connection details from URL.
 
-    Faraday.new("#{uri.scheme}://#{uri.host}:#{uri.port}")
+    Faraday.new("#{uri.scheme}://#{uri.host}:#{uri.port}") do |faraday|
+      faraday.request :authorization, :basic, uri.user, uri.password
+      faraday.adapter :net_http
+    end
   end
 end

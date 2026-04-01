@@ -39,7 +39,7 @@ services:
       {% if is_development == true %}
       UID: ${UID:-1000}
       GID: ${GID:-1000}
-      CHROME_URL: "http://chrome:{{ chrome_port }}"
+      CHROME_URL: "ws://chrome:{{ chrome_port }}"
       {% endif %}
       DATABASE_HOST: "postgres"
       DATABASE_NAME: "{{ postgres_database_name }}"
