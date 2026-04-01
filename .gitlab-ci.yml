@@ -207,6 +207,7 @@ rspec_app_test:
     SOLR_TEST_COLLECTION: "digital-collections-test"
     SOLR_TEST_CONFIGNAME: "digital-collections"
   before_script:
+    - sleep 3600
     - |
       until curl -sf "http://solr:8983/solr/admin/info/system" > /dev/null; do
         sleep 1
