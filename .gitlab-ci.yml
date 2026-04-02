@@ -215,12 +215,12 @@ rspec_app_test:
     - rm -fr ${SOLR_TEST_CONFIGNAME}.zip
     # - curl "http://solr:8983/solr/admin/configs?action=CREATE&name=${SOLR_TEST_CONFIGNAME}"
     - curl "http://solr:8983/solr/admin/collections?action=CREATE&name=${SOLR_TEST_COLLECTION}&numShards=1&collection.configName=${SOLR_TEST_CONFIGNAME}"
-    - sleep 3600
-    - |
-      until curl -sf "http://solr:8983/solr/admin/info/system" > /dev/null; do
-        sleep 1
-        echo 'Waiting for Solr to be ready'
-      done
+    # - sleep 3600
+    # - |
+    #   until curl -sf "http://solr:8983/solr/admin/info/system" > /dev/null; do
+    #     sleep 1
+    #     echo 'Waiting for Solr to be ready'
+    #   done
   script:
     - cd rails_app/
     - bundle add rspec_junit_formatter
