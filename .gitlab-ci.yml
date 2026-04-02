@@ -167,29 +167,29 @@ rspec_app_test:
         POSTGRES_DB: "digital_collections_test"
         POSTGRES_PASSWORD: "rspec_test"
         POSTGRES_USER: "rspec_test"
-    - name: bitnamilegacy/solr:9.8.1
+    - name: solr:9.8.1
       alias: solr
-      entrypoint: [""]
-      command: [
-        "/bin/bash",
-        "-c",
-        "./opt/bitnami/scripts/solr/entrypoint.sh /opt/bitnami/scripts/solr/run.sh & \n
-        until /opt/bitnami/solr/bin/solr assert --started http://solr:8983; do sleep 1; echo 'Waiting for Solr to be ready'; done & \n
-        ./opt/bitnami/solr/bin/solr create_collection -d ${CI_PROJECT_DIR}/rails_app/solr/conf -c ${SOLR_TEST_COLLECTION} -n ${SOLR_TEST_CONFIGNAME} \n
-        wait"
-      ]
+      # entrypoint: [""]
+      # command: [
+      #   "/bin/bash",
+      #   "-c",
+      #   "./opt/bitnami/scripts/solr/entrypoint.sh /opt/bitnami/scripts/solr/run.sh & \n
+      #   until /opt/bitnami/solr/bin/solr assert --started http://solr:8983; do sleep 1; echo 'Waiting for Solr to be ready'; done & \n
+      #   ./opt/bitnami/solr/bin/solr create_collection -d ${CI_PROJECT_DIR}/rails_app/solr/conf -c ${SOLR_TEST_COLLECTION} -n ${SOLR_TEST_CONFIGNAME} \n
+      #   wait"
+      # ]
       variables:
         HEALTHCHECK_TCP_PORT: "8983"
-        SOLR_CLOUD_BOOTSTRAP: "yes"
-        SOLR_ENABLE_AUTHENTICATION: "yes"
+        # SOLR_CLOUD_BOOTSTRAP: "yes"
+        # SOLR_ENABLE_AUTHENTICATION: "yes"
         SOLR_HOST: "solr"
         SOLR_JAVA_MEM: "-Xms4g -Xmx4g"
-        SOLR_MODE: "solrcloud"
+        # SOLR_MODE: "solrcloud"
         SOLR_OPTS: "-Dsolr.disableConfigSetsCreateAuthChecks=true"
         ZK_CREATE_CHROOT: "true"
-#        SOLR_AUTH_TYPE: "basic"
-#        SOLR_AUTHENTICATION_OPTS: "-Dbasicauth=admin:bitnami"
-        ZK_SCRIPT_LOCATION: "/opt/bitnami/solr/server/scripts/cloud-scripts"
+        # SOLR_AUTH_TYPE: "basic"
+        # SOLR_AUTHENTICATION_OPTS: "-Dbasicauth=admin:bitnami"
+        # ZK_SCRIPT_LOCATION: "/opt/bitnami/solr/server/scripts/cloud-scripts"
   extends:
     - .rspec
   variables:
@@ -207,6 +207,10 @@ rspec_app_test:
     SOLR_TEST_COLLECTION: "digital-collections-test"
     SOLR_TEST_CONFIGNAME: "digital-collections"
   before_script:
+    - zip -rj ${SOLR_TEST_CONFIGNAME}.zip ${CI_PROJECT_DIR}/rails_app/solr/conf/
+    - curl -X PUT --header "Content-Type:application/octet-stream" --data-binary @${SOLR_TEST_CONFIGNAME}.zip "http://solr:8983/api/configsets/${SOLR_TEST_CONFIGNAME}"
+    - rm -fr ${SOLR_TEST_CONFIGNAME}.zip
+    - curl 'http://solr:8983/solr/admin/collections?action=CREATE&name=${SOLR_TEST_COLLECTION}&numShards=1&collection.configName=${SOLR_TEST_CONFIGNAME}'
     - sleep 3600
     - |
       until curl -sf "http://solr:8983/solr/admin/info/system" > /dev/null; do
