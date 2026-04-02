@@ -169,6 +169,7 @@ rspec_app_test:
         POSTGRES_USER: "rspec_test"
     - name: solr:9.8.1
       alias: solr
+      command: ["-c"]
       # entrypoint: [""]
       # command: [
       #   "/bin/bash",
