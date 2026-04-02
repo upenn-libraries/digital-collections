@@ -187,6 +187,7 @@ rspec_app_test:
         SOLR_JAVA_MEM: "-Xms4g -Xmx4g"
         # SOLR_MODE: "solrcloud"
         SOLR_OPTS: "-Dsolr.disableConfigSetsCreateAuthChecks=true"
+        SOLR_MODULES: "analysis-extras"
         ZK_CREATE_CHROOT: "true"
         # SOLR_AUTH_TYPE: "basic"
         # SOLR_AUTHENTICATION_OPTS: "-Dbasicauth=admin:bitnami"
