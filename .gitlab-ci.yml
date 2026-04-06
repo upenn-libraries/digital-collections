@@ -160,9 +160,10 @@ rspec_app_test:
     - name: ghcr.io/browserless/chromium:latest
       alias: chrome
       variables:
-        HEALTHCHECK_TCP_PORT: "3000"
+#        HEALTHCHECK_TCP_PORT: "3333"
+        PORT: 3333
         CONCURRENT: 1
-        TIMEOUT: 600000
+        TIMEOUT: 1200000
     - name: postgres:17.5
       variables:
         POSTGRES_DB: "digital_collections_test"
@@ -197,7 +198,7 @@ rspec_app_test:
     - .rspec
   variables:
     APP_URL: "digitalcollections.test.com"
-    CHROME_URL: "ws://chrome:3000"
+    CHROME_URL: "ws://chrome:3333"
     CI: "true"
     DATABASE_NAME: "digital_collections_test"
     DATABASE_HOST: "postgres"
