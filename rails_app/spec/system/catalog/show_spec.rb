@@ -28,7 +28,7 @@ describe 'Catalog Show Page', :solr do
     it 'links to pdf download' do
       click_on I18n.t('show.download_and_share.button')
       within('#dc-download-and-share-modal') do
-        pdf_url = "https://apotheca.library.upenn.edu/v1/items/#{item.id}/pdf"
+        pdf_url = "https://digitalrepository.library.upenn.edu/v1/items/#{item.id}/pdf"
         expect(page).to have_link('PDF — 14.8 MB', href: pdf_url)
       end
     end
@@ -36,7 +36,7 @@ describe 'Catalog Show Page', :solr do
     it 'links to IIIF manifest' do
       click_on I18n.t('show.download_and_share.button')
       within('#dc-download-and-share-modal') do
-        manifest_url = "https://apotheca.library.upenn.edu/iiif/items/#{item.id}/manifest"
+        manifest_url = "https://digitalrepository.library.upenn.edu/iiif/items/#{item.id}/manifest"
         expect(page).to have_link(manifest_url, href: manifest_url)
       end
     end
@@ -52,7 +52,7 @@ describe 'Catalog Show Page', :solr do
     it 'links to access file(s)' do
       click_on I18n.t('show.download_and_share.button')
       within('#dc-download-and-share-modal') do
-        access_url = 'https://apotheca.library.upenn.edu/v1/assets/5788b27c-5987-4cec-b625-f9e289669687/access'
+        access_url = 'https://digitalrepository.library.upenn.edu/v1/assets/5788b27c-5987-4cec-b625-f9e289669687/access'
         expect(page).to have_link('Smaller file — mp3', href: access_url)
       end
     end
@@ -60,7 +60,7 @@ describe 'Catalog Show Page', :solr do
     it 'links to the preservation file' do
       click_on I18n.t('show.download_and_share.button')
       within('#dc-download-and-share-modal') do
-        preservation_url = 'https://apotheca.library.upenn.edu/v1/assets/5788b27c-5987-4cec-b625-f9e289669687/preservation'
+        preservation_url = 'https://digitalrepository.library.upenn.edu/v1/assets/5788b27c-5987-4cec-b625-f9e289669687/preservation'
         expect(page).to have_link('Original file — wav 1.03 GB', href: preservation_url)
       end
     end
