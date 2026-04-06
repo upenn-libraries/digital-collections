@@ -1,5 +1,5 @@
 variables:
-  # CI_DEBUG_SERVICES: "true"
+  CI_DEBUG_SERVICES: "true"
   FF_ENABLE_BASH_EXIT_CODE_CHECK: "true"
   FF_SCRIPT_SECTIONS: "true"
   GIT_CLONE_PATH: "${CI_BUILDS_DIR}/${CI_PROJECT_NAME}/${CI_JOB_ID}"
@@ -157,7 +157,7 @@ rspec_app_test:
   stage: test
   image: ${CI_REGISTRY_IMAGE}/${CI_PIPELINE_ID}:${CI_COMMIT_SHORT_SHA}-development
   services:
-    - name: ghcr.io/browserless/chromium:latest
+    - name: ghcr.io/browserless/chromium:v2.38.4
       alias: chrome
       variables:
         HEALTHCHECK_TCP_PORT: "3333"
