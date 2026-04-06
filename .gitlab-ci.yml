@@ -1,5 +1,4 @@
 variables:
-  CI_DEBUG_SERVICES: "true"
   FF_ENABLE_BASH_EXIT_CODE_CHECK: "true"
   FF_SCRIPT_SECTIONS: "true"
   GIT_CLONE_PATH: "${CI_BUILDS_DIR}/${CI_PROJECT_NAME}/${CI_JOB_ID}"
@@ -172,28 +171,13 @@ rspec_app_test:
     - name: solr:9.8.1
       alias: solr
       command: ["-c"]
-      # entrypoint: [""]
-      # command: [
-      #   "/bin/bash",
-      #   "-c",
-      #   "./opt/bitnami/scripts/solr/entrypoint.sh /opt/bitnami/scripts/solr/run.sh & \n
-      #   until /opt/bitnami/solr/bin/solr assert --started http://solr:8983; do sleep 1; echo 'Waiting for Solr to be ready'; done & \n
-      #   ./opt/bitnami/solr/bin/solr create_collection -d ${CI_PROJECT_DIR}/rails_app/solr/conf -c ${SOLR_TEST_COLLECTION} -n ${SOLR_TEST_CONFIGNAME} \n
-      #   wait"
-      # ]
       variables:
         HEALTHCHECK_TCP_PORT: "8983"
-        # SOLR_CLOUD_BOOTSTRAP: "yes"
-        # SOLR_ENABLE_AUTHENTICATION: "yes"
         SOLR_HOST: "solr"
         SOLR_JAVA_MEM: "-Xms4g -Xmx4g"
-        # SOLR_MODE: "solrcloud"
         SOLR_OPTS: "-Dsolr.disableConfigSetsCreateAuthChecks=true"
         SOLR_MODULES: "analysis-extras"
         ZK_CREATE_CHROOT: "true"
-        # SOLR_AUTH_TYPE: "basic"
-        # SOLR_AUTHENTICATION_OPTS: "-Dbasicauth=admin:bitnami"
-        # ZK_SCRIPT_LOCATION: "/opt/bitnami/solr/server/scripts/cloud-scripts"
   extends:
     - .rspec
   variables:
@@ -215,14 +199,7 @@ rspec_app_test:
     - zip -rj ${SOLR_TEST_CONFIGNAME}.zip ${CI_PROJECT_DIR}/rails_app/solr/conf/
     - curl -X POST --header "Content-Type:application/octet-stream" --data-binary @${SOLR_TEST_CONFIGNAME}.zip "http://solr:8983/solr/admin/configs?action=UPLOAD&name=${SOLR_TEST_CONFIGNAME}"
     - rm -fr ${SOLR_TEST_CONFIGNAME}.zip
-    # - curl "http://solr:8983/solr/admin/configs?action=CREATE&name=${SOLR_TEST_CONFIGNAME}"
     - curl "http://solr:8983/solr/admin/collections?action=CREATE&name=${SOLR_TEST_COLLECTION}&numShards=1&collection.configName=${SOLR_TEST_CONFIGNAME}"
-    # - sleep 3600
-    # - |
-    #   until curl -sf "http://solr:8983/solr/admin/info/system" > /dev/null; do
-    #     sleep 1
-    #     echo 'Waiting for Solr to be ready'
-    #   done
   script:
     - cd rails_app/
     - bundle add rspec_junit_formatter
