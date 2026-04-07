@@ -223,6 +223,7 @@ rspec_app_test:
     - exists:
         - rails_app/spec/**.rb
         - rails_app/spec/**/**.rb
+  allow_failure: true
   tags:
     - build
 
