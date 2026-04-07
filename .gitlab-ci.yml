@@ -224,6 +224,7 @@ rspec_app_test:
         - rails_app/spec/**.rb
         - rails_app/spec/**/**.rb
   allow_failure: true
+  timeout: 15m
   tags:
     - build
 
