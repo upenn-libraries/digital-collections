@@ -12,7 +12,6 @@ We are working to support development in a new environment orchestrated by Taskf
    - [Services](#services)
    - [Destroying](#destroying)
 
-
 ---
 
 ## Development Environment
@@ -92,7 +91,3 @@ To destroy the environment and any data associated with it, run:
 ```
 task destroy
 ```
-
-
-
-
