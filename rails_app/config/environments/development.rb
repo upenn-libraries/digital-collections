@@ -57,5 +57,5 @@ Rails.application.configure do
   # Use inline adapter when enqueueing ActiveJobs in development.
   config.active_job.queue_adapter = :inline
 
-  config.hosts << "digitalcollections-dev.library.upenn.edu"
+  config.hosts << 'digitalcollections-dev.library.upenn.edu'
 end

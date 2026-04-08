@@ -164,17 +164,17 @@
         "preview": {
           "mime_type": "image/jpeg",
           "size_bytes": 12636,
-          "url": "https://apotheca.library.upenn.edu/v1/items/2cb93aa7-a2e9-41ef-95de-08ae48700a84/preview"
+          "url": "https://digitalrepository.library.upenn.edu/v1/items/2cb93aa7-a2e9-41ef-95de-08ae48700a84/preview"
         },
         "pdf": {
           "mime_type": "application/pdf",
           "size_bytes": 15532384,
-          "url": "https://apotheca.library.upenn.edu/v1/items/2cb93aa7-a2e9-41ef-95de-08ae48700a84/pdf"
+          "url": "https://digitalrepository.library.upenn.edu/v1/items/2cb93aa7-a2e9-41ef-95de-08ae48700a84/pdf"
         },
         "iiif_manifest": {
           "mime_type": "application/json",
           "size_bytes": 14717,
-          "url": "https://apotheca.library.upenn.edu/iiif/items/2cb93aa7-a2e9-41ef-95de-08ae48700a84/manifest"
+          "url": "https://digitalrepository.library.upenn.edu/iiif/items/2cb93aa7-a2e9-41ef-95de-08ae48700a84/manifest"
         }
       },
       "assets": [
@@ -185,18 +185,18 @@
             "mime_type": "image/tiff",
             "original_filename": "pj7604_m76_h55_1800z_wk1_body0001.tif",
             "size_bytes": 94631586,
-            "url": "https://apotheca.library.upenn.edu/v1/assets/992df305-2861-4aef-876e-4f274dd2a186/preservation"
+            "url": "https://digitalrepository.library.upenn.edu/v1/assets/992df305-2861-4aef-876e-4f274dd2a186/preservation"
           },
           "derivatives": {
             "thumbnail": {
               "mime_type": "image/jpeg",
               "size_bytes": 14415,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/992df305-2861-4aef-876e-4f274dd2a186/thumbnail"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/992df305-2861-4aef-876e-4f274dd2a186/thumbnail"
             },
             "access": {
               "mime_type": "image/tiff",
               "size_bytes": 11765542,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/992df305-2861-4aef-876e-4f274dd2a186/access"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/992df305-2861-4aef-876e-4f274dd2a186/access"
             }
           }
         },
@@ -207,18 +207,18 @@
             "mime_type": "image/tiff",
             "original_filename": "pj7604_m76_h55_1800z_wk1_body0002.tif",
             "size_bytes": 94631030,
-            "url": "https://apotheca.library.upenn.edu/v1/assets/f8b34f57-d240-4937-b56f-f10c83cd4844/preservation"
+            "url": "https://digitalrepository.library.upenn.edu/v1/assets/f8b34f57-d240-4937-b56f-f10c83cd4844/preservation"
           },
           "derivatives": {
             "thumbnail": {
               "mime_type": "image/jpeg",
               "size_bytes": 12636,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/f8b34f57-d240-4937-b56f-f10c83cd4844/thumbnail"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/f8b34f57-d240-4937-b56f-f10c83cd4844/thumbnail"
             },
             "access": {
               "mime_type": "image/tiff",
               "size_bytes": 6637714,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/f8b34f57-d240-4937-b56f-f10c83cd4844/access"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/f8b34f57-d240-4937-b56f-f10c83cd4844/access"
             }
           }
         },
@@ -229,18 +229,18 @@
             "mime_type": "image/tiff",
             "original_filename": "pj7604_m76_h55_1800z_wk1_body0003.tif",
             "size_bytes": 94631030,
-            "url": "https://apotheca.library.upenn.edu/v1/assets/5da30041-83f1-4948-897f-8ed90ecbb7a4/preservation"
+            "url": "https://digitalrepository.library.upenn.edu/v1/assets/5da30041-83f1-4948-897f-8ed90ecbb7a4/preservation"
           },
           "derivatives": {
             "thumbnail": {
               "mime_type": "image/jpeg",
               "size_bytes": 12179,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/5da30041-83f1-4948-897f-8ed90ecbb7a4/thumbnail"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/5da30041-83f1-4948-897f-8ed90ecbb7a4/thumbnail"
             },
             "access": {
               "mime_type": "image/tiff",
               "size_bytes": 6134836,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/5da30041-83f1-4948-897f-8ed90ecbb7a4/access"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/5da30041-83f1-4948-897f-8ed90ecbb7a4/access"
             }
           }
         },
@@ -251,18 +251,18 @@
             "mime_type": "image/tiff",
             "original_filename": "pj7604_m76_h55_1800z_wk1_body0004.tif",
             "size_bytes": 94631030,
-            "url": "https://apotheca.library.upenn.edu/v1/assets/231703a1-8609-4e52-8bc1-3173549924fc/preservation"
+            "url": "https://digitalrepository.library.upenn.edu/v1/assets/231703a1-8609-4e52-8bc1-3173549924fc/preservation"
           },
           "derivatives": {
             "thumbnail": {
               "mime_type": "image/jpeg",
               "size_bytes": 12599,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/231703a1-8609-4e52-8bc1-3173549924fc/thumbnail"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/231703a1-8609-4e52-8bc1-3173549924fc/thumbnail"
             },
             "access": {
               "mime_type": "image/tiff",
               "size_bytes": 6384732,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/231703a1-8609-4e52-8bc1-3173549924fc/access"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/231703a1-8609-4e52-8bc1-3173549924fc/access"
             }
           }
         },
@@ -273,18 +273,18 @@
             "mime_type": "image/tiff",
             "original_filename": "pj7604_m76_h55_1800z_wk1_body0005.tif",
             "size_bytes": 94631030,
-            "url": "https://apotheca.library.upenn.edu/v1/assets/00a0f212-e3be-4875-952d-9084e8afa2ca/preservation"
+            "url": "https://digitalrepository.library.upenn.edu/v1/assets/00a0f212-e3be-4875-952d-9084e8afa2ca/preservation"
           },
           "derivatives": {
             "thumbnail": {
               "mime_type": "image/jpeg",
               "size_bytes": 11150,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/00a0f212-e3be-4875-952d-9084e8afa2ca/thumbnail"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/00a0f212-e3be-4875-952d-9084e8afa2ca/thumbnail"
             },
             "access": {
               "mime_type": "image/tiff",
               "size_bytes": 6254268,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/00a0f212-e3be-4875-952d-9084e8afa2ca/access"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/00a0f212-e3be-4875-952d-9084e8afa2ca/access"
             }
           }
         },
@@ -295,18 +295,18 @@
             "mime_type": "image/tiff",
             "original_filename": "pj7604_m76_h55_1800z_wk1_body0006.tif",
             "size_bytes": 94631030,
-            "url": "https://apotheca.library.upenn.edu/v1/assets/3c04ddf9-ee82-43a1-b831-79ba02975ba2/preservation"
+            "url": "https://digitalrepository.library.upenn.edu/v1/assets/3c04ddf9-ee82-43a1-b831-79ba02975ba2/preservation"
           },
           "derivatives": {
             "thumbnail": {
               "mime_type": "image/jpeg",
               "size_bytes": 12155,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/3c04ddf9-ee82-43a1-b831-79ba02975ba2/thumbnail"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/3c04ddf9-ee82-43a1-b831-79ba02975ba2/thumbnail"
             },
             "access": {
               "mime_type": "image/tiff",
               "size_bytes": 6565646,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/3c04ddf9-ee82-43a1-b831-79ba02975ba2/access"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/3c04ddf9-ee82-43a1-b831-79ba02975ba2/access"
             }
           }
         },
@@ -317,18 +317,18 @@
             "mime_type": "image/tiff",
             "original_filename": "pj7604_m76_h55_1800z_wk1_body0007.tif",
             "size_bytes": 94631030,
-            "url": "https://apotheca.library.upenn.edu/v1/assets/1aa8a504-787c-4a74-9136-efdfd00d7364/preservation"
+            "url": "https://digitalrepository.library.upenn.edu/v1/assets/1aa8a504-787c-4a74-9136-efdfd00d7364/preservation"
           },
           "derivatives": {
             "thumbnail": {
               "mime_type": "image/jpeg",
               "size_bytes": 11576,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/1aa8a504-787c-4a74-9136-efdfd00d7364/thumbnail"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/1aa8a504-787c-4a74-9136-efdfd00d7364/thumbnail"
             },
             "access": {
               "mime_type": "image/tiff",
               "size_bytes": 6044438,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/1aa8a504-787c-4a74-9136-efdfd00d7364/access"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/1aa8a504-787c-4a74-9136-efdfd00d7364/access"
             }
           }
         },
@@ -339,18 +339,18 @@
             "mime_type": "image/tiff",
             "original_filename": "pj7604_m76_h55_1800z_wk1_body0008.tif",
             "size_bytes": 94631030,
-            "url": "https://apotheca.library.upenn.edu/v1/assets/cbfcdfbc-b1a0-4b69-9798-38615cf89003/preservation"
+            "url": "https://digitalrepository.library.upenn.edu/v1/assets/cbfcdfbc-b1a0-4b69-9798-38615cf89003/preservation"
           },
           "derivatives": {
             "thumbnail": {
               "mime_type": "image/jpeg",
               "size_bytes": 12653,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/cbfcdfbc-b1a0-4b69-9798-38615cf89003/thumbnail"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/cbfcdfbc-b1a0-4b69-9798-38615cf89003/thumbnail"
             },
             "access": {
               "mime_type": "image/tiff",
               "size_bytes": 6262336,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/cbfcdfbc-b1a0-4b69-9798-38615cf89003/access"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/cbfcdfbc-b1a0-4b69-9798-38615cf89003/access"
             }
           }
         },
@@ -361,18 +361,18 @@
             "mime_type": "image/tiff",
             "original_filename": "pj7604_m76_h55_1800z_wk1_body0009.tif",
             "size_bytes": 94631030,
-            "url": "https://apotheca.library.upenn.edu/v1/assets/b171065b-49f7-4622-9f83-7a1303cd4866/preservation"
+            "url": "https://digitalrepository.library.upenn.edu/v1/assets/b171065b-49f7-4622-9f83-7a1303cd4866/preservation"
           },
           "derivatives": {
             "thumbnail": {
               "mime_type": "image/jpeg",
               "size_bytes": 11568,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/b171065b-49f7-4622-9f83-7a1303cd4866/thumbnail"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/b171065b-49f7-4622-9f83-7a1303cd4866/thumbnail"
             },
             "access": {
               "mime_type": "image/tiff",
               "size_bytes": 6215236,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/b171065b-49f7-4622-9f83-7a1303cd4866/access"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/b171065b-49f7-4622-9f83-7a1303cd4866/access"
             }
           }
         },
@@ -383,18 +383,18 @@
             "mime_type": "image/tiff",
             "original_filename": "pj7604_m76_h55_1800z_wk1_body0010.tif",
             "size_bytes": 94631030,
-            "url": "https://apotheca.library.upenn.edu/v1/assets/4c87cde3-f83a-4653-89db-923edf2a6a14/preservation"
+            "url": "https://digitalrepository.library.upenn.edu/v1/assets/4c87cde3-f83a-4653-89db-923edf2a6a14/preservation"
           },
           "derivatives": {
             "thumbnail": {
               "mime_type": "image/jpeg",
               "size_bytes": 14112,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/4c87cde3-f83a-4653-89db-923edf2a6a14/thumbnail"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/4c87cde3-f83a-4653-89db-923edf2a6a14/thumbnail"
             },
             "access": {
               "mime_type": "image/tiff",
               "size_bytes": 10232630,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/4c87cde3-f83a-4653-89db-923edf2a6a14/access"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/4c87cde3-f83a-4653-89db-923edf2a6a14/access"
             }
           }
         },
@@ -405,18 +405,18 @@
             "mime_type": "image/tiff",
             "original_filename": "pj7604_m76_h55_1800z_wk1_body0011.tif",
             "size_bytes": 94631030,
-            "url": "https://apotheca.library.upenn.edu/v1/assets/42a3700c-6541-462d-97f3-3995a7ebf5e4/preservation"
+            "url": "https://digitalrepository.library.upenn.edu/v1/assets/42a3700c-6541-462d-97f3-3995a7ebf5e4/preservation"
           },
           "derivatives": {
             "thumbnail": {
               "mime_type": "image/jpeg",
               "size_bytes": 7357,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/42a3700c-6541-462d-97f3-3995a7ebf5e4/thumbnail"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/42a3700c-6541-462d-97f3-3995a7ebf5e4/thumbnail"
             },
             "access": {
               "mime_type": "image/tiff",
               "size_bytes": 3050936,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/42a3700c-6541-462d-97f3-3995a7ebf5e4/access"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/42a3700c-6541-462d-97f3-3995a7ebf5e4/access"
             }
           }
         },
@@ -427,25 +427,25 @@
             "mime_type": "image/tiff",
             "original_filename": "pj7604_m76_h55_1800z_wk1_body0012.tif",
             "size_bytes": 94631030,
-            "url": "https://apotheca.library.upenn.edu/v1/assets/da8da201-6c19-47e8-ac8f-c396ebd91819/preservation"
+            "url": "https://digitalrepository.library.upenn.edu/v1/assets/da8da201-6c19-47e8-ac8f-c396ebd91819/preservation"
           },
           "derivatives": {
             "thumbnail": {
               "mime_type": "image/jpeg",
               "size_bytes": 6944,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/da8da201-6c19-47e8-ac8f-c396ebd91819/thumbnail"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/da8da201-6c19-47e8-ac8f-c396ebd91819/thumbnail"
             },
             "access": {
               "mime_type": "image/tiff",
               "size_bytes": 2603460,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/da8da201-6c19-47e8-ac8f-c396ebd91819/access"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/da8da201-6c19-47e8-ac8f-c396ebd91819/access"
             }
           }
         }
       ]
     },
     "related": {
-      "assets": "https://apotheca.library.upenn.edu/v1/items/2cb93aa7-a2e9-41ef-95de-08ae48700a84?assets=true"
+      "assets": "https://digitalrepository.library.upenn.edu/v1/items/2cb93aa7-a2e9-41ef-95de-08ae48700a84?assets=true"
     }
   }
 }

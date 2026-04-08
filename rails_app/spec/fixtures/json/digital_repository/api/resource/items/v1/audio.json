@@ -98,21 +98,21 @@
             "mime_type": "audio/x-wave",
             "original_filename": "201_1_ma1_sidea.wav",
             "size_bytes": 1107664498,
-            "url": "https://apotheca.library.upenn.edu/v1/assets/5788b27c-5987-4cec-b625-f9e289669687/preservation"
+            "url": "https://digitalrepository.library.upenn.edu/v1/assets/5788b27c-5987-4cec-b625-f9e289669687/preservation"
           },
           "derivatives": {
             "thumbnail": null,
             "access": {
               "mime_type": "audio/mpeg",
               "size_bytes": null,
-              "url": "https://apotheca.library.upenn.edu/v1/assets/5788b27c-5987-4cec-b625-f9e289669687/access"
+              "url": "https://digitalrepository.library.upenn.edu/v1/assets/5788b27c-5987-4cec-b625-f9e289669687/access"
             }
           }
         }
       ]
     },
     "related": {
-      "assets": "https://apotheca.library.upenn.edu/v1/items/a0f6cbbf-ecfc-4e14-8fc7-d5cc47f9749c?assets=true"
+      "assets": "https://digitalrepository.library.upenn.edu/v1/items/a0f6cbbf-ecfc-4e14-8fc7-d5cc47f9749c?assets=true"
     }
   }
 }

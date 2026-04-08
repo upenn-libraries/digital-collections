@@ -37,18 +37,18 @@ FactoryBot.define do
             mime_type: 'image/tiff',
             original_filename: 'e2750_wk1_body0001.tif',
             size_bytes: 1234,
-            url: 'https://apotheca.library.upenn.edu/v1/assets/b65d33d3-8c34-4e36-acf9-dab273277583/preservation'
+            url: 'https://digitalrepository.library.upenn.edu/v1/assets/b65d33d3-8c34-4e36-acf9-dab273277583/preservation'
           },
           derivatives: {
             thumbnail: {
               mime_type: 'image/jpeg',
               size_bytes: 2345,
-              url: 'https://apotheca.library.upenn.edu/v1/assets/b65d33d3-8c34-4e36-acf9-dab273277583/thumbnail'
+              url: 'https://digitalrepository.library.upenn.edu/v1/assets/b65d33d3-8c34-4e36-acf9-dab273277583/thumbnail'
             },
             access: {
               mime_type: 'image/tiff',
               size_bytes: 56_789,
-              url: 'https://apotheca.library.upenn.edu/v1/assets/b65d33d3-8c34-4e36-acf9-dab273277583/access'
+              url: 'https://digitalrepository.library.upenn.edu/v1/assets/b65d33d3-8c34-4e36-acf9-dab273277583/access'
             }
           }
         }
@@ -58,7 +58,7 @@ FactoryBot.define do
         {
           mime_type: 'image/jpeg',
           size_bytes: 2345,
-          url: 'https://apotheca.library.upenn.edu/v1/items/36a224db-c416-4769-9da1-28513827d179/preview'
+          url: 'https://digitalrepository.library.upenn.edu/v1/items/36a224db-c416-4769-9da1-28513827d179/preview'
         }
       end
 
@@ -66,7 +66,7 @@ FactoryBot.define do
         {
           mime_type: 'application/pdf',
           size_bytes: 5027,
-          url: 'https://apotheca.library.upenn.edu/iiif/items/36a224db-c416-4769-9da1-28513827d179/pdf'
+          url: 'https://digitalrepository.library.upenn.edu/iiif/items/36a224db-c416-4769-9da1-28513827d179/pdf'
         }
       end
 
@@ -74,7 +74,7 @@ FactoryBot.define do
         {
           mime_type: 'application/json',
           size_bytes: 5027,
-          url: 'https://apotheca.library.upenn.edu/iiif/items/36a224db-c416-4769-9da1-28513827d179/manifest'
+          url: 'https://digitalrepository.library.upenn.edu/iiif/items/36a224db-c416-4769-9da1-28513827d179/manifest'
         }
       end
     end
@@ -92,18 +92,18 @@ FactoryBot.define do
             mime_type: 'video/quicktime',
             original_filename: 'icbd.mov',
             size_bytes: 597_871_141,
-            url: 'https://apotheca.library.upenn.edu/v1/assets/1a31877e-a413-4885-9364-40d19738b347/preservation'
+            url: 'https://digitalrepository.library.upenn.edu/v1/assets/1a31877e-a413-4885-9364-40d19738b347/preservation'
           },
           derivatives: {
             thumbnail: {
               mime_type: 'image/jpeg',
               size_bytes: 2345,
-              url: 'https://apotheca.library.upenn.edu/v1/assets/1a31877e-a413-4885-9364-40d19738b347/thumbnail'
+              url: 'https://digitalrepository.library.upenn.edu/v1/assets/1a31877e-a413-4885-9364-40d19738b347/thumbnail'
             },
             access: {
               mime_type: 'video/mp4',
               size_bytes: 329_845,
-              url: 'https://apotheca.library.upenn.edu/v1/assets/1a31877e-a413-4885-9364-40d19738b347/access'
+              url: 'https://digitalrepository.library.upenn.edu/v1/assets/1a31877e-a413-4885-9364-40d19738b347/access'
             }
           }
         }

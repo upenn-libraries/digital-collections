@@ -1,0 +1,258 @@
+variables:
+  FF_ENABLE_BASH_EXIT_CODE_CHECK: "true"
+  FF_SCRIPT_SECTIONS: "true"
+  GIT_CLONE_PATH: "${CI_BUILDS_DIR}/${CI_PROJECT_NAME}/${CI_JOB_ID}"
+  VAULT_AUTH_ROLE_SIDEKIQ: "sidekiq_pro_ro"
+
+include:
+  # Rails tests
+  - project: "devops/gitlab/ci-templates/ruby"
+    ref: "sans-dind"
+    file:
+      - ".rspec.yml"
+      - ".rubocop.yml"
+
+  # Workflow rules
+  - template: "Workflows/MergeRequest-Pipelines.gitlab-ci.yml"
+
+  # Base image
+  - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
+    inputs:
+      job_image_tag: "28-dind"
+      docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
+      docker_build_context: "rails_app/"
+      docker_build_secrets: "--secret id=sidekiq_pro_credentials,env=SIDEKIQ_PRO_CREDENTIALS"
+      docker_target: "base"
+      dockerfile_path: "rails_app/"
+      job_suffix: "_base"
+      stage: "build_base"
+      tag_with_docker_target: "true"
+
+  # Dev image
+  - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
+    inputs:
+      job_image_tag: "28-dind"
+      docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
+      docker_build_context: "rails_app/"
+      docker_build_secrets: "--secret id=sidekiq_pro_credentials,env=SIDEKIQ_PRO_CREDENTIALS"
+      docker_target: "development"
+      dockerfile_path: "rails_app/"
+      job_suffix: "_development"
+      needs_build:
+        - "amend_manifest_base"
+      stage: "build_development"
+      tag_with_docker_target: "true"
+
+  # Prod image
+  - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
+    inputs:
+      job_image_tag: "28-dind"
+      docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
+      docker_build_context: "rails_app/"
+      docker_build_secrets: "--secret id=sidekiq_pro_credentials,env=SIDEKIQ_PRO_CREDENTIALS"
+      docker_target: "production"
+      dockerfile_path: "rails_app/"
+      job_suffix: "_production"
+      needs_build:
+        - "amend_manifest_base"
+      stage: "build_production"
+      tag_with_docker_target: "true"
+
+  # Sast
+  - component: $CI_SERVER_FQDN/devops/gitlab/components/sast/trivy@~latest
+    inputs:
+      docker_tag_to_scan: "${CI_COMMIT_SHA}-production"
+      job_image_tag: "28-dind"
+      needs:
+        - "amend_manifest_production"
+      stage: "test"
+
+  # Copy docker images
+  - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/copy_docker_images@~latest
+    inputs:
+      job_image_tag: "28-dind"
+      needs:
+        - trivy_scan
+        - rspec_app_test
+        - rubocop_app_test
+
+  # Remove tmp registry repository
+  - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/remove_tmp_registry@~latest
+    inputs:
+      job_image_tag: "28-dind"
+      needs:
+        - job: copy_docker_images
+          optional: true
+
+  # Deploy staging
+  - component: $CI_SERVER_FQDN/devops/gitlab/components/deploy/deploy@~latest
+    inputs:
+      deploy_environment_url: "https://digitalcollections-staging.library.upenn.edu"
+      deploy_host: "${DEPLOY_HOST}"
+      valid_principals: "${VALID_PRINCIPALS}"
+      vault_auth_role: "${VAULT_AUTH_ROLE}"
+      vault_ssh_client_role: "${VAULT_SSH_CLIENT_ROLE}"
+
+  # Deploy production
+  - component: $CI_SERVER_FQDN/devops/gitlab/components/deploy/deploy@~latest
+    inputs:
+      deploy_environment: "production"
+      deploy_environment_url: "https://digitalcollections.library.upenn.edu"
+      deploy_host: "${DEPLOY_HOST}"
+      job_suffix: "production"
+      valid_principals: "${VALID_PRINCIPALS}"
+      vault_auth_role: "${VAULT_AUTH_ROLE}"
+      vault_ssh_client_role: "${VAULT_SSH_CLIENT_ROLE}"
+
+  - component: gitlab.library.upenn.edu/devops/gitlab/components/general/vault_jwt_auth@~latest
+    inputs:
+      vault_auth_role: "${VAULT_AUTH_ROLE}"
+
+  - component: gitlab.library.upenn.edu/devops/gitlab/components/general/install_hashicorp_vault@~latest
+
+stages:
+  - build_base
+  - build_development
+  - build_production
+  - test
+  - copy_docker_images
+  - finalize
+  - deploy
+
+build_and_push_docker_images_base:
+  extends:
+    - .vault_jwt_auth
+  before_script:
+    - !reference [.install_hashicorp_vault, before_script]
+    - !reference [.vault_jwt_auth, before_script]
+    - !reference [.auth_gitlab_registry, before_script]
+    - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
+  variables:
+    VAULT_AUTH_ROLE: ${VAULT_AUTH_ROLE_SIDEKIQ}
+
+build_and_push_docker_images_development:
+  extends:
+    - .vault_jwt_auth
+  before_script:
+    - !reference [.install_hashicorp_vault, before_script]
+    - !reference [.vault_jwt_auth, before_script]
+    - !reference [.auth_gitlab_registry, before_script]
+    - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
+  variables:
+    VAULT_AUTH_ROLE: ${VAULT_AUTH_ROLE_SIDEKIQ}
+
+build_and_push_docker_images_production:
+  extends:
+    - .vault_jwt_auth
+  before_script:
+    - !reference [.install_hashicorp_vault, before_script]
+    - !reference [.vault_jwt_auth, before_script]
+    - !reference [.auth_gitlab_registry, before_script]
+    - export SIDEKIQ_PRO_CREDENTIALS="$(vault kv get -field=credentials ${VAULT_SIDEKIQ_ENDPOINT})"
+  variables:
+    VAULT_AUTH_ROLE: ${VAULT_AUTH_ROLE_SIDEKIQ}
+
+# Rails tests
+rspec_app_test:
+  stage: test
+  image: ${CI_REGISTRY_IMAGE}/${CI_PIPELINE_ID}:${CI_COMMIT_SHORT_SHA}-development
+  services:
+    - name: ghcr.io/browserless/chromium:v2.38.4
+      alias: chrome
+      variables:
+        HEALTHCHECK_TCP_PORT: "3333"
+        PORT: 3333
+        CONCURRENT: 1
+        TIMEOUT: 1200000
+    - name: postgres:17.5
+      variables:
+        POSTGRES_DB: "digital_collections_test"
+        POSTGRES_PASSWORD: "rspec_test"
+        POSTGRES_USER: "rspec_test"
+    - name: solr:9.8.1
+      alias: solr
+      command: ["-c"]
+      variables:
+        HEALTHCHECK_TCP_PORT: "8983"
+        SOLR_HOST: "solr"
+        SOLR_JAVA_MEM: "-Xms4g -Xmx4g"
+        SOLR_OPTS: "-Dsolr.disableConfigSetsCreateAuthChecks=true"
+        SOLR_MODULES: "analysis-extras"
+        ZK_CREATE_CHROOT: "true"
+  extends:
+    - .rspec
+  variables:
+    APP_URL: "digitalcollections.test.com"
+    CHROME_URL: "ws://chrome:3333"
+    CI: "true"
+    DATABASE_HOST: "postgres"
+    DATABASE_NAME: "digital_collections_test"
+    DATABASE_PASSWORD: "rspec_test"
+    DATABASE_USER: "rspec_test"
+    FF_NETWORK_PER_BUILD: "true"
+    RAILS_ENV: "test"
+    RAILS_SYSTEM_TESTING_SCREENSHOT_HTML: "1"
+    SOLR_URL: "http://solr:8983/solr/digital-collections-test"
+    SOLR_TEST_COLLECTION: "digital-collections-test"
+    SOLR_TEST_CONFIGNAME: "digital-collections"
+  before_script:
+    - apt-get update && apt-get install -y zip
+    - zip -rj ${SOLR_TEST_CONFIGNAME}.zip ${CI_PROJECT_DIR}/rails_app/solr/conf/
+    - curl -X POST --header "Content-Type:application/octet-stream" --data-binary @${SOLR_TEST_CONFIGNAME}.zip "http://solr:8983/solr/admin/configs?action=UPLOAD&name=${SOLR_TEST_CONFIGNAME}"
+    - rm -fr ${SOLR_TEST_CONFIGNAME}.zip
+    - curl "http://solr:8983/solr/admin/collections?action=CREATE&name=${SOLR_TEST_COLLECTION}&numShards=1&collection.configName=${SOLR_TEST_CONFIGNAME}"
+  script:
+    - cd ${CI_PROJECT_DIR}/rails_app/
+    - bundle add rspec_junit_formatter
+    - bundle exec rake db:migrate
+    - bundle exec rspec --format progress --format RspecJunitFormatter --out rspec.xml
+  needs:
+    - amend_manifest_development
+  coverage: '/\(\d+.\d+\%\) covered/'
+  artifacts:
+    paths:
+      - rails_app/tmp/coverage/index.html
+      - rails_app/tmp/capybara
+      - rails_app/rspec.xml
+    expire_in: 1 week
+    reports:
+      junit: rails_app/rspec.xml
+  rules:
+    - if: $DISABLE_RSPEC_TEST == "true"
+      when: never
+    - exists:
+        - rails_app/spec/**.rb
+        - rails_app/spec/**/**.rb
+  allow_failure: true
+  timeout: 15m
+  tags:
+    - build
+
+rubocop_app_test:
+  stage: test
+  image: ${CI_REGISTRY_IMAGE}/${CI_PIPELINE_ID}:${CI_COMMIT_SHORT_SHA}-development
+  needs:
+    - amend_manifest_development
+  extends:
+    - .rubocop
+  before_script:
+    - cd rails_app/
+  rules:
+    - if: $DISABLE_RUBOCOP == "true"
+      when: never
+    - exists:
+        - rails_app/.rubocop.yml
+  tags:
+    - build
+
+deploy_staging:
+  needs:
+    - copy_docker_images
+  only:
+    - main
+
+deploy_production:
+  needs:
+    - copy_docker_images
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+(\.[a-zA-Z0-9]+)?$/
