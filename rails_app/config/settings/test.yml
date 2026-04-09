@@ -1,2 +1,2 @@
 solr:
-  url: <%= DockerSecrets.lookup(:solr_url, ENV.fetch('SOLR_URL', 'http://admin:password@127.0.0.1:8983/solr/digital-collections-test')) %>
+  url: <%= DockerSecrets.lookup(:solr_test_url, ENV.fetch('SOLR_TEST_URL', 'http://admin:password@127.0.0.1:8983/solr/digital-collections-test')) %>
