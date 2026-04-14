@@ -86,7 +86,7 @@ GEM
     benchmark (0.5.0)
     bigdecimal (4.1.1)
     bindex (0.8.1)
-    blacklight (9.0.0.beta8)
+    blacklight (9.0.0)
       globalid
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
@@ -98,8 +98,8 @@ GEM
     blacklight-gallery (6.0.0)
       blacklight (~> 9.0.0beta1)
       rails (>= 7.1, < 9)
-    blacklight_range_limit (9.1.0)
-      blacklight (>= 7.25.2, < 9)
+    blacklight_range_limit (9.2.0)
+      blacklight (>= 7.25.2, < 10)
       view_component (>= 2.54, < 5)
     bootsnap (1.23.0)
       msgpack (~> 1.2)
@@ -447,9 +447,9 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  blacklight (= 9.0.0.beta8)
+  blacklight (= 9.0.0)
   blacklight-gallery
-  blacklight_range_limit (= 9.1.0)
+  blacklight_range_limit (= 9.2.0)
   bootsnap
   capybara
   config
