@@ -9,14 +9,8 @@ module Catalog
       @classes = %w[dc-search-box]
     end
 
-    def before_render
-      set_slot(:search_button) { render custom_search_button } unless search_button
-    end
-
-    private
-
     # @return [Catalog::SearchButtonComponent]
-    def custom_search_button
+    def default_search_button
       Catalog::SearchButtonComponent.new(id: "#{@prefix}search", text: t('search.button.label'))
     end
   end

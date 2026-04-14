@@ -19,10 +19,10 @@ module Catalog
     end
 
     def before_render
-      set_slot(:header, nil) unless header
-      set_slot(:picture, nil) unless picture
-      set_slot(:heading, nil) unless heading
-      set_slot(:subheading, nil) unless subheading
+      with_header unless header
+      with_picture unless picture
+      with_heading unless heading
+      with_subheading unless subheading
     end
   end
 end
