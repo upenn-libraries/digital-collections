@@ -27,7 +27,7 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 gem 'upennlib-rubocop', require: false
-gem 'view_component', '~> 3.23'
+gem 'view_component'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
