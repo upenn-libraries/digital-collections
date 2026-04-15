@@ -2,6 +2,7 @@
 docker_swarm_managers:
   hosts:
     dc-manager-01:
+      ansible_host: "{{ ansible_host }}"
       swarm_labels:
         - digital_collections
         - postgres
