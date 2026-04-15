@@ -8,7 +8,7 @@ module Catalog
         # Only displaying fields that have set the gallery flag to true.
         unless metadata
           gallery_fields = presenter.field_presenters.select { |f| f.field_config.gallery }
-          set_slot(:metadata, nil, fields: gallery_fields)
+          with_metadata(fields: gallery_fields)
         end
 
         super
