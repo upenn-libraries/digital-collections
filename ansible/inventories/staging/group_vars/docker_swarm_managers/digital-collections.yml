@@ -1,6 +1,7 @@
 ---
 digital_collections_rails_env: "staging"
 
+digital_collections_image_name: "gitlab.library.upenn.edu/dld/digital-repository/digital-collections"
 digital_collections_image_tag: "{{ image_tag }}"
 digital_collections_url: "digitalcollections-staging.library.upenn.edu"
 
