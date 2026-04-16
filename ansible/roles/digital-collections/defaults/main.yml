@@ -2,8 +2,8 @@
 digital_collections_base_image_name: "ruby"
 digital_collections_base_image_tag: "3.4.2-slim-bookworm"
 digital_collections_build_docker_image: false
-digital_collections_image_name: "digital_collections"
-digital_collections_image_registry: "gitlab.library.upenn.edu/dld/digital-repository/digital_collections"
+digital_collections_image_name: "digital-collections"
+digital_collections_image_registry: "gitlab.library.upenn.edu/dld/digital-repository/digital-collections"
 digital_collections_image_tag: "main-development"
 digital_collections_port: 3000
 digital_collections_rails_env: "development"
