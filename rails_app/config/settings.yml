@@ -1,4 +1,4 @@
-pennlibs_web_version: '1.0.0'
+pennlibs_web_version: '1.2.1'
 honeybadger:
   api_key: '12345'
 redis:
