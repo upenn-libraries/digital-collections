@@ -56,7 +56,7 @@ include:
       needs_build:
         - "amend_manifest_base"
       stage: "build_production"
-      tag_with_docker_target: "true"
+      tag_with_docker_target: "false"
 
   # Sast
   - component: $CI_SERVER_FQDN/devops/gitlab/components/sast/trivy@~latest
