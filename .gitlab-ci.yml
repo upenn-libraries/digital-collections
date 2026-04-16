@@ -56,8 +56,7 @@ include:
       needs_build:
         - "amend_manifest_base"
       stage: "build_production"
-      tag_with_docker_target: "false"
-      tag_image_with_target: "false"
+      tag_with_docker_target: "true"
 
   # Sast
   - component: $CI_SERVER_FQDN/devops/gitlab/components/sast/trivy@~latest
@@ -68,22 +67,13 @@ include:
         - "amend_manifest_production"
       stage: "test"
 
-  # Copy docker images
-  - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/copy_docker_images@~latest
+  - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_finalize@~latest
     inputs:
       job_image_tag: "28-dind"
-      needs:
+      needs_copy:
         - trivy_scan
         - rspec_app_test
         - rubocop_app_test
-
-  # Remove tmp registry repository
-  - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/remove_tmp_registry@~latest
-    inputs:
-      job_image_tag: "28-dind"
-      needs:
-        - job: copy_docker_images
-          optional: true
 
   # Deploy staging
   - component: $CI_SERVER_FQDN/devops/gitlab/components/deploy/deploy@~latest
@@ -116,7 +106,6 @@ stages:
   - build_development
   - build_production
   - test
-  - copy_docker_images
   - finalize
   - deploy
 
