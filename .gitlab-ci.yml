@@ -26,7 +26,6 @@ include:
       dockerfile_path: "rails_app/"
       job_suffix: "_base"
       stage: "build_base"
-      tag_with_docker_target: "true"
 
   # Dev image
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
@@ -41,7 +40,6 @@ include:
       needs_build:
         - "amend_manifest_base"
       stage: "build_development"
-      tag_with_docker_target: "true"
 
   # Prod image
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
@@ -56,7 +54,7 @@ include:
       needs_build:
         - "amend_manifest_base"
       stage: "build_production"
-      tag_with_docker_target: "true"
+      amend_tag_with_docker_target: "false"
 
   # Sast
   - component: $CI_SERVER_FQDN/devops/gitlab/components/sast/trivy@~latest
