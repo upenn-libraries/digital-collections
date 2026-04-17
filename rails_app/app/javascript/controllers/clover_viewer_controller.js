@@ -2,6 +2,7 @@ import { createElement } from "react";
 import { createRoot } from "react-dom/client";
 import Viewer from "@samvera/clover-iiif/viewer";
 import { Controller } from "@hotwired/stimulus";
+import { decodeContentState } from "@iiif/helpers";
 
 // Table of Contents components
 import EntriesPanel from "@components/table_of_contents/EntriesPanel";
@@ -18,6 +19,12 @@ const options = {
     open: false,
     renderToggle: false,
   },
+  openSeadragon: {
+    gestureSettingsMouse: {
+      scrollToZoom: false,
+    },
+  },
+  canvasHeight: "640px"
 };
 
 const contentsPlugin = {
@@ -74,6 +81,17 @@ const customTheme = {
   },
 };
 
+const handleContentStateCallback = ({ encoded, json }) => {
+  console.log({
+    encoded, // base64 encoded JSON
+    json, // raw JSON
+  });
+
+  const url = new URL(window.location.href);
+  url.searchParams.set('iiif-content', encoded);
+  history.replaceState(null, '', url);
+};
+
 export default class CloverViewerController extends Controller {
   static values = {
     url: String,
@@ -94,14 +112,27 @@ export default class CloverViewerController extends Controller {
   async getViewer() {
     const manifest = await this.prefetchManifest(this.urlValue);
     const hasStructures = manifest.structures && manifest.structures.length > 0;
+    const params = new URL(window.location.href).searchParams;
+
+    let iiifContent = manifest;
+
+    // If `iiif-content` query parameter present use that instead of the manifest.
+    // TOOD: Ensure the `iiif-content` provided is for the manifest on this page.
+    if (params.has('iiif-content')) {
+      const iiifContentEncoded = params.get('iiif-content');
+      iiifContent = JSON.parse(decodeContentState(iiifContentEncoded));
+      console.log('Content state from url: ');
+      console.log(iiifContent);
+    }
 
     return createElement(Viewer, {
-      iiifContent: manifest,
+      iiifContent: iiifContent,
       options: options,
       plugins: hasStructures
         ? [downloadPlugin, contentsPlugin]
         : [downloadPlugin],
       customTheme: customTheme,
+      contentStateCallback: handleContentStateCallback,
     });
   }
 }
