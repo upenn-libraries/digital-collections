@@ -79,32 +79,20 @@ const options = {
 };
 
 export default function ViewerSkeleton({ manifestUrl }) {
-    const [manifest, setManifest] = useState();
+    const [manifest, setManifest] = useState(null);
 
     useEffect(() => {
-        (async () => {
+        const fetchManifest = async ()=> {
             const response = await fetch(manifestUrl);
             const json = await response.json();
             setManifest(json);
-        })();
+        }
+        fetchManifest();
     }, [manifestUrl]);
 
-    function plugins() {
-        return manifest.structures && manifest.structures.length > 0
-            ? [downloadPlugin, contentsPlugin]
-            : [downloadPlugin];
-    }
+    if (!manifest) return <LoadingComponent/>;
 
-    if (!manifest) {
-        return <LoadingComponent />;
-    } else {
-        return (
-            <Viewer
-                iiifContent={manifest}
-                options={options}
-                plugins={plugins()}
-                customTheme={customTheme}
-            />
-        );
-    }
+    const plugins = manifest.structures?.length > 0 ? [downloadPlugin, contentsPlugin] : [downloadPlugin];
+
+    return <Viewer iiifContent={manifest} options={options} plugins={plugins} customTheme={customTheme}/>;
 }
