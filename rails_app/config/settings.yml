@@ -8,7 +8,7 @@ digital_catalog:
   path: /catalog
 digital_repository:
   host: digitalrepository.library.upenn.edu
-  webhook_token: '12345'
+  webhook_token: 'sample_token'
   api:
     resource:
       items:
