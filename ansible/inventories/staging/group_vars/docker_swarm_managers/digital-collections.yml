@@ -16,5 +16,5 @@ digital_collections_versioned_secrets:
     value: "{{ dld_sidekiq_pro_vault_values.secret.credentials }}"
     version: "{{ dld_sidekiq_pro_vault_values.metadata.version }}"
   solr_url:
-    value: "http://{{ digital_collections_vault_values.secret.solr_username }}:{{ digital_collections_vault_values.secret.solr_password }}@{{ solr_proxy_host }}/solr/digital-collections-development"
+    value: "http://{{ digital_collections_vault_values.secret.solr_username }}:{{ digital_collections_vault_values.secret.solr_password }}@{{ solr_proxy_host }}/solr/digital-collections-staging"
     version: "{{ digital_collections_vault_values.metadata.version }}"
