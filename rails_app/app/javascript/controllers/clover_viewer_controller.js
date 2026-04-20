@@ -1,6 +1,6 @@
 import { createElement } from "react";
 import { createRoot } from "react-dom/client";
-import ViewerSkeleton from "@components/viewer_skeleton/ViewerSkeleton";
+import DigitalCollectionsViewer from "@components/digital_collections_viewer/DigitalCollectionsViewer";
 import { Controller } from "@hotwired/stimulus";
 
 export default class CloverViewerController extends Controller {
@@ -15,6 +15,6 @@ export default class CloverViewerController extends Controller {
   }
 
   getViewer() {
-    return createElement(ViewerSkeleton, { manifestUrl: this.urlValue });
+    return createElement(DigitalCollectionsViewer, { manifestUrl: this.urlValue });
   }
 }

@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 // Placeholder component to render while fetching manifest
-import LoadingComponent from "@components/viewer_skeleton/LoadingComponent";
+import LoadingComponent from "@components/digital_collections_viewer/skeleton/LoadingComponent";
 
 // Clover-IIIF Viewer
 import Viewer from "@samvera/clover-iiif/viewer";
 // Table of Contents components
-import EntriesPanel from "@components/table_of_contents/EntriesPanel";
-import MoreInfoButton from "@components/table_of_contents/MoreInfoButton";
+import EntriesPanel from "@components/digital_collections_viewer/table_of_contents/EntriesPanel";
+import MoreInfoButton from "@components/digital_collections_viewer/table_of_contents/MoreInfoButton";
 
 // Viewer asset download component
-import DownloadButton from "@components/media_download/DownloadButton";
+import DownloadButton from "@components/digital_collections_viewer/media_download/DownloadButton";
 
 // Viewer configuration
 
@@ -78,7 +78,7 @@ const options = {
     },
 };
 
-export default function ViewerSkeleton({ manifestUrl }) {
+export default function DigitalCollectionsViewer({ manifestUrl }) {
     const [manifest, setManifest] = useState(null);
 
     useEffect(() => {
