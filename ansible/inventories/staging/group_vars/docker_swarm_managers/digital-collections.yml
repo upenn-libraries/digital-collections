@@ -6,6 +6,9 @@ digital_collections_image_tag: "{{ image_tag }}"
 digital_collections_url: "digitalcollections-staging.library.upenn.edu"
 
 digital_collections_versioned_secrets:
+  digital_repository_token:
+    value: "{{ digital_collections_vault_values.secret.digital_repository_token }}"
+    version: "{{ digital_collections_vault_values.metadata.version }}"
   honeybadger_api_key:
     value: "{{ digital_collections_vault_values.secret.honeybadger_api_key }}"
     version: "{{ digital_collections_vault_values.metadata.version }}"
