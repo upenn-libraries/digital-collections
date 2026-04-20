@@ -84,6 +84,7 @@ services:
       - solr_url
       {% if is_development == false %}
       - honeybadger_api_key
+      - digital_repository_token
       {% elif is_development == true %}
       - sidekiq_pro_credentials
       - solr_test_url
@@ -117,6 +118,9 @@ secrets:
     external: true
     name: "{{ 'digital_collections_redis_sidekiq_password_v' ~ redis_users | selectattr('name', 'equalto', 'sidekiq') | map(attribute='version')  | join('') }}"
   {% if is_development == false %}
+  digital_repository_token:
+    external: true
+    name: "{{ 'digital_collections_digital_repository_token_v' ~ digital_collections_vault_values.metadata.version }}"
   honeybadger_api_key:
     external: true
     name: "{{ 'digital_collections_honeybadger_api_key_v' ~ digital_collections_vault_values.metadata.version }}"

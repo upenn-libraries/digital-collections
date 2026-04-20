@@ -7,3 +7,14 @@ redis:
   password: <%= DockerSecrets.lookup(:redis_password, ENV.fetch('REDIS_PASSWORD', '')) %>
 google_analytics:
   tag_id: GTM-N79KMH6F
+digital_repository:
+  host: digitalrepository.library.upenn.edu
+  webhook_token: <%= DockerSecrets.lookup(:digital_repository_token, 'sample_token') %>
+  api:
+    resource:
+      items:
+        path: /v1/items
+    iiif:
+      items:
+        path: /iiif/items
+  sample_records:
