@@ -1,3 +1,4 @@
 ---
+traefik_image_tag: "3.6"
 traefik_network_aliases:
   - "{{ solr_proxy_host }}"
