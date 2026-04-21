@@ -4,6 +4,7 @@
 class DigitalRepositoryWebhookController < ApplicationController
   class InvalidEvent < StandardError; end
 
+  skip_before_action :verify_authenticity_token
   before_action :token_authentication
 
   PUBLISH_EVENT = 'publish'
