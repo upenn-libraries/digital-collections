@@ -33,6 +33,8 @@ services:
           - "node.labels.digital_collections == true"
       replicas: {{ digital_collections_replicas }}
       update_config:
+        failure_action: rollback
+        max_failure_ratio: 0.5
         order: "start-first"
         parallelism: 1
     environment:

@@ -12,6 +12,8 @@ services:
         constraints:
           - "node.labels.sidekiq == true"
       update_config:
+        failure_action: rollback
+        max_failure_ratio: 0.5
         order: "start-first"
         parallelism: 1
     environment:
