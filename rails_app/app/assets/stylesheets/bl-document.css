@@ -8,6 +8,10 @@
   margin-bottom: var(--pl-space-m);
 }
 
+.documents-list {
+  margin-bottom: var(--pl-space-xl);
+}
+
 .documents-list .document {
   --bl-results-document-margin-top: var(--pl-space-2xl);
   --bl-results-document-padding-top: 0;

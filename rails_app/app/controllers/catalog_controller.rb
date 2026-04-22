@@ -5,7 +5,7 @@ class CatalogController < ApplicationController
   include Blacklight::Catalog
   include BlacklightRangeLimit::ControllerOverride
 
-  FACET_LIMIT = 10
+  FACET_LIMIT = 7
 
   # If you'd like to handle errors returned by Solr in a certain way,
   # you can use Rails rescue_from with a method you define in this controller,
@@ -64,9 +64,10 @@ class CatalogController < ApplicationController
     config.index.document_metadata_component = Catalog::DocumentMetadataComponent
     # config.index.document_actions.delete(:bookmark)
 
-    config.per_page = [25]
+    config.per_page = [10, 25, 50, 100]
 
     config.add_results_collection_tool(:sort_widget)
+    config.add_results_collection_tool(:per_page_widget)
     config.add_results_collection_tool(:view_type_group)
 
     # solr field configuration for document/show views
