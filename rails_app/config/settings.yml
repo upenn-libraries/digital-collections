@@ -1,6 +1,4 @@
 pennlibs_web_version: '1.3.0'
-ms_clarity:
-  id:
 honeybadger:
   api_key: '12345'
 redis:
