@@ -94,5 +94,61 @@ export default function DigitalCollectionsViewer({ manifestUrl }) {
 
     const plugins = manifest.structures?.length > 0 ? [downloadPlugin, contentsPlugin] : [downloadPlugin];
 
-    return <Viewer iiifContent={manifest} options={options} plugins={plugins} customTheme={customTheme}/>;
+    const params = new URL(window.location.href).searchParams;
+
+    let iiifContent = manifest;
+
+    // If `asset-id` query parameter is present, recreate a content state annotation to
+    // move the user to the selected asset canvas.
+    if (params.has('asset-id')) {
+        // Find canvas in manifest.
+        const canvas = manifest.items.find((item) => item?.id.includes(params.get('asset-id')));
+
+        // Create content state hash.
+        iiifContent = {
+            "@context": "http://iiif.io/api/presentation/3/context.json",
+            id: `${manifest.id}/state/1`,
+            type: "Annotation",
+            motivation: ["contentState"],
+            target: {
+                type: "SpecificResource",
+                source: {
+                    id: canvas.id,
+                    type: "Canvas",
+                    partOf: [
+                        {
+                            id: manifest.id,
+                            type: "Manifest",
+                        },
+                    ],
+                },
+            }
+        }
+    }
+
+    const handleContentStateCallback = ({ encoded, json }) => {
+        const firstCanvasId = manifest.items.at(0).id;
+
+        const assetId = json.target?.source?.id?.match(/assets\/(.+)\/canvas$/)[1];
+
+        const url = new URL(window.location.href);
+
+        // If selected canvas is the first one remove asset-id param.
+        // If selected canvas is different than the value of asset-id, update asset-id.
+        if (firstCanvasId.includes(assetId)) {
+            url.searchParams.delete('asset-id');
+            history.replaceState(null, '', url);
+        } else if (url.searchParams.get('asset-id') !== assetId) {
+            url.searchParams.set('asset-id', assetId);
+            history.replaceState(null, '', url);
+        }
+    };
+
+    return (
+        <Viewer iiifContent={iiifContent}
+                options={options}
+                plugins={plugins}
+                customTheme={customTheme}
+                contentStateCallback={handleContentStateCallback}/>
+    );
 }
