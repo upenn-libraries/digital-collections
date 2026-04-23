@@ -104,37 +104,43 @@ export default function DigitalCollectionsViewer({ manifestUrl }) {
         // Find canvas in manifest.
         const canvas = manifest.items.find((item) => item?.id.includes(params.get('asset-id')));
 
-        // Create content state hash.
-        iiifContent = {
-            "@context": "http://iiif.io/api/presentation/3/context.json",
-            id: `${manifest.id}/state/1`,
-            type: "Annotation",
-            motivation: ["contentState"],
-            target: {
-                type: "SpecificResource",
-                source: {
-                    id: canvas.id,
-                    type: "Canvas",
-                    partOf: [
-                        {
-                            id: manifest.id,
-                            type: "Manifest",
-                        },
-                    ],
-                },
+        // If canvas present, create content state hash.
+        if (canvas) {
+            iiifContent = {
+                "@context": "http://iiif.io/api/presentation/3/context.json",
+                id: `${manifest.id}/state/1`,
+                type: "Annotation",
+                motivation: ["contentState"],
+                target: {
+                    type: "SpecificResource",
+                    source: {
+                        id: canvas.id,
+                        type: "Canvas",
+                        partOf: [
+                            {
+                                id: manifest.id,
+                                type: "Manifest",
+                            },
+                        ],
+                    },
+                }
             }
         }
     }
 
-    const handleContentStateCallback = ({ encoded, json }) => {
+    // The canvasIdCallback is called accurately when a user is clicking on two pages that are side-by-side, while
+    // contentStateCallback does not differentiate between the side-by-side pages.
+    const handleCanvasIdCallback = (activeCanvasId) => {
+        if (!activeCanvasId) return;
+
         const firstCanvasId = manifest.items.at(0).id;
 
-        const assetId = json.target?.source?.id?.match(/assets\/(.+)\/canvas$/)[1];
+        const assetId = activeCanvasId.match(/assets\/(.+)\/canvas$/)[1];
 
         const url = new URL(window.location.href);
 
-        // If selected canvas is the first one remove asset-id param.
-        // If selected canvas is different than the value of asset-id, update asset-id.
+        // If selected canvas is the first one, then remove asset-id param.
+        // If selected canvas is different from the value of asset-id, update asset-id.
         if (firstCanvasId.includes(assetId)) {
             url.searchParams.delete('asset-id');
             history.replaceState(null, '', url);
@@ -149,6 +155,6 @@ export default function DigitalCollectionsViewer({ manifestUrl }) {
                 options={options}
                 plugins={plugins}
                 customTheme={customTheme}
-                contentStateCallback={handleContentStateCallback}/>
+                canvasIdCallback={handleCanvasIdCallback} />
     );
 }
