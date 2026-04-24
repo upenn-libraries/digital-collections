@@ -66,11 +66,18 @@
   flex-wrap: wrap;
   align-self: end;
   width: 100%;
+  align-items: center;
 
   & .sort-pagination {
-    margin-left: auto !important;
+    display: flex;
+    gap: var(--pl-space-xs);
 
-    & .paginate-section {
+    @media (min-width: 819px) {
+      margin-left: auto !important;
+    }
+
+    & .paginate-section,
+    & .per_page-dropdown {
       display: none;
     }
   }
@@ -102,4 +109,10 @@
 .document:first-child {
   margin-top: 0 !important;
   padding-top: 0 !important;
+}
+
+@media (max-width: 819px) {
+  .blacklight-catalog-index #main-container #sidebar {
+    display: none;
+  }
 }

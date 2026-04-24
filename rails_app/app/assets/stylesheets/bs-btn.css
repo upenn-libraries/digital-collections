@@ -34,23 +34,24 @@
   --bs-btn-disabled-border-color: var(--pl-color-bg-accent-emphasis);
 }
 
+.btn-secondary,
 .btn-outline-secondary,
-.btn-secondary {
+.btn-light {
   --bs-btn-color: var(--pl-color-fg-default);
-  --bs-btn-border-color: var(--pl-color-bg-subtle);
+  --bs-btn-bg: var(--pl-color-bg-subtle);
+  --bs-btn-border-color: transparent;
   --bs-btn-hover-color: var(--pl-color-fg-default);
   --bs-btn-hover-bg: var(--pl-color-bg-subtle);
   --bs-btn-hover-border-color: var(--pl-color-fg-subtle);
-  --bs-btn-focus-shadow-rgb: 108, 117, 125;
+  --bs-btn-focus-shadow-rgb: 89, 95, 106;
   --bs-btn-active-color: var(--pl-color-fg-default);
   --bs-btn-active-bg: var(--pl-color-bg-subtle);
   --bs-btn-active-border-color: var(--pl-color-bg-subtle);
   --bs-btn-active-shadow: none;
   --bs-btn-disabled-color: var(--pl-color-fg-default);
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: none;
+  --bs-btn-disabled-border-color: transparent;
   --bs-gradient: none;
-  --bs-btn-bg: var(--pl-color-bg-subtle);
 }
 
 .btn-lg {
