@@ -5,6 +5,8 @@ solr:
 redis:
   username: <%= DockerSecrets.lookup(:redis_username, ENV.fetch('REDIS_USERNAME', '')) %>
   password: <%= DockerSecrets.lookup(:redis_password, ENV.fetch('REDIS_PASSWORD', '')) %>
+ms_clarity:
+  id: wft41fc1d7
 google_analytics:
   tag_id: GTM-WP684VC6
 digital_repository:
