@@ -6,8 +6,7 @@ module Catalog
     private
 
     ##
-    # Get the path to the search action with any parameters (e.g. view type)
-    # that should be persisted across search sessions.
+    # Start over from home page.
     def start_over_path(_query_params = params)
       helpers.root_path
     end
