@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from "react";
-
-// Placeholder component to render while fetching manifest
-import LoadingComponent from "@components/digital_collections_viewer/skeleton/LoadingComponent";
+import React from "react";
 
 // Clover-IIIF Viewer
 import Viewer from "@samvera/clover-iiif/viewer";
+
 // Table of Contents components
-import EntriesPanel from "@components/digital_collections_viewer/table_of_contents/EntriesPanel";
-import MoreInfoButton from "@components/digital_collections_viewer/table_of_contents/MoreInfoButton";
+import EntriesPanel from "./EntriesPanel";
+import MoreInfoButton from "./MoreInfoButton";
 
 // Viewer asset download component
-import DownloadButton from "@components/digital_collections_viewer/media_download/DownloadButton";
-
-// Viewer configuration
+import DownloadButton from "./DownloadButton";
 
 const contentsPlugin = {
     id: "toc-list",
@@ -107,20 +103,7 @@ const buildIIIFContentState = (manifest, assetId) => {
     } : null;
 }
 
-export default function DigitalCollectionsViewer({ manifestUrl }) {
-    const [manifest, setManifest] = useState(null);
-
-    useEffect(() => {
-        const fetchManifest = async ()=> {
-            const response = await fetch(manifestUrl);
-            const json = await response.json();
-            setManifest(json);
-        }
-        fetchManifest();
-    }, [manifestUrl]);
-
-    if (!manifest) return <LoadingComponent/>;
-
+export default function IIIFViewer({ manifest }) {
     const plugins = manifest.structures?.length > 0 ? [downloadPlugin, contentsPlugin] : [downloadPlugin];
 
     const urlAssetId = new URL(window.location.href).searchParams.get(ASSET_ID_KEY);
