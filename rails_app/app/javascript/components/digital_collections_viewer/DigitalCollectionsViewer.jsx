@@ -78,6 +78,35 @@ const options = {
     },
 };
 
+const ASSET_ID_KEY = 'asset-id';
+
+// Build content state json, if assetId is present in manifest.
+const buildIIIFContentState = (manifest, assetId) => {
+    // Get canvas.
+    const canvas = assetId && manifest.items.find((item) => item?.id.includes(assetId));
+
+    // Return if canvas not present return null, otherwise return content state with selected canvas.
+    return canvas ? {
+        "@context": "http://iiif.io/api/presentation/3/context.json",
+        id: `${manifest.id}/state/1`,
+        type: "Annotation",
+        motivation: ["contentState"],
+        target: {
+            type: "SpecificResource",
+            source: {
+                id: canvas.id,
+                type: "Canvas",
+                partOf: [
+                    {
+                        id: manifest.id,
+                        type: "Manifest",
+                    },
+                ],
+            },
+        }
+    } : null;
+}
+
 export default function DigitalCollectionsViewer({ manifestUrl }) {
     const [manifest, setManifest] = useState(null);
 
@@ -94,39 +123,9 @@ export default function DigitalCollectionsViewer({ manifestUrl }) {
 
     const plugins = manifest.structures?.length > 0 ? [downloadPlugin, contentsPlugin] : [downloadPlugin];
 
-    const params = new URL(window.location.href).searchParams;
+    const urlAssetId = new URL(window.location.href).searchParams.get(ASSET_ID_KEY);
 
-    let iiifContent = manifest;
-
-    // If `asset-id` query parameter is present, recreate a content state annotation to
-    // move the user to the selected asset canvas.
-    if (params.has('asset-id')) {
-        // Find canvas in manifest.
-        const canvas = manifest.items.find((item) => item?.id.includes(params.get('asset-id')));
-
-        // If canvas present, create content state hash.
-        if (canvas) {
-            iiifContent = {
-                "@context": "http://iiif.io/api/presentation/3/context.json",
-                id: `${manifest.id}/state/1`,
-                type: "Annotation",
-                motivation: ["contentState"],
-                target: {
-                    type: "SpecificResource",
-                    source: {
-                        id: canvas.id,
-                        type: "Canvas",
-                        partOf: [
-                            {
-                                id: manifest.id,
-                                type: "Manifest",
-                            },
-                        ],
-                    },
-                }
-            }
-        }
-    }
+    const iiifContent = buildIIIFContentState(manifest, urlAssetId);
 
     // The canvasIdCallback is called accurately when a user is clicking on two pages that are side-by-side, while
     // contentStateCallback does not differentiate between the side-by-side pages.
@@ -142,16 +141,16 @@ export default function DigitalCollectionsViewer({ manifestUrl }) {
         // If selected canvas is the first one, then remove asset-id param.
         // If selected canvas is different from the value of asset-id, update asset-id.
         if (firstCanvasId.includes(assetId)) {
-            url.searchParams.delete('asset-id');
+            url.searchParams.delete(ASSET_ID_KEY);
             history.replaceState(null, '', url);
-        } else if (url.searchParams.get('asset-id') !== assetId) {
-            url.searchParams.set('asset-id', assetId);
+        } else if (url.searchParams.get(ASSET_ID_KEY) !== assetId) {
+            url.searchParams.set(ASSET_ID_KEY, assetId);
             history.replaceState(null, '', url);
         }
     };
 
     return (
-        <Viewer iiifContent={iiifContent}
+        <Viewer iiifContent={iiifContent || manifest}
                 options={options}
                 plugins={plugins}
                 customTheme={customTheme}
