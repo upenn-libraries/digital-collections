@@ -1,0 +1,12 @@
+<%= render(AccordionComponent.new(id: 'iiif-manifest')) do |accordion| %>
+  <% accordion.with_header do %>
+    <%= t('show.download_and_share.iiif_manifest.button') %>
+  <% end %>
+
+  <% accordion.with_body do %>
+    <p><%= link_to @document.manifest_url, @document.manifest_url %></p>
+
+    <p class="mb-0"><%= link_to t('show.download_and_share.iiif_manifest.body'), "https://iiif.io/get-started/why-iiif/" %></p>
+  <% end %>
+<% end %>
+

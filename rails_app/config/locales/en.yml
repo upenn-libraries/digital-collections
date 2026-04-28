@@ -92,10 +92,12 @@ en:
     download_and_share:
       button: 'Download and share'
       h2: 'Download and share'
-      non_iiif_assets:
-        download:
-          access: 'Smaller file'
-          preservation: 'Original file'
+      persistent_url:
+        button: 'Persistent URL'
+      file_download:
+        button: 'Download files'
+        access: 'Smaller file'
+        preservation: 'Original file'
       pdf:
         button:
           multiple_images: 'Download all %{count} images'

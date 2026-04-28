@@ -1,0 +1,10 @@
+<%= render(AccordionComponent.new(id: 'persistent-url')) do |accordion| %>
+  <% accordion.with_header do %>
+    <%= t('show.download_and_share.persistent_url.button') %>
+  <% end %>
+
+  <% accordion.with_body do %>
+    <p><%= link_to solr_document_url(@document), solr_document_url(@document) %></p>
+  <% end %>
+<% end %>
+

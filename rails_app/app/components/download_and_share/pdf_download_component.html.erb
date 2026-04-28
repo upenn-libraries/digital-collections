@@ -1,0 +1,15 @@
+<%= render(AccordionComponent.new(id: 'pdf-download')) do |accordion| %>
+  <% accordion.with_header do %>
+    <%= header_text %>
+  <% end %>
+
+  <% accordion.with_body do %>
+    <%= link_to(@document.pdf_url) do %>
+      <%= t('show.download_and_share.pdf.download') %>
+      <% if pdf_size %>
+        <small>— <%= pdf_size %></small>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
