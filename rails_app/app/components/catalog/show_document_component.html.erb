@@ -8,11 +8,13 @@
       <div class="placeholder placeholder-wave dc-iiif-skeleton__stage">
         <div class="placeholder placeholder-wave dc-iiif-skeleton__asset"></div>
       </div>
-      <div class="dc-iiif-skeleton__thumbs">
-        <% 7.times do %>
-          <div class="placeholder placeholder-wave dc-iiif-skeleton__thumb"></div>
-        <% end %>
-      </div>
+      <% if render_skeleton_thumbs? %>
+        <div class="dc-iiif-skeleton__thumbs">
+          <% 7.times do %>
+            <div class="placeholder placeholder-wave dc-iiif-skeleton__thumb"></div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <div
       data-controller="clover-viewer"

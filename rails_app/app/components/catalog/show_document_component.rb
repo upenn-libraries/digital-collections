@@ -11,5 +11,10 @@ module Catalog
       super
       with_document_actions(document: @document) unless document_actions
     end
+
+    # @return [Boolean]
+    def render_skeleton_thumbs?
+      @document.iiif_image_count > 1
+    end
   end
 end
