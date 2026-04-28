@@ -110,14 +110,18 @@ export default function IIIFViewer({ manifest }) {
 
     const iiifContent = buildIIIFContentState(manifest, urlAssetId);
 
+    const firstCanvasId = manifest.items.at(0).id;
+
     // The canvasIdCallback is called accurately when a user is clicking on two pages that are side-by-side, while
     // contentStateCallback does not differentiate between the side-by-side pages.
     const handleCanvasIdCallback = (activeCanvasId) => {
         if (!activeCanvasId) return;
 
-        const firstCanvasId = manifest.items.at(0).id;
+        const match = activeCanvasId.match(/assets\/(.+)\/canvas$/);
 
-        const assetId = activeCanvasId.match(/assets\/(.+)\/canvas$/)[1];
+        if (!match) throw new Error(`Unexpected canvas ID format: ${activeCanvasId}`);
+
+        const assetId = match[1];
 
         const url = new URL(window.location.href);
 
