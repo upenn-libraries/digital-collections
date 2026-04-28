@@ -71,6 +71,8 @@ const options = {
     informationPanel: {
         open: false,
         renderToggle: false,
+        renderAnnotation: false,
+        defaultTab: 'manifest-about'
     },
 };
 
