@@ -7,6 +7,8 @@ module Catalog
   class ShowDocumentComponent < Blacklight::DocumentComponent
     renders_one :document_actions, DocumentActionsComponent
 
+    SKELETON_THUMBNAIL_COUNT = 7
+
     def before_render
       super
       with_document_actions(document: @document) unless document_actions
