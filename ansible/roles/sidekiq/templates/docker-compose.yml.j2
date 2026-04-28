@@ -71,7 +71,7 @@ services:
       {% if is_development == true %}
       - /home/app/rails_app/:/home/app
       {% else %}
-      - digital_collections_app_storage:/home/app/storage
+      - app_storage:/home/app/storage
       {% endif %}
 
 networks:
@@ -110,7 +110,7 @@ secrets:
 
 {% if is_development == false %}
 volumes:
-  digital_collections_app_storage:
+  app_storage:
     external: true
-    name: digital_collections_app_storage
+    name: app_storage
 {% endif %}
