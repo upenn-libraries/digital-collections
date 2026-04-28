@@ -60,11 +60,11 @@
       tags:
         - chrome
       when: is_development | default(false, true)
-  post_tasks:
-    - name: Prune images that are older than 2+ hours
-      community.docker.docker_prune:
-        images: true
-        images_filters:
-          dangling: false
-          until: 2h
-      when: not is_development | default(false, true)
+  # post_tasks:
+  #   - name: Prune images that are older than 2+ hours
+  #     community.docker.docker_prune:
+  #       images: true
+  #       images_filters:
+  #         dangling: false
+  #         until: 2h
+  #     when: not is_development | default(false, true)
