@@ -46,11 +46,11 @@ en:
       home: 'Home'
   home:
     page_title: "Home · %{application_name}"
-    hero_heading: 'Originals held in light'
-    hero_subheading: 'Find digitized photographs, manuscripts, books, maps, posters, and more in collections from across our libraries, archives, and partners.'
+    hero_heading: 'Digitized originals, online'
+    hero_subheading: 'A growing selection of digitized materials from across our libraries, archives, and partners. Find photographs, manuscripts, books, maps, posters, and more.'
     collections:
       heading: 'Browse by collection'
-      description: 'Explore materials from many distinct collections. Browse one or search across them all.'
+      description: 'Each collection comes from one of our libraries, archives, or partners. Browse one or search across them all.'
       explore: 'All collections A to Z'
   collections:
     page_title: "Collections A to Z · %{application_name}"

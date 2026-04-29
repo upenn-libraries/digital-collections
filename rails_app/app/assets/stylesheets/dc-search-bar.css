@@ -26,7 +26,7 @@
   border: solid 1px var(--pl-color-penn-blue);
   padding-left: var(--pl-space-l);
   margin-left: auto;
-  max-width: 32rem;
+  max-width: 28rem;
 
   & .search-query-form {
     width: 100%;
