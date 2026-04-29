@@ -7,7 +7,7 @@ solr_collections:
 
 solr_configsets:
   - name: "digital-collections"
-    path: "/digital-collections/rails_app/solr/conf/"
+    path: "../rails_app/solr/conf/"
 
 solr_docker_image_tag: 9.8.1
 

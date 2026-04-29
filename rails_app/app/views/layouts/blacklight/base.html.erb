@@ -1,4 +1,4 @@
-<%# Overridden from Blacklight 9.0.0.beta8 to:
+<%# Overridden from Blacklight v9.0.0 to:
       - add custom asset handling
       - add custom header logic
       - add google analytics scripts %>
@@ -33,6 +33,7 @@
     <%= content_for(:head) %>
   </head>
   <body class="<%= render_body_class %> pl-reset pl-typeset">
+    <%= render('shared/ms_clarity/script', id: Settings.ms_clarity.id) if render_clarity_script? %>
     <%= render 'shared/google_analytics/noscript' %>
     <%= render blacklight_config.skip_link_component.new do %>
       <%= content_for(:skip_links) %>
@@ -57,5 +58,6 @@
 
     <%= render partial: 'shared/footer' %>
     <%= render partial: 'shared/modal' %>
+    <%= content_for(:offcanvas) %>
   </body>
 <% end %>

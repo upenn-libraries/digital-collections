@@ -81,7 +81,7 @@ en:
       singular: 'result'
       none: 'No results'
     none:
-      h2: 'Suggestions'
+      h2: 'Your search found no results'
       check_spelling: 'Check your spelling.'
       adjust_search: 'Adjust what you searched for.'
       different_keywords: 'Try different keywords that mean the same thing.'

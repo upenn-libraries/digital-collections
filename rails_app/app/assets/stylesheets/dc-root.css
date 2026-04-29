@@ -39,6 +39,7 @@ pennlibs-header:focus {
 */
 html {
   scroll-behavior: auto !important;
+  background: var(--pl-color-penn-blue);
 }
 
 /*

@@ -134,8 +134,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION%%.*}.x | bash - &
 RUN mkdir -p ${PROJECT_ROOT}/app/assets/builds/ && \
     find ${PROJECT_ROOT} -type d -exec chmod 755 {} + && \
     chmod 744 -R ./bin && \
-    chmod +x -R ${BUNDLE_HOME}/ruby/${RUBY_MAJOR}/bin/ && \
-    SECRET_KEY_BASE_DUMMY=x bundle exec rails assets:precompile
+    chmod +x -R ${BUNDLE_HOME}/ruby/${RUBY_MAJOR}/bin/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 

@@ -140,8 +140,8 @@ describe 'Catalog Index Page', :solr do
     end
 
     it 'shows the no results suggestions' do
-      within('#content div.alert h2') { expect(page).to have_text(I18n.t('results.none.h2')) }
-      within('#content div.alert ul') { expect(page).to have_text(I18n.t('results.none.adjust_search')) }
+      expect(page).to have_text(I18n.t('results.none.h2'))
+      expect(page).to have_text(I18n.t('results.none.adjust_search'))
     end
   end
 end

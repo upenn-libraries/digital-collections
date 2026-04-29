@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import CloverViewerController from "./clover_viewer_controller"
 application.register("clover-viewer", CloverViewerController)
+
+import TooltipController from "./tooltip_controller"
+application.register("tooltip", TooltipController)

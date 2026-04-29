@@ -86,7 +86,7 @@ GEM
     benchmark (0.5.0)
     bigdecimal (4.1.1)
     bindex (0.8.1)
-    blacklight (9.0.0.beta8)
+    blacklight (9.0.0)
       globalid
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
@@ -98,8 +98,8 @@ GEM
     blacklight-gallery (6.0.0)
       blacklight (~> 9.0.0beta1)
       rails (>= 7.1, < 9)
-    blacklight_range_limit (9.1.0)
-      blacklight (>= 7.25.2, < 9)
+    blacklight_range_limit (9.2.0)
+      blacklight (>= 7.25.2, < 10)
       view_component (>= 2.54, < 5)
     bootsnap (1.23.0)
       msgpack (~> 1.2)
@@ -143,7 +143,7 @@ GEM
       activesupport (>= 4)
       edtf (>= 2.3, < 4)
       roman (~> 0.2.0)
-    erb (6.0.2)
+    erb (6.0.4)
     erubi (1.13.1)
     factory_bot (6.5.6)
       activesupport (>= 6.1.0)
@@ -207,7 +207,6 @@ GEM
       net-smtp
     marcel (1.1.0)
     matrix (0.4.3)
-    method_source (1.1.0)
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
@@ -415,10 +414,10 @@ GEM
       rubocop-rspec
     uri (1.1.1)
     useragent (0.16.11)
-    view_component (3.24.0)
-      activesupport (>= 5.2.0, < 8.2)
+    view_component (4.6.0)
+      actionview (>= 7.1.0)
+      activesupport (>= 7.1.0)
       concurrent-ruby (~> 1)
-      method_source (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.3.0)
@@ -447,9 +446,9 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  blacklight (= 9.0.0.beta8)
+  blacklight (= 9.0.0)
   blacklight-gallery
-  blacklight_range_limit (= 9.1.0)
+  blacklight_range_limit (= 9.2.0)
   bootsnap
   capybara
   config
@@ -476,7 +475,7 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   upennlib-rubocop
-  view_component (~> 3.23)
+  view_component
   web-console
 
 RUBY VERSION

@@ -43,6 +43,8 @@
 @import url('bs-containers.css');
 @import url('bs-accordion.css');
 @import url('bs-alert.css');
+@import url('bs-form.css');
+@import url('bs-modal.css');
 
 /**
 * Blacklight (prefix: "bl-")
@@ -64,8 +66,8 @@
 @import url('dc-search-bar.css');
 @import url('dc-about.css');
 @import url('dc-index.css');
-@import url('dc-start-over.css');
 @import url('dc-pagination.css');
 @import url('dc-collections.css');
 @import url('dc-show.css');
 @import url('dc-iiif.css');
+@import url('dc-iiif-skeleton.css');

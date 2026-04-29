@@ -20,7 +20,7 @@ module Catalog
     end
 
     def before_render
-      set_slot(:search_bar, nil) unless search_bar
+      with_search_bar unless search_bar
     end
   end
 end
