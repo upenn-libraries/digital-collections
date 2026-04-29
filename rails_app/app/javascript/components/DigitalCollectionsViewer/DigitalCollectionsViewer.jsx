@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-// Placeholder component to render while fetching manifest
-import LoadingComponent from "./LoadingComponent";
-
 // IIIF Viewer Component
 import IIIFViewer from "./IIIFViewer/IIIFViewer"
 
@@ -18,5 +15,5 @@ export default function DigitalCollectionsViewer({ manifestUrl }) {
         fetchManifest();
     }, [manifestUrl]);
 
-    return manifest ? <IIIFViewer manifest={manifest} /> : <LoadingComponent />;
+    return manifest ? <IIIFViewer manifest={manifest} /> : null;
 }

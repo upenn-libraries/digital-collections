@@ -4,6 +4,18 @@
 
 <% if document.manifest? %>
   <div class="iiif-viewer-container">
+    <div class="dc-iiif-skeleton" aria-hidden="true">
+      <div class="placeholder placeholder-wave dc-iiif-skeleton__stage">
+        <div class="placeholder placeholder-wave dc-iiif-skeleton__asset"></div>
+      </div>
+      <% if render_skeleton_thumbs? %>
+        <div class="dc-iiif-skeleton__thumbs">
+          <% SKELETON_THUMBNAIL_COUNT.times do %>
+            <div class="placeholder placeholder-wave dc-iiif-skeleton__thumb"></div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
     <div
       data-controller="clover-viewer"
       data-clover-viewer-url-value="<%= document.manifest_url %>"
