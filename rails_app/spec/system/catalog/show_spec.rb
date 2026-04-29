@@ -121,7 +121,11 @@ describe 'Catalog Show Page', :solr do
     end
 
     context 'with a creator bearing a role' do
-      let(:json) { build(:item_hash) }
+      let(:json) do
+        item_resource_fixture('image').tap do |json|
+          json['descriptive_metadata']['name'] = [{ value: "author, random", role: [{ value: "author" }] }]
+        end
+      end
 
       it 'does not include role in link to faceted search' do
         within('#document .pl-dl') do
