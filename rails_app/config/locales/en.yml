@@ -94,6 +94,7 @@ en:
       h2: 'Download and share'
       persistent_url:
         button: 'Persistent URL'
+        copy: 'Copy link'
       file_download:
         button: 'Download files'
         access: 'Smaller file'
