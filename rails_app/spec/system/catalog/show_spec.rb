@@ -123,7 +123,7 @@ describe 'Catalog Show Page', :solr do
     context 'with a creator bearing a role' do
       let(:json) do
         item_resource_fixture('image').tap do |json|
-          json['descriptive_metadata']['name'] = [{ value: "author, random", role: [{ value: "author" }] }]
+          json['descriptive_metadata']['name'] = [{ value: 'author, random', role: [{ value: 'author' }] }]
         end
       end
 
