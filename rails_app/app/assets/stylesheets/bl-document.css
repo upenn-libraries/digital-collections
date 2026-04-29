@@ -111,8 +111,6 @@
 
   & .document-metadata {
     display: block;
-    /* padding-right: calc(var(--bs-gutter-x) * .5);
-    padding-left: calc(var(--bs-gutter-x) * .5); */
 
     & dt {
       clip: rect(0 0 0 0); 
