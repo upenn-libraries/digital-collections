@@ -46,15 +46,12 @@ en:
       home: 'Home'
   home:
     page_title: "Home · %{application_name}"
-    hero_heading: 'Boys wearing sailor suits, playing music to a dancing turtle'
-    hero_subheading: 'Arnold and Deanne Kaplan Collection of Early American Judaica'
-    explore:
-      heading: 'Find primary sources for your research'
-      description: "Explore digitized original materials for your research and teaching. You'll find posters, manuscripts, photographs, letters, trading cards, maps, and more from the collections."
-      learn_more: 'Learn more about digital collections'
+    hero_heading: 'Originals held in light'
+    hero_subheading: 'Find digitized photographs, manuscripts, books, maps, posters, and more in collections from across our libraries, archives, and partners.'
     collections:
-      heading: 'Collections'
-      explore: 'Browse collections A to Z'
+      heading: 'Browse by collection'
+      description: 'Explore materials from many distinct collections. Browse one or search across them all.'
+      explore: 'All collections A to Z'
   collections:
     page_title: "Collections A to Z · %{application_name}"
     header: 'Collections A to Z'

@@ -1,22 +1,13 @@
 .dc-home-sections {
   & .dc-collections {
-    display: flex;
-    gap: var(--pl-space-2xl) var(--pl-space-xl);
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  & h2::after {
-    background: #EEAA64;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 2rem;
   }
 
   & section:nth-child(2) {
     background: var(--pl-color-bg-subtle-brand);
-  }
-}
-
-@media (min-width: 720px) {
-  .dc-home-sections li {
-    max-width: 18rem;
   }
 }

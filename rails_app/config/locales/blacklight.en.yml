@@ -31,7 +31,7 @@ en:
         remove:
           value: 'Remove filter %{value}'
       link:
-        all_collections: 'Collections A to Z'
+        all_collections: 'A to Z'
       index:
         label: "%{label}"
       show:
