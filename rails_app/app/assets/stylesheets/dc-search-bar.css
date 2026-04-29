@@ -31,7 +31,7 @@
     border-radius: 1.125rem !important;
     border: none;
     background: none;
-    font-size: var(--pl-font-size-l);
+    font-size: var(--pl-font-size-m);
     padding: 0 !important;
     color: #0d1015; /* slightly darker shade */
 
@@ -43,12 +43,20 @@
     &:focus {
       box-shadow: none;
     }
+
+    @media (min-width: 720px) {
+      font-size: var(--pl-font-size-l);
+    }
   }
 
   & button.search-btn {
     border-radius: var(--pl-border-radius) !important;
     padding: var(--pl-space-xs) var(--pl-space-m);
-    font-size: var(--pl-font-size-l);
+    font-size: var(--pl-font-size-m);
+
+     @media (min-width: 720px) {
+      font-size: var(--pl-font-size-l);
+    }
 
     @media (min-width: 768px) {
       padding: var(--pl-space-xs) var(--pl-space-l);
