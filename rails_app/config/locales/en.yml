@@ -47,10 +47,10 @@ en:
   home:
     page_title: "Home · %{application_name}"
     hero_heading: 'Digitized originals, online'
-    hero_subheading: 'A growing selection of digitized materials from across our libraries, archives, and partners. Find photographs, manuscripts, books, maps, posters, and more.'
+    hero_subheading: 'A growing selection of originals from across our libraries, archives, and partners. Find photographs, manuscripts, books, maps, posters, and more.'
     collections:
-      heading: 'Browse by collection'
-      description: 'Each collection comes from one of our libraries, archives, or partners. Browse one or search across them all.'
+      heading: 'Collections'
+      description: 'Each collection focuses on a topic, person, place, or era. Zoom in on one or search across them all.'
       explore: 'All collections A to Z'
   collections:
     page_title: "Collections A to Z · %{application_name}"
