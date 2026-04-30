@@ -82,25 +82,6 @@
           all_text_timv^10
         </str>
 
-       <str name="author_qf">
-          author_tsim
-       </str>
-       <str name="author_pf">
-       </str>
-       <str name="title_qf">
-          title_tsim
-          full_title_tsim
-          short_title_tsim
-          alternative_title_tsim
-       </str>
-       <str name="title_pf">
-       </str>
-       <str name="subject_qf">
-          subject_tsim
-       </str>
-       <str name="subject_pf">
-       </str>
-
        <str name="fl">
          *,
          score
