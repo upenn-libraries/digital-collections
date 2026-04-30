@@ -10,11 +10,13 @@ const IIIF_DERIVATIVES = [
 // Build the list of download/link rows for a single canvas. Skips
 // derivatives or original entries that aren't present so each section
 // renders only what's actually available.
-const buildAssetRows = (canvas) => {
+const buildDownloadLinks = (canvas) => {
   if (!canvas) return [];
 
   const iiifServicePath = canvas.items?.[0]?.items?.[0]?.body?.service?.[0]?.id;
   const original = canvas.rendering?.[0];
+
+  const canvasName = canvas?.label?.none?.[0] ?? "download";
 
   const rows = [];
 
@@ -24,7 +26,7 @@ const buildAssetRows = (canvas) => {
         key,
         label,
         url: iiifServicePath + iiifPath,
-        filenameSuffix: key,
+        filename: `${canvasName}-${key}.jpg`
       });
     });
   }
@@ -34,35 +36,20 @@ const buildAssetRows = (canvas) => {
       key: "original",
       label: original.label?.en?.[0] ?? "Original file",
       url: original.id,
-      filenameSuffix: "original",
+      filename: `${canvasName}-original.tif`
     });
   }
 
   return rows;
 };
 
-// Resolve which canvases are showing as the left/right pages of a
-// paged-spread item. Canvas 0 is rendered alone (typical cover);
-// subsequent canvases pair as (1=left, 2=right), (3=left, 4=right), etc.
-// for left-to-right reading. Right-to-left reading flips the parity.
-const resolveSpread = (canvases, activeCanvasId, viewingDirection) => {
-  const idx = canvases.findIndex((c) => c.id === activeCanvasId);
-  if (idx < 0) return { left: null, right: null };
+// Order canvases in the order that they are displayed, not paginated, and extract all canvas data. For items
+// that are right-to-left, we reverse the array so that the download links are on the appropriate side of the screen.
+const getDownloadableCanvases = (visibleCanvases, viewingDirection, vault) => {
+  let canvases = visibleCanvases.map((canvas) => vault.toPresentation3(canvas));
 
-  if (idx === 0) {
-    return viewingDirection === "right-to-left"
-      ? { left: canvases[idx], right: null }
-      : { left: null, right: canvases[idx] };
-  }
-
-  const isLeftSide =
-    viewingDirection === "right-to-left" ? idx % 2 === 0 : idx % 2 === 1;
-
-  if (isLeftSide) {
-    return { left: canvases[idx], right: canvases[idx + 1] ?? null };
-  }
-  return { left: canvases[idx - 1] ?? null, right: canvases[idx] };
-};
+  return (viewingDirection === 'right-to-left') ? canvases.reverse() : canvases;
+}
 
 const DownloadIcon = ({ size = 24 }) => (
   <svg
@@ -78,45 +65,13 @@ const DownloadIcon = ({ size = 24 }) => (
 );
 
 export default function DownloadButton({ useViewerState }) {
-  const viewerState = useViewerState();
-  const { activeCanvas, activeManifest, vault } = viewerState;
+  const { vault, visibleCanvases, viewingDirection, isPaged } = useViewerState();
 
-  const manifest = vault.toPresentation3({
-    id: activeManifest,
-    type: "Manifest",
-  });
-  const isPaged = manifest?.behavior?.includes("paged") ?? false;
-  const viewingDirection = manifest?.viewingDirection ?? "left-to-right";
+  const downloadableCanvases = getDownloadableCanvases(visibleCanvases, viewingDirection, vault);
 
-  let sections = [];
-
-  if (isPaged) {
-    const spread = resolveSpread(
-      manifest.items,
-      activeCanvas,
-      viewingDirection,
-    );
-    if (spread.left) sections.push({ side: "left", canvasRef: spread.left });
-    if (spread.right) sections.push({ side: "right", canvasRef: spread.right });
-  }
-
-  if (sections.length === 0) {
-    sections = [{ side: null, canvasRef: { id: activeCanvas } }];
-  }
-
-  // Resolve full canvas data (with rendering and image service) for each section.
-  sections = sections.map(({ side, canvasRef }) => ({
-    side,
-    canvas: canvasRef?.id
-      ? vault.toPresentation3({ id: canvasRef.id, type: "Canvas" })
-      : null,
-  }));
-
-  const handleDownloadClick = async (e, url, filenameSuffix, canvas) => {
+  const handleDownloadClick = async (e, url, filename) => {
     e.preventDefault();
 
-    const baseName = canvas?.label?.none?.[0] ?? "download";
-    const downloadFilename = `${baseName}-${filenameSuffix}.jpg`;
     const response = await makeBlob(url);
 
     if (!response || response.error) {
@@ -124,7 +79,7 @@ export default function DownloadButton({ useViewerState }) {
       return;
     }
 
-    mimicDownload(response, downloadFilename);
+    mimicDownload(response, filename);
   };
 
   return (
@@ -152,50 +107,38 @@ export default function DownloadButton({ useViewerState }) {
             className="dc-iiif-download__sections"
             data-paged={isPaged ? "" : undefined}
           >
-            {sections.map(({ side, canvas }) => {
-              const rows = buildAssetRows(canvas);
-              const sideLabel = side === "left" ? "Left page" : "Right page";
+            {downloadableCanvases.map(canvas => {
+              const links = buildDownloadLinks(canvas);
               const canvasLabel = canvas?.label?.none?.[0];
-              const pageLabel = canvasLabel
-                ? `${sideLabel} (${canvasLabel})`
-                : sideLabel;
+
               return (
-                <section
-                  key={side ?? "single"}
-                  className="dc-iiif-download__section"
-                >
-                  {side && (
-                    <h3 className="dc-iiif-download__side">{pageLabel}</h3>
-                  )}
-                  {rows.length > 0 ? (
+                <section className="dc-iiif-download__section" key={canvas.id}>
+                  <h3 className="dc-iiif-download__side">{canvasLabel}</h3>
+
+                  {links.length > 0 ? (
                     <ul className="dc-iiif-download__list">
-                      {rows.map((row) => (
+                      {links.map((link) => (
                         <li
-                          key={row.key}
+                          key={link.key}
                           className="dc-iiif-download__item"
                         >
                           <a
                             className="dc-iiif-download__link"
-                            href={row.url}
+                            href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            {row.label}
+                            {link.label}
                           </a>
                           <button
                             type="button"
                             className="pl-button dc-iiif-download__action"
-                            aria-label={
-                              side
-                                ? `Download ${pageLabel} — ${row.label}`
-                                : `Download ${row.label}`
-                            }
+                            aria-label={`Download ${link.label}`}
                             onClick={(e) =>
                               handleDownloadClick(
                                 e,
-                                row.url,
-                                row.filenameSuffix,
-                                canvas,
+                                link.url,
+                                link.filename,
                               )
                             }
                           >
