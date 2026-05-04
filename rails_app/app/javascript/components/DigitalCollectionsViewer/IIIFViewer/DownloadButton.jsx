@@ -65,9 +65,10 @@ const DownloadIcon = ({ size = 24 }) => (
 );
 
 export default function DownloadButton({ useViewerState }) {
-  const { vault, visibleCanvases, viewingDirection, isPaged } = useViewerState();
+  const { vault, sequence, visibleCanvases, viewingDirection, isPaged } = useViewerState();
 
   const downloadableCanvases = getDownloadableCanvases(visibleCanvases, viewingDirection, vault);
+  const multiplePages = sequence[0].length > 1;
 
   const handleDownloadClick = async (e, url, filename) => {
     e.preventDefault();
@@ -113,7 +114,8 @@ export default function DownloadButton({ useViewerState }) {
 
               return (
                 <section className="dc-iiif-download__section" key={canvas.id}>
-                  <h3 className="dc-iiif-download__side">{canvasLabel}</h3>
+
+                  {multiplePages && <h3 className="dc-iiif-download__side">{canvasLabel}</h3>}
 
                   {links.length > 0 ? (
                     <ul className="dc-iiif-download__list">
