@@ -18,29 +18,22 @@ const buildDownloadLinks = (canvas) => {
 
   const canvasName = canvas?.label?.none?.[0] ?? "download";
 
-  const rows = [];
+  const derivativeLinks = iiifServicePath ? IIIF_DERIVATIVES.map(({ key, label, iiifPath }) => ({
+    key,
+    label,
+    url: iiifServicePath + iiifPath,
+    filename: `${canvasName}-${key}.jpg`
+  })) : [];
 
-  if (iiifServicePath) {
-    IIIF_DERIVATIVES.forEach(({ key, label, iiifPath }) => {
-      rows.push({
-        key,
-        label,
-        url: iiifServicePath + iiifPath,
-        filename: `${canvasName}-${key}.jpg`
-      });
-    });
-  }
 
-  if (original) {
-    rows.push({
-      key: "original",
-      label: original.label?.en?.[0] ?? "Original file",
-      url: original.id,
-      filename: `${canvasName}-original.tif`
-    });
-  }
+  const originalLink = original ? [{
+    key: "original",
+    label: original.label?.en?.[0] ?? "Original file",
+    url: original.id,
+    filename: `${canvasName}-original.tif`
+  }] : [];
 
-  return rows;
+  return [...derivativeLinks, ...originalLink];
 };
 
 // Order canvases in the order that they are displayed, not paginated, and extract all canvas data. For items
