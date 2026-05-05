@@ -3,24 +3,53 @@
 require 'rails_helper'
 
 describe SearchBuilder do
-  subject(:search_builder) { described_class.new scope }
+  subject(:search_builder) { described_class.new(scope).with(blacklight_params) }
 
-  let(:user_params) { {} }
-  let(:blacklight_config) { Blacklight::Configuration.new }
-  let(:scope) { instance_double blacklight_config: blacklight_config }
+  # user params coming from the search state
+  let(:blacklight_params) { {} }
+  # solr friendly processed params passed down the search builder processor chain
+  let(:solr_params) { {} }
 
-  # empty spec to satisfy rubocop - this should stay so we have a template
-  # for search builder specs
+  let(:blacklight_config) { CatalogController.blacklight_config }
+  let(:scope) { instance_double CatalogController, blacklight_config: blacklight_config, action_name: 'index' }
 
-  it 'adds custom data'
+  describe '#masssage_sort' do
+    before { search_builder.massage_sort(solr_params) }
 
-  # describe "my custom step" do
-  #   subject(:query_parameters) do
-  #     search_builder.with(user_params).processed_parameters
-  #   end
-  #
-  #   it "adds my custom data" do
-  #     expect(query_parameters).to include :custom_data
-  #   end
-  # end
+    context 'with a search term provided' do
+      context 'with a relevance sort' do
+        let(:solr_params) { { q: 'term', sort: 'score desc' } }
+
+        it 'does not alter the sort value' do
+          expect(solr_params[:sort]).to eq 'score desc'
+        end
+      end
+
+      context 'without a relevance sort' do
+        let(:solr_params) { { q: 'term', sort: 'title_sort asc' } }
+
+        it 'does not alter the sort value' do
+          expect(solr_params[:sort]).to eq 'title_sort asc'
+        end
+      end
+    end
+
+    context 'without a search term provided' do
+      context 'with a relevance sort' do
+        let(:solr_params) { { sort: 'score desc' } }
+
+        it 'alters the sort parameter' do
+          expect(solr_params[:sort]).to eq 'first_published_at_dtsi desc'
+        end
+      end
+
+      context 'without a relevance sort' do
+        let(:solr_params) { { sort: 'title_sort asc' } }
+
+        it 'does not alter the sort value' do
+          expect(solr_params[:sort]).to eq 'title_sort asc'
+        end
+      end
+    end
+  end
 end

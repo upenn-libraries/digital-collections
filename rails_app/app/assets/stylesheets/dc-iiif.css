@@ -60,7 +60,108 @@
 }
 
 @media (max-width: 575px) {
-  .dc-iiif-viewer-controls__button {
+  .dc-iiif-viewer-controls__button:not(.dc-iiif-download__trigger) {
     display: none;
+  }
+
+  .dc-iiif-download__trigger {
+    margin-left: 0;
+    margin-bottom: 0.618rem;
+  }
+}
+
+.dc-iiif-download {
+  background: var(--pl-color-bg-default);
+  border: 1px solid var(--pl-color-fg-subtle);
+  border-radius: var(--pl-border-radius-subtle);
+  box-shadow: rgba(140, 149, 159, 0.2) 0px 3px 6px 0px;
+  padding: var(--pl-space-m) var(--pl-space-l);
+  min-width: 16rem;
+  max-width: min(32rem, 90vw);
+  margin-top: var(--pl-space-xs);
+}
+
+.dc-iiif-download__sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--pl-space-l);
+  margin-top: var(--pl-space-l);
+}
+
+.dc-iiif-download__sections[data-paged] {
+  flex-direction: row;
+}
+
+.dc-iiif-download__section {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.dc-iiif-download__side {
+  font-size: var(--pl-font-size-s);
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+  color: var(--pl-color-fg-subtle);
+  margin-bottom: var(--pl-space-xs);
+}
+
+.dc-iiif-download__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--pl-space-2xs);
+}
+
+.dc-iiif-download__item {
+  display: flex;
+  align-items: center;
+  gap: var(--pl-space-xs);
+}
+
+.dc-iiif-download__item:last-child {
+  border-bottom: 0;
+}
+
+.dc-iiif-download__link {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: var(--pl-space-2xs) 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dc-iiif-download__link:hover,
+.dc-iiif-download__link:focus-visible {
+  text-underline-offset: var(--pl-link-text-underline-offset);
+}
+
+.dc-iiif-download__action {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--pl-border-radius-subtle);
+  background: var(--pl-color-bg-subtle);
+  cursor: pointer;
+  color: var(--pl-color-fg-subtle);
+  padding: var(--pl-space-2xs);
+}
+
+.dc-iiif-download__action:hover {
+  outline: var(--pl-color-fg-subtle) solid 1px;
+}
+
+.dc-iiif-download__empty {
+  margin: 0;
+  color: var(--pl-color-fg-subtle);
+  font-size: var(--pl-font-size-s);
+}
+
+@media (max-width: 575.98px) {
+  .dc-iiif-download__sections[data-paged] {
+    flex-direction: column;
   }
 }

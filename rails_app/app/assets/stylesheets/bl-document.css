@@ -48,7 +48,7 @@
   & :is(img, pennlibs-fallback-img) {
     width: 100%;
     box-shadow: rgba(140, 149, 159, 0.3) 0px 3px 6px 0px;
-    border-radius: 0.5rem;
+    border-radius: var(--pl-border-radius-subtle);
   }
 }
 
@@ -76,6 +76,10 @@
   }
 }
 
+.document-thumbnail > a {
+  display: block;
+}
+
 .documents-gallery {
   display: grid;
   gap: var(--pl-space-l) var(--pl-space-m);
@@ -88,7 +92,7 @@
     width: 100%;
     margin-bottom: var(--pl-space-s);
     box-shadow: rgba(140, 149, 159, 0.3) 0px 3px 6px 0px;
-    border-radius: var(--pl-space-s);
+    border-radius: var(--pl-border-radius-subtle);
   }
 
   & .document-title-heading {
