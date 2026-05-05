@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ClipboardController from "./clipboard_controller"
+application.register("clipboard", ClipboardController)
+
 import CloverViewerController from "./clover_viewer_controller"
 application.register("clover-viewer", CloverViewerController)
 
