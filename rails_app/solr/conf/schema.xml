@@ -208,6 +208,14 @@
       destination field is to use the dynamic field syntax.
       copyField also supports a maxChars to copy setting.  -->
 
+  <!-- copy select text_en fields that may contain non-english text to a general text field for indexing -->
+
+  <copyField source="title_tesim" dest="title_tim"/>
+  <copyField source="alt_title_tesim" dest="alt_title_tim"/>
+  <copyField source="name_ssi" dest="name_tim"/>
+  <copyField source="note_tesim" dest="note_tim"/>
+  <copyField source="description_tesim" dest="description_tim"/>
+
   <copyField source="*_tsim" dest="all_text_timv" maxChars="3000"/>
   <copyField source="*_tesim" dest="all_text_timv" maxChars="3000"/>
   <copyField source="*_ssim" dest="all_text_timv" maxChars="3000"/>
