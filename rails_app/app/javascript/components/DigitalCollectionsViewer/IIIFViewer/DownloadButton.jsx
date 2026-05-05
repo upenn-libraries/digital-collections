@@ -82,7 +82,7 @@ export default function DownloadButton({ useViewerState }) {
         <button
           type="button"
           className="dc-iiif-viewer-controls__button dc-iiif-download__trigger"
-          aria-label="Download image"
+          aria-label="Download options"
         >
           <DownloadIcon size={24} />
         </button>
