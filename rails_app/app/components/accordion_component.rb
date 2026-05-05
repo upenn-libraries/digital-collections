@@ -12,6 +12,3 @@ class AccordionComponent < ViewComponent::Base
     @expanded = expanded
   end
 end
-
-
-
