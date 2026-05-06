@@ -8,8 +8,8 @@
   padding: 0;
 
   display: grid;
-  gap: var(--pl-space-2xl) var(--pl-space-xl);
-  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: var(--pl-space-l) var(--pl-space-m);
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
 }
 
 .dc-collections__card {
