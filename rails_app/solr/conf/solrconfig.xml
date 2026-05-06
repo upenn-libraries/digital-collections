@@ -56,17 +56,22 @@
           year_isim
 
           title_tesim
+          title_tim
           alt_title_tesim
+          alt_title_tim
 
           collection_tesim
           coverage_tesim
           description_tesim
+          description_tim
           extent_tesim
           geographic_subject_tesim
           item_type_tesim
           location_tesim
+          name_tim
           name_with_role_tesim
           note_tesim
+          note_tim
           physical_format_tesim
           physical_location_tesim
           provenance_tesim
