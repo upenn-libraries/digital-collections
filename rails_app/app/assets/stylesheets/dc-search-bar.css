@@ -5,13 +5,13 @@
   margin-top: var(--pl-space-m);
   margin-left: 0;
 
-  @media (min-width: 1000px) {
+  @media (min-width: 1001px) {
     margin-top: 0;
     margin-left: var(--pl-space-3xl);
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1001px) {
   .dc-header-search {
     width: 100%;
   }
@@ -26,7 +26,11 @@
   border: solid 1px var(--pl-color-penn-blue);
   padding-left: var(--pl-space-l);
   margin-left: auto;
-  max-width: 28rem;
+
+
+  @media (min-width: 1001px) {
+    max-width: 28rem;
+  }
 
   & .search-query-form {
     width: 100%;
