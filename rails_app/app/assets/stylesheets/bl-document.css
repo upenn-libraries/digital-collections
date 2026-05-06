@@ -111,6 +111,8 @@
 
   & .document-metadata {
     display: block;
+    padding-right: 0;
+    padding-left: 0;
 
     & dt {
       clip: rect(0 0 0 0); 
@@ -131,10 +133,13 @@
 
     & dd a {
       color: var(--pl-color-fg-subtle);
-      text-decoration: none;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      font-weight: 400;
 
       &:hover {
-        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-decoration-style: solid;
       }
     }
   }

@@ -1,6 +1,4 @@
 :root {
-  --pl-viewport-margins-max-width: 1280px;
-
   @media (min-width: 720px) {
     --pl-viewport-margins-gutter: 3rem;
   }
@@ -19,8 +17,6 @@ pennlibs-footer {
 
 pennlibs-hero {
   display: block;
-  --pl-hero-height: clamp(32rem, 62vh, 62vh);
-  min-height: var(--pl-hero-height);
 }
 
 *:focus {

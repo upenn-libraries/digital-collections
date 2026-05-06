@@ -1,22 +1,78 @@
 .dc-home-sections {
   & .dc-collections {
-    display: flex;
-    gap: var(--pl-space-2xl) var(--pl-space-xl);
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--pl-space-m);
 
-  & h2::after {
-    background: #EEAA64;
-  }
+    grid-template-columns: repeat(2, 1fr);
 
-  & section:nth-child(2) {
-    background: var(--pl-color-bg-subtle-brand);
-  }
-}
+    & .dc-collections__card {
+      display: none;
+    }
 
-@media (min-width: 720px) {
-  .dc-home-sections li {
-    max-width: 18rem;
+    & .dc-collections__card:nth-child(-n+4) {
+      display: block;
+    }
+
+    @media (min-width: 520px) {
+      grid-template-columns: repeat(3, 1fr);
+
+      & .dc-collections__card:nth-child(-n+6) {
+        display: block;
+      }
+
+       & .dc-collections__card:nth-child(n+7) {
+        display: none;
+      }
+    }
+
+    @media (min-width: 720px) {
+      grid-template-columns: repeat(4, 1fr);
+
+      & .dc-collections__card:nth-child(-n+8) {
+        display: block;
+      }
+
+       & .dc-collections__card:nth-child(n+9) {
+        display: none;
+      }
+    }
+
+    @media (min-width: 1000px) {
+      grid-template-columns: repeat(5, 1fr);
+
+      & .dc-collections__card:nth-child(-n+5) {
+        display: block;
+      }
+
+      & .dc-collections__card:nth-child(n+6) {
+        display: none;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(6, 1fr);
+
+      & .dc-collections__card:nth-child(-n+6) {
+        display: block;
+      }
+
+      & .dc-collections__card:nth-child(n+7) {
+        display: none;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      grid-template-columns: repeat(7, 1fr);
+
+      & .dc-collections__card:nth-child(-n+7) {
+        display: block;
+      }
+
+      & .dc-collections__card:nth-child(n+8) {
+        display: none;
+      }
+    }
   }
 }

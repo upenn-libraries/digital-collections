@@ -2,8 +2,7 @@
   service-name="<%= t('header.service_name') %>"
   theme="<%= theme %>"
 >
+  <div slot="end" class="dc-header-search">
+    <%= search_bar %>
+  </div>
 </pennlibs-header>
-
-<div class="pb-2">
-  <%= search_bar %>
-</div>
