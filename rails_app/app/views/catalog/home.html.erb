@@ -36,7 +36,7 @@
       </p>
     </div>
 
-    <div class="pl-viewport-margins dc-max-width-full">
+    <div class="pl-viewport-margins">
       <%= render(CollectionListComponent.new(heading_tag: :h3)) do |component| %>
         <% component.with_collections(Settings.collections.map(&:to_h).sample(10)) %>
       <% end %>
