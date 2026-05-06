@@ -129,8 +129,8 @@ class CatalogController < ApplicationController
                                                      limit: FACET_LIMIT
 
     # "Index"/results page fields
-    config.add_index_field :alternate_title, label: I18n.t('fields.alternate_title'), gallery: false,
-                                             accessor: :alternate_title
+    config.add_index_field :parallel_title, label: I18n.t('fields.results.parallel_title'), gallery: false,
+                                             accessor: :parallel_title
     config.add_index_field :physical_format_ssim, label: I18n.t('fields.results.form'), link_to_facet: true,
                                                   gallery: true
     config.add_index_field :name_with_role_tesim, label: I18n.t('fields.results.creator'), limit: 3,

@@ -19,7 +19,7 @@ class SolrDocument
   end
 
   # @return [Array]
-  def alternate_title
+  def parallel_title
     fetch(:title_tesim, []).drop(1)
   end
 
