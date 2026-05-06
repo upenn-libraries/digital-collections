@@ -59,7 +59,7 @@ describe 'Catalog Index Page', :solr do
 
     it 'links the title to the show page' do
       within('#documents .document-position-1 h3.document-title-heading') do
-        expect(page).to have_link(solr_document['title_tesim'].to_sentence, href: solr_document_path(solr_document))
+        expect(page).to have_link(solr_document.main_title, href: solr_document_path(solr_document))
       end
     end
 
@@ -101,7 +101,7 @@ describe 'Catalog Index Page', :solr do
 
       it 'links title to the show page' do
         within('ol.documents-gallery li.document-position-1 h3.document-title-heading') do
-          expect(page).to have_link(solr_document['title_tesim'].to_sentence, href: solr_document_path(solr_document))
+          expect(page).to have_link(solr_document.main_title, href: solr_document_path(solr_document))
         end
       end
 

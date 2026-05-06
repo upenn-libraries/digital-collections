@@ -1,5 +1,6 @@
 en:
   fields:
+    alternate_title: 'Parallel Title'
     facets:
       collection: 'Collection'
       form: 'Form'

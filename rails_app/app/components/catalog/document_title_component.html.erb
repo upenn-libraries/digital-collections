@@ -1,0 +1,10 @@
+<%# Copied template from Blacklight v9.0 to add display of alternate (parallel) title field %>
+<header class="documentHeader row">
+<h1>
+  <span itemprop="name"><%= @presenter.document.main_title %></span>
+    <% @presenter.document.alternate_title.each do |alt_title| %>
+      <br>
+      <span><%= alt_title %></span>
+    <% end %>
+</h1>
+</header>
