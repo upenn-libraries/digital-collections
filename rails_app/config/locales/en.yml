@@ -50,8 +50,8 @@ en:
     hero_subheading: 'A growing selection of originals from across our libraries, archives, and partners. Find photographs, manuscripts, books, maps, posters, and more.'
     collections:
       heading: 'Collections'
-      description: 'Explore our many collections. Each focuses on a topic, person, place, or era. Zoom in on one or search across them all.'
-      explore: 'All collections A to Z'
+      description: "We organize items into collections by topic, person, place, or era. Here's a sample. Zoom in on any one to explore."
+      explore: 'Collections A to Z'
   collections:
     page_title: "Collections A to Z · %{application_name}"
     header: 'Collections A to Z'
