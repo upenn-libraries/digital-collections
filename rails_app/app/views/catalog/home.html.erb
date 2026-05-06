@@ -32,7 +32,7 @@
         <%= t("home.collections.heading") %>
       </h2>
       <p class="pl-line-length pl-margin-b-xl dc-home-lede">
-        <%= t("home.collections.description") %>
+        <%= t("home.collections.description_html", collections_url: collections_path) %>
       </p>
     </div>
 
@@ -40,10 +40,6 @@
       <%= render(CollectionListComponent.new(heading_tag: :h3)) do |component| %>
         <% component.with_collections(Settings.collections.map(&:to_h).sample(10)) %>
       <% end %>
-    </div>
-
-    <div class="pl-viewport-margins pl-margin-t-2xl">
-      <%= link_to t("home.collections.explore"), collections_path %>
     </div>
   </section>
 </div>
