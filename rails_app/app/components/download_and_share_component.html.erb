@@ -8,8 +8,12 @@
             </button>
           </div>
           <div class="modal-body">
-            <%= asset_download_list %>
-            <%= item_derivatives %>
+            <div class="accordion" id="download-and-share-accordion">
+              <%= persistent_url %>
+              <%= file_download %>
+              <%= pdf_download %>
+              <%= iiif_manifest %>
+            </div>
           </div>
         </div>
       </div>
