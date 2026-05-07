@@ -10,6 +10,7 @@ en:
       resource_type: 'Resource Type'
       geographic_subject: 'Geographic Subject'
     results:
+      parallel_title: 'Parallel Title'
       form: 'Form'
       creator: 'Creator'
       collection: 'Collection'

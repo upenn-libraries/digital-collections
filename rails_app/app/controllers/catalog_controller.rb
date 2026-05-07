@@ -46,7 +46,7 @@ class CatalogController < ApplicationController
     # config.per_page = [10,20,50,100]
 
     # solr field configuration for search results/index views
-    config.index.title_field = 'title_tesim'
+    config.index.title_field = Blacklight::Configuration::DisplayField.new(field: :title_tesim, accessor: :main_title)
     # config.index.display_type_field = 'format'
     config.index.thumbnail_method = :thumbnail
 
@@ -62,6 +62,7 @@ class CatalogController < ApplicationController
     config.index.constraints_component = Catalog::ConstraintsComponent
     config.index.search_bar_component = Catalog::SearchBarComponent
     config.index.document_metadata_component = Catalog::DocumentMetadataComponent
+    config.show.document_title_component = Catalog::DocumentTitleComponent
     # config.index.document_actions.delete(:bookmark)
 
     config.per_page = [10, 25, 50, 100]
@@ -128,6 +129,8 @@ class CatalogController < ApplicationController
                                                      limit: FACET_LIMIT
 
     # "Index"/results page fields
+    config.add_index_field :parallel_title, label: I18n.t('fields.results.parallel_title'), gallery: false,
+                                            accessor: :parallel_title
     config.add_index_field :physical_format_ssim, label: I18n.t('fields.results.form'), link_to_facet: true,
                                                   gallery: true
     config.add_index_field :name_with_role_tesim, label: I18n.t('fields.results.creator'), limit: 3,
