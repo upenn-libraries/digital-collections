@@ -148,7 +148,6 @@ rspec_app_test:
     - name: ghcr.io/browserless/chromium:latest
       alias: chrome
       variables:
-        HEALTHCHECK_TCP_PORT: "3333"
         PORT: 3333
         CONCURRENT: 1
         TIMEOUT: 1200000
