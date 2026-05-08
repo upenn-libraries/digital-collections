@@ -1,0 +1,17 @@
+<% if description.present? %>
+  <%= tag.meta name: 'description', content: description %>
+<% end %>
+<%= tag.meta property: 'og:site_name', content: site_name %>
+<%= tag.meta property: 'og:type', content: type %>
+<%= tag.meta property: 'og:title', content: title %>
+<% if description.present? %>
+  <%= tag.meta property: 'og:description', content: description %>
+<% end %>
+<% if url.present? %>
+  <%= tag.meta property: 'og:url', content: url %>
+  <%= tag.link rel: 'canonical', href: url %>
+<% end %>
+<% if image_url.present? %>
+  <%= tag.meta property: 'og:image', content: image_url %>
+  <%= tag.meta property: 'og:image:type', content: 'image/jpeg' %>
+<% end %>
