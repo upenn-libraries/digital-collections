@@ -13,6 +13,16 @@ class SolrDocument
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
 
+  # @return [Array]
+  def main_title
+    fetch(:title_tesim, []).slice(0)
+  end
+
+  # @return [Array]
+  def parallel_title
+    fetch(:title_tesim, []).drop(1)
+  end
+
   # Returns true if preview is available
   #
   # @return [Boolean]

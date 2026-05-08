@@ -74,6 +74,7 @@ const options = {
         renderAnnotation: false,
         defaultTab: 'manifest-about'
     },
+    customLoadingComponent: () => null,
 };
 
 const ASSET_ID_KEY = 'asset-id';

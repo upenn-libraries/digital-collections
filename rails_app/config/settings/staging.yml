@@ -20,3 +20,118 @@ digital_repository:
       items:
         path: /iiif/items
   sample_records:
+collections:
+  - name: Allen J. Winigrad Photographs of Performing Artists, 1973-1989 (University of Pennsylvania)
+    representative_item: 827e7718-a207-4638-b710-00162d9d529e
+  - name: Alumni Association of the Philadelphia General Hospital School of Nursing Image Collection, Center for the Study of the History of Nursing, School of Nursing, University of Pennsylvania
+    representative_item: 8ebeca09-132b-4d8c-ab3f-ea80087948df
+  - name: American Institute of Indian Studies (AIIS) Image Collection
+    representative_item: d38f97a4-24c0-46f4-8c64-e1f4fc0987df
+  - name: Arnold and Deanne Kaplan Collection of Early American Judaica (University of Pennsylvania)
+    representative_item: 95ea3261-2fe1-4ed1-9d45-b27de01d4bb4
+  - name: Arnold and Deanne Kaplan Collection of Modern American Judaica (University of Pennsylvania)
+    representative_item: 1b2b0960-cf1a-42b3-b37c-745709cdcbfb
+  - name: Arnold and Deanne Kaplan Isaac Leeser Collection
+    representative_item: 9b991d13-c86d-4deb-a782-53770a36ab30
+  - name: Arthur Henry Papers (University of Pennsylvania)
+    representative_item: bc838875-7c04-44ba-8167-815a6d06d423
+  - name: Arthur Tress Collection of Japanese Illustrated Books (University of Pennsylvania)
+    representative_item: 056c3f29-0a35-46cb-b603-7a1adaee653e
+  - name: Benjamin Franklin Papers (University of Pennsylvania)
+    representative_item: 25b7b592-b28b-468c-a565-61206939be55
+  - name: Bibliotheca Philadelphiensis
+    representative_item: fc3b2df6-56a3-49b1-b7bc-4a378ccd71a4
+  - name: Cairo Genizah Collection (University of Pennsylvania. Center for Advanced Judaic Studies. Library)
+    representative_item: 141f7a9b-9886-4b75-9051-3e8278130850
+  - name: Collection of Indic Manuscripts
+    representative_item: 399ea373-8655-40e6-bdbb-764c34761bab
+  - name: Corporate reports online
+    representative_item: null
+  - name: Curtis Collection of Franklin Imprints (University of Pennsylvania)
+    representative_item: 616f6e5e-1258-4a9e-b385-f0d7958afed3
+  - name: Early Soviet Posters Collection
+    representative_item: 541583b3-ad1d-4f45-ace6-e356907d9487
+  - name: Edgar Fahs Smith Image Collection (University of Pennsylvania)
+    representative_item: b1dc0412-76e8-4980-ba0c-d0cef05490d1
+  - name: Etta Winigrad papers (University of Pennsylvania)
+    representative_item: 21a4d2a7-dfc4-4ae3-bc0c-b131a0ca46f2
+  - name: Eugene Ormandy Collection of Photographs, 1880-1992 (University of Pennsylvania)
+    representative_item: d1cdbca7-0620-4440-8eb8-3e755c3a3906
+  - name: Fairman Rogers Collection (University of Pennsylvania)
+    representative_item: daa9248e-7e8c-41d6-9821-a49d6d39eb25
+  - name: Furness Theatrical Image Collection (University of Pennsylvania)
+    representative_item: 3502f2c9-3bc4-4718-b1a9-9db033bc22bf
+  - name: Gordon Block Collection of Lincolniana, 1760-1963
+    representative_item: 9d0e28ac-d4b1-4869-9eb2-5fe3d53a875a
+  - name: Gratz-Mandell Jewish Music Collection (University of Pennsylvania)
+    representative_item: e7ad4e4d-407c-401c-8e38-fba069af8615
+  - name: Hale Signers Collection
+    representative_item: 230db824-45bb-40d6-b778-c91520694089
+  - name: Harrisburg Car Manufacturing Co. Photographs (University of Pennsylvania)
+    representative_item: 39d8d709-5404-469b-94d6-b37f00666f21
+  - name: Helen Kate Furness Free Library
+    representative_item: d3500f71-2663-4c5e-b186-77b5c5aa1891
+  - name: Hopkinson collection of music
+    representative_item: 6bee35e6-eec0-4fd1-b40c-63b1db9c7ff5
+  - name: Isaac Leeser Collection at the Herbert D. Katz Center for Advanced Judaic Studies (University of Pennsylvania)
+    representative_item: fde2bdbc-86c5-4c30-a2cb-b6d6f8a6fcd4
+  - name: Keffer Collection of Sheet Music (University of Pennsylvania)
+    representative_item: 0689551b-a0ec-47f1-af99-f2b25b7d4f96
+  - name: Kurt Stein collection of Francis Johnson sheet music
+    representative_item: 973ab97d-295c-4449-8dc8-82251fbcdd88
+  - name: Laurence and Ayşe Gürsan-Salzmann Collection
+    representative_item: ea9829f8-aca0-4129-95d0-82e6911614f3
+  - name: Lawrence J. Schoenberg Collection (University of Pennsylvania)
+    representative_item: 0032b909-b5ad-4aba-8a84-76253fe848c2
+  - name: Lenkin Family Collection of Photography (University of Pennsylvania)
+    representative_item: 573f559e-0f4f-4acb-bc46-cefc17068cf0
+  - name: Lord and Lady Palmer Collection
+    representative_item: 4e013938-59db-4da8-bbc4-560ee3471277
+  - name: 'Mahler-Werfel Papers: Photographs, 1888-1984 (University of Pennsylvania)'
+    representative_item: 58b8c066-f03e-4781-bfb5-e65f51f8c1ce
+  - name: Marian Anderson Collection of Photographs, 1898-1992 (University of Pennsylvania)
+    representative_item: db4e1d14-4c6c-450b-9676-0fb3bc66560d
+  - name: Marian Anderson Papers (University of Pennsylvania)
+    representative_item: 04e2cd2c-c7e7-43c3-aa9b-7ac10ab609f4
+  - name: Mary Binney Wheeler Image Collection
+    representative_item: ba4b18d7-5453-4e24-8b47-78bf2ea25f38
+  - name: Moldovan Family Digital Holy Land Map Collection
+    representative_item: e8b8b901-5dd2-45f5-af7f-98d0be13524c
+  - name: Penn in the Age of Franklin (University of Pennsylvania)
+    representative_item: bbcb42c2-6b48-4adf-8c7c-bb65c4b7a2be
+  - name: Philadelphia Neighborhoods Project Collection (University of Pennsylvania)
+    representative_item: e8d40843-ca48-469e-8b3a-54c595ff864f
+  - name: Philadelphia Society for Promoting Agriculture Records
+    representative_item: 5ce73ef2-dbe7-4582-898d-a36ab7b5a29a
+  - name: Philip H. Ward Collection of Theatrical Images, 1856-1910, Ms. Coll. 331
+    representative_item: a7bceb2e-76a5-4ebd-b24f-b0c60b381236
+  - name: Photographs from the American Poetry Review Records, 1971-1998 (University of Pennsylvania)
+    representative_item: d724dca7-03eb-4030-90bf-c2f00c372150
+  - name: Photographs in the Theodore Dreiser Papers (University of Pennsylvania)
+    representative_item: adcfbb32-2b9c-43f0-b9ac-c8ec3ac02499
+  - name: Photographs in the W. A. Swanberg Papers (University of Pennsylvania)
+    representative_item: d9855e96-2482-4be0-bc3e-66540ff419ca
+  - name: Playbill and Program Collection (University of Pennsylvania)
+    representative_item: a89ad910-45a5-47a2-b642-23dc1f6f65b0
+  - name: Postcards relating to Indo-Caribbeans
+    representative_item: afb336d1-405f-4ed8-97f0-27dfc9b7af6b
+  - name: Sabato Morais Collection (University of Pennsylvania)
+    representative_item: ad05f96d-8078-42f2-add0-bdafb8068c71
+  - name: South Asia Art Archive
+    representative_item: 3071bd2b-d4ae-471f-ad28-f71f3478caf7
+  - name: Southwell family papers on Ireland
+    representative_item: 5d72d044-b6ac-42e1-bdad-5840140df56c
+  - name: Theodore Dreiser Papers (University of Pennsylvania)
+    representative_item: a092eee3-e796-463e-b3bd-2692cc808342
+  - name: University Archives Image Collection (University of Pennsylvania)
+    representative_item: 27c54bff-7453-4d4a-8c57-4098f6b7477c
+  - name: University of Pennsylvania Medical Dissertation Digital Library
+    representative_item: 2f130805-d43b-47f0-b944-55143c88238e
+  - name: University of Pennsylvania Museum of Archaeology and Anthropology Collection
+    representative_item: a2eb928b-c10d-435a-8148-be669f70425f
+  - name: William Smith Papers (University Archives)
+    representative_item: b295438a-c159-4e42-9914-db43c62f84ac
+  - name: World War I Pamphlet Collection (University of Pennsylvania)
+    representative_item: 633e8164-4883-4891-ac45-e6261e764d5a
+  - name: World War I printed media and art collection
+    representative_item: a87c133a-975a-4a86-8be3-b828152fc1a4

@@ -13,7 +13,6 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  border-radius: var(--pl-border-radius-subtle);
   height: 500px;
 }
 

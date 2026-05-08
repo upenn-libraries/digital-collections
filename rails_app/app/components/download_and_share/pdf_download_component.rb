@@ -1,21 +1,18 @@
 # frozen_string_literal: true
 
 module DownloadAndShare
-  # Renders PDF and IIIF manifest links
-  class ItemDerivativesAccordionComponent < ViewComponent::Base
+  # Renders PDF download link
+  class PDFDownloadComponent < ViewComponent::Base
     def initialize(document:)
       @document = document
     end
 
-    # @return [Boolean]
     def render?
-      @document.manifest? || @document.pdf?
+      @document.pdf?
     end
 
-    private
-
     # @return [String, nil]
-    def iiif_image_count_text
+    def header_text
       count = @document.iiif_image_count
       return unless count.positive?
 

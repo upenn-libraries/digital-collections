@@ -1,6 +1,14 @@
 .show-document {
   & .iiif-viewer-container {
     margin-top: var(--pl-space-m);
+
+    /* Below the viewer's natural max width (1280px), break out of the
+       .container gutter so the viewer/skeleton goes edge-to-edge. The
+       calc against the gutter token keeps this in sync if the design
+       system ever tweaks the gutter (1em < 768px, 3em ≥ 768px). */
+    @media (max-width: 1280px) {
+      margin-inline: calc(-1 * var(--pl-viewport-margins-gutter, 1em));
+    }
   }
 
   & .clover-viewer-painting > div[style] {

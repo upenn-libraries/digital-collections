@@ -10,7 +10,7 @@ en:
     search:
       form:
         search:
-          placeholder: 'Search using keywords, ex: dancing turtle'
+          placeholder: 'Search the collections'
       facets:
         title: 'Filter results'
         filter: 'Filter'
