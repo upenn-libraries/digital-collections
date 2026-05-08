@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   concern :exportable, Blacklight::Routes::Exportable.new
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
 
+  mount BlacklightDynamicSitemap::Engine => '/'
+
   root to: 'catalog#home'
 
   resource :catalog, only: [], as: 'catalog', path: '/items', controller: 'catalog' do
