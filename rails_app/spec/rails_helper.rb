@@ -45,10 +45,18 @@ RSpec.configure do |config|
   # context 'my context', :solr do; end; uses hook for all examples in context
   # describe '#my_method', :solr do; end; uses hook for all examples in describe
   # it 'my spec', :solr do; end; uses hook for this example
-  config.around(:example, :solr) do |example|
-    SolrTools.clear_collection unless SolrTools.collection_empty? # just in case
-    example.run # run the actual example
-    SolrTools.clear_collection # clean up
+  # config.around(:example, :solr) do |example|
+  #   SolrTools.clear_collection unless SolrTools.collection_empty? # just in case
+  #   example.run # run the actual example
+  #   SolrTools.clear_collection # clean up
+  # end
+
+  config.before do
+    SolrTools.clear_collection
+  end
+
+  config.after(:suite) do
+    SolrTools.clear_collection
   end
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
