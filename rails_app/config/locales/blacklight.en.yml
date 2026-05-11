@@ -12,6 +12,7 @@ en:
         search:
           placeholder: 'Search the collections'
       facets:
+        missing: '[Not specified]'
         title: 'Filter results'
         filter: 'Filter'
         page: 'Page %{page}'
