@@ -1,1 +1,13 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+# See http://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+#
+User-agent: *
+Crawl-delay: 5
+
+Sitemap: https://digitalcollections.library.upenn.edu/sitemap
+
+Disallow: /*?*
+Disallow: /items/facet
+Disallow: /items*f%5B
+Disallow: /items*f[
+Disallow: /items.atom
+Disallow: /items.rss
