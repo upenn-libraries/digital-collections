@@ -32,7 +32,7 @@ module MetaTagsHelper
     {
       title: render_page_title.to_s.strip,
       description: item_description(document),
-      url: canonical_url,
+      url: canonical_url(document),
       type: 'article',
       image_url: share_preview_url(document)
     }
@@ -49,7 +49,7 @@ module MetaTagsHelper
     raw&.truncate(META_DESCRIPTION_LENGTH)
   end
 
-  def canonical_url
-    request.original_url
+  def canonical_url(document = nil)
+    document ? solr_document_url(document) : request.original_url
   end
 end
