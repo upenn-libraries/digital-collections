@@ -7,11 +7,13 @@ describe 'Page meta tags' do
     before { get '/' }
 
     it 'renders the standard meta tags but no og:image' do
-      expect(response.body).to include '<meta name="description"'
-      expect(response.body).to include 'property="og:title"'
-      expect(response.body).to include 'property="og:type"'
-      expect(response.body).to include 'property="og:site_name"'
-      expect(response.body).not_to include 'property="og:image"'
+      aggregate_failures do
+        expect(response.body).to include '<meta name="description"'
+        expect(response.body).to include 'property="og:title"'
+        expect(response.body).to include 'property="og:type"'
+        expect(response.body).to include 'property="og:site_name"'
+        expect(response.body).not_to include 'property="og:image"'
+      end
     end
 
     it 'strips whitespace captured by content_for from og:title' do

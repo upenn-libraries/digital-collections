@@ -8,10 +8,11 @@ module MetaTagsHelper
   # ceiling for Google search snippets and Open Graph previews.
   META_DESCRIPTION_LENGTH = 160
 
+  # @param document [SolrDocument, nil] the show-page document, when present
   # @return [Hash]
-  def meta_tag_attributes
+  def meta_tag_attributes(document: nil)
     case "#{controller_path}##{action_name}"
-    when 'catalog#show' then item_meta_attributes
+    when 'catalog#show' then item_meta_attributes(document)
     else page_meta_attributes(description: I18n.t('home.hero_subheading'))
     end
   end
@@ -27,13 +28,13 @@ module MetaTagsHelper
     }
   end
 
-  def item_meta_attributes
+  def item_meta_attributes(document)
     {
       title: render_page_title.to_s.strip,
-      description: item_description(@document),
+      description: item_description(document),
       url: canonical_url,
       type: 'article',
-      image_url: share_preview_url(@document)
+      image_url: share_preview_url(document)
     }
   end
 
