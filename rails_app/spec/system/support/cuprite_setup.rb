@@ -18,7 +18,8 @@ Capybara.register_driver(:better_cuprite) do |app|
       # timeout: 30, # How long to wait for a response from browser before raising a pending connection error
       url_blacklist: [/typekit/, /favicon/, /footer-bg/], # block some frivolous requests
       window_size: [1600, 1200],
-      ws_url: ENV.fetch('CHROME_URL', 'ws://localhost:3333')
+      ws_url: ENV.fetch('CHROME_URL', 'ws://localhost:3333'),
+      pending_connection_errors: true
     }
   )
 end
