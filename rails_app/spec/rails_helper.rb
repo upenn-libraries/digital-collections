@@ -36,6 +36,7 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+  config.include ViewComponent::TestHelpers, type: :component
   config.include FactoryBot::Syntax::Methods
   config.include FixtureHelpers
 
