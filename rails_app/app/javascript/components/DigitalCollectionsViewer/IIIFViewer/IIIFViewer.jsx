@@ -3,34 +3,29 @@ import React from "react";
 // Clover-IIIF Viewer
 import Viewer from "@samvera/clover-iiif/viewer";
 
-// Table of Contents components
+// Table of Contents panel
 import EntriesPanel from "./EntriesPanel";
-import MoreInfoButton from "./MoreInfoButton";
 
-// Viewer asset download component
+// Asset download button
 import DownloadButton from "./DownloadButton";
 
-const contentsPlugin = {
-    id: "toc-list",
-    imageViewer: {
-        controls: {
-            component: MoreInfoButton,
+const plugins = [
+    {
+        id: "toc-list",
+        informationPanel: {
+            component: EntriesPanel,
+            label: {none: ["Table of contents"]},
+        }
+    },
+    {
+        id: "download-button",
+        imageViewer: {
+            controls: {
+                component: DownloadButton,
+            },
         },
     },
-    informationPanel: {
-        component: EntriesPanel,
-        label: { none: ["Table of contents"] },
-    },
-};
-
-const downloadPlugin = {
-    id: "download-button",
-    imageViewer: {
-        controls: {
-            component: DownloadButton,
-        },
-    },
-};
+];
 
 const customTheme = {
     colors: {
@@ -64,18 +59,20 @@ const customTheme = {
     },
 };
 
-const options = {
+// Viewer options.
+// If structures (table of contents) present, display information panel toggle.
+const createOptions = (hasStructures) => ({
     showTitle: false,
     showDownload: false,
     showIIIFBadge: false,
     informationPanel: {
         open: false,
-        renderToggle: false,
+        renderToggle: hasStructures,
         renderAnnotation: false,
         defaultTab: 'manifest-about'
     },
     customLoadingComponent: () => null,
-};
+});
 
 const ASSET_ID_KEY = 'asset-id';
 
@@ -107,7 +104,7 @@ const buildIIIFContentState = (manifest, assetId) => {
 }
 
 export default function IIIFViewer({ manifest }) {
-    const plugins = manifest.structures?.length > 0 ? [downloadPlugin, contentsPlugin] : [downloadPlugin];
+    const options = createOptions(manifest.structures?.length > 0);
 
     const urlAssetId = new URL(window.location.href).searchParams.get(ASSET_ID_KEY);
 
