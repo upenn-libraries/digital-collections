@@ -51,6 +51,9 @@ en:
     collections:
       heading: 'Collections'
       description_html: 'We organize items into collections by topic, person, place, or era. Here''s a sample. Zoom in on one to explore, or see <a href="%{collections_url}">all collections A to Z</a>.'
+    formats:
+      heading: "What you'll find"
+      description_html: 'We also describe items by thier form, like books, letters, and photographs. Pick from the sample here to start a search, or %{formats_link}.'
   collections:
     page_title: "Collections A to Z · %{application_name}"
     header: 'Collections A to Z'

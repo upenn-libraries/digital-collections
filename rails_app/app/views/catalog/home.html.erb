@@ -42,4 +42,40 @@
       <% end %>
     </div>
   </section>
+
+  <section class="pl-padding-y-2xl dc-home-section-bg-subtle">
+    <div class="pl-viewport-margins">
+      <h2 class="pl-margin-b-m">
+        <%= t("home.formats.heading") %>
+      </h2>
+      <p class="pl-line-length pl-margin-b-xl dc-home-lede">
+        <%= t("home.formats.description_html", formats_link: link_to("pick from all forms", search_facet_path(id: 'physical_format_ssim'), data: { blacklight_modal: 'trigger', turbo: false })) %>
+      </p>
+    </div>
+
+    <div class="pl-viewport-margins">
+      <ol class="dc-collections">
+        <% [
+          { name: "Photographs",      representative_item: "35745ffb-54ad-4156-995d-462351a2dc00" },
+          { name: "Manuscripts",      representative_item: "91227c31-529a-425c-9f76-e0f6328143d5" },
+          { name: "Books",            representative_item: "f7272be7-3a24-4f21-9b92-008520b020e8" },
+          { name: "Letters",          representative_item: "8d800ccb-201f-4cab-bd71-cb5cd46cc3d7" },
+          { name: "Posters",          representative_item: "95761385-e0eb-43f7-944a-893c36df94d9" },
+          { name: "Periodicals",      representative_item: "2aab1f29-fa91-46b4-afa0-fbe708674b8e" },
+          { name: "Sound recordings", representative_item: nil }
+        ].each do |format| %>
+          <li class="dc-collections__card">
+            <% if format[:representative_item] %>
+              <img src="<%= DigitalRepository.new.item_preview_url(format[:representative_item], 'size=350,350') %>" class="dc-collections__card-img">
+            <% else %>
+              <pennlibs-fallback-img class="dc-collections__card-img"></pennlibs-fallback-img>
+            <% end %>
+            <h3 class="dc-collections__card-heading">
+              <%= link_to format[:name], search_catalog_path(f: { physical_format_ssim: [format[:name]] }), class: "dc-collections__card-link" %>
+            </h3>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+  </section>
 </div>

@@ -1,3 +1,7 @@
+.dc-home-section-bg-subtle {
+  background: var(--pl-color-bg-subtle);
+}
+
 .dc-home-sections {
   & .dc-collections {
     list-style: none;
