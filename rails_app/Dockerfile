@@ -9,7 +9,7 @@ ARG BUNDLE_HOME=${PROJECT_ROOT}/vendor/bundle
 ARG IMAGE_NAME=ruby
 
 # Default Image tag
-ARG IMAGE_TAG=3.4.2-slim-bookworm
+ARG IMAGE_TAG=3.4.9-slim-bookworm
 
 # Default Node version
 ARG NODE_VERSION=24.5.0
