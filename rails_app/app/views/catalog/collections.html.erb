@@ -8,7 +8,7 @@
 </div>
 
 <div class="pl-viewport-margins dc-collections-container pl-margin-b-3xl">
-  <%= render(CollectionListComponent.new) do |component| %>
-    <% component.with_collections(Settings.collections.map(&:to_h)) %>
+  <%= render(FeaturedListComponent.new(facet: 'collection_ssim')) do |component| %>
+    <% component.with_facets(Settings.digital_repository.collections.map(&:to_h)) %>
   <% end %>
 </div>
