@@ -3,29 +3,36 @@ import React from "react";
 // Clover-IIIF Viewer
 import Viewer from "@samvera/clover-iiif/viewer";
 
-// Table of Contents panel
+// Table of Contents components
 import EntriesPanel from "./EntriesPanel";
+import MoreInfoButton from "./MoreInfoButton";
 
-// Asset download button
+// Viewer asset download component
 import DownloadButton from "./DownloadButton";
 
-const plugins = [
-    {
-        id: "toc-list",
-        informationPanel: {
-            component: EntriesPanel,
-            label: {none: ["Table of contents"]},
-        }
-    },
-    {
-        id: "download-button",
-        imageViewer: {
-            controls: {
-                component: DownloadButton,
-            },
+// Continuing to use custom Information Panel button because we like this position in the control
+// bar better than the default.
+const contentsPlugin = {
+    id: "toc-list",
+    imageViewer: {
+        controls: {
+            component: MoreInfoButton,
         },
     },
-];
+    informationPanel: {
+        component: EntriesPanel,
+        label: { none: ["Table of contents"] },
+    },
+};
+
+const downloadPlugin = {
+    id: "download-button",
+    imageViewer: {
+        controls: {
+            component: DownloadButton,
+        },
+    },
+};
 
 const customTheme = {
     colors: {
@@ -59,20 +66,18 @@ const customTheme = {
     },
 };
 
-// Viewer options.
-// If structures (table of contents) present, display information panel toggle.
-const createOptions = (hasStructures) => ({
+const options = {
     showTitle: false,
     showDownload: false,
     showIIIFBadge: false,
     informationPanel: {
         open: false,
-        renderToggle: hasStructures,
+        renderToggle: false,
         renderAnnotation: false,
         defaultTab: 'manifest-about'
     },
     customLoadingComponent: () => null,
-});
+};
 
 const ASSET_ID_KEY = 'asset-id';
 
@@ -104,7 +109,7 @@ const buildIIIFContentState = (manifest, assetId) => {
 }
 
 export default function IIIFViewer({ manifest }) {
-    const options = createOptions(manifest.structures?.length > 0);
+    const plugins = manifest.structures?.length > 0 ? [downloadPlugin, contentsPlugin] : [downloadPlugin];
 
     const urlAssetId = new URL(window.location.href).searchParams.get(ASSET_ID_KEY);
 
