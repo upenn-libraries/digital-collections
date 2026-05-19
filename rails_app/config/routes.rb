@@ -33,5 +33,5 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   # Render dynamic PWA manifest from app/views/pwa/*
-  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  get 'manifest' => 'rails/pwa#manifest', as: :pwa_manifest
 end
