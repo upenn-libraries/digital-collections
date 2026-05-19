@@ -1,22 +1,22 @@
 {
-  "name": "RailsApp",
+  "name": "<%= I18n.t('blacklight.application_name') %>",
+  "short_name": "<%= I18n.t('blacklight.application_name').split(' · ').first %>",
   "icons": [
     {
-      "src": "/icon.png",
+      "src": "<%= asset_path("pwa-192x192.png") %>",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "192x192"
     },
     {
-      "src": "/icon.png",
+      "src": "<%= asset_path("pwa-512x512.png") %>",
       "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "maskable"
+      "sizes": "512x512"
     }
   ],
   "start_url": "/",
-  "display": "standalone",
+  "display": "minimal-ui",
   "scope": "/",
-  "description": "RailsApp.",
-  "theme_color": "red",
-  "background_color": "red"
+  "description": "<%= I18n.t('home.hero_subheading') %>",
+  "theme_color": "#011F5B",
+  "background_color": "#011F5B"
 }
