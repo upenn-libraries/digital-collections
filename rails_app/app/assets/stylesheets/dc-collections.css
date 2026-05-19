@@ -2,7 +2,7 @@
   max-width: 100%;
 }
 
-.dc-collections {
+.dc-cards {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -12,19 +12,19 @@
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
 }
 
-.dc-collections__card {
+.dc-cards__card {
   position: relative;
   width: 100%;
 }
 
-.dc-collections__card-img {
+.dc-cards__card-img {
   box-shadow: rgba(140, 149, 159, 0.3) 0px 3px 6px 0px;
   border-radius: var(--pl-border-radius-subtle);
   width: 100%;
   border: solid 2px var(--pl-color-fg-default);
 }
 
-.dc-collections__card-heading {
+.dc-cards__card-heading {
   margin: 0;
   padding-top: var(--pl-space-s);
   font-size: var(--pl-font-size-m);
@@ -37,7 +37,7 @@
   }
 }
 
-.dc-collections__card-link {
+.dc-cards__card-link {
   text-decoration: none;
   font-weight: 400;
   color: var(--pl-color-fg-default);

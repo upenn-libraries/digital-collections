@@ -3,7 +3,7 @@
 }
 
 .dc-home-sections {
-  & .dc-collections {
+  & .dc-cards {
     list-style: none;
     padding: 0;
     display: grid;
@@ -11,22 +11,22 @@
 
     grid-template-columns: repeat(2, 1fr);
 
-    & .dc-collections__card {
+    & .dc-cards__card {
       display: none;
     }
 
-    & .dc-collections__card:nth-child(-n+4) {
+    & .dc-cards__card:nth-child(-n+4) {
       display: block;
     }
 
     @media (min-width: 520px) {
       grid-template-columns: repeat(3, 1fr);
 
-      & .dc-collections__card:nth-child(-n+6) {
+      & .dc-cards__card:nth-child(-n+6) {
         display: block;
       }
 
-       & .dc-collections__card:nth-child(n+7) {
+       & .dc-cards__card:nth-child(n+7) {
         display: none;
       }
     }
@@ -34,11 +34,11 @@
     @media (min-width: 720px) {
       grid-template-columns: repeat(4, 1fr);
 
-      & .dc-collections__card:nth-child(-n+8) {
+      & .dc-cards__card:nth-child(-n+8) {
         display: block;
       }
 
-       & .dc-collections__card:nth-child(n+9) {
+       & .dc-cards__card:nth-child(n+9) {
         display: none;
       }
     }
@@ -46,11 +46,11 @@
     @media (min-width: 1000px) {
       grid-template-columns: repeat(5, 1fr);
 
-      & .dc-collections__card:nth-child(-n+5) {
+      & .dc-cards__card:nth-child(-n+5) {
         display: block;
       }
 
-      & .dc-collections__card:nth-child(n+6) {
+      & .dc-cards__card:nth-child(n+6) {
         display: none;
       }
     }
@@ -58,11 +58,11 @@
     @media (min-width: 1200px) {
       grid-template-columns: repeat(6, 1fr);
 
-      & .dc-collections__card:nth-child(-n+6) {
+      & .dc-cards__card:nth-child(-n+6) {
         display: block;
       }
 
-      & .dc-collections__card:nth-child(n+7) {
+      & .dc-cards__card:nth-child(n+7) {
         display: none;
       }
     }
@@ -70,11 +70,11 @@
     @media (min-width: 1400px) {
       grid-template-columns: repeat(7, 1fr);
 
-      & .dc-collections__card:nth-child(-n+7) {
+      & .dc-cards__card:nth-child(-n+7) {
         display: block;
       }
 
-      & .dc-collections__card:nth-child(n+8) {
+      & .dc-cards__card:nth-child(n+8) {
         display: none;
       }
     }
