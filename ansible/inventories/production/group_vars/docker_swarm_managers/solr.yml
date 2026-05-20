@@ -1,0 +1,24 @@
+---
+solr_collections:
+  - name: digital-collections
+    configset: digital-collections
+    replicas: 3
+    shards: 3
+
+solr_configsets:
+  - name: "digital-collections"
+    path: "../rails_app/solr/conf/"
+
+solr_custom_env_variables:
+  SOLR_ADMIN_PASSWORD: "{{ digital_collections_vault_values.secret.solr_password }}"
+  SOLR_ADMIN_USERNAME: "{{ digital_collections_vault_values.secret.solr_username }}"
+  SOLR_ENABLE_AUTHENTICATION: "yes"
+  SOLR_HEAP: "10G"
+  SOLR_MODULES: "analysis-extras"
+
+solr_docker_image_tag: 9.8.1
+
+solr_limits_cpu: 8
+solr_limits_mem: "14G"
+
+solr_proxy_host: "digitalcollections.library.upenn.int"
