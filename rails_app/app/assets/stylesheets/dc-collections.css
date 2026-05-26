@@ -13,7 +13,7 @@
 }
 
 @media (min-width: 520px) {
-  .dc-cards {
+  .dc-collections {
     grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
   }
 }
