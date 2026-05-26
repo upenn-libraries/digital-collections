@@ -57,7 +57,7 @@ en:
   collections:
     page_title: "Collections A to Z · %{application_name}"
     header: 'Collections A to Z'
-    description: 'Browse all our digital collections in our A to Z list. Once you find a collection you like, you can search and use filters within it.'
+    description_html: 'Browse our digital collections from A to Z, or %{lookup_link}. Once you find a collection you like, you can search and use filters within it.'
   search:
     button:
       label: 'Find it'

@@ -9,7 +9,13 @@
 
   display: grid;
   gap: var(--pl-space-l) var(--pl-space-m);
-  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 520px) {
+  .dc-collections {
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  }
 }
 
 .dc-collections__card {
