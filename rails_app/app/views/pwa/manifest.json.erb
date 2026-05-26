@@ -1,6 +1,6 @@
 {
   "name": "<%= I18n.t('blacklight.application_name') %>",
-  "short_name": "<%= I18n.t('blacklight.application_name').split(' · ').first %>",
+  "short_name": "<%= I18n.t('blacklight.application_name').split(I18n.t('page_title.delimiter')).first %>",
   "icons": [
     {
       "src": "<%= asset_path("pwa-192x192.png") %>",
