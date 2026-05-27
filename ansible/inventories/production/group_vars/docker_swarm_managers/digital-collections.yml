@@ -5,8 +5,6 @@ digital_collections_image_name: "gitlab.library.upenn.edu/dld/digital-repository
 digital_collections_image_tag: "{{ image_tag }}"
 digital_collections_url: "digitalcollections.library.upenn.edu"
 
-digital_collections_replicas: 3
-
 digital_collections_versioned_secrets:
   digital_repository_token:
     value: "{{ digital_collections_vault_values.secret.digital_repository_token }}"
