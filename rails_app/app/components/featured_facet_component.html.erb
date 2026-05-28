@@ -1,0 +1,10 @@
+<li class="dc-cards__card">
+  <% if representative_item? %>
+    <img src="<%= preview_image_url %>" class="dc-cards__card-img">
+  <% else %>
+    <pennlibs-fallback-img class="dc-cards__card-img"></pennlibs-fallback-img>
+  <% end %>
+  <%= content_tag heading_tag, class: "dc-cards__card-heading" do %>
+    <%= link_to name, collection_facet_url, class: "dc-cards__card-link" %>
+  <% end %>
+</li>

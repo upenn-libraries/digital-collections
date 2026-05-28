@@ -37,8 +37,27 @@
     </div>
 
     <div class="pl-viewport-margins">
-      <%= render(CollectionListComponent.new(heading_tag: :h3)) do |component| %>
-        <% component.with_collections(Settings.collections.map(&:to_h).sample(10)) %>
+      <%# Displayed collections adjust to screen size. The most that are displayed are 8 (2 rows of 4) %>
+      <%= render(FeaturedListComponent.new(facet: 'collection_ssim', heading_tag: :h3)) do |component| %>
+        <% component.with_facets(Settings.digital_repository.collections.sample(8).map(&:to_h)) %>
+      <% end %>
+    </div>
+  </section>
+
+  <section class="pl-padding-y-2xl dc-home-section-bg-subtle">
+    <div class="pl-viewport-margins">
+      <h2 class="pl-margin-b-m">
+        <%= t("home.formats.heading") %>
+      </h2>
+      <p class="pl-line-length pl-margin-b-xl dc-home-lede">
+        <%= t("home.formats.description_html", formats_link: link_to("pick from all forms", search_facet_path(id: 'physical_format_ssim'), data: { blacklight_modal: 'trigger', turbo: false })) %>
+      </p>
+    </div>
+
+    <div class="pl-viewport-margins">
+      <%# Displayed formats adjust to screen size. The most that are displayed are 8 (2 rows of 4) %>
+      <%= render(FeaturedListComponent.new(facet: 'physical_format_ssim', heading_tag: :h3)) do |component| %>
+        <% component.with_facets(Settings.digital_repository.formats.sample(8).map(&:to_h)) %>
       <% end %>
     </div>
   </section>

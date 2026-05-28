@@ -209,7 +209,7 @@ class CatalogController < ApplicationController
   # about the digital collections
   def about; end
 
-  # Listing collections. Collections are configured in `Settings.collections`
+  # Listing collections. Collections are configured in `Settings.digital_repository.collections`
   def collections; end
 
   # redirect legacy show page urls to item show page
