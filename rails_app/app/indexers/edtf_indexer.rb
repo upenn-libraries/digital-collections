@@ -114,8 +114,8 @@ class EDTFIndexer
   # Note: The ruby-edtf gem does not parse dates like 1XXX properly.
   # TODO: Contribute this back to the gem.
   class Millennium < EDTF::Epoch
-    @duration = 1000.freeze
-    @format = '%01dxxx'.freeze
+    @duration = 1000
+    @format = '%01dxxx'
 
     public_class_method :current, :new
   end
