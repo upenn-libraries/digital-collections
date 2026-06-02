@@ -96,6 +96,12 @@ describe EDTFIndexer do
       it { is_expected.to eql 'between 1900 and 1999' }
     end
 
+    context 'with a known millennium' do
+      let(:value) { '1XXX' }
+
+      it { is_expected.to eql 'between 1000 and 1999' }
+    end
+
     context 'with a specific date with an unknown day' do
       let(:value) { '1922-10-1X' }
 
@@ -287,6 +293,12 @@ describe EDTFIndexer do
       let(:value) { '19XX' }
 
       it { is_expected.to match_array((1900..1999).map(&:to_s)) }
+    end
+
+    context 'with a known millennium' do
+      let(:value) { '1XXX' }
+
+      it { is_expected.to match_array((1000..1999).map(&:to_s)) }
     end
 
     context 'with a specific date with an unknown day' do
