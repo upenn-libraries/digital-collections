@@ -6,6 +6,7 @@ class EDTFIndexer
 
   DECADE_REGEX = /^\d\d\dX$/
   CENTURY_REGEX = /^\d\dXX$/
+  MILLENNIUM_REGEX = /^\dXXX$/
   NEGATIVE_YEAR_REGEX = /^-\d{4,5}$/
 
   # @param date [String] date encoded in EDTF
@@ -20,7 +21,7 @@ class EDTFIndexer
   # @return [String]
   def humanize
     case edtf
-    when EDTF::Century, EDTF::Decade
+    when EDTF::Epoch
       "between #{edtf.min.year} and #{edtf.max.year}"
     when DateTime # Date has time
       edtf.strftime(I18n.t('edtf.formats.time_precision_strftime_format'))
@@ -40,7 +41,7 @@ class EDTFIndexer
     case edtf
     when Date, DateTime, EDTF::Season
       [edtf.year.to_s]
-    when EDTF::Century, EDTF::Decade, EDTF::Set
+    when EDTF::Epoch, EDTF::Set
       edtf.to_a.map(&:year).map(&:to_s).uniq
     when EDTF::Interval
       years_for_interval(edtf)
@@ -86,6 +87,8 @@ class EDTFIndexer
       EDTF::Decade.new(date.tr('X', '0').to_i)
     when CENTURY_REGEX # Custom logic for '10XX' dates
       EDTF::Century.new(date.tr('X', '0').to_i)
+    when MILLENNIUM_REGEX # Custom logic for '1XXX' dates
+      Millennium.new(date.tr('X', '0').to_i)
     when NEGATIVE_YEAR_REGEX # Custom logic to create the appropriate object for negative years.
       Date.new(date.to_i).year_precision!
     else
@@ -104,5 +107,16 @@ class EDTFIndexer
     edtf_date = "#{edtf_date}unknown" if edtf_date.end_with?('/')
     edtf_date = edtf_date.gsub('..', 'open') if edtf_date.end_with?('/..')
     edtf_date
+  end
+
+  # Class to represent a Millennium as an EDTF::Epoch.
+  #
+  # Note: The ruby-edtf gem does not parse dates like 1XXX properly.
+  # TODO: Contribute this back to the gem.
+  class Millennium < EDTF::Epoch
+    @duration = 1000
+    @format = '%01dxxx'
+
+    public_class_method :current, :new
   end
 end
