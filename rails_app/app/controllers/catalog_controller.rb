@@ -42,9 +42,6 @@ class CatalogController < ApplicationController
     # config.document_solr_path = 'get'
     # config.json_solr_path = 'advanced'
 
-    # items to show per page, each number in the array represent another option to choose from.
-    # config.per_page = [10,20,50,100]
-
     # solr field configuration for search results/index views
     config.index.title_field = Blacklight::Configuration::DisplayField.new(field: :title_tesim, accessor: :main_title)
     # config.index.display_type_field = 'format'
@@ -65,7 +62,8 @@ class CatalogController < ApplicationController
     config.show.document_title_component = Catalog::DocumentTitleComponent
     # config.index.document_actions.delete(:bookmark)
 
-    config.per_page = [10, 25, 50, 100]
+    # items to show per page, each number in the array represent another option to choose from.
+    config.per_page = [25, 50, 100]
 
     config.add_results_collection_tool(:sort_widget)
     config.add_results_collection_tool(:per_page_widget)
