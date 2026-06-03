@@ -5,7 +5,7 @@
 
 .document-title-heading {
   font-size: var(--pl-font-size-xl);
-  margin-bottom: var(--pl-space-m);
+  margin-bottom: var(--pl-space-xs);
 }
 
 .documents-list {
@@ -16,7 +16,7 @@
   --bl-results-document-margin-top: var(--pl-space-2xl);
   --bl-results-document-padding-top: 0;
   display: grid;
-  gap: var(--pl-space-l);
+  gap: var(--pl-space-m);
   border: 0;
   grid-template-columns: 6rem 1fr;
 

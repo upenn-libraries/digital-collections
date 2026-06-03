@@ -1,0 +1,19 @@
+<%# Search-results title. Mirrors Blacklight v9 default template, but
+    wraps the title in pennlibs-expand-text so very long titles clamp. %>
+<header class="documentHeader row">
+  <%= content_tag @as, class: @classes do %>
+    <% before_titles.each do |t| %>
+      <%= t %>
+    <% end %>
+
+    <pennlibs-expand-text lines="4"><%= counter -%><%= title -%></pennlibs-expand-text>
+
+    <% after_titles.each do |t| %>
+      <%= t %>
+    <% end %>
+  <% end %>
+
+  <% actions.each do |action| %>
+    <%= action %>
+  <% end %>
+</header>
