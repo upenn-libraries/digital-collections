@@ -20,6 +20,15 @@
 
   <directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
 
+  <!-- Using commitWithin when adding new documents instead of using autocommits.
+
+      Because we are running Solr in a clustered mode we need to turn off softCommits when using commitWithin.
+      See: https://solr.apache.org/guide/solr/latest/configuration-guide/commits-transaction-logs.html#commit-within-a-time-period
+  -->
+  <commitWithin>
+    <softCommit>false</softCommit>
+  </commitWithin>
+
   <updateHandler class="solr.DirectUpdateHandler2">
     <updateLog>
       <str name="dir">${solr.core0.data.dir:}</str>
