@@ -60,6 +60,7 @@ class CatalogController < ApplicationController
     config.index.search_bar_component = Catalog::SearchBarComponent
     config.index.document_metadata_component = Catalog::DocumentMetadataComponent
     config.show.document_title_component = Catalog::DocumentTitleComponent
+    config.index.document_title_component = Catalog::IndexDocumentTitleComponent
     # config.index.document_actions.delete(:bookmark)
 
     # items to show per page, each number in the array represent another option to choose from.
