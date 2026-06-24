@@ -152,7 +152,7 @@ class CatalogController < ApplicationController
     config.add_show_field :publisher_tesim, label: I18n.t('fields.work.publisher')
     config.add_show_field :location_tesim, label: I18n.t('fields.work.related_place')
     config.add_show_field :note_tesim, label: I18n.t('fields.work.notes')
-    config.add_show_field :relation_tesim, label: I18n.t('fields.work.related_works')
+    config.add_show_field :relation_tesim, label: I18n.t('fields.work.related_works'), presenter: Catalog::RelationPresenter
     config.add_show_field :bibnumber_ssi, label: I18n.t('fields.work.bibnumber'), presenter: Catalog::BibnumberPresenter
     config.add_show_field :physical_location_tesim, label: I18n.t('fields.work.physical_location')
     config.add_show_field :provenance_tesim, label: I18n.t('fields.work.provenance')
