@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Catalog
-  # Transforms relation value into links, if a link is present and removes any redundant links that point to this item.
+  # If a link is present, transforms relation value into links and removes any redundant links that point to this item.
   # Custom Blacklight::FieldPresenter subclass based on Blacklight v9.0.0.
   class RelationPresenter < Catalog::FieldPresenter
     # @return [Array]
