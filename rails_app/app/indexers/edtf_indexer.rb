@@ -34,23 +34,33 @@ class EDTFIndexer
     end
   end
 
-  # Returns an array containing all the years represented by the EDTF date value.
+  # Returns an array containing all the years represented by the EDTF date value. Removes duplicates and
+  # any years in the future.
   #
-  # @return [Array]
+  # @return [Array<String>]
   def years
+    extract_years.uniq
+                 .reject { |i| i > Time.current.year }
+                 .map(&:to_s)
+  end
+
+  private
+
+  # Extract raw years from EDTF object without any cleanup.
+  #
+  # @return [Array<Integer>]
+  def extract_years
     case edtf
     when Date, DateTime, EDTF::Season
-      [edtf.year.to_s]
+      [edtf.year]
     when EDTF::Epoch, EDTF::Set
-      edtf.to_a.map(&:year).map(&:to_s).uniq
+      edtf.to_a.map(&:year)
     when EDTF::Interval
       years_for_interval(edtf)
     else
       []
     end
   end
-
-  private
 
   # Convert negative date to human readable format.
   #
@@ -65,14 +75,14 @@ class EDTFIndexer
   # Returns years for a EDTF::Interval. If the interval is unknown or open only returns the year specified because
   # otherwise, the intervals might be rather large and would make year search less helpful.
   #
-  # @param interval [EDFT::Interval]
-  # @return [Array] years
+  # @param interval [EDTF::Interval]
+  # @return [Array<Integer>] years
   def years_for_interval(interval)
     if interval.unknown? || interval.open?
       year = interval.to.is_a?(Date) ? interval.to.year : interval.from.year
-      Array.wrap(year.to_s)
+      Array.wrap(year)
     else
-      interval.to_a.map(&:year).map(&:to_s).uniq
+      interval.to_a.map(&:year)
     end
   end
 
