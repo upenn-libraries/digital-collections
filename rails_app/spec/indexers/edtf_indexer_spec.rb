@@ -398,5 +398,11 @@ describe EDTFIndexer do
 
       it { is_expected.to contain_exactly('1985') }
     end
+
+    context 'with years in the future' do
+      let(:value) { Time.current.next_year.year.to_s }
+
+      it { is_expected.to be_empty }
+    end
   end
 end
