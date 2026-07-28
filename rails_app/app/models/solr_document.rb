@@ -58,11 +58,21 @@ class SolrDocument
     digital_repository.item_manifest_url(id)
   end
 
+  THUMBNAIL_WIDTH = 300
+  THUMBNAIL_DENSITIES = [1, 1.5, 2].freeze
+
   # @return [String, nil]
   def thumbnail_url
     return nil unless preview?
 
-    digital_repository.item_preview_url(id, 'size=300,300')
+    preview_url_at_width THUMBNAIL_WIDTH
+  end
+
+  # @return [Hash{String => String}, nil]
+  def thumbnail_srcset
+    return nil unless preview?
+
+    THUMBNAIL_DENSITIES.to_h { |density| [preview_url_at_width((THUMBNAIL_WIDTH * density).round), "#{density}x"] }
   end
 
   # @return [Integer]
@@ -95,6 +105,12 @@ class SolrDocument
   end
 
   private
+
+  # @param width [Integer]
+  # @return [String]
+  def preview_url_at_width(width)
+    digital_repository.item_preview_url(id, "size=#{width},600")
+  end
 
   # @return [DigitalRepository]
   def digital_repository
