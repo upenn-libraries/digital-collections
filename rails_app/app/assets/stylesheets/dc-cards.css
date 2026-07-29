@@ -33,6 +33,7 @@
   font-family: var(--pl-font-family);
   line-height: 1.4;
   position: initial;
+  background-image: none;
 
   &::after {
     content: none;
