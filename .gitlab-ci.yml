@@ -19,7 +19,7 @@ include:
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
     inputs:
       job_image_tag: "28-dind"
-      docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
+      docker_build_args: "--build-arg NODE_VERSION=24.18.1 --build-arg YARN_VERSION=1.22.22"
       docker_build_context: "rails_app/"
       docker_build_secrets: "--secret id=sidekiq_pro_credentials,env=SIDEKIQ_PRO_CREDENTIALS"
       docker_target: "base"
@@ -31,7 +31,7 @@ include:
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
     inputs:
       job_image_tag: "28-dind"
-      docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
+      docker_build_args: "--build-arg NODE_VERSION=24.18.1 --build-arg YARN_VERSION=1.22.22"
       docker_build_context: "rails_app/"
       docker_build_secrets: "--secret id=sidekiq_pro_credentials,env=SIDEKIQ_PRO_CREDENTIALS"
       docker_target: "development"
@@ -45,7 +45,7 @@ include:
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
     inputs:
       job_image_tag: "28-dind"
-      docker_build_args: "--build-arg NODE_VERSION=24.5.0 --build-arg YARN_VERSION=1.22.22"
+      docker_build_args: "--build-arg NODE_VERSION=24.18.1 --build-arg YARN_VERSION=1.22.22"
       docker_build_context: "rails_app/"
       docker_build_secrets: "--secret id=sidekiq_pro_credentials,env=SIDEKIQ_PRO_CREDENTIALS"
       docker_target: "production"
