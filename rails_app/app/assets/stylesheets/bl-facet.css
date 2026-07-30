@@ -65,9 +65,7 @@
 }
 
 .more_facets {
-  padding-top: var(--pl-space-xs);
-  padding-left: var(--pl-space-m);
-  padding-right: var(--pl-space-m);
+  padding: var(--pl-space-s) var(--pl-space-m);
   margin-bottom: var(--pl-space-s);
 }
 
