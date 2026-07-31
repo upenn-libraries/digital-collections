@@ -47,6 +47,7 @@
   .dc-iiif-skeleton__thumbs > :nth-child(n+3) { display: none; }
 }
 
-.iiif-viewer-container:has(.clover-viewer) .dc-iiif-skeleton {
+.iiif-viewer-container:not([data-viewer-state='loading']) .dc-iiif-skeleton {
   display: none;
+  opacity: 0;
 }

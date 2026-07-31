@@ -25,6 +25,37 @@
   }
 }
 
+.iiif-viewer-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.iiif-viewer-container > * {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+.iiif-viewer-container > * {
+  transition:
+    opacity 150ms ease,
+    display 150ms allow-discrete;
+}
+
+.iiif-viewer-container:not([data-viewer-state='ready']) [data-clover-viewer-target='mount'] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.iiif-viewer-container[data-viewer-state='ready'] [data-clover-viewer-target='mount'] {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iiif-viewer-container > * {
+    transition: none;
+  }
+}
+
 .clover-viewer-information-panel {
   z-index: auto !important;
 }

@@ -122,7 +122,7 @@ export default function IIIFViewer({ manifest }) {
 
         const match = activeCanvasId.match(/assets\/(.+)\/canvas$/);
 
-        if (!match) throw new Error(`Unexpected canvas ID format: ${activeCanvasId}`);
+        if (!match) return console.warn(`[clover-viewer] Unexpected canvas ID format: ${activeCanvasId}`);
 
         const assetId = match[1];
 

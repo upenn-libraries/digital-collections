@@ -18,6 +18,25 @@ describe 'Catalog Show Page', :solr do
       within('.show-document') { expect(page).to have_css('.iiif-viewer-container') }
     end
 
+    it 'does not show the viewer error state on the happy path' do
+      within('.show-document') { expect(page).to have_no_css('.dc-iiif-error') }
+    end
+
+    context 'when the viewer cannot load' do
+      before { visit solr_document_path(solr_doc.id, viewer_state: 'error') }
+
+      it 'replaces the loading skeleton with the error state' do
+        within('.iiif-viewer-container') do
+          expect(page).to have_css('.dc-iiif-error')
+          expect(page).to have_no_css('.dc-iiif-skeleton')
+        end
+      end
+
+      it 'offers a way to try again' do
+        within('.dc-iiif-error') { expect(page).to have_button(I18n.t('show.viewer.error.retry')) }
+      end
+    end
+
     it 'shows the number of images' do
       click_on I18n.t('show.download_and_share.button')
       within('#dc-download-and-share-modal') do

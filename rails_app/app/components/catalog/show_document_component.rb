@@ -8,6 +8,7 @@ module Catalog
     renders_one :document_actions, DocumentActionsComponent
 
     SKELETON_THUMBNAIL_COUNT = 7
+    SIMULATED_VIEWER_STATES = %w[loading error].freeze
 
     def before_render
       super
@@ -17,6 +18,13 @@ module Catalog
     # @return [Boolean]
     def render_skeleton_thumbs?
       @document.iiif_image_count > 1
+    end
+
+    # @return [String, nil]
+    def simulated_viewer_state
+      return nil if Rails.env.production?
+
+      SIMULATED_VIEWER_STATES.find { |state| state == helpers.params[:viewer_state] }
     end
   end
 end

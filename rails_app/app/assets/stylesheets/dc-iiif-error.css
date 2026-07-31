@@ -1,0 +1,18 @@
+.iiif-viewer-container:not([data-viewer-state='error']) .dc-iiif-error {
+  display: none;
+}
+
+.dc-iiif-error {
+  display: flex;
+  align-items: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 500px;
+  border: solid 1px var(--pl-color-fg-attention);
+  border-radius: var(--pl-border-radius-subtle);
+  background: var(--pl-color-bg-attention);
+  padding: var(--pl-space-m);
+  text-align: center;
+}

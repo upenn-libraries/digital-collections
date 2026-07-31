@@ -3,7 +3,13 @@
       - render DocumentActions component %>
 
 <% if document.manifest? %>
-  <div class="iiif-viewer-container">
+  <div
+    class="iiif-viewer-container"
+    data-viewer-state="loading"
+    data-controller="clover-viewer"
+    data-clover-viewer-url-value="<%= document.manifest_url %>"
+    <%= tag.attributes('data-clover-viewer-simulate-value': simulated_viewer_state) if simulated_viewer_state %>
+  >
     <div class="dc-iiif-skeleton" aria-hidden="true">
       <div class="placeholder placeholder-wave dc-iiif-skeleton__stage">
         <div class="placeholder placeholder-wave dc-iiif-skeleton__asset"></div>
@@ -16,10 +22,19 @@
         </div>
       <% end %>
     </div>
-    <div
-      data-controller="clover-viewer"
-      data-clover-viewer-url-value="<%= document.manifest_url %>"
-    ></div>
+
+    <div class="dc-iiif-error" role="alert">
+      <h2 class="pl-h3"><%= t('show.viewer.error.heading', count: document.iiif_image_count) %></h2>
+      <p>
+        <%= t('show.viewer.error.body_html',
+              contact_link: link_to(t('show.viewer.error.contact'), t('urls.contact_us'))) %>
+      </p>
+      <button type="button" class="pl-button pl-button--attention" data-action="clover-viewer#retry">
+        <%= t('show.viewer.error.retry') %>
+      </button>
+    </div>
+
+    <div data-clover-viewer-target="mount"></div>
   </div>
 <% end %>
 

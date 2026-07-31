@@ -1,5 +1,6 @@
 en:
   urls:
+    contact_us: 'https://www.library.upenn.edu/contact-us'
     about:
       new_material: '/items?q=&search_field=all_fields&sort=first_published_at_dtsi+desc'
       collections: 'https://www.library.upenn.edu/collections'

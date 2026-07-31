@@ -109,6 +109,14 @@ en:
       iiif_manifest:
         button: 'IIIF Manifest'
         body: 'What is IIIF?'
+    viewer:
+      error:
+        heading:
+          one: "We couldn't load this image"
+          other: "We couldn't load these images"
+        body_html: 'If this keeps happening, %{contact_link} for help.'
+        retry: 'Try loading again'
+        contact: 'contact us'
     find_this_item:
       button: 'Find this item'
       h2: 'Find this item'
