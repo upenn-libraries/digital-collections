@@ -12,7 +12,7 @@ ARG IMAGE_NAME=ruby
 ARG IMAGE_TAG=3.4.12-slim-bookworm
 
 # Default Node version
-ARG NODE_VERSION=24.5.0
+ARG NODE_VERSION=24.22.1
 
 # Default Rails env
 ARG RAILS_ENV=development
