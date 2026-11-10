@@ -14,9 +14,6 @@ include:
       docker_build_secrets: "--secret id=sidekiq_pro_credentials,env=SIDEKIQ_PRO_CREDENTIALS"
       docker_target: "base"
       job_suffix: "_base"
-      matrix:
-        - RUNNER: build
-          DOCKER_BUILD_PLATFORM: "linux/amd64"
       needs_build:
         - secret_detection
       platforms: '["linux/amd64"]'
@@ -29,9 +26,6 @@ include:
       docker_build_secrets: "--secret id=sidekiq_pro_credentials,env=SIDEKIQ_PRO_CREDENTIALS"
       docker_target: "development"
       job_suffix: "_development"
-      matrix:
-        - RUNNER: build
-          DOCKER_BUILD_PLATFORM: "linux/amd64"
       platforms: '["linux/amd64"]'
       stage: "build_development"
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_build@~latest
@@ -43,9 +37,6 @@ include:
       docker_build_secrets: "--secret id=sidekiq_pro_credentials,env=SIDEKIQ_PRO_CREDENTIALS"
       docker_target: "production"
       job_suffix: "_production"
-      matrix:
-        - RUNNER: build
-          DOCKER_BUILD_PLATFORM: "linux/amd64"
       platforms: '["linux/amd64"]'
       stage: "build_production"
   - component: $CI_SERVER_FQDN/devops/gitlab/components/general/vault_jwt_auth@~latest
@@ -60,8 +51,6 @@ include:
       ci_requirements_file: ".gitlab/ci-requirements.yml"
       needs:
         - "build_and_push_docker_images_development"
-        - job: "amend_manifest_development"
-          optional: true
       service_database_image_tag: "17.5"
       service_database_name: "digital_collections_test"
       service_headless_image_name: "ghcr.io/browserless/chromium"
@@ -76,8 +65,6 @@ include:
       docker_tag_to_scan: "${CI_COMMIT_SHA}"
       needs:
         - "build_and_push_docker_images_production"
-        - job: "amend_manifest_production"
-          optional: true
       stage: "test"
   - component: $CI_SERVER_FQDN/devops/gitlab/components/docker/stage_finalize@~latest
     inputs:
