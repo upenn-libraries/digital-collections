@@ -214,7 +214,10 @@ class CatalogController < ApplicationController
   # redirect legacy show page urls to item show page
   def legacy_redirect
     ark = "ark:/#{params[:normalized_ark].tr('-', '/')}"
-    uuid = DigitalRepository.new.item_by_ark(ark).dig('item', 'id')
-    redirect_to solr_document_path(id: uuid)
+
+    solr = RSolr.connect(url: Settings.solr.url)
+    solr_doc = solr.get('select', params: { q: "ark_ssi:\"#{ark}\"" })['response']['docs'].first
+
+    redirect_to solr_document_path(id: solr_doc.fetch('id'))
   end
 end
