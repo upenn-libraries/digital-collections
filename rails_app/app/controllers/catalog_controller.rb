@@ -218,6 +218,10 @@ class CatalogController < ApplicationController
     solr = RSolr.connect(url: Settings.solr.url)
     solr_doc = solr.get('select', params: { q: "ark_ssi:\"#{ark}\"" })['response']['docs'].first
 
-    redirect_to solr_document_path(id: solr_doc.fetch('id'))
+    if (id = solr_doc&.fetch('id', nil))
+      redirect_to solr_document_path(id: id)
+    else
+      raise Blacklight::Exceptions::RecordNotFound
+    end
   end
 end
